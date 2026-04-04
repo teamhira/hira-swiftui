@@ -7,62 +7,75 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		4FA8847D2F7E24B100CC5392 /* PBXContainerItemProxy */ = {
+		4FA88A552F7EA96E00CC5392 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4FA884652F7E24AF00CC5392 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4FA8846C2F7E24AF00CC5392;
-			remoteInfo = Hira;
+			remoteGlobalIDString = 4FA88A452F7EA96900CC5392;
+			remoteInfo = iOSApp;
 		};
-		4FA884872F7E24B100CC5392 /* PBXContainerItemProxy */ = {
+		4FA88A5F2F7EA96E00CC5392 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4FA884652F7E24AF00CC5392 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4FA8846C2F7E24AF00CC5392;
-			remoteInfo = Hira;
+			remoteGlobalIDString = 4FA88A452F7EA96900CC5392;
+			remoteInfo = iOSApp;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4FA8846D2F7E24AF00CC5392 /* Hira.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hira.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4FA8847C2F7E24B100CC5392 /* HiraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HiraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4FA884862F7E24B100CC5392 /* HiraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HiraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FA88A462F7EA96900CC5392 /* Hira.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hira.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FA88A542F7EA96E00CC5392 /* HiraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HiraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FA88A5E2F7EA96E00CC5392 /* HiraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HiraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4F0C343C2F7EBACF001547C8 /* Exceptions for "Apps" folder in "Hira" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				iOSApp/App/Info.plist,
+			);
+			target = 4FA88A452F7EA96900CC5392 /* Hira */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		4FA8846F2F7E24AF00CC5392 /* Hira */ = {
+		4FA884992F7E251900CC5392 /* Shared */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Hira;
+			path = Shared;
 			sourceTree = "<group>";
 		};
-		4FA8847F2F7E24B100CC5392 /* HiraTests */ = {
+		4FA884A52F7E26C900CC5392 /* Apps */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = HiraTests;
+			exceptions = (
+				4F0C343C2F7EBACF001547C8 /* Exceptions for "Apps" folder in "Hira" target */,
+			);
+			path = Apps;
 			sourceTree = "<group>";
 		};
-		4FA884892F7E24B100CC5392 /* HiraUITests */ = {
+		4FA885AB2F7E43FA00CC5392 /* Resources */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = HiraUITests;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4FA8846A2F7E24AF00CC5392 /* Frameworks */ = {
+		4FA88A432F7EA96900CC5392 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4FA884792F7E24B100CC5392 /* Frameworks */ = {
+		4FA88A512F7EA96E00CC5392 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4FA884832F7E24B100CC5392 /* Frameworks */ = {
+		4FA88A5B2F7EA96E00CC5392 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -75,19 +88,19 @@
 		4FA884642F7E24AF00CC5392 = {
 			isa = PBXGroup;
 			children = (
-				4FA8846F2F7E24AF00CC5392 /* Hira */,
-				4FA8847F2F7E24B100CC5392 /* HiraTests */,
-				4FA884892F7E24B100CC5392 /* HiraUITests */,
+				4FA884992F7E251900CC5392 /* Shared */,
 				4FA8846E2F7E24AF00CC5392 /* Products */,
+				4FA884A52F7E26C900CC5392 /* Apps */,
+				4FA885AB2F7E43FA00CC5392 /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
 		4FA8846E2F7E24AF00CC5392 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4FA8846D2F7E24AF00CC5392 /* Hira.app */,
-				4FA8847C2F7E24B100CC5392 /* HiraTests.xctest */,
-				4FA884862F7E24B100CC5392 /* HiraUITests.xctest */,
+				4FA88A462F7EA96900CC5392 /* Hira.app */,
+				4FA88A542F7EA96E00CC5392 /* HiraTests.xctest */,
+				4FA88A5E2F7EA96E00CC5392 /* HiraUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,72 +108,68 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4FA8846C2F7E24AF00CC5392 /* Hira */ = {
+		4FA88A452F7EA96900CC5392 /* Hira */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4FA884902F7E24B100CC5392 /* Build configuration list for PBXNativeTarget "Hira" */;
+			buildConfigurationList = 4FA88A6C2F7EA96E00CC5392 /* Build configuration list for PBXNativeTarget "Hira" */;
 			buildPhases = (
-				4FA884692F7E24AF00CC5392 /* Sources */,
-				4FA8846A2F7E24AF00CC5392 /* Frameworks */,
-				4FA8846B2F7E24AF00CC5392 /* Resources */,
+				4FA88A422F7EA96900CC5392 /* Sources */,
+				4FA88A432F7EA96900CC5392 /* Frameworks */,
+				4FA88A442F7EA96900CC5392 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				4FA8846F2F7E24AF00CC5392 /* Hira */,
+				4FA884992F7E251900CC5392 /* Shared */,
+				4FA884A52F7E26C900CC5392 /* Apps */,
+				4FA885AB2F7E43FA00CC5392 /* Resources */,
 			);
 			name = Hira;
 			packageProductDependencies = (
 			);
-			productName = Hira;
-			productReference = 4FA8846D2F7E24AF00CC5392 /* Hira.app */;
+			productName = iOSApp;
+			productReference = 4FA88A462F7EA96900CC5392 /* Hira.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4FA8847B2F7E24B100CC5392 /* HiraTests */ = {
+		4FA88A532F7EA96E00CC5392 /* HiraTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4FA884932F7E24B100CC5392 /* Build configuration list for PBXNativeTarget "HiraTests" */;
+			buildConfigurationList = 4FA88A6D2F7EA96E00CC5392 /* Build configuration list for PBXNativeTarget "HiraTests" */;
 			buildPhases = (
-				4FA884782F7E24B100CC5392 /* Sources */,
-				4FA884792F7E24B100CC5392 /* Frameworks */,
-				4FA8847A2F7E24B100CC5392 /* Resources */,
+				4FA88A502F7EA96E00CC5392 /* Sources */,
+				4FA88A512F7EA96E00CC5392 /* Frameworks */,
+				4FA88A522F7EA96E00CC5392 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4FA8847E2F7E24B100CC5392 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				4FA8847F2F7E24B100CC5392 /* HiraTests */,
+				4FA88A562F7EA96E00CC5392 /* PBXTargetDependency */,
 			);
 			name = HiraTests;
 			packageProductDependencies = (
 			);
-			productName = HiraTests;
-			productReference = 4FA8847C2F7E24B100CC5392 /* HiraTests.xctest */;
+			productName = iOSAppTests;
+			productReference = 4FA88A542F7EA96E00CC5392 /* HiraTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4FA884852F7E24B100CC5392 /* HiraUITests */ = {
+		4FA88A5D2F7EA96E00CC5392 /* HiraUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4FA884962F7E24B100CC5392 /* Build configuration list for PBXNativeTarget "HiraUITests" */;
+			buildConfigurationList = 4FA88A6E2F7EA96E00CC5392 /* Build configuration list for PBXNativeTarget "HiraUITests" */;
 			buildPhases = (
-				4FA884822F7E24B100CC5392 /* Sources */,
-				4FA884832F7E24B100CC5392 /* Frameworks */,
-				4FA884842F7E24B100CC5392 /* Resources */,
+				4FA88A5A2F7EA96E00CC5392 /* Sources */,
+				4FA88A5B2F7EA96E00CC5392 /* Frameworks */,
+				4FA88A5C2F7EA96E00CC5392 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4FA884882F7E24B100CC5392 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				4FA884892F7E24B100CC5392 /* HiraUITests */,
+				4FA88A602F7EA96E00CC5392 /* PBXTargetDependency */,
 			);
 			name = HiraUITests;
 			packageProductDependencies = (
 			);
-			productName = HiraUITests;
-			productReference = 4FA884862F7E24B100CC5392 /* HiraUITests.xctest */;
+			productName = iOSAppUITests;
+			productReference = 4FA88A5E2F7EA96E00CC5392 /* HiraUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -173,16 +182,16 @@
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
-					4FA8846C2F7E24AF00CC5392 = {
+					4FA88A452F7EA96900CC5392 = {
 						CreatedOnToolsVersion = 26.0;
 					};
-					4FA8847B2F7E24B100CC5392 = {
+					4FA88A532F7EA96E00CC5392 = {
 						CreatedOnToolsVersion = 26.0;
-						TestTargetID = 4FA8846C2F7E24AF00CC5392;
+						TestTargetID = 4FA88A452F7EA96900CC5392;
 					};
-					4FA884852F7E24B100CC5392 = {
+					4FA88A5D2F7EA96E00CC5392 = {
 						CreatedOnToolsVersion = 26.0;
-						TestTargetID = 4FA8846C2F7E24AF00CC5392;
+						TestTargetID = 4FA88A452F7EA96900CC5392;
 					};
 				};
 			};
@@ -192,6 +201,9 @@
 			knownRegions = (
 				en,
 				Base,
+				id,
+				ms,
+				ar,
 			);
 			mainGroup = 4FA884642F7E24AF00CC5392;
 			minimizedProjectReferenceProxies = 1;
@@ -200,29 +212,29 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4FA8846C2F7E24AF00CC5392 /* Hira */,
-				4FA8847B2F7E24B100CC5392 /* HiraTests */,
-				4FA884852F7E24B100CC5392 /* HiraUITests */,
+				4FA88A452F7EA96900CC5392 /* Hira */,
+				4FA88A532F7EA96E00CC5392 /* HiraTests */,
+				4FA88A5D2F7EA96E00CC5392 /* HiraUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4FA8846B2F7E24AF00CC5392 /* Resources */ = {
+		4FA88A442F7EA96900CC5392 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4FA8847A2F7E24B100CC5392 /* Resources */ = {
+		4FA88A522F7EA96E00CC5392 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4FA884842F7E24B100CC5392 /* Resources */ = {
+		4FA88A5C2F7EA96E00CC5392 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -232,21 +244,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4FA884692F7E24AF00CC5392 /* Sources */ = {
+		4FA88A422F7EA96900CC5392 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4FA884782F7E24B100CC5392 /* Sources */ = {
+		4FA88A502F7EA96E00CC5392 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4FA884822F7E24B100CC5392 /* Sources */ = {
+		4FA88A5A2F7EA96E00CC5392 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -256,15 +268,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4FA8847E2F7E24B100CC5392 /* PBXTargetDependency */ = {
+		4FA88A562F7EA96E00CC5392 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4FA8846C2F7E24AF00CC5392 /* Hira */;
-			targetProxy = 4FA8847D2F7E24B100CC5392 /* PBXContainerItemProxy */;
+			target = 4FA88A452F7EA96900CC5392 /* Hira */;
+			targetProxy = 4FA88A552F7EA96E00CC5392 /* PBXContainerItemProxy */;
 		};
-		4FA884882F7E24B100CC5392 /* PBXTargetDependency */ = {
+		4FA88A602F7EA96E00CC5392 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4FA8846C2F7E24AF00CC5392 /* Hira */;
-			targetProxy = 4FA884872F7E24B100CC5392 /* PBXContainerItemProxy */;
+			target = 4FA88A452F7EA96900CC5392 /* Hira */;
+			targetProxy = 4FA88A5F2F7EA96E00CC5392 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -274,6 +286,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -336,6 +349,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -385,95 +399,86 @@
 			};
 			name = Release;
 		};
-		4FA884912F7E24B100CC5392 /* Debug */ = {
+		4FA88A662F7EA96E00CC5392 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = Apps/iOSApp/App/HiraApp.swift;
 				DEVELOPMENT_TEAM = ZPPURR8Q5X;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
-				GENERATE_INFOPLIST_FILE = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Apps/iOSApp/App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Hira;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.achmdndy.Hira;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.achmdndy.hiraapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 26.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		4FA884922F7E24B100CC5392 /* Release */ = {
+		4FA88A672F7EA96E00CC5392 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = Apps/iOSApp/App/HiraApp.swift;
 				DEVELOPMENT_TEAM = ZPPURR8Q5X;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
-				GENERATE_INFOPLIST_FILE = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Apps/iOSApp/App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Hira;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.achmdndy.Hira;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.achmdndy.hiraapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 26.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		4FA884942F7E24B100CC5392 /* Debug */ = {
+		4FA88A682F7EA96E00CC5392 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -482,24 +487,21 @@
 				DEVELOPMENT_TEAM = ZPPURR8Q5X;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.achmdndy.HiraTests;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.achmdndy.iOSAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hira.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Hira";
-				XROS_DEPLOYMENT_TARGET = 26.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iOSApp";
 			};
 			name = Debug;
 		};
-		4FA884952F7E24B100CC5392 /* Release */ = {
+		4FA88A692F7EA96E00CC5392 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,24 +510,22 @@
 				DEVELOPMENT_TEAM = ZPPURR8Q5X;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.achmdndy.HiraTests;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.achmdndy.iOSAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hira.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Hira";
-				XROS_DEPLOYMENT_TARGET = 26.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iOSApp";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		4FA884972F7E24B100CC5392 /* Debug */ = {
+		4FA88A6A2F7EA96E00CC5392 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -533,24 +533,21 @@
 				DEVELOPMENT_TEAM = ZPPURR8Q5X;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.achmdndy.HiraUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.achmdndy.iOSAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = Hira;
-				XROS_DEPLOYMENT_TARGET = 26.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iOSApp;
 			};
 			name = Debug;
 		};
-		4FA884982F7E24B100CC5392 /* Release */ = {
+		4FA88A6B2F7EA96E00CC5392 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -558,20 +555,18 @@
 				DEVELOPMENT_TEAM = ZPPURR8Q5X;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.achmdndy.HiraUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.achmdndy.iOSAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = Hira;
-				XROS_DEPLOYMENT_TARGET = 26.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iOSApp;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -587,29 +582,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4FA884902F7E24B100CC5392 /* Build configuration list for PBXNativeTarget "Hira" */ = {
+		4FA88A6C2F7EA96E00CC5392 /* Build configuration list for PBXNativeTarget "Hira" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4FA884912F7E24B100CC5392 /* Debug */,
-				4FA884922F7E24B100CC5392 /* Release */,
+				4FA88A662F7EA96E00CC5392 /* Debug */,
+				4FA88A672F7EA96E00CC5392 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4FA884932F7E24B100CC5392 /* Build configuration list for PBXNativeTarget "HiraTests" */ = {
+		4FA88A6D2F7EA96E00CC5392 /* Build configuration list for PBXNativeTarget "HiraTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4FA884942F7E24B100CC5392 /* Debug */,
-				4FA884952F7E24B100CC5392 /* Release */,
+				4FA88A682F7EA96E00CC5392 /* Debug */,
+				4FA88A692F7EA96E00CC5392 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4FA884962F7E24B100CC5392 /* Build configuration list for PBXNativeTarget "HiraUITests" */ = {
+		4FA88A6E2F7EA96E00CC5392 /* Build configuration list for PBXNativeTarget "HiraUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4FA884972F7E24B100CC5392 /* Debug */,
-				4FA884982F7E24B100CC5392 /* Release */,
+				4FA88A6A2F7EA96E00CC5392 /* Debug */,
+				4FA88A6B2F7EA96E00CC5392 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

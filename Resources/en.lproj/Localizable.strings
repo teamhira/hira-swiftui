@@ -1,0 +1,465 @@
+/* 
+  Localizable.strings
+  Hira
+
+  Created by Ryuk on 02/04/26.
+  
+*/
+
+// MARK: - Onboarding
+"onboarding_landing_title" = "Hira";
+"onboarding_landing_subtitle" = "Your modern Islamic lifestyle companion with daily Quran and Sunnah guidance.";
+"onboarding_accessibility_image_hira" = "Hira main illustration";
+
+"onboarding_quran_title" = "Quran";
+"onboarding_quran_subtitle" = "Read and listen to the Quran with tafsir and access authentic Hadiths.";
+"onboarding_accessibility_image_quran" = "Quran feature illustration";
+
+"onboarding_prayer_title" = "Prayer";
+"onboarding_prayer_subtitle" = "Accurate prayer times, reminders, and stay connected with your local community.";
+"onboarding_accessibility_image_prayer" = "Prayer times feature illustration";
+
+"onboarding_inspiration_title" = "Inspiration";
+"onboarding_inspiration_subtitle" = "Find inspirational content and Hijrah programs for your spiritual growth.";
+"onboarding_accessibility_image_inspiration" = "Hijrah inspiration feature illustration";
+
+"onboarding_final_title" = "New Step";
+"onboarding_final_subtitle" = "All spiritual needs in one beautiful app. Start your journey today!";
+"onboarding_accessibility_image_final" = "New step with Hira illustration";
+
+// MARK: - Onboarding Buttons
+"onboarding_button_get_started" = "Get Started";
+"onboarding_button_next" = "Next";
+"onboarding_button_start" = "Let's Start";
+"onboarding_button_back" = "Back";
+"onboarding_button_skip" = "Skip";
+"onboarding_accessibility_button_skip" = "Button, skip introduction";
+"onboarding_login_prompt" = "Already have an account? ";
+"onboarding_login_button" = "Login";
+
+// MARK: - Login
+"login_title_welcome" = "Welcome Back";
+"login_subtitle" = "Continue your journey with Hira.";
+"login_field_email" = "Email Address";
+"login_field_password" = "Password";
+"login_button_signin" = "Sign In";
+"login_button_forgot_password" = "Forgot Password?";
+"login_divider_social" = "Or continue with";
+"login_button_apple" = "Sign In with Apple";
+"login_button_google" = "Sign In with Google";
+"login_button_guest" = "Continue as Guest";
+"login_footer_signup_prompt" = "Don't have an account? ";
+"login_footer_signup_button" = "Sign Up";
+"login_button_help" = "Need Help?";
+"login_logo_subtitle" = "Islamic Lifestyle Companion";
+"login_logo_accessibility" = "Hira app logo";
+"login_email_placeholder" = "Enter your email";
+"login_password_placeholder" = "Enter your password";
+
+
+// MARK: - Login Accessibility
+"login_accessibility_logo" = "Hira app logo";
+"login_accessibility_email_input" = "Text input, enter your email";
+"login_accessibility_password_input" = "Text input, enter your password";
+"login_accessibility_forgot_password" = "Button, forgot password";
+"login_accessibility_signin_button" = "Button, sign in to account";
+"login_accessibility_apple_button" = "Button, sign in with Apple";
+"login_accessibility_google_button" = "Button, sign in with Google";
+"login_accessibility_guest_button" = "Button, continue as guest";
+"login_accessibility_signup_button" = "Button, sign up for new account";
+"login_accessibility_help_button" = "Button, help";
+
+// MARK: - Register
+"register_title" = "Create Account";
+"register_subtitle" = "Start your spiritual journey with Hira.";
+"register_field_name" = "Full Name";
+"register_field_email" = "Email Address";
+"register_field_password" = "Password";
+"register_field_confirm_password" = "Confirm Password";
+"register_button_signup" = "Sign Up Now";
+"register_footer_login_prompt" = "Already have an account? ";
+"register_footer_login_button" = "Login";
+"register_divider_social" = "Or sign up with";
+"register_button_apple" = "Sign Up with Apple";
+"register_button_google" = "Sign Up with Google";
+"register_button_help" = "Need Help?";
+
+// MARK: - Register Accessibility
+"register_accessibility_name_input" = "Text input, enter full name";
+"register_accessibility_email_input" = "Text input, enter email";
+"register_accessibility_password_input" = "Text input, enter new password";
+"register_accessibility_confirm_password_input" = "Text input, confirm new password";
+"register_accessibility_signup_button" = "Button, create new account";
+"register_accessibility_apple_button" = "Button, sign up with Apple";
+"register_accessibility_google_button" = "Button, sign up with Google";
+
+// MARK: - Forgot Password
+"forgot_password_title" = "Forgot Password";
+"forgot_password_subtitle" = "Enter your email to receive a recovery link.";
+"forgot_password_field_email" = "Email Address";
+"forgot_password_button_send" = "Send Link";
+"forgot_password_footer_back" = "Back to Login";
+"forgot_password_button_help" = "Need Help?";
+
+// MARK: - PIN Security
+"pin_title" = "Enter PIN";
+"pin_subtitle" = "Use your 6-digit PIN to access your Hira account.";
+"pin_mode_create_title" = "Create New PIN";
+"pin_mode_create_subtitle" = "Set a 6-digit security code for your identity protection.";
+"pin_mode_verify_title" = "Verify Your PIN";
+"pin_mode_verify_subtitle" = "Enter the code again to confirm and secure your account.";
+"pin_mode_unlock_title" = "Enter Security PIN";
+"pin_mode_unlock_subtitle" = "Enter your security code to access your account.";
+"pin_mode_change_title" = "Verify Current PIN";
+"pin_mode_change_subtitle" = "Enter your existing PIN before setting up a new one.";
+
+// MARK: - Security Settings
+"security_title" = "Security Settings";
+"security_status_secured" = "Account Secured";
+"security_status_unsecured" = "Action Required";
+"security_status_desc_secured" = "Your identity is protected with a 6-digit PIN.";
+"security_status_desc_unsecured" = "Set up a PIN to protect your personal data.";
+"security_section_methods" = "Security Methods";
+"security_method_pin_setup" = "Setup PIN";
+"security_method_pin_change" = "Change PIN";
+"security_method_pin_desc_setup" = "Protect access to your account";
+"security_method_pin_desc_change" = "Update your 6-digit security code";
+"security_method_biometric" = "Biometric Lock";
+"security_method_biometric_desc" = "Use FaceID for faster access";
+"security_section_danger" = "Danger Zone";
+"security_button_remove_pin" = "Remove Security PIN";
+"security_pin_active" = "PIN Active";
+"security_pin_not_set" = "Set up PIN";
+
+// MARK: - Security Accessibility
+"security_accessibility_status_label" = "Security status: %@";
+"security_accessibility_pin_change_hint" = "Change your current 6-digit security pin";
+"security_accessibility_pin_setup_hint" = "Set up a new 6-digit pin to guard your account";
+"security_accessibility_biometric_toggle_hint" = "Toggle biometric login using FaceID or TouchID";
+"security_accessibility_danger_hint" = "WARNING: This will permanently remove your security PIN and biometric protection.";
+"security_section_integrity" = "Account Integrity";
+"security_integrity_autolock" = "Auto-Lock on Background";
+"security_integrity_history" = "Login History";
+"security_status_off" = "Off";
+
+
+// MARK: - Home Section
+"home_greeting_day" = "Assalamu'alaikum,";
+"home_search_placeholder" = "Search Quran, Hadith, or more...";
+"home_hadith_title" = "Hadith of the Day";
+"home_prayer_title" = "Prayer Times";
+"home_features_section" = "Features";
+"home_articles_section" = "Articles";
+"home_articles_all" = "See All";
+"home_article_default_title" = "The Secret Power of Tahajjud";
+"home_article_default_desc" = "Discover the spiritual benefits of the last third of the night.";
+"home_article_quran_title" = "Memorizing Quran Made Easy";
+"home_article_quran_desc" = "Practical tips and tricks to keep your memorization firm.";
+"home_location_jakarta" = "Jakarta, ID";
+"home_prayer_fajr" = "Fajr";
+"home_prayer_dhuhr" = "Dhuhr";
+"home_prayer_asr" = "Asr";
+"home_prayer_maghrib" = "Maghrib";
+"home_prayer_isha" = "Isha";
+"home_hadith_sample" = "\"The best among you are those who have the best manners and character.\"";
+"home_hadith_source" = "Sahih Bukhari";
+
+
+// MARK: - Home Features
+"home_feature_zakat" = "Zakat";
+"home_feature_qibla" = "Qibla";
+"home_feature_tasbih" = "Tasbih";
+"home_feature_doa" = "Doa";
+"home_feature_hadith" = "Hadith";
+"home_feature_more" = "More";
+
+// MARK: - Home Accessibility
+"home_accessibility_bell" = "Button, new notifications";
+"home_accessibility_search" = "Text input, search content";
+"home_accessibility_hadith_card" = "Hadith of the day inspiration card";
+"home_accessibility_prayer_card" = "Prayer time information card for today";
+"home_accessibility_article_card" = "Article card: %@";
+
+
+// MARK: - Quran Section
+"quran_title" = "Quran";
+"quran_search_placeholder" = "Search Surah, Topic, or Ayah...";
+"quran_last_reading" = "Last Reading";
+"quran_continue_reading" = "Continue Reading";
+"quran_khatam_progress" = "Khatam Progress";
+"quran_surah_progress" = "Surah Progress";
+"quran_verses_count" = "%@ Verses";
+"quran_daily_reminder" = "Daily Reminder";
+
+// MARK: - Quran Tabs
+"quran_tab_surah" = "Surah";
+"quran_tab_juz" = "Juz";
+"quran_tab_bookmark" = "Bookmark";
+"quran_tab_topic" = "Topic";
+"quran_tab_daily" = "Daily";
+"quran_goal_title" = "Khatam Goal";
+"quran_juz_placeholder" = "Juz list coming soon";
+"quran_bookmark_placeholder" = "Your bookmarked ayahs will appear here";
+"quran_stories_section" = "Stories";
+"quran_topics_section" = "Topics";
+"quran_topic_stories_count" = "%d stories";
+"quran_daily_title" = "Daily Reminder";
+"quran_daily_ayah_ref" = "Surah Al-Baqarah: 153";
+"quran_daily_ayah_content" = "O you who have believed, seek help through patience and prayer. Indeed, Allah is with the patient.";
+"quran_daily_button_share" = "Share";
+"quran_daily_button_read_more" = "Read More";
+"quran_daily_desc" = "Daily reminders for your spiritual growth";
+"quran_search_placeholder_full" = "Search for surah, dua...";
+"quran_ayah_count_label" = "Ayat %d of %d";
+
+
+// MARK: - Quran Topics
+"quran_topic_sirah" = "Sirah Nabawiyah";
+"quran_topic_prophets" = "Story of Prophets";
+"quran_topic_laws" = "Laws & Muamalah";
+"quran_topic_hereafter" = "The Hereafter";
+
+// MARK: - Quran Accessibility
+"quran_accessibility_top_tab" = "Top tab, select %@";
+"quran_accessibility_bottom_tab" = "Bottom tab, select %@";
+"quran_accessibility_progress_pie" = "Progress chart, %@ percent complete";
+"quran_accessibility_surah_card" = "Surah card %@, Number %@, %@ Verses";
+"profile_section_info" = "Contact Information";
+"profile_field_email" = "Email";
+"profile_bio_hint" = "Sharing a bit about yourself helps others connect with you.";
+"profile_appearance_title" = "Appearance";
+"profile_appearance_preview" = "Live Preview";
+"profile_appearance_character" = "Select Character";
+"profile_appearance_sample" = "Sample Content";
+"profile_button_cancel" = "Cancel";
+"profile_button_done" = "Done";
+
+
+// MARK: - Profile Settings
+"profile_title" = "My Profile";
+"profile_section_account" = "Account";
+"profile_section_settings" = "Settings";
+"profile_section_support" = "Information";
+"profile_menu_edit_profile" = "Edit Profile";
+"profile_menu_theme" = "App Theme";
+"profile_menu_language" = "Language";
+"profile_menu_security" = "Identity Security";
+"profile_accessibility_avatar" = "User profile picture";
+"profile_menu_dark_mode" = "Dark Mode";
+"profile_menu_about" = "About Hira";
+"profile_menu_version" = "App Version";
+"profile_menu_logout" = "Logout";
+"language_system_default" = "Follow System Settings";
+"language_title_choose" = "App Language";
+"language_desc_choose" = "Choose a language that fits you best for reading and navigation.";
+"language_button_apply" = "Apply Changes";
+"about_version" = "Version 1.0.0 (Gold)";
+"about_mission_title" = "Our Mission";
+"about_mission_desc" = "Hira is designed to be your ultimate companion in your spiritual journey with the Holy Quran. Our mission is to provide a seamless, beautiful, and deeply immersive experience for reading, understanding, and living the Quran.";
+"about_crafted_title" = "Crafted with Love";
+"about_crafted_desc" = "Every pixel and every line of code in Hira is crafted with the utmost care to ensure that your interaction with the Divine Words is as pure and focused as possible.";
+"about_policy" = "Privacy Policy";
+"about_terms" = "Terms of Service";
+"about_connect" = "Connect with Us";
+
+// MARK: - Identity Security Sectionelds
+"profile_field_name" = "Full Name";
+"profile_field_username" = "Username";
+"profile_field_phone" = "Phone Number";
+"profile_field_location" = "Location";
+"profile_field_gender" = "Gender";
+"profile_field_bio" = "Short Biography";
+"profile_gender_male" = "Male";
+"profile_gender_female" = "Female";
+"profile_button_save" = "Save Changes";
+
+// MARK: - Tabs
+"tab_home" = "Home";
+"tab_quran" = "Quran";
+"tab_explore" = "Explore";
+"tab_charity" = "Charity";
+"tab_profile" = "Profile";
+
+// MARK: - Explore Section
+"explore_title" = "Explore";
+"explore_search_placeholder" = "Search for reels, events...";
+"explore_reels_section" = "Islamic Reels";
+"explore_events_section" = "Islamic Events";
+"explore_discover_section" = "Discover More";
+"explore_view_all" = "View all";
+"explore_featured_tag" = "Featured";
+"explore_featured_title" = "The Hijrah Program";
+"explore_featured_desc" = "Embark on a transformative journey of faith. Join our guided program to strengthen your connection with Allah.";
+"explore_featured_button" = "Start Your Journey";
+"explore_category_hadith" = "Hadith & Sunnah";
+"explore_category_articles" = "Articles";
+"explore_category_qna" = "Q&A";
+"explore_category_halal" = "Halal Finder";
+"explore_category_hadith_desc" = "Daily wisdom";
+"explore_category_articles_desc" = "Islamic knowledge";
+"explore_category_qna_desc" = "Get answers";
+"explore_category_halal_desc" = "Find halal places";
+
+
+// MARK: - Tasbih Section
+"tasbih_title" = "Tasbih";
+"tasbih_loop" = "Loop %d";
+"tasbih_reset" = "Reset";
+"tasbih_sound" = "Sound";
+"tasbih_tap_hint" = "Swipe or tap to begin";
+"tasbih_dhikr_section" = "Dhikr";
+"tasbih_view_all" = "View All";
+
+// MARK: - GLOBAL ACCESSIBILITY Labels
+"accessibility_button_back" = "Button, back";
+"accessibility_button_close" = "Button, close";
+"accessibility_password_show" = "Button, show password";
+"accessibility_password_hide" = "Button, hide password";
+
+// MARK: - PIN Accessibility
+"pin_accessibility_digit" = "Button, number %@";
+"pin_accessibility_faceid" = "Button, Face ID authentication";
+"pin_accessibility_backspace" = "Button, delete last digit";
+
+// MARK: - Charity Section
+"charity_title" = "Charity";
+"charity_subtitle" = "Make a difference today";
+"charity_search_placeholder" = "Search causes, charity...";
+"charity_berikan_tujuan_title" = "Give with Purpose";
+"charity_kalkulator_zakat_title" = "Zakat Calculator";
+"charity_kalkulator_zakat_desc" = "Calculate your zakat obligation quickly.";
+"charity_community_causes_title" = "Community Causes";
+"charity_urgent_causes_title" = "Urgent Causes";
+"charity_top_community_causes_title" = "Top Community Causes";
+"charity_quick_search_title" = "Quick Search";
+"charity_urgent_badge" = "URGENT";
+"charity_donate_now_button" = "Donate Now";
+"charity_target_label" = "Target: $%@K";
+"charity_raised_of" = "$%@ of $%@";
+"charity_donors_count" = "%@ Donors";
+"charity_days_count" = "%@ Days";
+"charity_see_all" = "See all";
+"charity_category_education" = "Education";
+"charity_category_zakat" = "Zakat";
+"charity_category_sedekah" = "Sadaqah";
+"charity_category_orphan" = "Orphan Donation";
+"charity_category_infaq" = "Infaq";
+"charity_category_wakaf" = "Waqf";
+"charity_category_fidyah" = "Fidyah";
+"charity_category_kaffarah" = "Kaffarah";
+"charity_accessibility_donate_button" = "Button, donate now for %@";
+
+// MARK: - Qibla Updates
+"qibla_facing_mecca_success" = "You're now facing Mecca";
+"qibla_facing_mecca_finding" = "Almost there";
+"location_permission_title" = "Location Access Required";
+"location_permission_desc" = "We need your location to provide accurate Qibla direction and other localized features.";
+"qibla_permission_settings_button" = "Open Settings";
+"qibla_permission_allow_button" = "Allow Access";
+"qibla_bearing_label" = "Qibla Bearing";
+"qibla_heading_label" = "Device Heading";
+"qibla_mecca_label" = "Mecca";
+"qibla_finding_status" = "Finding...";
+
+// MARK: - Search Section
+"search_suggested_title" = "Suggested";
+"search_daily_deen_title" = "Daily Deen";
+"search_spiritual_journey_title" = "Spiritual Journey";
+"search_feature_prayer_times" = "Prayer Times";
+"search_feature_quran" = "Quran";
+"search_feature_duas" = "Duas";
+"search_feature_qibla" = "Qibla";
+"search_feature_khatam" = "Khatam Quran";
+"search_feature_deen_mode" = "Deen Mode";
+"search_feature_goals" = "Spiritual Goals";
+"search_feature_tracker" = "Progress Tracker";
+"search_feature_achievements" = "Achievements";
+"search_feature_learning" = "Islamic Learning";
+"search_feature_good_deeds" = "Good Deeds";
+"search_feature_spiritual_level" = "Spiritual Level";
+"search_placeholder_short" = "Search";
+"search_placeholder_long" = "Search...";
+
+// MARK: - Tasbih Section
+"tasbih_hint" = "Swipe or tap to begin";
+"tasbih_custom_target_desc" = "Enter a custom target for your zikir session.";
+"tasbih_no_dhikr" = "No dhikr selected for sequence. You will count manually.";
+"tasbih_loops" = "Loops";
+"tasbih_dhikr" = "Dhikr";
+"tasbih_view_all" = "View All";
+"tasbih_completion_title" = "Masha Allah!";
+"tasbih_completion_desc" = "You have completed your zikir sequence.";
+"tasbih_restart" = "Restart Sequence";
+"tasbih_close" = "Close";
+
+// MARK: - Explore Search Section
+"explore_search_suggested_title" = "Suggested for You";
+"explore_search_reels_title" = "Hot Reels";
+"explore_search_articles_title" = "Top Articles";
+"explore_search_personalized" = "Personalized";
+"explore_search_popular" = "Popular";
+"explore_search_trending" = "Trending";
+"explore_search_placeholder" = "Daily";
+"explore_search_guide" = "Guide";
+"explore_search_tips" = "Tips";
+"explore_search_tafsir" = "Tafsir";
+"explore_search_worship" = "Worship";
+"explore_search_recommended" = "Recommended";
+"explore_search_learning" = "Learning";
+
+// MARK: - Explore Search Items
+"explore_search_item_morning_guide" = "Morning Prayers Guide";
+"explore_search_item_quran_tips" = "Quran Memorization Tips";
+"explore_search_item_recitation" = "Beautiful Quran Recitation";
+"explore_search_item_recitation_desc" = "Beautiful recitation of Surah Ar-Rahman...";
+"explore_search_item_dhikr" = "Daily Dhikr Reminder";
+"explore_search_item_dhikr_desc" = "Morning and evening dhikr tips...";
+"explore_search_item_fatiha" = "Understanding Surah Al-Fatiha";
+"explore_search_item_charity" = "The Importance of Charity";
+"explore_search_item_views" = "%@ views";
+
+// MARK: - Quran Tabs & Features
+"quran_juz_khatam_title" = "Khatam Progress";
+"quran_juz_khatam_stat" = "%d of 30 Juz";
+"quran_juz_khatam_last" = "Last: %@";
+"quran_bookmark_header_title" = "My Bookmarks";
+"quran_bookmark_count" = "%d bookmarks";
+"quran_bookmark_last" = "Last: %@";
+"quran_daily_reminder_section" = "Daily Reminders";
+"quran_daily_item_morning" = "Morning Dhikr";
+"quran_daily_item_midday" = "Midday Reflection";
+"quran_daily_share_count" = "%d";
+"quran_daily_like_count" = "%d";
+"quran_juz_number" = "Juz %d";
+"quran_ayah_ref" = "Ayah %d";
+"quran_time_ago" = "%@ ago";
+
+// MARK: - Quran Accessibility
+"quran_acc_juz_progress" = "Juz progress: %@. %@";
+"quran_acc_juz_row" = "Juz %@, contains %@, progress %@ percent";
+"quran_acc_bookmark_header" = "Bookmark summary: %@. %@";
+"quran_acc_bookmark_row" = "Bookmark in %@, ayah %@. Last read %@. Text: %@";
+"quran_acc_daily_reminder" = "Daily reminder: %@. Reference %@. %@";
+"quran_acc_interaction" = "%d %@";
+"quran_acc_likes" = "likes";
+"quran_acc_bookmarks" = "bookmarks";
+"quran_acc_shares" = "shares";
+
+
+
+// MARK: - Explore Search Accessibility
+"explore_search_acc_back" = "Go back to explore";
+"explore_search_acc_search_field" = "Search in discover";
+"explore_search_acc_content" = "Found content: %@, category %@";
+"explore_search_acc_reel" = "Reel: %@, Duration: %@. %@";
+"explore_search_acc_article" = "Article: %@. Category: %@. %@";
+"explore_search_badge_high" = "High Priority";
+"explore_search_acc_section_suggested" = "Suggested for you section";
+"explore_search_acc_section_reels" = "Hot reels section";
+"explore_search_acc_section_articles" = "Top articles section";
+
+
+
+
+
+

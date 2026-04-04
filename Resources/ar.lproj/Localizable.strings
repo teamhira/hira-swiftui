@@ -1,0 +1,464 @@
+/* 
+  Localizable.strings
+  Hira
+
+  Created by Ryuk on 02/04/26.
+  
+*/
+
+// MARK: - Onboarding
+"onboarding_landing_title" = "حراء";
+"onboarding_landing_subtitle" = "رفيقك لأسلوب الحياة الإسلامي الحديث بتوجيه من القرآن والسنة يومياً.";
+"onboarding_accessibility_image_hira" = "رسم توضيحي رئيسي لحراء";
+
+"onboarding_quran_title" = "القرآن";
+"onboarding_quran_subtitle" = "اقرأ واستمع إلى القرآن الكريم مع التفسير والوصول إلى الأحاديث النبوية الصحيحة.";
+"onboarding_accessibility_image_quran" = "رسم توضيحي لميزة القرآن";
+
+"onboarding_prayer_title" = "الصلاة";
+"onboarding_prayer_subtitle" = "أوقات صلاة دقيقة، تذكيرات، واتصال دائم بمجتمعك المحلي.";
+"onboarding_accessibility_image_prayer" = "رسم توضيحي لميزة أوقات الصلاة";
+
+"onboarding_inspiration_title" = "إلهام";
+"onboarding_inspiration_subtitle" = "اكتشف المحتوى الملهم وبرامج الهجرة لنموك الروحي.";
+"onboarding_accessibility_image_inspiration" = "رسم توضيحي لميزة إلهام الهجرة";
+
+"onboarding_final_title" = "خطوة جديدة";
+"onboarding_final_subtitle" = "كل احتياجاتك الروحية في تطبيق واحد جميل. ابدأ رحلتك اليوم!";
+"onboarding_accessibility_image_final" = "رسم توضيحي لخطوة جديدة مع حراء";
+
+// MARK: - Onboarding Buttons
+"onboarding_button_get_started" = "ابدأ الآن";
+"onboarding_button_next" = "التالي";
+"onboarding_button_start" = "لنبدأ";
+"onboarding_button_back" = "عودة";
+"onboarding_button_skip" = "تخطي";
+"onboarding_accessibility_button_skip" = "زر، تخطي المقدمة";
+"onboarding_login_prompt" = "لديك حساب بالفعل؟ ";
+"onboarding_login_button" = "تسجيل الدخول";
+
+// MARK: - Login
+"login_title_welcome" = "أهلاً بك مجدداً";
+"login_subtitle" = "واصل رحلتك مع حراء.";
+"login_field_email" = "البريد الإلكتروني";
+"login_field_password" = "كلمة المرور";
+"login_button_signin" = "تسجيل الدخول";
+"login_button_forgot_password" = "نسيت كلمة المرور؟";
+"login_divider_social" = "أو تواصل عبر";
+"login_button_apple" = "تسجيل الدخول باستخدام Apple";
+"login_button_google" = "تسجيل الدخول باستخدام Google";
+"login_button_guest" = "الدخول كضيف";
+"login_footer_signup_prompt" = "ليس لديك حساب؟ ";
+"login_footer_signup_button" = "سجل الآن";
+"login_button_help" = "هل تحتاج الى مساعدة؟";
+"login_logo_subtitle" = "رفيق نمط الحياة الإسلامي";
+"login_logo_accessibility" = "شعار تطبيق حراء";
+"login_email_placeholder" = "أدخل بريدك الإلكتروني";
+"login_password_placeholder" = "أدخل كلمة المرور الخاصة بك";
+
+
+// MARK: - Login Accessibility
+"login_accessibility_logo" = "شعار تطبيق حراء";
+"login_accessibility_email_input" = "حقل نص، أدخل البريد الإلكتروني";
+"login_accessibility_password_input" = "حقل نص، أدخل كلمة المرور";
+"login_accessibility_forgot_password" = "زر، نسيت كلمة المرور";
+"login_accessibility_signin_button" = "زر، تسجيل الدخول إلى الحساب";
+"login_accessibility_apple_button" = "زر، تسجيل الدخول عبر Apple";
+"login_accessibility_google_button" = "زر، تسجيل الدخول عبر Google";
+"login_accessibility_guest_button" = "زر، الدخول كضيف";
+"login_accessibility_signup_button" = "زر، إنشاء حساب جديد";
+"login_accessibility_help_button" = "زر، مساعدة";
+
+// MARK: - Register
+"register_title" = "إنشاء حساب";
+"register_subtitle" = "ابدأ رحلتك الروحية مع حراء.";
+"register_field_name" = "الاسم الكامل";
+"register_field_email" = "البريد الإلكتروني";
+"register_field_password" = "كلمة المرور";
+"register_field_confirm_password" = "تأكيد كلمة المرور";
+"register_button_signup" = "سجل الآن";
+"register_footer_login_prompt" = "لديك حساب بالفعل؟ ";
+"register_footer_login_button" = "تسجيل الدخول";
+"register_divider_social" = "أو سجل عبر";
+"register_button_apple" = "سجل عبر Apple";
+"register_button_google" = "سجل عبر Google";
+"register_button_help" = "هل تحتاج إلى مساعدة؟";
+
+// MARK: - Register Accessibility
+"register_accessibility_name_input" = "حقل نص، أدخل الاسم الكامل";
+"register_accessibility_email_input" = "حقل نص، أدخل البريد الإلكتروني";
+"register_accessibility_password_input" = "حقل نص، أدخل كلمة مرور جديدة";
+"register_accessibility_confirm_password_input" = "حقل نص، تأكيد كلمة المرور الجديدة";
+"register_accessibility_signup_button" = "زر، إنشاء حساب جديد";
+"register_accessibility_apple_button" = "زر، تسجيل عبر Apple";
+"register_accessibility_google_button" = "زر، تسجيل عبر Google";
+
+// MARK: - Forgot Password
+"forgot_password_title" = "نسيت كلمة المرور";
+"forgot_password_subtitle" = "أدخل بريدك الإلكتروني لتلقي رابط الاستعادة.";
+"forgot_password_field_email" = "البريد الإلكتروني";
+"forgot_password_button_send" = "إرسال الرابط";
+"forgot_password_footer_back" = "العودة إلى تسجيل الدخول";
+"forgot_password_button_help" = "هل تحتاج إلى مساعدة؟";
+
+// MARK: - PIN Security
+"pin_title" = "أدخل رمز PIN";
+"pin_subtitle" = "استخدم رمز PIN الخاص بك المكون من 6 أرقام للوصول إلى حسابك في حراء.";
+"pin_mode_create_title" = "إنشاء رمز PIN جديد";
+"pin_mode_create_subtitle" = "قم بتعيين رمز أمان من 6 أرقام لحماية هويتك.";
+"pin_mode_verify_title" = "تأكيد رمز PIN";
+"pin_mode_verify_subtitle" = "أدخل الرمز مرة أخرى لتأكيد وتأمين حسابك.";
+"pin_mode_unlock_title" = "أدخل رمز PIN للأمان";
+"pin_mode_unlock_subtitle" = "أدخل رمز الأمان الخاص بك للوصول إلى حسابك.";
+"pin_mode_change_title" = "التحقق من رمز PIN الحالي";
+"pin_mode_change_subtitle" = "أدخل رمز PIN الحالي الخاص بك قبل إعداد رمز جديد.";
+
+// MARK: - Security Settings
+"security_title" = "إعدادات الأمان";
+"security_status_secured" = "الحساب مؤمن";
+"security_status_unsecured" = "إجراء مطلوب";
+"security_status_desc_secured" = "هويتك محمية برمز PIN مكون من 6 أرقام.";
+"security_status_desc_unsecured" = "قم بإعداد رمز PIN لحماية بياناتك الشخصية.";
+"security_section_methods" = "وسائل الأمان";
+"security_method_pin_setup" = "إعداد رمز PIN";
+"security_method_pin_change" = "تغيير رمز PIN";
+"security_method_pin_desc_setup" = "حماية الوصول إلى حسابك";
+"security_method_pin_desc_change" = "تحديث رمز الأمان المكون من 6 أرقام";
+"security_method_biometric" = "القفل الحيوي";
+"security_method_biometric_desc" = "استخدم FaceID للوصول السريع";
+"security_section_danger" = "منطقة الخطر";
+"security_button_remove_pin" = "إزالة رمز PIN للأمان";
+"security_pin_active" = "نشط";
+"security_pin_not_set" = "غير معد";
+
+// MARK: - Security Accessibility
+"security_accessibility_status_label" = "حالة الأمان: %@";
+"security_accessibility_pin_change_hint" = "تغيير رمز PIN الحالي المكون من 6 أرقام";
+"security_accessibility_pin_setup_hint" = "قم بإعداد رمز PIN جديد لحماية حسابك";
+"security_accessibility_biometric_toggle_hint" = "تبديل تسجيل الدخول باستخدام بصمة الوجه أو بصمة الإصبع";
+"security_accessibility_danger_hint" = "تحذير: سيؤدي هذا إلى إزالة رمز PIN والحماية الحيوية بشكل دائم.";
+"security_section_integrity" = "سلامة الحساب";
+"security_integrity_autolock" = "قفل تلقائي في الخلفية";
+"security_integrity_history" = "سجل الدخول";
+"security_status_off" = "معطل";
+
+
+// MARK: - Home Section
+"home_greeting_day" = "السلام عليكم،";
+"home_search_placeholder" = "ابحث في القرآن، الحديث، أو غير ذلك...";
+"home_hadith_title" = "حديث اليوم";
+"home_prayer_title" = "أوقات الصلاة";
+"home_features_section" = "المميزات";
+"home_articles_section" = "المقالات";
+"home_articles_all" = "عرض الكل";
+"home_article_default_title" = "القوة الخفية لصلاة التهجد";
+"home_article_default_desc" = "اكتشف الفوائد الروحية في الثلث الأخير من الليل.";
+"home_article_quran_title" = "حفظ القرآن أصبح سهلاً";
+"home_article_quran_desc" = "نصائح وحيل عملية للحفاظ على حفظك ثابتاً.";
+"home_location_jakarta" = "مكة المكرمة، SA";
+"home_prayer_fajr" = "الفجر";
+"home_prayer_dhuhr" = "الظهر";
+"home_prayer_asr" = "العصر";
+"home_prayer_maghrib" = "المغرب";
+"home_prayer_isha" = "العشاء";
+"home_hadith_sample" = "\"خياركم أحسنكم أخلاقاً\"";
+"home_hadith_source" = "صحيح البخاري";
+
+
+// MARK: - Home Features
+"home_feature_zakat" = "الزكاة";
+"home_feature_qibla" = "القبلة";
+"home_feature_tasbih" = "التسبيح";
+"home_feature_doa" = "الأدعية";
+"home_feature_hadith" = "الأحاديث";
+"home_feature_more" = "المزيد";
+
+// MARK: - Home Accessibility
+"home_accessibility_bell" = "زر، إشعارات جديدة";
+"home_accessibility_search" = "حقل نص، ابحث عن المحتوى";
+"home_accessibility_hadith_card" = "بطاقة إلهام حديث اليوم";
+"home_accessibility_prayer_card" = "بطاقة معلومات أوقات الصلاة اليوم";
+"home_accessibility_article_card" = "بطاقة المقال: %@";
+
+// MARK: - Quran Section
+"quran_title" = "القرآن الكريم";
+"quran_search_placeholder" = "ابحث عن سورة، موضوع، أو آية...";
+"quran_last_reading" = "آخر قراءة";
+"quran_continue_reading" = "متابعة القراءة";
+"quran_khatam_progress" = "تقدم الختم";
+"quran_surah_progress" = "تقدم السورة";
+"quran_verses_count" = "%@ آية";
+"quran_daily_reminder" = "التذكير اليومي";
+
+// MARK: - Quran Tabs
+"quran_tab_surah" = "سورة";
+"quran_tab_juz" = "جزء";
+"quran_tab_bookmark" = "المحفوظات";
+"quran_tab_topic" = "المواضيع";
+"quran_tab_daily" = "اليومية";
+"quran_goal_title" = "هدف الختم";
+"quran_juz_placeholder" = "قائمة الأجزاء قريباً";
+"quran_bookmark_placeholder" = "الآيات المحفوظة ستظهر هنا";
+"quran_stories_section" = "قصص";
+"quran_topics_section" = "مواضيع";
+"quran_topic_stories_count" = "%d قصص";
+"quran_daily_title" = "تذكير يومي";
+"quran_daily_ayah_ref" = "سورة البقرة: 153";
+"quran_daily_ayah_content" = "يَا أَيُّهَا الَّذِينَ آمَنُوا اسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ ۚ إِنَّ اللَّهَ مَعَ الصَّابِرِينَ";
+"quran_daily_button_share" = "مشاركة";
+"quran_daily_button_read_more" = "اقرأ المزيد";
+"quran_daily_desc" = "تذكيرات يومية لنموك الروحي";
+"quran_search_placeholder_full" = "ابحث عن سورة، دعاء...";
+"quran_ayah_count_label" = "آية %d من %d";
+
+
+// MARK: - Quran Topics
+"quran_topic_sirah" = "السيرة النبوية";
+"quran_topic_prophets" = "قصص الأنبياء";
+"quran_topic_laws" = "الأحكام والمعاملات";
+"quran_topic_hereafter" = "اليوم الآخر";
+
+// MARK: - Quran Accessibility
+"quran_accessibility_top_tab" = "علامة تبويب علوية، اختر %@";
+"quran_accessibility_bottom_tab" = "علامة تبويب سفلية، اختر %@";
+"quran_accessibility_progress_pie" = "مخطط التقدم، %@ بالمائة مكتمل";
+"quran_accessibility_surah_card" = "بطاقة السورة %@، رقم %@، %@ آية";
+"profile_section_info" = "معلومات الاتصال";
+"profile_field_email" = "البريد الإلكتروني";
+"profile_bio_hint" = "مشاركة القليل عن نفسك تساعد الآخرين على التواصل معك.";
+"profile_appearance_title" = "المظهر";
+"profile_appearance_preview" = "معاينة مباشرة";
+"profile_appearance_character" = "اختر الشخصية";
+"profile_appearance_sample" = "عينة من المحتوى";
+"profile_button_cancel" = "إلغاء";
+"profile_button_done" = "تم";
+
+
+// MARK: - Profile Settings
+"profile_title" = "ملفي الشخصي";
+"profile_section_account" = "الحساب";
+"profile_section_settings" = "الإعدادات";
+"profile_section_support" = "المعلومات";
+"profile_menu_edit_profile" = "تعديل الملف";
+"profile_menu_theme" = "سمة التطبيق";
+"profile_menu_language" = "لغة التطبيق";
+"profile_menu_security" = "أمان الهوية";
+"profile_accessibility_avatar" = "صورة ملف المستخدم";
+"profile_menu_dark_mode" = "الوضع الداكن";
+"profile_menu_about" = "حول حراء";
+"profile_menu_version" = "نسخة التطبيق";
+"profile_menu_logout" = "تسجيل الخروج";
+"language_system_default" = "اتباع إعدادات النظام";
+"language_title_choose" = "لغة التطبيق";
+"language_desc_choose" = "اختر اللغة التي تناسبك بشكل أفضل للقراءة والتنقل.";
+"language_button_apply" = "تطبيق التغييرات";
+"about_version" = "الإصدار 1.0.0 (الذهبي)";
+"about_mission_title" = "مهمتنا";
+"about_mission_desc" = "تم تصميم حراء ليكون رفيقك الأمثل في رحلتك الروحية مع القرآن الكريم. مهمتنا هي تقديم تجربة سلسة وجميلة وغامرة بعمق لقراءة وفهم والعيش مع القرآن.";
+"about_crafted_title" = "صُنع بكل حب";
+"about_crafted_desc" = "تم تصميم كل بكسل وكل سطر من التعليمات البرمجية في حراء بأقصى درجات العناية لضمان أن يكون تفاعلك مع كلام الله نقياً ومركزاً قدر الإمكان.";
+"about_policy" = "سياسة الخصوصية";
+"about_terms" = "شروط الخدمة";
+"about_connect" = "تواصل معنا";
+
+// MARK: - Identity Security Sectionelds
+"profile_field_name" = "الاسم الكامل";
+"profile_field_username" = "اسم المستخدم";
+"profile_field_phone" = "رقم الهاتف";
+"profile_field_location" = "الموقع";
+"profile_field_gender" = "الجنس";
+"profile_field_bio" = "نبذة قصيرة";
+"profile_gender_male" = "ذكر";
+"profile_gender_female" = "أنثى";
+"profile_button_save" = "حفظ التغييرات";
+
+// MARK: - Tabs
+"tab_home" = "الرئيسية";
+"tab_quran" = "القرآن";
+"tab_explore" = "استكشاف";
+"tab_charity" = "صدقة";
+"tab_profile" = "ملفي";
+
+// MARK: - Explore Section
+"explore_title" = "استكشاف";
+"explore_search_placeholder" = "ابحث عن ريلز، فعاليات...";
+"explore_reels_section" = "ريلز إسلامية";
+"explore_events_section" = "فعاليات إسلامية";
+"explore_discover_section" = "اكتشف المزيد";
+"explore_view_all" = "عرض الكل";
+"explore_featured_tag" = "مميز";
+"explore_featured_title" = "برنامج الهجرة";
+"explore_featured_desc" = "ابدأ رحلة تحويلية في الإيمان. انضم إلى برنامجنا الإرشادي لتعزيز اتصالك بالله.";
+"explore_featured_button" = "ابدأ رحلتك";
+"explore_category_hadith" = "الحديث والسنة";
+"explore_category_articles" = "المقالات";
+"explore_category_qna" = "سؤال وجواب";
+"explore_category_halal" = "الباحث الحلال";
+"explore_category_hadith_desc" = "حكمة يومية";
+"explore_category_articles_desc" = "معرفة إسلامية";
+"explore_category_qna_desc" = "احصل على إجابات";
+"explore_category_halal_desc" = "ابحث عن أماكن حلال";
+
+
+// MARK: - Tasbih Section
+"tasbih_title" = "التسبيح";
+"tasbih_loop" = "الدورة %d";
+"tasbih_reset" = "إعادة ضبط";
+"tasbih_sound" = "الصوت";
+"tasbih_tap_hint" = "اسحب أو انقر للبدء";
+"tasbih_dhikr_section" = "الأذكار";
+"tasbih_view_all" = "عرض الكل";
+
+// MARK: - GLOBAL ACCESSIBILITY Labels
+"accessibility_button_back" = "زر، عودة";
+"accessibility_button_close" = "زر، إغلاق";
+"accessibility_password_show" = "زر، إظهار كلمة المرور";
+"accessibility_password_hide" = "زر، إخفاء كلمة المرور";
+
+// MARK: - PIN Accessibility
+"pin_accessibility_digit" = "زر، رقم %@";
+"pin_accessibility_faceid" = "زر، التحقق بواسطة Face ID";
+"pin_accessibility_backspace" = "زر، حذف الرقم الأخير";
+
+// MARK: - Charity Section
+"charity_title" = "الأعمال الخيرية";
+"charity_subtitle" = "اصنع فرقاً اليوم";
+"charity_search_placeholder" = "ابحث عن الحالات، الخير...";
+"charity_berikan_tujuan_title" = "أعطِ بهدف";
+"charity_kalkulator_zakat_title" = "حاسبة الزكاة";
+"charity_kalkulator_zakat_desc" = "احسب التزامات الزكاة الخاصة بك بسرعة.";
+"charity_community_causes_title" = "حالات المجتمع";
+"charity_urgent_causes_title" = "الحالات العاجلة";
+"charity_top_community_causes_title" = "أعلى حالات المجتمع";
+"charity_quick_search_title" = "بحث سريع";
+"charity_urgent_badge" = "عاجل";
+"charity_donate_now_button" = "تبرع الآن";
+"charity_target_label" = "الهدف: $%@ ألف";
+"charity_raised_of" = "تم جمع $%@ من أصل $%@";
+"charity_donors_count" = "%@ متبرع";
+"charity_days_count" = "%@ أيام";
+"charity_see_all" = "عرض الكل";
+"charity_category_education" = "التعليم";
+"charity_category_zakat" = "الزكاة";
+"charity_category_sedekah" = "الصدقة";
+"charity_category_orphan" = "تبرع للأيتام";
+"charity_category_infaq" = "الإنفاق";
+"charity_category_wakaf" = "الوقف";
+"charity_category_fidyah" = "الفدية";
+"charity_category_kaffarah" = "الكفارة";
+"charity_accessibility_donate_button" = "زر، تبرع الآن لـ %@";
+
+// MARK: - Qibla Updates
+"qibla_facing_mecca_success" = "أنت الآن تواجه القبلة";
+"qibla_facing_mecca_finding" = "قريب جداً";
+"location_permission_title" = "مطلوب الوصول إلى الموقع";
+"location_permission_desc" = "نحتاج إلى موقعك لتوفير اتجاه القبلة الدقيق والميزات المحلية الأخرى.";
+"qibla_permission_settings_button" = "افتح الإعدادات";
+"qibla_permission_allow_button" = "السماح بالوصول";
+"qibla_bearing_label" = "اتجاه القبلة";
+"qibla_heading_label" = "اتجاه الجهاز";
+"qibla_mecca_label" = "مكة المكرمة";
+"qibla_finding_status" = "جاري البحث...";
+
+// MARK: - Search Section
+"search_suggested_title" = "المقترح";
+"search_daily_deen_title" = "الدين اليومي";
+"search_spiritual_journey_title" = "الرحلة الروحية";
+"search_feature_prayer_times" = "أوقات الصلاة";
+"search_feature_quran" = "القرآن الكريم";
+"search_feature_duas" = "الأدعية";
+"search_feature_qibla" = "القبلة";
+"search_feature_khatam" = "ختم القرآن";
+"search_feature_deen_mode" = "وضع الدين";
+"search_feature_goals" = "الأهداف الروحية";
+"search_feature_tracker" = "متتبع التقدم";
+"search_feature_achievements" = "الإنجازات";
+"search_feature_learning" = "التعلم الإسلامي";
+"search_feature_good_deeds" = "الأعمال الصالحة";
+"search_feature_spiritual_level" = "المستوى الروحي";
+"search_placeholder_short" = "بحث";
+"search_placeholder_long" = "بحث...";
+
+// MARK: - Tasbih Section
+"tasbih_hint" = "اسحب أو اضغط للبدء";
+"tasbih_custom_target_desc" = "أدخل هدفاً مخصصاً لجلسة الذكر الخاصة بك.";
+"tasbih_no_dhikr" = "لم يتم اختيار ذكر. سوف تقوم بالعد يدوياً.";
+"tasbih_loops" = "دورات";
+"tasbih_dhikr" = "ذكر";
+"tasbih_view_all" = "عرض الكل";
+"tasbih_completion_title" = "ما شاء الله!";
+"tasbih_completion_desc" = "لقد أكملت جلسة الذكر الخاصة بك.";
+"tasbih_restart" = "إعادة بدء الجلسة";
+"tasbih_close" = "إغلاق";
+
+// MARK: - Explore Search Section
+"explore_search_suggested_title" = "مقترح لك";
+"explore_search_reels_title" = "ريلز ساخنة";
+"explore_search_articles_title" = "أهم المقالات";
+"explore_search_personalized" = "مخصص";
+"explore_search_popular" = "شائع";
+"explore_search_trending" = "رائج";
+"explore_search_placeholder" = "يومي";
+"explore_search_guide" = "دليل";
+"explore_search_tips" = "نصائح";
+"explore_search_tafsir" = "تفسير";
+"explore_search_worship" = "عبادة";
+"explore_search_recommended" = "موصى به";
+"explore_search_learning" = "تعلم";
+
+// MARK: - Explore Search Items
+"explore_search_item_morning_guide" = "دليل أذكار الصباح";
+"explore_search_item_quran_tips" = "نصائح لحفظ القرآن";
+"explore_search_item_recitation" = "تلاوة قرآنية خاشعة";
+"explore_search_item_recitation_desc" = "تلاوة جميلة لسورة الرحمن...";
+"explore_search_item_dhikr" = "تذكير بالذكر اليومي";
+"explore_search_item_dhikr_desc" = "نصائح لأذكار الصباح والمساء...";
+"explore_search_item_fatiha" = "فهم سورة الفاتحة";
+"explore_search_item_charity" = "أهمية الصدقة";
+"explore_search_item_views" = "%@ مشاهدات";
+
+// MARK: - Quran Tabs & Features
+"quran_juz_khatam_title" = "تقدم الختمة";
+"quran_juz_khatam_stat" = "%d من 30 جزء";
+"quran_juz_khatam_last" = "آخر ما تمت قراءته: %@";
+"quran_bookmark_header_title" = "إشاراتي المرجعية";
+"quran_bookmark_count" = "%d إشارة مرجعية";
+"quran_bookmark_last" = "آخر إشارة: %@";
+"quran_daily_reminder_section" = "تذكير يومي";
+"quran_daily_item_morning" = "أذكار الصباح";
+"quran_daily_item_midday" = "تأمل منتصف النهار";
+"quran_daily_share_count" = "%d";
+"quran_daily_like_count" = "%d";
+"quran_juz_number" = "الجزء %d";
+"quran_ayah_ref" = "الآية %d";
+"quran_time_ago" = "منذ %@";
+
+// MARK: - Quran Accessibility
+"quran_acc_juz_progress" = "تقدم الجزء: %@. %@";
+"quran_acc_juz_row" = "الجزء %@، يحتوي على %@، التقدم %@ بالمائة";
+"quran_acc_bookmark_header" = "ملخص الإشارات المرجعية: %@. %@";
+"quran_acc_bookmark_row" = "إشارة مرجعية في %@، الآية %@. آخر قراءة %@. النص: %@";
+"quran_acc_daily_reminder" = "تذكير يومي: %@. المرجع %@. %@";
+"quran_acc_interaction" = "%d %@";
+"quran_acc_likes" = "إعجابات";
+"quran_acc_bookmarks" = "إشارات مرجعية";
+"quran_acc_shares" = "مشاركات";
+
+
+
+// MARK: - Explore Search Accessibility
+"explore_search_acc_back" = "العودة إلى الاستكشاف";
+"explore_search_acc_search_field" = "البحث في الاكتشاف";
+"explore_search_acc_content" = "تم العثور على محتوى: %@، الفئة %@";
+"explore_search_acc_reel" = "ريل: %@، المدة: %@. %@";
+"explore_search_acc_article" = "مقال: %@. الفئة: %@. %@";
+"explore_search_badge_high" = "أولوية عالية";
+"explore_search_acc_section_suggested" = "قسم المقترح لك";
+"explore_search_acc_section_reels" = "قسم الريلز الساخنة";
+"explore_search_acc_section_articles" = "قسم أهم المقالات";
+
+
+
+
+
+

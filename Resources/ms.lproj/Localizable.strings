@@ -1,0 +1,465 @@
+/* 
+  Localizable.strings
+  Hira
+
+  Created by Ryuk on 02/04/26.
+  
+*/
+
+// MARK: - Onboarding
+"onboarding_landing_title" = "Hira";
+"onboarding_landing_subtitle" = "Teman gaya hidup Islam moden dengan panduan Al-Quran dan Sunnah harian anda.";
+"onboarding_accessibility_image_hira" = "Ilustrasi utama Hira";
+
+"onboarding_quran_title" = "Al-Quran";
+"onboarding_quran_subtitle" = "Baca dan dengar Al-Quran dengan tafsir serta akses hadis sahih Nabi.";
+"onboarding_accessibility_image_quran" = "Ilustrasi fitur Al-Quran";
+
+"onboarding_prayer_title" = "Solat";
+"onboarding_prayer_subtitle" = "Jadual solat tepat, peringatan, dan kekal berhubung dengan komuniti tempatan anda.";
+"onboarding_accessibility_image_prayer" = "Ilustrasi fitur waktu solat";
+
+"onboarding_inspiration_title" = "Inspirasi";
+"onboarding_inspiration_subtitle" = "Cari kandungan inspiratif dan program Hijrah untuk pertumbuhan rohani anda.";
+"onboarding_accessibility_image_inspiration" = "Ilustrasi fitur inspirasi hijrah";
+
+"onboarding_final_title" = "Langkah Baru";
+"onboarding_final_subtitle" = "Segala keperluan rohani dalam satu aplikasi indah. Mulai perjalanan anda hari ini!";
+"onboarding_accessibility_image_final" = "Ilustrasi langkah baru bersama Hira";
+
+// MARK: - Onboarding Buttons
+"onboarding_button_get_started" = "Mula Sekarang";
+"onboarding_button_next" = "Seterusnya";
+"onboarding_button_start" = "Mari Bermula";
+"onboarding_button_back" = "Kembali";
+"onboarding_button_skip" = "Langkau";
+"onboarding_accessibility_button_skip" = "Butang, langkau perkenalan";
+"onboarding_login_prompt" = "Sudah ada akaun? ";
+"onboarding_login_button" = "Log Masuk";
+
+// MARK: - Login
+"login_title_welcome" = "Selamat Datang";
+"login_subtitle" = "Teruskan perjalanan bersama Hira.";
+"login_field_email" = "Alamat Emel";
+"login_field_password" = "Kata Laluan";
+"login_button_signin" = "Log Masuk";
+"login_button_forgot_password" = "Lupa Kata Laluan?";
+"login_divider_social" = "Atau teruskan dengan";
+"login_button_apple" = "Log Masuk dengan Apple";
+"login_button_google" = "Log Masuk dengan Google";
+"login_button_guest" = "Teruskan sebagai Tetamu";
+"login_footer_signup_prompt" = "Belum ada akaun? ";
+"login_footer_signup_button" = "Daftar";
+"login_button_help" = "Perlu Bantuan?";
+"login_logo_subtitle" = "Teman Gaya Hidup Islam";
+"login_logo_accessibility" = "Logo aplikasi Hira";
+"login_email_placeholder" = "Masukkan emel anda";
+"login_password_placeholder" = "Masukkan kata laluan anda";
+
+
+// MARK: - Login Accessibility
+"login_accessibility_logo" = "Logo aplikasi Hira";
+"login_accessibility_email_input" = "Input teks, masukkan emel";
+"login_accessibility_password_input" = "Input teks, masukkan kata laluan";
+"login_accessibility_forgot_password" = "Butang, lupa kata laluan";
+"login_accessibility_signin_button" = "Butang, log masuk ke akaun";
+"login_accessibility_apple_button" = "Butang, log masuk dengan Apple";
+"login_accessibility_google_button" = "Butang, log masuk dengan Google";
+"login_accessibility_guest_button" = "Butang, log masuk sebagai tetamu";
+"login_accessibility_signup_button" = "Butang, daftar akaun baharu";
+"login_accessibility_help_button" = "Butang, bantuan";
+
+// MARK: - Register
+"register_title" = "Buka Akaun";
+"register_subtitle" = "Mula perjalanan rohani anda bersama Hira.";
+"register_field_name" = "Nama Penuh";
+"register_field_email" = "Alamat Emel";
+"register_field_password" = "Kata Laluan";
+"register_field_confirm_password" = "Sahkan Kata Laluan";
+"register_button_signup" = "Daftar Sekarang";
+"register_footer_login_prompt" = "Sudah ada akaun? ";
+"register_footer_login_button" = "Log Masuk";
+"register_divider_social" = "Atau daftar dengan";
+"register_button_apple" = "Daftar dengan Apple";
+"register_button_google" = "Daftar dengan Google";
+"register_button_help" = "Perlu Bantuan?";
+
+// MARK: - Register Accessibility
+"register_accessibility_name_input" = "Input teks, masukkan nama penuh";
+"register_accessibility_email_input" = "Input teks, masukkan emel";
+"register_accessibility_password_input" = "Input teks, masukkan kata laluan baharu";
+"register_accessibility_confirm_password_input" = "Input teks, sahkan kata laluan baharu";
+"register_accessibility_signup_button" = "Butang, buka akaun baharu";
+"register_accessibility_apple_button" = "Butang, daftar dengan Apple";
+"register_accessibility_google_button" = "Butang, daftar dengan Google";
+
+// MARK: - Forgot Password
+"forgot_password_title" = "Lupa Kata Laluan";
+"forgot_password_subtitle" = "Masukkan emel anda untuk menerima pautan pemulihan.";
+"forgot_password_field_email" = "Alamat Emel";
+"forgot_password_button_send" = "Hantar Pautan";
+"forgot_password_footer_back" = "Kembali ke Log Masuk";
+"forgot_password_button_help" = "Perlu Bantuan?";
+
+// MARK: - PIN Security
+"pin_title" = "Masukkan PIN";
+"pin_subtitle" = "Gunakan 6 digit PIN anda untuk mengakses akaun Hira.";
+"pin_mode_create_title" = "Cipta PIN Baharu";
+"pin_mode_create_subtitle" = "Tetapkan 6 digit kod keselamatan untuk perlindungan identiti anda.";
+"pin_mode_verify_title" = "Sahkan PIN Anda";
+"pin_mode_verify_subtitle" = "Masukkan kod sekali lagi untuk pengesahan akaun anda.";
+"pin_mode_unlock_title" = "Masukkan PIN Keselamatan";
+"pin_mode_unlock_subtitle" = "Masukkan kod keselamatan untuk mengakses akaun anda.";
+"pin_mode_change_title" = "Sahkan PIN Sedia Ada";
+"pin_mode_change_subtitle" = "Masukkan PIN sedia ada sebelum menetapkan yang baharu.";
+
+// MARK: - Security Settings
+"security_title" = "Tetapan Keselamatan";
+"security_status_secured" = "Akaun Dilindungi";
+"security_status_unsecured" = "Tindakan Diperlukan";
+"security_status_desc_secured" = "Identiti anda dilindungi dengan 6 digit PIN.";
+"security_status_desc_unsecured" = "Tetapkan PIN untuk melindungi data peribadi anda.";
+"security_section_methods" = "Kaedah Keselamatan";
+"security_method_pin_setup" = "Tetapkan PIN";
+"security_method_pin_change" = "Tukar PIN";
+"security_method_pin_desc_setup" = "Lindungi akses ke akaun anda";
+"security_method_pin_desc_change" = "Kemaskini 6 digit kod keselamatan anda";
+"security_method_biometric" = "Kunci Biometrik";
+"security_method_biometric_desc" = "Guna FaceID untuk akses lebih pantas";
+"security_section_danger" = "Zon Bahaya";
+"security_button_remove_pin" = "Padam PIN Keselamatan";
+"security_pin_active" = "PIN Aktif";
+"security_pin_not_set" = "Belum Ditetap";
+
+// MARK: - Security Accessibility
+"security_accessibility_status_label" = "Status keselamatan: %@";
+"security_accessibility_pin_change_hint" = "Tukar 6 digit PIN keselamatan semasa";
+"security_accessibility_pin_setup_hint" = "Tetapkan PIN baharu 6 digit untuk perlindungan akaun";
+"security_accessibility_biometric_toggle_hint" = "Tukar log masuk biometrik menggunakan FaceID atau Cap Jari";
+"security_accessibility_danger_hint" = "AMARAN: Ini akan memadamkan PIN keselamatan dan perlindungan biometrik secara kekal.";
+"security_section_integrity" = "Integriti Akaun";
+"security_integrity_autolock" = "Kunci Automatik Latar Belakang";
+"security_integrity_history" = "Rekod Log Masuk";
+"security_status_off" = "Mati";
+
+
+// MARK: - Home Section
+"home_greeting_day" = "Assalamu'alaikum,";
+"home_search_placeholder" = "Cari Quran, Hadis, atau lain-lain...";
+"home_hadith_title" = "Hadis Hari Ini";
+"home_prayer_title" = "Waktu Solat";
+"home_features_section" = "Fitur";
+"home_articles_section" = "Artikel";
+"home_articles_all" = "Lihat Semua";
+"home_article_default_title" = "Rahsia Kekuatan Solat Tahajjud";
+"home_article_default_desc" = "Terokai manfaat spiritual di sepertiga malam terakhir.";
+"home_article_quran_title" = "Menghafal Quran Menjadi Mudah";
+"home_article_quran_desc" = "Tips dan trik praktikal untuk menjaga hafalan anda.";
+"home_location_jakarta" = "Kuala Lumpur, MY";
+"home_prayer_fajr" = "Subuh";
+"home_prayer_dhuhr" = "Zuhur";
+"home_prayer_asr" = "Asar";
+"home_prayer_maghrib" = "Maghrib";
+"home_prayer_isha" = "Isyak";
+"home_hadith_sample" = "\"Sebaik-baik kalian adalah yang paling baik akhlaknya.\"";
+"home_hadith_source" = "Sahih Bukhari";
+
+
+// MARK: - Home Features
+"home_feature_zakat" = "Zakat";
+"home_feature_qibla" = "Arah Kiblat";
+"home_feature_tasbih" = "Tasbih";
+"home_feature_doa" = "Doa";
+"home_feature_hadith" = "Hadis";
+"home_feature_more" = "Semua";
+
+// MARK: - Home Accessibility
+"home_accessibility_bell" = "Butang, notifikasi baharu";
+"home_accessibility_search" = "Input teks, cari kandungan";
+"home_accessibility_hadith_card" = "Kad inspirasi hadis hari ini";
+"home_accessibility_prayer_card" = "Kad maklumat waktu solat hari ini";
+"home_accessibility_article_card" = "Kad artikel: %@";
+
+
+// MARK: - Quran Section
+"quran_title" = "Al-Quran";
+"quran_search_placeholder" = "Cari Surah, Topik, atau Ayat...";
+"quran_last_reading" = "Terakhir Dibaca";
+"quran_continue_reading" = "Lanjutkan Bacaan";
+"quran_khatam_progress" = "Progres Hatam";
+"quran_surah_progress" = "Progres Surah";
+"quran_verses_count" = "%@ Ayat";
+"quran_daily_reminder" = "Peringatan Harian";
+
+// MARK: - Quran Tabs
+"quran_tab_surah" = "Surah";
+"quran_tab_juz" = "Juz";
+"quran_tab_bookmark" = "Bookmark";
+"quran_tab_topic" = "Topik";
+"quran_tab_daily" = "Harian";
+"quran_goal_title" = "Sasaran Khatam";
+"quran_juz_placeholder" = "Senarai Juz akan datang tidak lama lagi";
+"quran_bookmark_placeholder" = "Ayat yang anda tanda akan muncul di sini";
+"quran_stories_section" = "Kisah";
+"quran_topics_section" = "Topik";
+"quran_topic_stories_count" = "%d kisah";
+"quran_daily_title" = "Peringatan Harian";
+"quran_daily_ayah_ref" = "Surah Al-Baqarah: 153";
+"quran_daily_ayah_content" = "Wahai orang-orang yang beriman, mintalah pertolongan dengan sabar dan solat. Sesungguhnya Allah bersama orang-orang yang sabar.";
+"quran_daily_button_share" = "Kongsi";
+"quran_daily_button_read_more" = "Baca Lagi";
+"quran_daily_desc" = "Peringatan harian untuk pertumbuhan rohani anda";
+"quran_search_placeholder_full" = "Cari surah, doa...";
+"quran_ayah_count_label" = "Ayat %d dari %d";
+
+
+// MARK: - Quran Topics
+"quran_topic_sirah" = "Sirah Nabawiyah";
+"quran_topic_prophets" = "Kisah Para Nabi";
+"quran_topic_laws" = "Hukum & Muamalah";
+"quran_topic_hereafter" = "Hari Akhir";
+
+// MARK: - Quran Accessibility
+"quran_accessibility_top_tab" = "Tab atas, pilih %@";
+"quran_accessibility_bottom_tab" = "Tab bawah, pilih %@";
+"quran_accessibility_progress_pie" = "Grafik progres, %@ peratus selesai";
+"quran_accessibility_surah_card" = "Kad Surah %@, Nombor %@, %@ Ayat";
+"profile_section_info" = "Maklumat Hubungan";
+"profile_field_email" = "Emel";
+"profile_bio_hint" = "Berkongsi sedikit tentang diri anda membantu orang lain mengenali anda.";
+"profile_appearance_title" = "Paparan";
+"profile_appearance_preview" = "Pratonton Langsung";
+"profile_appearance_character" = "Pilih Karakter";
+"profile_appearance_sample" = "Contoh Kandungan";
+"profile_button_cancel" = "Batal";
+"profile_button_done" = "Selesai";
+
+
+// MARK: - Profile Settings
+"profile_title" = "Profil Saya";
+"profile_section_account" = "Akaun";
+"profile_section_settings" = "Tetapan";
+"profile_section_support" = "Informasi";
+"profile_menu_edit_profile" = "Edit Profil";
+"profile_menu_theme" = "Tema Aplikasi";
+"profile_menu_language" = "Pilihan Bahasa";
+"profile_menu_security" = "Keselamatan Identiti";
+"profile_accessibility_avatar" = "Gambar profil pengguna";
+"profile_menu_dark_mode" = "Mod Gelap";
+"profile_menu_about" = "Tentang Kami";
+"profile_menu_version" = "Versi Program";
+"profile_menu_logout" = "Log Keluar";
+"language_system_default" = "Ikuti Tetapan Sistem";
+"language_title_choose" = "Bahasa Aplikasi";
+"language_desc_choose" = "Pilih bahasa yang paling sesuai untuk bacaan dan navigasi anda.";
+"language_button_apply" = "Simpan Perubahan";
+"about_version" = "Versi 1.0.0 (Gold)";
+"about_mission_title" = "Misi Kami";
+"about_mission_desc" = "Hira direka untuk menjadi teman utama dalam perjalanan rohani anda bersama Al-Quran. Misi kami adalah untuk memberikan pengalaman yang lancar, indah dan mendalam untuk membaca, memahami dan hidup dengan Al-Quran.";
+"about_crafted_title" = "Dihasilkan dengan Kasih Sayang";
+"about_crafted_desc" = "Setiap piksel dan setiap baris kod dalam Hira dihasilkan dengan penuh ketelitian untuk memastikan interaksi anda dengan Kalam Ilahi adalah semurni dan sefokus yang mungkin.";
+"about_policy" = "Dasar Privasi";
+"about_terms" = "Syarat Perkhidmatan";
+"about_connect" = "Hubungi Kami";
+
+// MARK: - Identity Security Sectionelds
+"profile_field_name" = "Nama Penuh";
+"profile_field_username" = "Nama Pengguna";
+"profile_field_phone" = "Nombor Telefon";
+"profile_field_location" = "Lokasi";
+"profile_field_gender" = "Jantina";
+"profile_field_bio" = "Biodata Ringkas";
+"profile_gender_male" = "Lelaki";
+"profile_gender_female" = "Perempuan";
+"profile_button_save" = "Simpan Perubahan";
+
+// MARK: - Tabs
+"tab_home" = "Utama";
+"tab_quran" = "Quran";
+"tab_explore" = "Teroka";
+"tab_charity" = "Infaq";
+"tab_profile" = "Profil";
+
+// MARK: - Explore Section
+"explore_title" = "Teroka";
+"explore_search_placeholder" = "Cari reels, acara...";
+"explore_reels_section" = "Reels Islami";
+"explore_events_section" = "Acara Islami";
+"explore_discover_section" = "Teroka Lebih Lanjut";
+"explore_view_all" = "Lihat semua";
+"explore_featured_tag" = "Pilihan";
+"explore_featured_title" = "Program Hijrah";
+"explore_featured_desc" = "Mulakan perjalanan iman yang transformatif. Sertai program bimbingan kami untuk memperkukuh hubungan anda dengan Allah.";
+"explore_featured_button" = "Mulakan Perjalanan Anda";
+"explore_category_hadith" = "Hadis & Sunnah";
+"explore_category_articles" = "Artikel";
+"explore_category_qna" = "Soal Jawab";
+"explore_category_halal" = "Cari Halal";
+"explore_category_hadith_desc" = "Hikmah harian";
+"explore_category_articles_desc" = "Ilmu Islami";
+"explore_category_qna_desc" = "Dapatkan jawapan";
+"explore_category_halal_desc" = "Cari tempat halal";
+
+
+// MARK: - Tasbih Section
+"tasbih_title" = "Tasbih";
+"tasbih_loop" = "Pusingan %d";
+"tasbih_reset" = "Mula Semula";
+"tasbih_sound" = "Bunyi";
+"tasbih_tap_hint" = "Luncur atau ketik untuk mula";
+"tasbih_dhikr_section" = "Zikir";
+"tasbih_view_all" = "Lihat Semua";
+
+// MARK: - GLOBAL ACCESSIBILITY Labels
+"accessibility_button_back" = "Butang, kembali";
+"accessibility_button_close" = "Butang, tutup";
+"accessibility_password_show" = "Butang, tunjukkan kata laluan";
+"accessibility_password_hide" = "Butang, sembunyikan kata laluan";
+
+// MARK: - PIN Accessibility
+"pin_accessibility_digit" = "Butang, angka %@";
+"pin_accessibility_faceid" = "Butang, pengesahan dengan Face ID";
+"pin_accessibility_backspace" = "Butang, padam angka terakhir";
+
+// MARK: - Charity Section
+"charity_title" = "Infaq";
+"charity_subtitle" = "Buat perbezaan hari ini";
+"charity_search_placeholder" = "Cari amal, tujuan...";
+"charity_berikan_tujuan_title" = "Beri dengan Tujuan";
+"charity_kalkulator_zakat_title" = "Kalkulator Zakat";
+"charity_kalkulator_zakat_desc" = "Hitung kewajipan zakat anda dengan cepat.";
+"charity_community_causes_title" = "Tujuan Komuniti";
+"charity_urgent_causes_title" = "Keperluan Mendesak";
+"charity_top_community_causes_title" = "Tujuan Komuniti Teratas";
+"charity_quick_search_title" = "Cari Pantas";
+"charity_urgent_badge" = "KECEMASAN";
+"charity_donate_now_button" = "Derma Sekarang";
+"charity_target_label" = "Sasaran: $%@K";
+"charity_raised_of" = "$%@ daripada $%@";
+"charity_donors_count" = "%@ Penderma";
+"charity_days_count" = "%@ Hari";
+"charity_see_all" = "Lihat semua";
+"charity_category_education" = "Pendidikan";
+"charity_category_zakat" = "Zakat";
+"charity_category_sedekah" = "Sedekah";
+"charity_category_orphan" = "Derma Yatim";
+"charity_category_infaq" = "Infaq";
+"charity_category_wakaf" = "Wakaf";
+"charity_category_fidyah" = "Fidyah";
+"charity_category_kaffarah" = "Kaffarah";
+"charity_accessibility_donate_button" = "Butang, derma sekarang untuk %@";
+
+// MARK: - Qibla Updates
+"qibla_facing_mecca_success" = "Anda sedang menghadap Mekah";
+"qibla_facing_mecca_finding" = "Hampir sampai";
+"location_permission_title" = "Akses Lokasi Diperlukan";
+"location_permission_desc" = "Kami memerlukan lokasi anda untuk memberikan arah Kiblat yang tepat dan fitur lokal yang lain.";
+"qibla_permission_settings_button" = "Buka Tetapan";
+"qibla_permission_allow_button" = "Benarkan Akses";
+"qibla_bearing_label" = "Arah Kiblat";
+"qibla_heading_label" = "Arah Peranti";
+"qibla_mecca_label" = "Mekah";
+"qibla_finding_status" = "Mencari...";
+
+// MARK: - Search Section
+"search_suggested_title" = "Dicadangkan";
+"search_daily_deen_title" = "Deen Harian";
+"search_spiritual_journey_title" = "Perjalanan Rohani";
+"search_feature_prayer_times" = "Waktu Solat";
+"search_feature_quran" = "Al-Quran";
+"search_feature_duas" = "Doa-doa";
+"search_feature_qibla" = "Kiblat";
+"search_feature_khatam" = "Khatam Al-Quran";
+"search_feature_deen_mode" = "Mod Deen";
+"search_feature_goals" = "Sasaran Rohani";
+"search_feature_tracker" = "Penjejak Progres";
+"search_feature_achievements" = "Pencapaian";
+"search_feature_learning" = "Pembelajaran Islam";
+"search_feature_good_deeds" = "Amalan Baik";
+"search_feature_spiritual_level" = "Tahap Rohani";
+"search_placeholder_short" = "Cari";
+"search_placeholder_long" = "Cari...";
+
+// MARK: - Tasbih Section
+"tasbih_hint" = "Leret atau ketik untuk mula";
+"tasbih_custom_target_desc" = "Masukkan sasaran tersuai untuk sesi zikir anda.";
+"tasbih_no_dhikr" = "Tiada zikir dipilih. Anda akan mengira secara manual.";
+"tasbih_loops" = "Pusingan";
+"tasbih_dhikr" = "Zikir";
+"tasbih_view_all" = "Lihat Semua";
+"tasbih_completion_title" = "Masha Allah!";
+"tasbih_completion_desc" = "Anda telah menyelesaikan sesi zikir anda.";
+"tasbih_restart" = "Ulangi Sesi";
+"tasbih_close" = "Tutup";
+
+// MARK: - Explore Search Section
+"explore_search_suggested_title" = "Dicadangkan untuk Anda";
+"explore_search_reels_title" = "Reels Hangat";
+"explore_search_articles_title" = "Artikel Teratas";
+"explore_search_personalized" = "Diperibadikan";
+"explore_search_popular" = "Popular";
+"explore_search_trending" = "Trending";
+"explore_search_placeholder" = "Harian";
+"explore_search_guide" = "Panduan";
+"explore_search_tips" = "Tips";
+"explore_search_tafsir" = "Tafsir";
+"explore_search_worship" = "Ibadah";
+"explore_search_recommended" = "Disyorkan";
+"explore_search_learning" = "Pembelajaran";
+
+// MARK: - Explore Search Items
+"explore_search_item_morning_guide" = "Panduan Doa Pagi";
+"explore_search_item_quran_tips" = "Tips Menghafal Al-Quran";
+"explore_search_item_recitation" = "Lantunan Al-Quran Indah";
+"explore_search_item_recitation_desc" = "Lantunan indah Surah Ar-Rahman...";
+"explore_search_item_dhikr" = "Peringatan Zikir Harian";
+"explore_search_item_dhikr_desc" = "Tips zikir pagi dan petang...";
+"explore_search_item_fatiha" = "Memahami Surah Al-Fatiha";
+"explore_search_item_charity" = "Kepentingan Sedekah";
+"explore_search_item_views" = "%@ tontonan";
+
+// MARK: - Quran Tabs & Features
+"quran_juz_khatam_title" = "Progres Khatam";
+"quran_juz_khatam_stat" = "%d dari 30 Juz";
+"quran_juz_khatam_last" = "Terakhir: %@";
+"quran_bookmark_header_title" = "Bookmark Saya";
+"quran_bookmark_count" = "%d bookmark";
+"quran_bookmark_last" = "Terakhir: %@";
+"quran_daily_reminder_section" = "Peringatan Harian";
+"quran_daily_item_morning" = "Zikir Pagi";
+"quran_daily_item_midday" = "Refleksi Tengah Hari";
+"quran_daily_share_count" = "%d";
+"quran_daily_like_count" = "%d";
+"quran_juz_number" = "Juz %d";
+"quran_ayah_ref" = "Ayat %d";
+"quran_time_ago" = "%@ lepas";
+
+// MARK: - Quran Accessibility
+"quran_acc_juz_progress" = "Progres Juz: %@. %@";
+"quran_acc_juz_row" = "Juz %@, mengandungi %@, progres %@ peratus";
+"quran_acc_bookmark_header" = "Ringkasan penanda buku: %@. %@";
+"quran_acc_bookmark_row" = "Penanda buku di %@, ayat %@. Terakhir dibaca %@. Teks: %@";
+"quran_acc_daily_reminder" = "Peringatan harian: %@. Rujukan %@. %@";
+"quran_acc_interaction" = "%d %@";
+"quran_acc_likes" = "suka";
+"quran_acc_bookmarks" = "penanda buku";
+"quran_acc_shares" = "kongsi";
+
+
+
+// MARK: - Explore Search Accessibility
+"explore_search_acc_back" = "Kembali ke jelajah";
+"explore_search_acc_search_field" = "Cari di penemuan";
+"explore_search_acc_content" = "Konten dijumpai: %@, kategori %@";
+"explore_search_acc_reel" = "Reel: %@, Tempoh: %@. %@";
+"explore_search_acc_article" = "Artikel: %@. Kategori: %@. %@";
+"explore_search_badge_high" = "Keutamaan Tinggi";
+"explore_search_acc_section_suggested" = "Bahagian dicadangkan untuk anda";
+"explore_search_acc_section_reels" = "Bahagian reels hangat";
+"explore_search_acc_section_articles" = "Bahagian artikel teratas";
+
+
+
+
+
+

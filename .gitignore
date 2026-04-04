@@ -1,0 +1,63 @@
+# Xcode
+#
+# gitignore contributors: scroll through the list or search for keywords
+#
+# Use the GUI at https://www.gitignore.io to generate custom files
+
+## macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+## Xcode
+build/
+DerivedData/
+*.moved-aside
+*.xcuserstate
+*.xcresult
+
+## Swift Package Manager
+.build/
+.swiftpm/
+
+## User Settings
+xcuserdata/
+
+## CocoaPods
+# Pods/
+# *.xcworkspace
+
+## Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+## Other
+*.bak
+*.swp
+*~
+.DS_Store
