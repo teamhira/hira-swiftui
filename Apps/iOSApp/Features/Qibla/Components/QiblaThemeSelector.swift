@@ -16,7 +16,7 @@ struct QiblaThemeSelector: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(appEnv.language.localizedString("qibla_compass_themes_title", defaultValue: "Compass Themes"))
+            Text(appEnv.language.localizedString("qibla_compass_themes_title"))
                 .font(.subheadline.bold())
                 .foregroundColor(colors.foreground)
                 .padding(.horizontal, 24)
@@ -45,8 +45,8 @@ struct QiblaThemeSelector: View {
                             }
                         }
                         .buttonStyle(.plain)
-                        .accessibilityLabel("\(appEnv.language.localizedString("qibla_theme_label", defaultValue: "Theme")): \(style.name)")
-                        .accessibilityHint(appEnv.language.localizedString("qibla_theme_hint", defaultValue: "Double tap to select this compass theme"))
+                        .accessibilityLabel("\(appEnv.language.localizedString("qibla_theme_label")): \(style.name)")
+                        .accessibilityHint(appEnv.language.localizedString("qibla_theme_hint"))
                         .accessibilityAddTraits(style == selectedStyle ? .isSelected : [])
                     }
                 }

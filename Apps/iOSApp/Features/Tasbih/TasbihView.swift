@@ -22,7 +22,13 @@ public struct TasbihView: View {
     // MARK: - Properties
     private var colors: ThemeModel { appEnv.theme.current }
     
-    public init() {}
+    public init(mission: Mission? = nil) {
+        let vm = TasbihViewModel()
+        if let mission {
+            vm.setupMission(mission)
+        }
+        _viewModel = State(initialValue: vm)
+    }
     
     public var body: some View {
         ZStack {
@@ -47,9 +53,8 @@ public struct TasbihView: View {
                 .padding(.bottom, 20) // Moderate lift to keep within bounds
             }
         }
-        .navigationBarBackButtonHidden(true)
         .toolbar { toolbarContent }
-        .alert(appEnv.language.localizedString("tasbih_alert_target_title", defaultValue: "Set Target"), isPresented: $showingTargetAlert) { targetAlertActions } message: { targetAlertMessage }
+        .alert(appEnv.language.localizedString("tasbih_alert_target_title"), isPresented: $showingTargetAlert) { targetAlertActions } message: { targetAlertMessage }
         // MARK: Sheets
         .sheet(isPresented: $showingDhikrSheet, onDismiss: { viewModel.syncSequence() }) {
             DhikrSelectionView(selectedDhikrIds: $viewModel.selectedDhikrIds)
@@ -65,6 +70,16 @@ public struct TasbihView: View {
                 onRestart: { viewModel.reset() },
                 onClose: { viewModel.isSessionCompleted = false }
             )
+        }
+        .sheet(isPresented: Binding(
+            get: { viewModel.isMissionCompleted },
+            set: { _ in viewModel.isMissionCompleted = false }
+        )) {
+            if let mission = viewModel.currentMission {
+                TasbihMissionCompletionView(mission: mission, colors: colors) {
+                    router.popToRoot()
+                }
+            }
         }
     }
 }
@@ -108,6 +123,10 @@ extension TasbihView {
                 targetInput = "\(viewModel.target)"
                 showingTargetAlert = true
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel(appEnv.language.localizedString("tasbih_accessibility_counter"))
+            .accessibilityValue("\(viewModel.count)")
+            .accessibilityHint(appEnv.language.localizedString("tasbih_accessibility_counter_hint"))
             
             // Interactive Beads Canvas
             TasbihBeadCanvas(
@@ -116,11 +135,15 @@ extension TasbihView {
                 onDecrement: { handleSwipeAction(isLeft: false) }
             )
             .frame(height: 180) // Reduced height to significantly lift the card
+            .accessibilityLabel(appEnv.language.localizedString("tasbih_accessibility_beads"))
+            .accessibilityHint(appEnv.language.localizedString("tasbih_accessibility_beads_hint"))
             
             Text(appEnv.language.localizedString("tasbih_hint"))
                 .font(.system(size: 10, weight: .bold))
                 .foregroundColor(colors.foreground.opacity(0.25))
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(viewModel.currentDhikr?.transliteration ?? "Tasbih")
     }
 }
 
@@ -151,17 +174,6 @@ extension TasbihView {
     
     @ToolbarContentBuilder
     private var toolbarContent: some ToolbarContent {
-        ToolbarItem(placement: .navigationBarLeading) {
-            Button(action: { router.pop() }) {
-                Image(systemName: "chevron.left")
-                    .font(.body.bold())
-                    .foregroundColor(colors.primary)
-                    .frame(width: 44, height: 44)
-                    .background(colors.foreground.opacity(0.03))
-                    .clipShape(Circle())
-            }
-        }
-        
         ToolbarItem(placement: .principal) {
             Text(appEnv.language.localizedString("tasbih_title"))
                 .font(.headline.bold())
@@ -169,23 +181,32 @@ extension TasbihView {
         }
         
         ToolbarItem(placement: .navigationBarTrailing) {
-            HStack(spacing: 8) {
-                ToolbarStyledButton(icon: viewModel.isSoundEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill") {
+            HStack(spacing: 16) {
+                Button(action: {
                     withAnimation {
                         viewModel.isSoundEnabled.toggle()
                         triggerHaptic(.soft)
                     }
+                }) {
+                    Image(systemName: viewModel.isSoundEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
+                        .foregroundColor(colors.primary)
                 }
                 
                 if !viewModel.selectedDhikrIds.isEmpty {
-                    ToolbarStyledButton(icon: "list.bullet.indent") {
+                    Button(action: {
                         viewModel.syncSequence()
                         showingSequenceSheet = true
+                    }) {
+                        Image(systemName: "list.bullet.indent")
+                            .foregroundColor(colors.primary)
                     }
                 }
                 
-                ToolbarStyledButton(icon: "arrow.counterclockwise") {
+                Button(action: {
                     resetWithAnimation()
+                }) {
+                    Image(systemName: "arrow.counterclockwise")
+                        .foregroundColor(colors.primary)
                 }
             }
         }
@@ -193,11 +214,11 @@ extension TasbihView {
     
     @ViewBuilder
     private var targetAlertActions: some View {
-        TextField(appEnv.language.localizedString("tasbih_alert_target_placeholder", defaultValue: "Enter target count"), text: $targetInput)
+        TextField(appEnv.language.localizedString("tasbih_alert_target_placeholder"), text: $targetInput)
             .keyboardType(.numberPad)
         
-        Button(appEnv.language.localizedString("accessibility_button_cancel", defaultValue: "Cancel"), role: .cancel) { }
-        Button(appEnv.language.localizedString("accessibility_button_save", defaultValue: "Save")) {
+        Button(appEnv.language.localizedString("accessibility_button_cancel"), role: .cancel) { }
+        Button(appEnv.language.localizedString("accessibility_button_save")) {
             if let newTarget = Int(targetInput), newTarget > 0 {
                 withAnimation { viewModel.target = newTarget }
             }

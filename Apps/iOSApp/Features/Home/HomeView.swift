@@ -17,56 +17,94 @@ public struct HomeView: View {
     public init() {}
     
     public var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             // MARK: - Background Layer
             colors.background.ignoresSafeArea()
             
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 32) {
                     
-                    // MARK: - 1. Greet & Integrated Search (Modular)
-                    HomeHeaderView(colors: colors)
-                    
-                    // MARK: - 2. Spiritual Quote (NOW AT THE TOP)
-                    HadithWidgetView(colors: colors)
-                    
-                    // MARK: - 3. Prayer (Modular Widget)
-                    PrayerWidgetView(colors: colors, animate: $animateWidget)
-                    
-                    // MARK: - 4. Feature Grid (Modular)
-                    HomeFeatureGrid(colors: colors)
-                    
-                    // MARK: - 5. Articles Section
-                    VStack(alignment: .leading, spacing: 20) {
-                        ArticleHeader(colors: colors)
-                        
-                        VStack(spacing: 16) {
-                            HomeArticleCard(
-                                colors: colors, 
-                                image: "mosque_dawn", 
-                                title: appEnv.language.localizedString("home_article_default_title"), 
-                                date: "Apr 03, 2026", 
-                                description: appEnv.language.localizedString("home_article_default_desc")
-                            )
-                            HomeArticleCard(
-                                colors: colors, 
-                                image: "quran_open", 
-                                title: appEnv.language.localizedString("home_article_quran_title"), 
-                                date: "Apr 01, 2026", 
-                                description: appEnv.language.localizedString("home_article_quran_desc")
-                            )
-                        }
+                    // MARK: - 1. Greet (Will scroll away)
+                    GreetingRow(colors: colors)
                         .padding(.horizontal, 24)
+                        .padding(.top, 16)
+                        .opacity(1.0 - min(1.0, max(0.0, -scrollOffset / 50)))
+                    
+                    // MARK: - 2. Spacer for Sticky Search
+                    // This creates space where the sticky search bar will initially sit
+                    Color.clear.frame(height: 54)
+                    
+                    // MARK: - 3. Content Sections
+                    Group {
+                        HadithWidgetView(colors: colors)
+                        
+                        PrayerWidgetView(colors: colors, animate: $animateWidget)
+                        
+                        HomeFeatureGrid(colors: colors)
+                        
+                        VStack(alignment: .leading, spacing: 20) {
+                            ArticleHeader(colors: colors)
+                            
+                            VStack(spacing: 16) {
+                                HomeArticleCard(
+                                    colors: colors, 
+                                    image: "mosque_dawn", 
+                                    title: appEnv.language.localizedString("home_article_default_title"), 
+                                    date: "Apr 03, 2026", 
+                                    description: appEnv.language.localizedString("home_article_default_desc")
+                                )
+                                HomeArticleCard(
+                                    colors: colors, 
+                                    image: "quran_open", 
+                                    title: appEnv.language.localizedString("home_article_quran_title"), 
+                                    date: "Apr 01, 2026", 
+                                    description: appEnv.language.localizedString("home_article_quran_desc")
+                                )
+                            }
+                            .padding(.horizontal, 24)
+                        }
                     }
                     
-                    Spacer(minLength: 120) // Tab Bar Spacing
+                    Spacer(minLength: 120)
+                }
+                .background(
+                    GeometryReader { proxy in
+                        let minY = proxy.frame(in: .named("HOME_SCROLL")).minY
+                        Color.clear
+                            .onAppear { scrollOffset = minY }
+                            .onChange(of: minY) { _, new in
+                                scrollOffset = new
+                            }
+                    }
+                )
+            }
+            .coordinateSpace(name: "HOME_SCROLL")
+            
+            // MARK: - Pinned Search Bar
+            VStack(spacing: 0) {
+                let searchInitialY: CGFloat = 85 // Approximately where it sits after Greeting
+                let stickyThreshold: CGFloat = searchInitialY
+                let currentOffset = -scrollOffset
+                
+                SearchBar(colors: colors)
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 8)
+                    .background(colors.background.opacity(currentOffset > stickyThreshold ? 0.95 : 0))
+                    .offset(y: max(stickyThreshold - currentOffset, 0))
+                    .animation(.interactiveSpring(response: 0.3, dampingFraction: 0.8), value: scrollOffset)
+                
+                if currentOffset > stickyThreshold {
+                    Divider().transition(.opacity)
                 }
             }
+            .background(colors.background.opacity(min(1.0, max(0.0, (-scrollOffset - 85) / 20))).ignoresSafeArea())
         }
         .onAppear {
             withAnimation(.easeInOut(duration: 1.0)) { animateWidget = true }
         }
     }
+    
+    @State private var scrollOffset: CGFloat = 0
 }
 
 // MARK: - Internal Component Helper

@@ -53,7 +53,7 @@ struct CharityUrgentCauseRow: View {
                         .tint(color)
                     
                     HStack {
-                        let raisedStr = appEnv.language.localizedString("charity_raised_of", defaultValue: "$\(current) of $\(target)")
+                        let raisedStr = appEnv.language.localizedString("charity_raised_of")
                         Text(raisedStr)
                             .font(.caption2)
                             .foregroundColor(.secondary)

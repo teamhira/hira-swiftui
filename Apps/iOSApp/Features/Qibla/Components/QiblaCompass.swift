@@ -86,11 +86,11 @@ struct QiblaCompass: View {
         }
         .frame(width: 240, height: 240)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(appEnv.language.localizedString("qibla_compass_accessibility_label", defaultValue: "Qibla Compass"))
+        .accessibilityLabel(appEnv.language.localizedString("qibla_compass_accessibility_label"))
         .accessibilityValue(
-            String(format: appEnv.language.localizedString("qibla_compass_accessibility_value_format", defaultValue: "Heading %d degrees, Qibla at %d degrees. %@"), 
+            String(format: appEnv.language.localizedString("qibla_compass_accessibility_value_format"), 
                    Int(heading), Int(qiblaDirection), 
-                   isFacing ? appEnv.language.localizedString("qibla_facing_mecca_success", defaultValue: "You're now facing Mecca") : "")
+                   isFacing ? appEnv.language.localizedString("qibla_facing_mecca_success") : "")
         )
     }
     

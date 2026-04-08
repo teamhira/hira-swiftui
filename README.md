@@ -1,7 +1,7 @@
 # Hira (The Quran Companion)
 
 <p align="center">
-  <img src="Resources/AppIcon.png" alt="Hira App Icon" width="128" height="128">
+  <img src="Apps/iOSApp/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon.png" alt="Hira App Icon" width="128" height="128">
 </p>
 
 Hira is a premium, high-fidelity Al-Quran companion for iOS, crafted with modern SwiftUI to provide a distraction-free, spiritual experience. Designed with a focus on sophisticated glassmorphic aesthetics and modular architecture, Hira offers a range of tools including a rich Quran dashboard, personalized discovery in the Explore tab, and integrated Charity management.
@@ -44,8 +44,8 @@ Hira is built using a modern **MVVM-C (Model-View-ViewModel-Coordinator)** archi
 1. **Prerequisites**: macOS 14.0+ and Xcode 15.0+.
 2. **Setup**:
    ```bash
-   git clone https://github.com/[username]/Hira.git
-   cd Hira
+   git clone https://github.com/teamhira/hira-swiftui.git
+   cd hira-swiftui
    open Hira.xcodeproj
    ```
 3. **Running**: Choose a simulator or device and press `Cmd + R` to build and run the application.

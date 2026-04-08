@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings (ID)
+  Hira
+*/
+
+"NSLocationWhenInUseUsageDescription" = "Hira membutuhkan lokasi Anda untuk memberikan jadwal shalat yang akurat, arah Kiblat, dan fitur lokal lainnya.";
+"NSCameraUsageDescription" = "Hira membutuhkan akses kamera untuk fitur scan barcode produk, tangkap gambar makanan untuk analisis, dan kebutuhan gaya hidup Islami lainnya.";
+"NSMicrophoneUsageDescription" = "Hira membutuhkan akses mikrofon untuk Tarteel (analisis bacaan), fitur interaksi suara, dan alat spiritual berkala.";
+"NSFaceIDUsageDescription" = "Hira membutuhkan akses FaceID untuk login yang aman dan melindungi data spiritual Anda.";
+"NSPhotoLibraryUsageDescription" = "Hira membutuhkan akses galeri foto untuk memilih foto profil dan mengunggah gambar produk makanan untuk analisis halal.";
+"CFBundleDisplayName" = "Hira";

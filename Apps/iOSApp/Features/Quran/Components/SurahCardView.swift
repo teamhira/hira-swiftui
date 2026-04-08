@@ -39,7 +39,7 @@ public struct SurahCardView: View {
                 Text(surah.nameArabic)
                     .font(.system(size: 20, weight: .bold))
                     .foregroundColor(colors.primary)
-                Text(String(format: appEnv.language.localizedString("quran_verses_count"), "\(surah.versesCount)"))
+                Text(appEnv.language.localizedString("quran_verses_count", arguments: [surah.versesCount]))
                     .font(.system(size: 10, weight: .bold))
                     .foregroundColor(colors.foreground.opacity(0.4))
             }
@@ -47,6 +47,6 @@ public struct SurahCardView: View {
         .padding(AppSpacing.md)
         .hiraCleanCard(colors: colors, radius: 24)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(String(format: appEnv.language.localizedString("quran_accessibility_surah_card"), surah.name, "\(surah.number)", "\(surah.versesCount)"))
+        .accessibilityLabel(appEnv.language.localizedString("quran_accessibility_surah_card", arguments: [surah.name, surah.number, surah.versesCount]))
     }
 }

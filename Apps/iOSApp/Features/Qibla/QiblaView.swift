@@ -63,12 +63,12 @@ public struct QiblaView: View {
                         )
                         
                         VStack(spacing: 4) {
-                            Text(viewModel.isFacingMecca ? appEnv.language.localizedString("qibla_facing_mecca_success", defaultValue: "You're now facing Mecca") : appEnv.language.localizedString("qibla_facing_mecca_finding", defaultValue: "Almost there"))
+                            Text(viewModel.isFacingMecca ? appEnv.language.localizedString("qibla_facing_mecca_success") : appEnv.language.localizedString("qibla_facing_mecca_finding"))
                                 .font(.headline.bold())
                                 .foregroundColor(viewModel.isFacingMecca ? viewModel.selectedStyle.color : colors.foreground.opacity(0.3))
                         }
                         .accessibilityElement(children: .combine)
-                        .accessibilityLabel(viewModel.isFacingMecca ? appEnv.language.localizedString("qibla_facing_mecca_success", defaultValue: "You're now facing Mecca") : appEnv.language.localizedString("qibla_facing_mecca_finding", defaultValue: "Almost there"))
+                        .accessibilityLabel(viewModel.isFacingMecca ? appEnv.language.localizedString("qibla_facing_mecca_success") : appEnv.language.localizedString("qibla_facing_mecca_finding"))
                     }
                     .transition(.asymmetric(insertion: .opacity.combined(with: .scale(scale: 1.1)), 
                                          removal: .opacity.combined(with: .scale(scale: 0.8))))
@@ -99,20 +99,8 @@ public struct QiblaView: View {
             }
         }
         .animation(.spring(), value: viewModel.authorizationStatus)
-        .navigationBarBackButtonHidden(true)
         .toolbar {
             // MARK: - Navigation Bar Items
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: { router.pop() }) {
-                    Image(systemName: "chevron.left")
-                        .font(.body.bold())
-                        .foregroundColor(colors.primary)
-                        .frame(width: 44, height: 44)
-                        .background(colors.foreground.opacity(0.03))
-                        .clipShape(Circle())
-                }
-            }
-            
             ToolbarItem(placement: .principal) {
                 Text(appEnv.language.localizedString("home_feature_qibla"))
                     .font(.headline.bold())
@@ -129,9 +117,6 @@ public struct QiblaView: View {
                     Image(systemName: isMapExpanded ? "compass.drawing" : "location.viewfinder")
                         .font(.title3)
                         .foregroundColor(colors.primary)
-                        .frame(width: 44, height: 44)
-                        .background(colors.foreground.opacity(0.03))
-                        .clipShape(Circle())
                 }
             }
         }
@@ -151,11 +136,11 @@ public struct QiblaView: View {
             }
             
             VStack(spacing: 8) {
-                Text(appEnv.language.localizedString("location_permission_title", defaultValue: "Location Access Required"))
+                Text(appEnv.language.localizedString("location_permission_title"))
                     .font(.title3.bold())
                     .foregroundColor(colors.foreground)
                 
-                Text(appEnv.language.localizedString("location_permission_desc", defaultValue: "We need your location to provide accurate prayer times, Qibla direction, and other localized features."))
+                Text(appEnv.language.localizedString("location_permission_desc"))
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
                     .foregroundColor(colors.foreground.opacity(0.6))
@@ -172,7 +157,7 @@ public struct QiblaView: View {
                 }
                 triggerHaptic(.medium)
             }) {
-                Text(viewModel.authorizationStatus == .denied ? appEnv.language.localizedString("qibla_permission_settings_button", defaultValue: "Open Settings") : appEnv.language.localizedString("qibla_permission_allow_button", defaultValue: "Allow Access"))
+                Text(viewModel.authorizationStatus == .denied ? appEnv.language.localizedString("qibla_permission_settings_button") : appEnv.language.localizedString("qibla_permission_allow_button"))
                     .font(.body.bold())
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)

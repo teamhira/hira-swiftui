@@ -41,9 +41,9 @@ struct TasbihStylePicker: View {
                     }
                 }
                 .padding(.horizontal, 24)
-                .padding(.vertical, 8)
+                .padding(.vertical, 12) // Increased to prevent shadow clipping
             }
-            .frame(height: 80)
+            .frame(height: 100) // Increased height to accommodate vertical padding and shadows
         }
         .padding(.top, AppSpacing.md)
         .padding(.bottom, AppSpacing.md)

@@ -38,16 +38,16 @@ struct QiblaMapView: View {
                             .foregroundColor(.white)
                     }
                     
-                    Text(appEnv.language.localizedString("qibla_kaaba_label", defaultValue: "Kaaba"))
+                    Text(appEnv.language.localizedString("qibla_kaaba_label"))
                         .font(.system(size: 10, weight: .bold))
                         .foregroundColor(colors.foreground)
                         .padding(4)
                         .background(colors.background.opacity(0.8))
                         .clipShape(Capsule())
                 }
-                .accessibilityLabel(appEnv.language.localizedString("qibla_kaaba_label", defaultValue: "Kaaba"))
+                .accessibilityLabel(appEnv.language.localizedString("qibla_kaaba_label"))
             } label: {
-                Text(appEnv.language.localizedString("qibla_mecca_label", defaultValue: "Mecca"))
+                Text(appEnv.language.localizedString("qibla_mecca_label"))
             }
             
             // 2. User Point
@@ -64,9 +64,9 @@ struct QiblaMapView: View {
                             .frame(width: 14, height: 14)
                             .overlay(Circle().stroke(.white, lineWidth: 2))
                     }
-                    .accessibilityLabel(appEnv.language.localizedString("qibla_current_location_label", defaultValue: "Current Location"))
+                    .accessibilityLabel(appEnv.language.localizedString("qibla_current_location_label"))
                 } label: {
-                    Text(appEnv.language.localizedString("qibla_current_location_label", defaultValue: "Current Location"))
+                    Text(appEnv.language.localizedString("qibla_current_location_label"))
                 }
                 
                 // 3. Direct line to Kaaba (The Path)

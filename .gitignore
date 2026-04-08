@@ -61,3 +61,10 @@ fastlane/test_output
 *.swp
 *~
 .DS_Store
+
+## Python
+*.py
+__pycache__/
+
+## Data
+*.json

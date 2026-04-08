@@ -59,7 +59,11 @@ public class TasbihViewModel {
     // UI Settings
     public var isSoundEnabled: Bool = true
     public var isSessionCompleted: Bool = false
+    public var isMissionCompleted: Bool = false
     public var isSwipedRightToIncrement: Bool = false // False = Left to +, True = Right to +
+    
+    // Mission Context
+    public var currentMission: Mission?
     
     // Multi-select sequence
     public var selectedDhikrIds: Set<UUID> = []
@@ -74,6 +78,34 @@ public class TasbihViewModel {
     }
     
     public init() {}
+    
+    public func setupMission(_ mission: Mission) {
+        self.currentMission = mission
+        self.target = mission.targetCount ?? 33
+        
+        let mKey = mission.key.lowercased()
+        let mTitle = mission.title.lowercased()
+        
+        if mKey.contains("subhanallah") || mTitle.contains("subhanallah") {
+            selectDhikr(by: "Subhanallah")
+        } else if mKey.contains("alhamdulillah") || mTitle.contains("alhamdulillah") {
+            selectDhikr(by: "Alhamdulillah")
+        } else if mKey.contains("allahuakbar") || mTitle.contains("allahuakbar") || mKey.contains("akbar") {
+            selectDhikr(by: "Allahu Akbar")
+        } else if mKey.contains("astaghfirullah") || mTitle.contains("astaghfirullah") || mKey.contains("istighfar") {
+            selectDhikr(by: "Astaghfirullah")
+        } else if mKey.contains("dzikir") || mKey.contains("dhikr") || mTitle.contains("dzikir") {
+            // Default to Subhanallah if generic dhikr mission
+            selectDhikr(by: "Subhanallah")
+        }
+    }
+    
+    private func selectDhikr(by transliteration: String) {
+        if let dhikr = Dhikr.sampleDhikr.first(where: { $0.transliteration == transliteration }) {
+            self.selectedDhikrIds = [dhikr.id]
+            self.syncSequence()
+        }
+    }
     
     /// Logic to handle cyclic/bouncing swipe directions
     public func handleSwipe(isLeft: Bool) {
@@ -128,6 +160,7 @@ public class TasbihViewModel {
         loop = 1
         currentSequenceIndex = 0
         isSessionCompleted = false
+        isMissionCompleted = false
         isSwipedRightToIncrement = false
     }
     
@@ -142,6 +175,7 @@ public class TasbihViewModel {
                         count = 0 
                     } else {
                         isSessionCompleted = true
+                        notifyJourneyManager()
                     }
                 } else {
                     loop += 1
@@ -150,6 +184,23 @@ public class TasbihViewModel {
             } else {
                 count = 0
                 loop += 1
+                notifyJourneyManager()
+            }
+        }
+    }
+    
+    private func notifyJourneyManager() {
+        // If user reached a target and is following a mission, complete it
+        let manager = JourneyManager.shared
+        for missionId in manager.state.activeMissionIds {
+            // Check if it's a tasbih mission
+            if let mission = self.currentMission, mission.id == missionId {
+                manager.completeMission(missionId, expReward: mission.expReward)
+                self.isMissionCompleted = true
+            } else if (missionId == "m3" || missionId == "h3") && target >= 33 {
+                // Fallback for legacy hardcoded IDs
+                manager.completeMission(missionId, expReward: 50)
+                self.isMissionCompleted = true
             }
         }
     }

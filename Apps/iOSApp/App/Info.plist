@@ -40,5 +40,17 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Hira needs your location to provide accurate prayer times, Qibla direction, and local features.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Hira needs camera access for various features including scanning product barcodes, capturing food for analysis, and other Islamic lifestyle requirements.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Hira needs microphone access for Tarteel (recitation analysis), voice-interacted features, and periodic spiritual tools.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Hira needs FaceID access for secure login and protecting your spiritual data.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Hira needs photo library access for choosing profile pictures and uploading food product images for halal analysis.</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

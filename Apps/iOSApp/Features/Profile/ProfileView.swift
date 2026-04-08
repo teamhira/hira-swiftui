@@ -37,6 +37,7 @@ struct ProfileView: View {
                             .scaleEffect(getHeaderScale())
                             .opacity(getHeaderOpacity())
                             .blur(radius: getHeaderBlur())
+                            .accessibilityLabel(appEnv.language.localizedString("profile_accessibility_avatar"))
                         
                         VStack(spacing: 6) {
                             Text(appEnv.language.localizedString("profile_field_name"))
@@ -52,6 +53,8 @@ struct ProfileView: View {
                         }
                         .opacity(getHeaderOpacity())
                         .offset(y: getHeaderOffset())
+                        .accessibilityElement(children: .combine)
+                        .accessibilityLabel("\(appEnv.language.localizedString("profile_field_name")). \(appEnv.language.localizedString("profile_field_email"))")
                     }
                     .padding(.top, 100) // Increased for custom header space
                     .padding(.bottom, 40)
@@ -88,6 +91,7 @@ struct ProfileView: View {
                                 Toggle("", isOn: $theme.isDark.animation(.spring(response: 0.4, dampingFraction: 0.7)))
                                     .labelsHidden()
                                     .tint(colors.primary)
+                                    .accessibilityLabel(appEnv.language.localizedString("profile_menu_dark_mode"))
                             }
                         }
                         
@@ -108,6 +112,8 @@ struct ProfileView: View {
                                 .background(RoundedRectangle(cornerRadius: 20).fill(Color.red.opacity(0.1)))
                         }
                         .padding(.top, 10)
+                        .accessibilityLabel(appEnv.language.localizedString("profile_menu_logout"))
+                        .accessibilityHint(appEnv.language.localizedString("profile_accessibility_logout_hint"))
                     }
                     .padding(.horizontal, 24)
                     .padding(.bottom, 120)

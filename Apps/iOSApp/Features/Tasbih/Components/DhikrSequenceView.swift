@@ -41,7 +41,7 @@ struct DhikrSequenceView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(appEnv.language.localizedString("accessibility_button_done", defaultValue: "Done")) { dismiss() }
+                    Button(appEnv.language.localizedString("accessibility_button_done")) { dismiss() }
                         .fontWeight(.bold)
                 }
                 

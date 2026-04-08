@@ -5,6 +5,13 @@
 //  Created by Ryuk on 04/04/26.
 //
 
+//
+//  GlobalExploreSearchView.swift
+//  Hira
+//
+//  Created by Ryuk on 04/04/26.
+//
+
 import SwiftUI
 
 struct GlobalExploreSearchView: View {
@@ -20,9 +27,7 @@ struct GlobalExploreSearchView: View {
             colors.background.ignoresSafeArea()
             
             ScrollView(showsIndicators: false) {
-                VStack(spacing: 32) {
-                    Spacer(minLength: 110)
-                    
+                VStack(alignment: .leading, spacing: 32) {
                     // MARK: - Suggested for You
                     SectionCard(
                         title: appEnv.language.localizedString("explore_search_suggested_title"),
@@ -46,6 +51,7 @@ struct GlobalExploreSearchView: View {
                                 )
                             }
                             .padding(.horizontal, 24)
+                            .padding(.top, 4) // Prevents card clipping
                         }
                     }
                     
@@ -58,20 +64,22 @@ struct GlobalExploreSearchView: View {
                     ) {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 16) {
-                                ReelCard(
+                                ReelCard(reel: ExploreReel(
                                     title: appEnv.language.localizedString("explore_search_item_recitation"),
-                                    desc: appEnv.language.localizedString("explore_search_item_recitation_desc"),
+                                    subtitle: appEnv.language.localizedString("explore_search_item_recitation_desc"),
                                     duration: "3:45",
-                                    image: "explore_reel_quran_recitation_1775291338028"
-                                )
-                                ReelCard(
+                                    imageName: "explore_reel_quran_recitation_1775291338028"
+                                ))
+                                
+                                ReelCard(reel: ExploreReel(
                                     title: appEnv.language.localizedString("explore_search_item_dhikr"),
-                                    desc: appEnv.language.localizedString("explore_search_item_dhikr_desc"),
+                                    subtitle: appEnv.language.localizedString("explore_search_item_dhikr_desc"),
                                     duration: "1:30",
-                                    image: "explore_dhikr_reminder_thumb_1775291365907"
-                                )
+                                    imageName: "explore_dhikr_reminder_thumb_1775291365907"
+                                ))
                             }
                             .padding(.horizontal, 24)
+                            .padding(.vertical, 8) // Prevents shadow clipping and ensures full visibility
                         }
                     }
                     
@@ -95,10 +103,12 @@ struct GlobalExploreSearchView: View {
                             )
                         }
                         .padding(.horizontal, 24)
+                        .padding(.top, 4) // Prevents row clipping
                     }
                     
-                    Spacer(minLength: 50)
+                    Spacer(minLength: 120) // Bottom safety
                 }
+                .padding(.top, 110) // Consistent with Charity
             }
             
             headerSection
@@ -109,7 +119,7 @@ struct GlobalExploreSearchView: View {
     private var headerSection: some View {
         VStack(spacing: 0) {
             HStack(spacing: 16) {
-                // Back Button
+                // Back Button (Consistent with Charity)
                 Button(action: { router.pop() }) {
                     Image(systemName: "chevron.left")
                         .font(.system(size: 18, weight: .bold))
@@ -121,34 +131,78 @@ struct GlobalExploreSearchView: View {
                                 .overlay(Circle().stroke(colors.foreground.opacity(0.1), lineWidth: 0.5))
                         )
                 }
-                .accessibilityLabel(appEnv.language.localizedString("explore_search_acc_back"))
+                .accessibilityLabel(appEnv.language.localizedString("explore_search_accessibility_back"))
                 
-                // Morphing Search Bar
+                // Unified Morphing Search Bar
                 HStack(spacing: 0) {
-                    HStack(spacing: 12) {
+                    if !isSearching {
+                        Text(appEnv.language.localizedString("tab_explore"))
+                            .font(.headline.bold())
+                            .foregroundColor(colors.foreground)
+                            .transition(.opacity.combined(with: .move(edge: .leading)))
+                        Spacer()
+                    }
+                    
+                    HStack(spacing: isSearching ? 12 : 0) {
                         Image(systemName: "magnifyingglass")
                             .font(.system(size: 16, weight: .bold))
-                            .foregroundColor(colors.primary)
+                            .foregroundColor(isSearching ? .secondary : colors.primary)
                         
-                        TextField(appEnv.language.localizedString("explore_search_placeholder"), text: $searchText)
-                            .font(.subheadline)
-                            .submitLabel(.search)
-                            .accessibilityLabel(appEnv.language.localizedString("explore_search_acc_search_field"))
+                        if isSearching {
+                            TextField(appEnv.language.localizedString("explore_search_placeholder"), text: $searchText)
+                                .font(.subheadline)
+                                .submitLabel(.search)
+                                .transition(.opacity)
+                            
+                            if !searchText.isEmpty {
+                                Button(action: { searchText = "" }) {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .foregroundColor(.secondary.opacity(0.6))
+                                }
+                            }
+                        }
                     }
-                    .padding(.horizontal, 16)
+                    .padding(.horizontal, isSearching ? 16 : 0)
                     .frame(height: 48)
+                    .frame(maxWidth: isSearching ? .infinity : 48)
                     .background(
                         VisualEffectBlur(blurStyle: .systemUltraThinMaterial)
-                            .background(colors.primary.opacity(0.05))
+                            .background(isSearching ? Color.clear : colors.primary.opacity(0.05))
                             .cornerRadius(24)
                     )
                     .overlay(
                         RoundedRectangle(cornerRadius: 24, style: .continuous)
                             .stroke(colors.foreground.opacity(0.1), lineWidth: 0.5)
+                            .opacity(isSearching ? 1 : 0)
                     )
+                    .onTapGesture {
+                        if !isSearching {
+                            withAnimation(.interactiveSpring(response: 0.4, dampingFraction: 0.8)) {
+                                isSearching = true
+                            }
+                        }
+                    }
+                    
+                    if isSearching {
+                        Button(action: {
+                            withAnimation(.interactiveSpring(response: 0.4, dampingFraction: 0.8)) {
+                                isSearching = false
+                                searchText = ""
+                            }
+                        }) {
+                            Image(systemName: "xmark")
+                                .font(.system(size: 14, weight: .bold))
+                                .foregroundColor(colors.foreground)
+                                .frame(width: 32, height: 32)
+                                .background(VisualEffectBlur(blurStyle: .systemUltraThinMaterial).clipShape(Circle()))
+                                .overlay(Circle().stroke(colors.foreground.opacity(0.1), lineWidth: 0.5))
+                        }
+                        .padding(.leading, 12)
+                        .transition(.move(edge: .trailing).combined(with: .opacity))
+                    }
                 }
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 24)
             .padding(.bottom, 16)
             .padding(.top, 10)
             .background(
@@ -268,74 +322,7 @@ private struct SuggestedCard: View {
                 )
         )
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(String(format: appEnv.language.localizedString("explore_search_acc_content"), title, category))
-        .accessibilityAddTraits(.isButton)
-    }
-}
-
-private struct ReelCard: View {
-    let title: String
-    let desc: String
-    let duration: String
-    let image: String
-    
-    @Environment(\.appEnvironment) private var appEnv
-    private var colors: ThemeModel { appEnv.theme.current }
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            ZStack(alignment: .topTrailing) {
-                // Background Image Placeholder
-                Rectangle()
-                    .fill(colors.foreground.opacity(0.05))
-                    .frame(height: 240)
-                
-                // Embedded Generated Image
-                Image(image)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(height: 240)
-                    .clipped()
-                
-                Text(duration)
-                    .font(.system(size: 10, weight: .bold))
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
-                    .background(Color.black.opacity(0.5))
-                    .foregroundColor(.white)
-                    .cornerRadius(6)
-                    .padding(12)
-                
-                Circle()
-                    .fill(Color.white.opacity(0.3))
-                    .frame(width: 44, height: 44)
-                    .overlay(
-                        Image(systemName: "play.fill")
-                            .foregroundColor(.white)
-                            .font(.system(size: 16))
-                    )
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            }
-            
-            VStack(alignment: .leading, spacing: 6) {
-                Text(title)
-                    .font(.subheadline.bold())
-                    .foregroundColor(colors.foreground)
-                    .lineLimit(1)
-                
-                Text(desc)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                    .lineLimit(1)
-            }
-            .padding(16)
-        }
-        .frame(width: 180)
-        .background(colors.background)
-        .cornerRadius(24)
-        .hiraCleanCard(colors: colors, radius: 24)
-        .accessibilityElement(children: .combine)
-        .accessibilityLabel(String(format: appEnv.language.localizedString("explore_search_acc_reel"), title, duration, desc))
+        .accessibilityLabel(String(format: appEnv.language.localizedString("explore_search_accessibility_content"), title, category))
         .accessibilityAddTraits(.isButton)
     }
 }
@@ -377,7 +364,7 @@ private struct ArticleRow: View {
         .padding(16)
         .hiraCleanCard(colors: colors)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(String(format: appEnv.language.localizedString("explore_search_acc_article"), title, category, views))
+        .accessibilityLabel(String(format: appEnv.language.localizedString("explore_search_accessibility_article"), title, category, views))
         .accessibilityAddTraits(.isButton)
     }
 }

@@ -20,7 +20,7 @@ struct QiblaStatsRow: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 1) {
-                Text(appEnv.language.localizedString("qibla_bearing_label", defaultValue: "Qibla Bearing"))
+                Text(appEnv.language.localizedString("qibla_bearing_label"))
                     .font(.system(size: 8, weight: .bold))
                     .foregroundColor(colors.foreground.opacity(0.4))
                 
@@ -29,13 +29,13 @@ struct QiblaStatsRow: View {
                     .foregroundColor(style.color)
             }
             .accessibilityElement(children: .combine)
-            .accessibilityLabel("\(appEnv.language.localizedString("qibla_bearing_label", defaultValue: "Qibla Bearing")): \(Int(qiblaDirection)) degrees \(cardinalDirection)")
+            .accessibilityLabel("\(appEnv.language.localizedString("qibla_bearing_label")): \(Int(qiblaDirection)) degrees \(cardinalDirection)")
             
             Spacer()
             
             HStack(spacing: 12) {
-                labelValue(label: appEnv.language.localizedString("qibla_heading_label", defaultValue: "Heading"), value: "\(Int(heading))°")
-                labelValue(label: appEnv.language.localizedString("qibla_mecca_label", defaultValue: "Mecca"), value: distanceToMecca > 0 ? "\(Int(distanceToMecca)) km" : appEnv.language.localizedString("qibla_finding_status", defaultValue: "Finding..."))
+                labelValue(label: appEnv.language.localizedString("qibla_heading_label"), value: "\(Int(heading))°")
+                labelValue(label: appEnv.language.localizedString("qibla_mecca_label"), value: distanceToMecca > 0 ? "\(Int(distanceToMecca)) km" : appEnv.language.localizedString("qibla_finding_status"))
             }
         }
         .padding(.horizontal, AppSpacing.lg)

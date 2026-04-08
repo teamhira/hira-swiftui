@@ -328,7 +328,7 @@ public struct JuzProgressCard: View {
         .padding(24)
         .hiraCleanCard(colors: colors, radius: 28)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(String(format: appEnv.language.localizedString("quran_acc_juz_progress"), stats, lastRead))
+        .accessibilityLabel(String(format: appEnv.language.localizedString("quran_accessibility_juz_progress"), stats, lastRead))
     }
 }
 
@@ -383,7 +383,7 @@ public struct JuzRowView: View {
         .padding(16)
         .hiraCleanCard(colors: colors, radius: 24)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(String(format: appEnv.language.localizedString("quran_acc_juz_row"), "\(juz.number)", juz.surahRange, "\(Int(juz.progress * 100))"))
+        .accessibilityLabel(String(format: appEnv.language.localizedString("quran_accessibility_juz_row"), "\(juz.number)", juz.surahRange, "\(Int(juz.progress * 100))"))
         .accessibilityAddTraits(.isButton)
     }
 }
@@ -426,7 +426,7 @@ public struct BookmarkHeaderCard: View {
         .padding(24)
         .hiraCleanCard(colors: colors, radius: 28)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(String(format: appEnv.language.localizedString("quran_acc_bookmark_header"), String(format: appEnv.language.localizedString("quran_bookmark_count"), count), lastRead))
+        .accessibilityLabel(String(format: appEnv.language.localizedString("quran_accessibility_bookmark_header"), String(format: appEnv.language.localizedString("quran_bookmark_count"), count), lastRead))
     }
 }
 
@@ -495,7 +495,7 @@ public struct BookmarkRowView: View {
         }
         .hiraCleanCard(colors: colors, radius: 26)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(String(format: appEnv.language.localizedString("quran_acc_bookmark_row"), bookmark.surahName, "\(bookmark.ayahNumber)", bookmark.timeAgo, bookmark.arabicText))
+        .accessibilityLabel(String(format: appEnv.language.localizedString("quran_accessibility_bookmark_row"), bookmark.surahName, "\(bookmark.ayahNumber)", bookmark.timeAgo, bookmark.arabicText))
         .accessibilityAddTraits(.isButton)
     }
 }
@@ -572,7 +572,7 @@ public struct DailyReminderCard: View {
         .padding(16)
         .hiraCleanCard(colors: colors, radius: 30)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(String(format: appEnv.language.localizedString("quran_acc_daily_reminder"), reminder.title, reminder.reference, reminder.arabicText))
+        .accessibilityLabel(String(format: appEnv.language.localizedString("quran_accessibility_daily_reminder"), reminder.title, reminder.reference, reminder.arabicText))
         .accessibilityAddTraits(.isButton)
     }
 }
@@ -590,6 +590,6 @@ private struct InteractionButton: View {
                 .font(.system(size: 12, weight: .bold))
         }
         .foregroundColor(appEnv.theme.current.foreground.opacity(0.6))
-        .accessibilityLabel(String(format: appEnv.language.localizedString("quran_acc_interaction"), count, appEnv.language.localizedString("quran_acc_\(icon)s")))
+        .accessibilityLabel(String(format: appEnv.language.localizedString("quran_accessibility_interaction"), count, appEnv.language.localizedString("quran_accessibility_\(icon)s")))
     }
 }

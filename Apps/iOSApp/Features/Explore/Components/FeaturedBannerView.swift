@@ -9,7 +9,16 @@ import SwiftUI
 
 struct FeaturedBannerView: View {
     @Environment(\.appEnvironment) private var appEnv
+    @Environment(AppRouter.self) private var router
     private var colors: ThemeModel { appEnv.theme.current }
+    
+    private var journeyState: JourneyState? {
+        guard let data = UserDefaults.standard.data(forKey: "HIRA_JOURNEY_CURRENT"),
+              let state = try? JSONDecoder().decode(JourneyState.self, from: data) else {
+            return nil
+        }
+        return state
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -30,26 +39,32 @@ struct FeaturedBannerView: View {
                     HStack(spacing: 8) {
                         Image(systemName: "moon.fill")
                             .font(.caption2)
-                        Text(appEnv.language.localizedString("explore_featured_tag"))
+                        Text(appEnv.language.localizedString(journeyState == nil ? "explore_featured_tag" : "explore_featured_active_tag"))
                             .font(.caption2.bold())
                             .textCase(.uppercase)
                     }
                     .foregroundColor(.white.opacity(0.8))
                     
-                    Text(appEnv.language.localizedString("explore_featured_title"))
+                    Text(appEnv.language.localizedString(journeyState == nil ? "explore_featured_title" : "explore_featured_active_title"))
                         .font(.system(size: 24, weight: .bold, design: .rounded))
                         .foregroundColor(.white)
                     
-                    Text(appEnv.language.localizedString("explore_featured_desc"))
+                    Text(appEnv.language.localizedString(journeyState == nil ? "explore_featured_desc" : "explore_featured_active_desc"))
                         .font(.subheadline)
                         .foregroundColor(.white.opacity(0.8))
                         .lineLimit(3)
                         .padding(.bottom, 8)
                     
-                    Button(action: {}) {
+                    Button(action: {
+                        if let state = journeyState {
+                            router.navigate(to: .hijrahDashboard(state))
+                        } else {
+                            router.navigate(to: .startJourney)
+                        }
+                    }) {
                         HStack {
                             Image(systemName: "sparkles")
-                            Text(appEnv.language.localizedString("explore_featured_button"))
+                            Text(appEnv.language.localizedString(journeyState == nil ? "explore_featured_button" : "explore_featured_active_button"))
                                 .fontWeight(.semibold)
                         }
                         .foregroundColor(colors.primary)

@@ -128,8 +128,8 @@ public struct CharityView: View {
             }
             
             CharityCauseCard(
-                title: "Bangun Sekolah Islam di Daerah Terpencil",
-                description: "Bantu kami mambangun sekolah Islam baru untuk memberikan pendidikan berkualitas.",
+                title: appEnv.language.localizedString("charity_community_cause_1_title"),
+                description: appEnv.language.localizedString("charity_community_cause_1_desc"),
                 image: "building.columns.fill",
                 raised: 75000,
                 target: 100000,
@@ -137,6 +137,9 @@ public struct CharityView: View {
                 donors: 234,
                 days: 15
             )
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("\(appEnv.language.localizedString("charity_community_cause_1_title")). \(appEnv.language.localizedString("charity_raised_of", arguments: ["75.000", "100.000"]))")
+            .accessibilityHint(appEnv.language.localizedString("charity_accessibility_donate_button", arguments: [appEnv.language.localizedString("charity_community_cause_1_title")]))
         }
         .padding(.horizontal, 24)
     }

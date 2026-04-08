@@ -33,11 +33,11 @@ struct ProfileHeaderView: View {
             
             // MARK: - User Info
             VStack(spacing: 4) {
-                Text(appEnv.language.localizedString("profile_name_placeholder", defaultValue: "Kira"))
+                Text(appEnv.language.localizedString("profile_name_placeholder"))
                     .font(TextStyle.title2.bold())
                     .foregroundColor(colors.foreground)
                 
-                Text(appEnv.language.localizedString("profile_email_placeholder", defaultValue: "kira@hira.app"))
+                Text(appEnv.language.localizedString("profile_email_placeholder"))
                     .font(TextStyle.footnote)
                     .foregroundColor(colors.foreground.opacity(0.5))
             }

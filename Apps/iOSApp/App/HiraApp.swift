@@ -38,12 +38,41 @@ struct HiraApp: App {
                                     case .languageSetting: LanguageSettingView()
                                     case .securitySetting: SecuritySettingView()
                                     case .aboutHira: AboutHiraView()
-                                    case .tasbih: TasbihView()
+                                    case .tasbih(let mission): TasbihView(mission: mission)
                                     case .qibla: QiblaView()
                                     case .search: GlobalSearchView()
                                     case .charitySearch: GlobalCharitySearchView()
                                     case .exploreSearch: GlobalExploreSearchView()
                                     case .surahDetail(let surah): SurahDetailView(surah: surah)
+                                    case .startJourney: StartJourneyView()
+                                    case .hijrahDashboard(let state): HijrahView(state: state)
+                                    case .missionDetail(let mission, let vm): MissionDetailView(mission: mission, viewModel: vm)
+                                    case .suggestionDetail(let suggestion): SuggestionDetailView(suggestion: suggestion)
+                                    case .chatbot: ChatbotView()
+                                    case .zakat: ZakatView()
+                                    case .sadaqah: SadaqahView()
+                                    case .dua: DuaView()
+                                    case .duaList(let category): DuaListView(category: category)
+                                    case .duaDetail(let item): DuaDetailView(
+                                        title: item.title,
+                                        arabicText: item.arabic,
+                                        transliteration: "",
+                                        translation: item.translation,
+                                        reference: item.reference
+                                    )
+                                    case .hadith: HadithView()
+                                    case .hadithList(let category): HadithListView(category: category)
+                                    case .hadithDetail(let item): HadithDetailView(item: item)
+                                    case .achievements: AchievementsView()
+                                    case .mosques: MosquesView()
+                                    case .khatam: KhatamView()
+                                    case .deenMode: DeenModeView()
+                                    case .journal: JournalView()
+                                    case .tracker: TrackerView()
+                                    case .calendar: CalendarView()
+                                    case .halal: HalalView()
+                                    case .hajjJourney: HajjJourneyView()
+                                    case .hajjUmrah: HajjUmrahView()
                                     case .home, .splash: EmptyView()
                                     }
                                 }

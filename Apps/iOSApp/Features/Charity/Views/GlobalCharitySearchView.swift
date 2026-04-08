@@ -198,7 +198,6 @@ struct GlobalCharitySearchView: View {
                         .transition(.move(edge: .trailing).combined(with: .opacity))
                     }
                 }
-            }
             .padding(.horizontal, 24)
             .padding(.bottom, 16)
             .padding(.top, 10)

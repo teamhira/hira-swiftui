@@ -65,7 +65,7 @@ struct CharityCauseCard: View {
                 
                 VStack(spacing: 6) {
                     HStack {
-                        Text(appEnv.language.localizedString("charity_raised_of", defaultValue: "$\(raised) of $\(target)"))
+                        Text(appEnv.language.localizedString("charity_raised_of"))
                             .font(.subheadline.bold())
                             .foregroundColor(colors.primary)
                         Spacer()
