@@ -13,14 +13,15 @@ public struct ProgressPieCard: View {
     var isLarge: Bool = false
     @Environment(\.appEnvironment) private var appEnv
     
+    private var colors: ThemeModel { appEnv.theme.current }
+    
     public var body: some View {
         VStack(spacing: 12) {
             ZStack {
                 Circle()
                     .stroke(Color.secondary.opacity(0.1), lineWidth: isLarge ? 12 : 8)
                 Circle()
-                    .trim(from: 0, to: progress)
-                    .stroke(LinearGradient(colors: [Color(appEnv.theme.current.primary), Color(appEnv.theme.current.accent)], startPoint: .top, endPoint: .bottom), style: StrokeStyle(lineWidth: isLarge ? 12 : 8, lineCap: .round))
+                    .stroke(colors.primary, style: StrokeStyle(lineWidth: isLarge ? 12 : 8, lineCap: .round))
                     .rotationEffect(.degrees(-90))
                 
                 VStack(spacing: 0) {
@@ -36,7 +37,7 @@ public struct ProgressPieCard: View {
             HStack(spacing: 6) {
                 Image(systemName: icon)
                     .font(.caption)
-                    .foregroundColor(Color(appEnv.theme.current.primary))
+                    .foregroundColor(colors.primary)
                 Text(title)
                     .font(.caption.bold())
                     .foregroundColor(.primary)
@@ -61,43 +62,44 @@ public struct LastReadingCard: View {
     
     public var body: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 6) {
                 Text(appEnv.language.localizedString("quran_last_reading"))
                     .font(.system(size: 14, weight: .bold))
                     .foregroundColor(colors.primary)
-                    .kerning(1)
+                    .kerning(0.5)
                 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(surah.name)
                         .font(.system(size: 18, weight: .bold))
                         .foregroundColor(colors.foreground)
                     Text(String(format: appEnv.language.localizedString("quran_ayah_count_label"), Int(Double(surah.versesCount) * progress), surah.versesCount))
-                        .font(.system(size: 14))
+                        .font(.caption)
                         .foregroundColor(colors.foreground.opacity(0.5))
                 }
             }
             
             Spacer()
             
-            // Integrated Pie Chart
+            // Circular Progress (Restored to the right)
             ZStack {
                 Circle()
                     .stroke(colors.foreground.opacity(0.05), lineWidth: 10)
                 Circle()
                     .trim(from: 0, to: progress)
-                    .stroke(colors.primary, style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                    .stroke(
+                        colors.primary,
+                        style: StrokeStyle(lineWidth: 10, lineCap: .round)
+                    )
                     .rotationEffect(.degrees(-90))
                 
                 Text("\(Int(progress * 100))%")
                     .font(.system(size: 14, weight: .bold))
                     .foregroundColor(colors.foreground)
             }
-            .frame(width: 70, height: 70)
+            .frame(width: 80, height: 80)
         }
         .padding(24)
-        .background(RoundedRectangle(cornerRadius: 24, style: .continuous).fill(colors.background))
-        .shadow(color: colors.foreground.opacity(0.03), radius: 15, x: 0, y: 10)
-        .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous).stroke(colors.foreground.opacity(0.05), lineWidth: 1))
+        .hiraCleanCard(colors: colors, radius: 28)
         .accessibilityElement(children: .combine)
         .accessibilityLabel("\(appEnv.language.localizedString("quran_last_reading")), \(surah.name)")
     }
@@ -299,7 +301,7 @@ public struct JuzProgressCard: View {
                 Circle()
                     .trim(from: 0, to: progress)
                     .stroke(
-                        LinearGradient(colors: [colors.primary, colors.accent], startPoint: .top, endPoint: .bottom),
+                        colors.primary,
                         style: StrokeStyle(lineWidth: 10, lineCap: .round)
                     )
                     .rotationEffect(.degrees(-90))
@@ -582,6 +584,8 @@ private struct InteractionButton: View {
     let count: Int
     @Environment(\.appEnvironment) private var appEnv
     
+    private var colors: ThemeModel { appEnv.theme.current }
+    
     var body: some View {
         HStack(spacing: 6) {
             Image(systemName: icon)
@@ -589,7 +593,7 @@ private struct InteractionButton: View {
             Text("\(count)")
                 .font(.system(size: 12, weight: .bold))
         }
-        .foregroundColor(appEnv.theme.current.foreground.opacity(0.6))
+        .foregroundColor(colors.foreground.opacity(0.6))
         .accessibilityLabel(String(format: appEnv.language.localizedString("quran_accessibility_interaction"), count, appEnv.language.localizedString("quran_accessibility_\(icon)s")))
     }
 }

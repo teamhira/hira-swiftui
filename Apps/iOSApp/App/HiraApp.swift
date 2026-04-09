@@ -41,6 +41,7 @@ struct HiraApp: App {
                                     case .tasbih(let mission): TasbihView(mission: mission)
                                     case .qibla: QiblaView()
                                     case .search: GlobalSearchView()
+                                    case .quranSearch: GlobalQuranSearchView()
                                     case .charitySearch: GlobalCharitySearchView()
                                     case .exploreSearch: GlobalExploreSearchView()
                                     case .surahDetail(let surah): SurahDetailView(surah: surah)

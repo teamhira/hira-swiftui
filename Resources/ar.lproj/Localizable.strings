@@ -36,6 +36,33 @@
 "quran_topics_section" = "المواضيع";
 "quran_verses_count" = "%d آية";
 
+// MARK: - Feature: Quran Search
+"quran_search_discover_title" = "اكتشف القرآن";
+"quran_search_discover_signs" = "آيات الله العظيمة";
+"quran_search_discover_rewards" = "جزاء المؤمنين";
+"quran_search_discover_prophets" = "قصص الأنبياء";
+"quran_search_discover_guidance" = "الهداية الربانية";
+"quran_search_discover_afterlife" = "الجنة والنار";
+"quran_search_discover_moral" = "التعاليم الأخلاقية";
+"quran_search_discover_worship" = "الصلاة والعبادة";
+"quran_search_discover_charity" = "الصدقة والعطاء";
+"quran_search_prophets_title" = "قصص الأنبياء";
+"quran_search_prophet_lut" = "لوط عليه السلام";
+"quran_search_prophet_zakariya" = "زكريا عليه السلام";
+"quran_search_prophet_muhammad" = "محمد صلى الله عليه وسلم";
+"quran_search_prophet_isa" = "عيسى عليه السلام";
+"quran_search_prophet_daud" = "داوود عليه السلام";
+"quran_search_prophet_salih" = "صالح عليه السلام";
+"quran_search_prophet_idris" = "إدريس عليه السلام";
+"quran_search_prophet_ayyub" = "أيوب عليه السلام";
+"quran_search_feeling_title" = "بماذا تشعر؟";
+"quran_search_feeling_grateful" = "ممتن";
+"quran_search_feeling_anxious" = "قلق";
+"quran_search_feeling_thankful" = "شاكر";
+"quran_search_feeling_calm" = "هادئ";
+"quran_search_feeling_envious" = "حسود";
+"quran_search_feeling_peaceful" = "مطمئن";
+
 // MARK: - Feature: Home
 "home_article_default_desc" = "اكتشف الفوائد الروحية للثلث الأخير من الليل.";
 "home_article_default_title" = "القوة الخفية لصلاة التهجد";
@@ -399,7 +426,7 @@
 "quran_accessibility_bookmark_row" = "إشارة في %@، آية %@. آخر قراءة %@. النص: %@";
 "quran_accessibility_daily_reminder" = "تذكير يومي: %@. المرجع %@. %@";
 "quran_accessibility_juz_progress" = "تقدم الجزء: %@. %@";
-"quran_accessibility_juz_row" = "الجزء %d، يحتوي على %@، التقدم %d بالمائة";
+"quran_accessibility_juz_row" = "الجزء %@، يحتوي على %@، التقدم %@ بالمائة";
 "quran_accessibility_progress_pie" = "مخطط التقدم، تم إكمال %d بالمائة";
 "quran_accessibility_surah_card" = "بطاقة السورة %@، رقم %d، %d آية";
 "quran_accessibility_surah_hint" = "اضغط مرتين لقراءة هذه السورة";

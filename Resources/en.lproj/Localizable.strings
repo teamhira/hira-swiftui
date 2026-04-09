@@ -36,6 +36,33 @@
 "quran_topics_section" = "Topics";
 "quran_verses_count" = "%d Ayahs";
 
+// MARK: - Feature: Quran Search
+"quran_search_discover_title" = "Discover Quran";
+"quran_search_discover_signs" = "Allah's Great Signs";
+"quran_search_discover_rewards" = "Rewards for Believers";
+"quran_search_discover_prophets" = "Stories of Prophets";
+"quran_search_discover_guidance" = "Divine Guidance";
+"quran_search_discover_afterlife" = "Paradise & Hell";
+"quran_search_discover_moral" = "Moral Teachings";
+"quran_search_discover_worship" = "Prayer & Worship";
+"quran_search_discover_charity" = "Charity & Giving";
+"quran_search_prophets_title" = "Prophet Stories";
+"quran_search_prophet_lut" = "Lut AS";
+"quran_search_prophet_zakariya" = "Zakariya AS";
+"quran_search_prophet_muhammad" = "Muhammad SAW";
+"quran_search_prophet_isa" = "Isa AS";
+"quran_search_prophet_daud" = "Daud AS";
+"quran_search_prophet_salih" = "Salih AS";
+"quran_search_prophet_idris" = "Idris AS";
+"quran_search_prophet_ayyub" = "Ayyub AS";
+"quran_search_feeling_title" = "How are you feeling?";
+"quran_search_feeling_grateful" = "Grateful";
+"quran_search_feeling_anxious" = "Anxious";
+"quran_search_feeling_thankful" = "Thankful";
+"quran_search_feeling_calm" = "Calm";
+"quran_search_feeling_envious" = "Envious";
+"quran_search_feeling_peaceful" = "Peaceful";
+
 // MARK: - Feature: Home
 "home_article_default_desc" = "Deepen your understanding of the spiritual benefits of the last third of the night.";
 "home_article_default_title" = "Secrets of Tahajjud Prayer";
@@ -399,7 +426,7 @@
 "quran_accessibility_bookmark_row" = "Bookmark at %@, ayah %@. Last read %@. Text: %@";
 "quran_accessibility_daily_reminder" = "Daily reminder: %@. Reference %@. %@";
 "quran_accessibility_juz_progress" = "Juz progress: %@. %@";
-"quran_accessibility_juz_row" = "Juz %d, contains %@, progress %d percent";
+"quran_accessibility_juz_row" = "Juz %@, contains %@, progress %@ percent";
 "quran_accessibility_progress_pie" = "Progress chart, %d percent completed";
 "quran_accessibility_surah_card" = "Surah card %@, Number %d, %d Ayahs";
 "quran_accessibility_surah_hint" = "Double tap to read this surah";

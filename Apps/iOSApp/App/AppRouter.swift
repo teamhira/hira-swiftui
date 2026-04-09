@@ -24,6 +24,7 @@ public enum AppRoute: Hashable {
     case tasbih(Mission? = nil)
     case qibla
     case search
+    case quranSearch
     case charitySearch
     case exploreSearch
     case surahDetail(Surah)

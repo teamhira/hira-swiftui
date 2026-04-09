@@ -36,6 +36,33 @@
 "quran_topics_section" = "Topik";
 "quran_verses_count" = "%d Ayat";
 
+// MARK: - Feature: Quran Search
+"quran_search_discover_title" = "Terokai Quran";
+"quran_search_discover_signs" = "Tanda-tanda Kebesaran Allah";
+"quran_search_discover_rewards" = "Ganjaran bagi Orang Beriman";
+"quran_search_discover_prophets" = "Kisah Para Nabi";
+"quran_search_discover_guidance" = "Petunjuk Ilahi";
+"quran_search_discover_afterlife" = "Syurga & Neraka";
+"quran_search_discover_moral" = "Ajaran Moral";
+"quran_search_discover_worship" = "Solat & Ibadah";
+"quran_search_discover_charity" = "Sedekah & Memberi";
+"quran_search_prophets_title" = "Kisah Nabi";
+"quran_search_prophet_lut" = "Lut AS";
+"quran_search_prophet_zakariya" = "Zakariya AS";
+"quran_search_prophet_muhammad" = "Muhammad SAW";
+"quran_search_prophet_isa" = "Isa AS";
+"quran_search_prophet_daud" = "Daud AS";
+"quran_search_prophet_salih" = "Salih AS";
+"quran_search_prophet_idris" = "Idris AS";
+"quran_search_prophet_ayyub" = "Ayyub AS";
+"quran_search_feeling_title" = "Bagaimana perasaan anda?";
+"quran_search_feeling_grateful" = "Bersyukur";
+"quran_search_feeling_anxious" = "Gelisah";
+"quran_search_feeling_thankful" = "Berterima Kasih";
+"quran_search_feeling_calm" = "Tenang";
+"quran_search_feeling_envious" = "Iri Hati";
+"quran_search_feeling_peaceful" = "Damai";
+
 // MARK: - Feature: Home
 "home_article_default_desc" = "Terokai manfaat spiritual di sepertiga malam terakhir.";
 "home_article_default_title" = "Rahsia Kekuatan Solat Tahajjud";
@@ -399,7 +426,7 @@
 "quran_accessibility_bookmark_row" = "Bookmark di %@, ayat %@. Terakhir dibaca %@. Teks: %@";
 "quran_accessibility_daily_reminder" = "Peringatan harian: %@. Rujukan %@. %@";
 "quran_accessibility_juz_progress" = "Progres Juz: %@. %@";
-"quran_accessibility_juz_row" = "Juz %d, mengandungi %@, kemajuan %d peratus";
+"quran_accessibility_juz_row" = "Juz %@, mengandungi %@, kemajuan %@ peratus";
 "quran_accessibility_progress_pie" = "Carta kemajuan, %d peratus selesai";
 "quran_accessibility_surah_card" = "Kad Surah %@, Nombor %d, %d Ayat";
 "quran_accessibility_surah_hint" = "Ketik dua kali untuk membaca surah ini";

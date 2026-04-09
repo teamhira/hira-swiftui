@@ -8,29 +8,32 @@ import SwiftUI
 public struct QuranHeaderView: View {
     @Binding var searchQuery: String
     @Environment(\.appEnvironment) private var appEnv
+    @Environment(AppRouter.self) private var router
     
     public var body: some View {
         let colors = appEnv.theme.current
         HStack(spacing: 12) {
-            // Integrated Search Bar matching HomeHeaderView
-            HStack(spacing: 12) {
-                Image(systemName: "magnifyingglass")
-                    .foregroundColor(colors.primary.opacity(0.6))
-                    .font(.body.bold())
-                
-                TextField(appEnv.language.localizedString("quran_search_placeholder_full"), text: $searchQuery)
-                    .font(.subheadline)
-                
-                if !searchQuery.isEmpty {
-                    Button(action: { searchQuery = "" }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(colors.primary.opacity(0.4))
-                    }
+            // Morphing-style search button matching GlobalSearchView entry
+            Button(action: {
+                withAnimation(.interactiveSpring(response: 0.4, dampingFraction: 0.8)) {
+                    router.navigate(to: .quranSearch)
                 }
+            }) {
+                HStack(spacing: 12) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(colors.primary.opacity(0.6))
+                        .font(.body.bold())
+                    
+                    Text(appEnv.language.localizedString("search_placeholder_short"))
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    
+                    Spacer()
+                }
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 18, style: .continuous).fill(colors.foreground.opacity(0.04)))
+                .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(colors.foreground.opacity(0.02), lineWidth: 1))
             }
-            .padding()
-            .background(RoundedRectangle(cornerRadius: 18, style: .continuous).fill(colors.foreground.opacity(0.04)))
-            .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(colors.foreground.opacity(0.02), lineWidth: 1))
             
             // Audio Icon matching HomeHeader style
             Button(action: {}) {
