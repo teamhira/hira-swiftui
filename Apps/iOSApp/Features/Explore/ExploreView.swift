@@ -79,6 +79,7 @@ public struct ExploreView: View {
                         Text(appEnv.language.localizedString("explore_search_placeholder"))
                             .font(.subheadline)
                             .foregroundColor(colors.foreground.opacity(0.4))
+                            .lineLimit(1)
                         
                         Spacer()
                     }

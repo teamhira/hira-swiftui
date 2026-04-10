@@ -90,6 +90,8 @@ struct HomeFeatureGrid: View {
         case .halal: router.navigate(to: .halal)
         case .hajjJourney: router.navigate(to: .hajjJourney)
         case .hajjUmrah: router.navigate(to: .hajjUmrah)
+        case .prayerTimes: router.navigate(to: .prayerTimes)
+        case .tarteel: router.navigate(to: .tarteel)
         }
     }
 }

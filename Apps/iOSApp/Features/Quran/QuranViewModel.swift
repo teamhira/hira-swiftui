@@ -109,11 +109,21 @@ public struct DailyReminder: Identifiable, Hashable {
     public let image: String
 }
 
+public struct QuranHistoryItem: Identifiable, Hashable {
+    public let id = UUID()
+    public let surahNumber: Int
+    public let surahName: String
+    public let surahNameArabic: String
+    public let ayahNumber: Int
+    public let date: Date
+}
+
 @Observable
 public class QuranViewModel: BaseViewModel {
     public var selectedBottomTab: QuranBottomTab = .surah
     public var selectedTopTab: QuranTopTab = .surah
     public var searchQuery: String = ""
+    public var showingHistory: Bool = false
     
     public var surahs: [Surah] = [] // Initial empty, will be populated
     public var recentSurah: Surah?
@@ -170,6 +180,12 @@ public class QuranViewModel: BaseViewModel {
     
     public var bookmarks: [QuranBookmark] = [
         QuranBookmark(surahNumber: 2, surahName: "Al-Baqarah", surahNameArabic: "البقرة", ayahNumber: 255, timeAgo: "2 days", arabicText: "ٱللَّهُ لَآ إِلَٰهَ إِلَّا هُوَ ٱلْحَىُّ ٱلْقَيُّومُ ۚ لَا تَأْخُذُهُۥ سِنَةٌۭ وَلَا نَوْمٌۭ")
+    ]
+    
+    public var history: [QuranHistoryItem] = [
+        QuranHistoryItem(surahNumber: 1, surahName: "Al-Fatihah", surahNameArabic: "الفاتحة", ayahNumber: 1, date: Date()),
+        QuranHistoryItem(surahNumber: 2, surahName: "Al-Baqarah", surahNameArabic: "البقرة", ayahNumber: 285, date: Date()),
+        QuranHistoryItem(surahNumber: 18, surahName: "Al-Kahf", surahNameArabic: "الكهف", ayahNumber: 10, date: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date())
     ]
     
     public var dailyReminders: [DailyReminder] = [

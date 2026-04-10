@@ -83,9 +83,11 @@
 "home_feature_journal" = "يوميات";
 "home_feature_khatam" = "ختم";
 "home_feature_more" = "المزيد";
-"home_feature_mosques" = "المساجد";
+"home_feature_mosques" = "مساجد";
+"home_feature_prayertimes" = "مواقيت الصلاة";
 "home_feature_qibla" = "القبلة";
 "home_feature_sadaqah" = "صدقة";
+"home_feature_tarteel" = "ترتيل ذكاء اصطناعي";
 "home_feature_tasbih" = "تسبيح";
 "home_feature_tracker" = "المتتبع";
 "home_feature_zakat" = "زكاة";

@@ -84,8 +84,10 @@
 "home_feature_khatam" = "Khatam";
 "home_feature_more" = "More";
 "home_feature_mosques" = "Mosques";
+"home_feature_prayertimes" = "Prayer Times";
 "home_feature_qibla" = "Qibla";
 "home_feature_sadaqah" = "Sadaqah";
+"home_feature_tarteel" = "Tarteel AI";
 "home_feature_tasbih" = "Tasbih";
 "home_feature_tracker" = "Tracker";
 "home_feature_zakat" = "Zakat";

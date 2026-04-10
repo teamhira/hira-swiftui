@@ -46,20 +46,9 @@ public struct HomeView: View {
                             ArticleHeader(colors: colors)
                             
                             VStack(spacing: 16) {
-                                HomeArticleCard(
-                                    colors: colors, 
-                                    image: "mosque_dawn", 
-                                    title: appEnv.language.localizedString("home_article_default_title"), 
-                                    date: "Apr 03, 2026", 
-                                    description: appEnv.language.localizedString("home_article_default_desc")
-                                )
-                                HomeArticleCard(
-                                    colors: colors, 
-                                    image: "quran_open", 
-                                    title: appEnv.language.localizedString("home_article_quran_title"), 
-                                    date: "Apr 01, 2026", 
-                                    description: appEnv.language.localizedString("home_article_quran_desc")
-                                )
+                                ForEach(Article.mocks.prefix(2)) { article in
+                                    HomeArticleCard(colors: colors, article: article)
+                                }
                             }
                             .padding(.horizontal, 24)
                         }
@@ -111,6 +100,7 @@ public struct HomeView: View {
 private struct ArticleHeader: View {
     let colors: ThemeModel
     @Environment(\.appEnvironment) private var appEnv
+    @Environment(AppRouter.self) private var router
     
     var body: some View {
         HStack {
@@ -118,7 +108,9 @@ private struct ArticleHeader: View {
                 .font(.headline.bold())
                 .foregroundColor(colors.foreground)
             Spacer()
-            Button(appEnv.language.localizedString("home_articles_all")) { }
+            Button(appEnv.language.localizedString("home_articles_all")) {
+                router.navigate(to: .articleList)
+            }
                 .font(.subheadline.bold())
                 .foregroundColor(colors.primary)
         }

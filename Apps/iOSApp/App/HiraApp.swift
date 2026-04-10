@@ -74,7 +74,13 @@ struct HiraApp: App {
                                     case .halal: HalalView()
                                     case .hajjJourney: HajjJourneyView()
                                     case .hajjUmrah: HajjUmrahView()
+                                    case .articleList: ArticleListView()
+                                    case .articleDetail(let article): ArticleDetailView(article: article)
                                     case .home, .splash: EmptyView()
+                                    case .prayerTimes: PrayerTimesView()
+                                    case .tarteel: TarteelView()
+                                    case .tarteelRecitation(let surah): TarteelRecitationView(viewModel: TarteelViewModel(), surah: surah)
+                                    case .tarteelHistory: TarteelHistoryView(viewModel: TarteelViewModel())
                                     }
                                 }
                         }

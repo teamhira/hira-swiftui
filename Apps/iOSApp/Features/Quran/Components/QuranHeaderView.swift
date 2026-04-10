@@ -7,6 +7,7 @@ import SwiftUI
 
 public struct QuranHeaderView: View {
     @Binding var searchQuery: String
+    var onHistoryTap: () -> Void
     @Environment(\.appEnvironment) private var appEnv
     @Environment(AppRouter.self) private var router
     
@@ -35,9 +36,9 @@ public struct QuranHeaderView: View {
                 .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(colors.foreground.opacity(0.02), lineWidth: 1))
             }
             
-            // Audio Icon matching HomeHeader style
-            Button(action: {}) {
-                Image(systemName: "headphones")
+            // History Button
+            Button(action: onHistoryTap) {
+                Image(systemName: "clock.arrow.circlepath")
                     .font(.title3)
                     .foregroundColor(colors.primary)
                     .padding(12)

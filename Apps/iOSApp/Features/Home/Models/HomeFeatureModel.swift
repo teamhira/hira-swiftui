@@ -25,6 +25,8 @@ public enum HomeFeatureType: String, CaseIterable, Codable, Identifiable {
     case halal
     case hajjJourney
     case hajjUmrah
+    case prayerTimes
+    case tarteel
     
     public var id: String { rawValue }
     
@@ -60,6 +62,8 @@ public enum HomeFeatureType: String, CaseIterable, Codable, Identifiable {
         case .halal: return "fork.knife"
         case .hajjJourney: return "airplane"
         case .hajjUmrah: return "person.2.fill"
+        case .prayerTimes: return "clock.fill"
+        case .tarteel: return "waveform.and.mic"
         }
     }
 }

@@ -25,19 +25,26 @@ public final class HomeFeatureStoreModel {
     public init() {
         if let data = UserDefaults.standard.data(forKey: Self.storageKey),
            let decoded = try? JSONDecoder().decode([HomeFeatureModel].self, from: data) {
-            self.features = decoded
+            var existingFeatures = decoded
+            
+            // Migration: Add missing features that might have been added in code updates
+            let existingTypes = Set(existingFeatures.map { $0.type })
+            let allTypes = HomeFeatureType.allCases
+            
+            for type in allTypes {
+                if !existingTypes.contains(type) {
+                    existingFeatures.append(HomeFeatureModel(type: type, isVisible: false))
+                }
+            }
+            
+            self.features = existingFeatures
         } else {
             // Default list if not initialized
-            let defaultTypes: [HomeFeatureType] = [
-                .zakat, .sadaqah, .qibla, .tasbih, .dua, 
-                .hadith, .achievements, .mosques, .khatam, .deenMode,
-                .journal, .askAI, .tracker, .calendar, .halal,
-                .hajjJourney, .hajjUmrah
-            ]
+            let defaultTypes = HomeFeatureType.allCases
             
-            // Set first 5 as visible by default for the home grid
+            // Set first 8 as visible by default for the home grid
             self.features = defaultTypes.enumerated().map { (index, type) in
-                HomeFeatureModel(type: type, isVisible: index < 5)
+                HomeFeatureModel(type: type, isVisible: index < 8)
             }
         }
     }

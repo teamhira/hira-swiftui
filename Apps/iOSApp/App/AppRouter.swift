@@ -47,10 +47,16 @@ public enum AppRoute: Hashable {
     case halal
     case hajjJourney
     case hajjUmrah
+    case prayerTimes
+    case tarteel
+    case tarteelRecitation(Surah)
+    case tarteelHistory
     case duaList(String)
     case duaDetail(DuaItem)
     case hadithList(String)
     case hadithDetail(HadithItem)
+    case articleList
+    case articleDetail(Article)
 }
 
 @Observable

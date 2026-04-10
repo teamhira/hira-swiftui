@@ -19,8 +19,10 @@ public struct QuranView: View {
             Color(colors.background).ignoresSafeArea()
             
             VStack(spacing: 0) {
-                // Header with Search & Audio
-                QuranHeaderView(searchQuery: $viewModel.searchQuery)
+                // Header with Search & History
+                QuranHeaderView(searchQuery: $viewModel.searchQuery, onHistoryTap: {
+                    viewModel.showingHistory = true
+                })
                 
                 // Content Switcher using Native TabView
                 TabView(selection: $viewModel.selectedBottomTab) {
@@ -38,6 +40,9 @@ public struct QuranView: View {
             
             // Custom Floating Tabs overlaying the TabView
             QuranBottomTabs(selectedTab: $viewModel.selectedBottomTab)
+        }
+        .sheet(isPresented: $viewModel.showingHistory) {
+            QuranHistoryView(viewModel: viewModel)
         }
     }
 }
