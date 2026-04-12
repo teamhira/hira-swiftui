@@ -149,3 +149,9 @@ struct HalalView: View {
     }
 }
 
+#Preview {
+    NavigationStack {
+        HalalView()
+            .environment(AppState())
+    }
+}

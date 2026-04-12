@@ -119,5 +119,9 @@ private struct ArticleHeader: View {
 }
 
 #Preview {
-    HomeView()
+    NavigationStack {
+        HomeView()
+            .environment(AppRouter())
+            .environment(AppState())
+    }
 }

@@ -9,11 +9,12 @@ import SwiftUI
 
 struct AyahOptionsSheet: View {
     let ayah: QuranAyah?
-    @Bindable var viewModel: QuranViewModel
+    @Environment(QuranViewModel.self) private var viewModel
     @Environment(\.appEnvironment) private var appEnv
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
+        @Bindable var viewModel = viewModel
         let colors = appEnv.theme.current
         NavigationStack {
             ZStack {

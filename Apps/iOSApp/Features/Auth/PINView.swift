@@ -284,3 +284,18 @@ struct ShakeEffect: GeometryEffect {
         ProjectionTransform(CGAffineTransform(translationX: 10 * sin(animatableData * .pi * 3), y: 0))
     }
 }
+#Preview("Create PIN") {
+    NavigationStack {
+        PINView(mode: .create)
+            .environment(AppRouter())
+            .environment(AppState())
+    }
+}
+
+#Preview("Unlock PIN") {
+    NavigationStack {
+        PINView(mode: .unlock)
+            .environment(AppRouter())
+            .environment(AppState())
+    }
+}

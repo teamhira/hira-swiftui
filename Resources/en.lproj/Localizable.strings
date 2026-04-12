@@ -35,6 +35,10 @@
 "quran_topic_stories_count" = "%d stories";
 "quran_topics_section" = "Topics";
 "quran_verses_count" = "%d Ayahs";
+"error_view_title" = "Oops! Something Went Wrong";
+"error_view_retry_button" = "Try Again";
+"empty_search_title" = "No Surah Found";
+"empty_search_desc" = "We couldn't find any surah matching your search. Try a different keyword.";
 
 // MARK: - Feature: Quran Search
 "quran_search_discover_title" = "Discover Quran";
@@ -725,3 +729,37 @@
 "sadaqah_info_type_hidden_desc" = "Giving without others knowing to maintain sincerity and heart's purity.";
 "common_do_label" = "DO";
 "common_dont_label" = "DON'T";
+"surah_header_order" = "ORDER %d";
+"surah_header_no" = "NO. %d";
+
+// MARK: - Juz Descriptions
+"quran_juz_desc_1" = "Contains the opening of the Quran, prayers for guidance, the beginning of the Children of Israel story, and basic Islamic laws.";
+"quran_juz_desc_2" = "Change of Qibla, commands for fasting, jihad, and the story of Prophet Ibrahim.";
+"quran_juz_desc_3" = "Affirmation of Tawhid, prohibition of usury, and dialogue with the People of the Book.";
+"quran_juz_desc_4" = "The story of the family of Imran and initial laws regarding women and marriage.";
+"quran_juz_desc_5" = "Family laws, social justice, and the prohibition of hypocrisy.";
+"quran_juz_desc_6" = "Social ethics, laws on halal-haram food, and covenants.";
+"quran_juz_desc_7" = "Dialogue with the People of the Book and strengthening of Tawhid.";
+"quran_juz_desc_8" = "Evidence of Allah's power and stories of the prophets.";
+"quran_juz_desc_9" = "The story of Prophet Musa and the laws of war.";
+"quran_juz_desc_10" = "Distribution of war booty and attitude towards hypocrites.";
+"quran_juz_desc_11" = "Repentance, stories of the prophets, and consequences of rejecting the truth.";
+"quran_juz_desc_12" = "Stories of the prophets and the beginning of the story of Prophet Yusuf.";
+"quran_juz_desc_13" = "Patience of Prophet Yusuf and the preaching of Tawhid.";
+"quran_juz_desc_14" = "Warning for those who disbelieve and the blessings of Allah.";
+"quran_juz_desc_15" = "Isra Mi'raj, social etiquette, and the story of the People of the Cave.";
+"quran_juz_desc_16" = "The story of Musa and Khidr and the preaching of Prophet Musa.";
+"quran_juz_desc_17" = "Stories of the prophets and the command for Hajj.";
+"quran_juz_desc_18" = "Characteristics of believers and the struggle of the Messenger.";
+"quran_juz_desc_19" = "The difference between truth and falsehood and the story of Prophet Sulaiman.";
+"quran_juz_desc_20" = "Stories of past nations and trials of faith.";
+"quran_juz_desc_21" = "Relationship with the People of the Book and the life of the Prophet Muhammad.";
+"quran_juz_desc_22" = "The role of the Prophet's family and evidence of resurrection.";
+"quran_juz_desc_23" = "The Day of Judgment and sincerity in worship.";
+"quran_juz_desc_24" = "Consequences of faith and the preaching of Tawhid.";
+"quran_juz_desc_25" = "Signs of Allah's power and warnings for those who disbelieve.";
+"quran_juz_desc_26" = "The story of the people of 'Ad and signs of the Last Day.";
+"quran_juz_desc_27" = "Rewards for deeds and encouragement for charity.";
+"quran_juz_desc_28" = "Social ethics, household matters, and Muslim life.";
+"quran_juz_desc_29" = "Short surahs about faith, the afterlife, and severe warnings.";
+"quran_juz_desc_30" = "Juz 'Amma: focus on the afterlife, Tawhid, and basic faith building.";

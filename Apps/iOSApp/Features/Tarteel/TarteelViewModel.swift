@@ -40,10 +40,46 @@ public final class TarteelViewModel {
     public var surahProgress: Double = 0.0
     
     public var surahs: [Surah] = [
-        Surah(id: "1", number: 1, name: "Al-Fatihah", nameArabic: "الفاتحة", nameTranslation: "The Opening", versesCount: 7, revelationPlace: "Makkah"),
-        Surah(id: "2", number: 2, name: "Al-Baqarah", nameArabic: "البقرة", nameTranslation: "The Cow", versesCount: 286, revelationPlace: "Madinah"),
-        Surah(id: "3", number: 3, name: "Ali 'Imran", nameArabic: "آل عمران", nameTranslation: "Family of Imran", versesCount: 200, revelationPlace: "Madinah"),
-        Surah(id: "114", number: 114, name: "An-Nas", nameArabic: "الناس", nameTranslation: "Mankind", versesCount: 6, revelationPlace: "Makkah")
+        Surah(
+            id: "1", 
+            number: 1, 
+            name: "Al-Fatihah", 
+            nameArabic: "الفاتحة", 
+            nameComplex: "Al-Fatihah", 
+            nameTranslation: "The Opening", 
+            versesCount: 7, 
+            revelationPlace: "Makkah"
+        ),
+        Surah(
+            id: "2", 
+            number: 2, 
+            name: "Al-Baqarah", 
+            nameArabic: "البقرة", 
+            nameComplex: "Al-Baqarah", 
+            nameTranslation: "The Cow", 
+            versesCount: 286, 
+            revelationPlace: "Madinah"
+        ),
+        Surah(
+            id: "3", 
+            number: 3, 
+            name: "Ali 'Imran", 
+            nameArabic: "آل عمران", 
+            nameComplex: "Ali 'Imran", 
+            nameTranslation: "Family of Imran", 
+            versesCount: 200, 
+            revelationPlace: "Madinah"
+        ),
+        Surah(
+            id: "114", 
+            number: 114, 
+            name: "An-Nas", 
+            nameArabic: "الناس", 
+            nameComplex: "An-Nas", 
+            nameTranslation: "Mankind", 
+            versesCount: 6, 
+            revelationPlace: "Makkah"
+        )
     ]
     
     public var history: [TarteelHistoryItem] = [

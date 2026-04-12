@@ -103,26 +103,25 @@ private struct LoginHeader: View {
     private var colors: ThemeModel { appEnv.theme.current }
     
     var body: some View {
-        VStack(spacing: 12) {
-            Image(systemName: "leaf.fill")
+        VStack(spacing: 24) {
+            Image("Icon")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 48, height: 48)
-                .foregroundColor(colors.primary)
-                .padding(14)
-                .background(Circle().fill(colors.primary.opacity(0.1)))
-                .padding(.bottom, 4)
+                .frame(width: 72, height: 72)
+                .shadow(color: colors.primary.opacity(0.1), radius: 10, y: 5)
                 .accessibilityLabel(appEnv.language.localizedString("login_logo_accessibility"))
             
-            Text(appEnv.language.localizedString("login_title_welcome"))
-                .font(TextStyle.display)
-            
-            Text(appEnv.language.localizedString("login_logo_subtitle"))
-                .font(TextStyle.footnote)
-                .foregroundColor(colors.foreground.opacity(0.5))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 60)
-                .lineSpacing(2)
+            VStack(spacing: 8) {
+                Text(appEnv.language.localizedString("login_title_welcome"))
+                    .font(TextStyle.display)
+                
+                Text(appEnv.language.localizedString("login_logo_subtitle"))
+                    .font(TextStyle.footnote)
+                    .foregroundColor(colors.foreground.opacity(0.5))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 40)
+                    .lineSpacing(2)
+            }
         }
     }
 }
@@ -260,16 +259,10 @@ private struct SocialLoginSection: View {
 
 private struct GoogleLogoView: View {
     var body: some View {
-        Image(systemName: "g.circle.fill")
+        Image("GoogleLogo")
             .resizable()
             .scaledToFit()
-            .frame(width: 22, height: 22)
-            .foregroundStyle(
-                AngularGradient(
-                    colors: [.blue, .red, .yellow, .green, .blue],
-                    center: .center
-                )
-            )
+            .frame(width: 24, height: 24)
             .accessibilityHidden(true)
     }
 }

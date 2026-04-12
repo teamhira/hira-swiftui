@@ -136,3 +136,9 @@ public struct SadaqahView: View {
         }
     }
 }
+#Preview {
+    NavigationStack {
+        SadaqahView()
+            .environment(AppState())
+    }
+}

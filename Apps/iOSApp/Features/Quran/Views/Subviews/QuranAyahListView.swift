@@ -2,14 +2,14 @@
 //  QuranAyahListView.swift
 //  Hira
 //
-//  Created by Antigravity on 08/04/26.
+//  Created by Ryuk on 08/04/26.
 //
 
 import SwiftUI
 
 struct QuranAyahListView: View {
     let surah: Surah
-    @Bindable var viewModel: QuranViewModel
+    @Environment(QuranViewModel.self) private var viewModel
     @Binding var currentSurah: Surah
     @Binding var pullUpOffset: CGFloat
     @Binding var pullDownOffset: CGFloat
@@ -34,6 +34,9 @@ struct QuranAyahListView: View {
     @State private var dragStartedAtTop = false
     @State private var dragStartedAtBottom = false
     
+    // Skeleton shimmer animation
+    @State private var shimmerOpacity: Double = 0.4
+    
     var body: some View {
         GeometryReader { outerGeo in
             ScrollViewReader { proxy in
@@ -41,7 +44,8 @@ struct QuranAyahListView: View {
                     ScrollView(showsIndicators: false) {
                         VStack(spacing: 0) {
                             // MARK: - Header
-                            QuranHeritageHeader(surah: surah)
+                            QuranHeritageHeader(surah: surah, juzNumber: viewModel.ayahs(for: surah).first?.juzNumber)
+                                .id("surah_header")
                                 .padding(.horizontal, 20)
                                 .padding(.top, 20)
                                 .padding(.bottom, (surah.number == 1 || surah.number == 9) ? 40 : 0)
@@ -51,22 +55,24 @@ struct QuranAyahListView: View {
                             }
                             
                             // MARK: - Verses
-                            LazyVStack(spacing: 0) {
+                            VStack(spacing: 0) {
                                 ForEach(viewModel.ayahs(for: surah)) { ayah in
-                                    QuranAyahCard(ayah: ayah, viewModel: viewModel)
-                                        .id(ayah.number)
+                                    if ayah.isPlaceholder {
+                                        ayahSkeleton
+                                    } else {
+                                        QuranAyahCard(ayah: ayah, viewModel: viewModel)
+                                            .id(ayah.id)
+                                    }
                                 }
                             }
                             
                             // Spacer pushes last ayah well above the floating mini player
                             Color.clear.frame(height: 180)
+                            
                             // Dedicated zero-height anchor at absolute bottom of content.
-                            // Targeting this (not the Spacer) guarantees an accurate full-mentok scroll.
                             Color.clear.frame(height: 1)
                                 .id("end_of_list")
                         }
-                        // Single GeometryReader on entire content — fires ONCE per frame,
-                        // eliminating the 'multiple times per frame' warning from LazyVStack.
                         .background(
                             GeometryReader { geo in
                                 Color.clear.preference(
@@ -79,9 +85,6 @@ struct QuranAyahListView: View {
                     .simultaneousGesture(
                         DragGesture(minimumDistance: 15)
                             .onChanged { gesture in
-                                // KEY FIX: Snapshot boundary state at the FIRST frame of a new touch.
-                                // Navigation is ONLY allowed if the list was already resting at a
-                                // boundary when the finger first touched — never from momentum carry-over.
                                 if !isUserDragging {
                                     isUserDragging = true
                                     dragStartedAtTop = atTop
@@ -90,21 +93,18 @@ struct QuranAyahListView: View {
                                 
                                 let v = gesture.translation.height
                                 
-                                // If user brings finger back toward center — cancel intent
                                 if abs(v) < 15 {
                                     isReadyToTriggerNext = false
                                     isReadyToTriggerPrev = false
                                     pullDelta = 0
                                 }
-                                // Pull DOWN → Previous Surah (Gesture is v > 0)
                                 else if v > 20 && dragStartedAtTop && atTop && currentSurah.number > 1 {
                                     pullDelta = v
                                     isReadyToTriggerPrev = pullDelta > 75
                                     isReadyToTriggerNext = false
                                 }
-                                // Pull UP → Next Surah (Gesture is v < 0)
                                 else if v < -40 && dragStartedAtBottom && atBottom && currentSurah.number < viewModel.surahs.count {
-                                    pullDelta = v // Keep raw negative value
+                                    pullDelta = v
                                     isReadyToTriggerNext = abs(pullDelta) > 110
                                     isReadyToTriggerPrev = false
                                 } else {
@@ -123,15 +123,12 @@ struct QuranAyahListView: View {
                             }
                     )
                     .onPreferenceChange(ContentFrameKey.self) { frame in
-                        // atTop: Content must be exactly at or above the top
                         atTop = frame.minY >= 0
-                        // atBottom: Content must be exactly at or below the bottom
                         atBottom = frame.maxY <= outerGeo.size.height + 1
                     }
                     
-                    // MARK: - Navigation Guidance (Transparent, Fixed Position)
+                    // Navigation Guidance
                     VStack(spacing: 0) {
-                        // TOP: Previous Surah guide — appears when pulling DOWN at top
                         if isUserDragging && dragStartedAtTop && atTop && pullDelta > 30 && currentSurah.number > 1 {
                             VStack(spacing: 6) {
                                 QuranNavigationIndicator(
@@ -151,7 +148,6 @@ struct QuranAyahListView: View {
                         
                         Spacer()
                         
-                        // BOTTOM: Next Surah guide — appears when pulling UP at bottom
                         if isUserDragging && dragStartedAtBottom && atBottom && pullDelta < -30 && currentSurah.number < viewModel.surahs.count {
                             VStack(spacing: 6) {
                                 QuranNavigationIndicator(
@@ -169,53 +165,107 @@ struct QuranAyahListView: View {
                             .transition(.opacity)
                         }
                     }
+                    .allowsHitTesting(false)
                 }
                 .background(colors.background)
                 .onAppear {
-                    // CRITICAL: onAppear fires after the view is in the hierarchy.
-                    // onChange(of: activeAyah) fires BEFORE this view exists (the picker sets
-                    // activeAyah before PageCurlView creates this new surah's view).
-                    // So we must re-check and scroll here on appear.
-                    guard let ayah = viewModel.activeAyah,
-                          currentSurah.number == surah.number,
-                          ayah.surahNumber == surah.number else { return }
+                    // Pre-fetch if needed
+                    viewModel.fetchAyahs(for: surah, language: currentLanguage)
                     
-                    scrollToAyah(ayah, proxy: proxy)
+                    // Sync active ayah to first verse if not already in this surah
+                    if viewModel.activeAyah?.surahNumber != surah.number {
+                        let ayahs = viewModel.ayahs(for: surah)
+                        if let first = ayahs.first, !first.isPlaceholder {
+                            viewModel.activeAyah = first
+                        }
+                    }
+                    
+                    // Delay slightly to allow layout to settle
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        if let ayah = viewModel.activeAyah,
+                           currentSurah.number == surah.number,
+                           ayah.surahNumber == surah.number {
+                            scrollToAyah(ayah, proxy: proxy, animated: false)
+                        } else {
+                            // Default to top (header)
+                            withAnimation(.spring()) {
+                                proxy.scrollTo("surah_header", anchor: .top)
+                            }
+                        }
+                    }
+                }
+                .onChange(of: surah) { _, newSurah in
+                    // When surah changes, immediately reset active ayah to the first verse of the new surah.
+                    let ayahs = viewModel.ayahs(for: newSurah)
+                    if let first = ayahs.first, !first.isPlaceholder {
+                        withAnimation {
+                            viewModel.activeAyah = first
+                        }
+                    }
                 }
                 .onChange(of: viewModel.activeAyah) { _, newValue in
+                    guard viewModel.autoScroll else { return }
                     guard let ayah = newValue,
                           currentSurah.number == surah.number,
                           ayah.surahNumber == surah.number else { return }
                     
-                    scrollToAyah(ayah, proxy: proxy)
+                    scrollToAyah(ayah, proxy: proxy, animated: true)
+                }
+                .onChange(of: viewModel.autoScroll) { _, newValue in
+                    if newValue, let ayah = viewModel.activeAyah,
+                       currentSurah.number == surah.number,
+                       ayah.surahNumber == surah.number {
+                        scrollToAyah(ayah, proxy: proxy, animated: true)
+                    }
+                }
+                .onChange(of: viewModel.ayahs(for: surah)) { _, newAyahs in
+                    // If we have a target active ayah that belongs to this surah,
+                    // re-scroll once real data replaces shells.
+                    if viewModel.autoScroll, let active = viewModel.activeAyah, active.surahNumber == surah.number {
+                        scrollToAyah(active, proxy: proxy, animated: true)
+                    }
+                    
+                    // NEW: If there's no active ayah in this surah yet, and we just got the real data,
+                    // auto-activate the first ayah.
+                    if viewModel.activeAyah?.surahNumber != surah.number {
+                        if let first = newAyahs.first, !first.isPlaceholder {
+                            withAnimation(.easeInOut) {
+                                viewModel.activeAyah = first
+                            }
+                        }
+                    }
                 }
             }
         }
         .coordinateSpace(name: "outer_view")
     }
     
-    // MARK: - Scroll Helper
+    // MARK: - Helpers
     
-    private func scrollToAyah(_ ayah: QuranAyah, proxy: ScrollViewProxy) {
-        if ayah.number == surah.versesCount {
-            // Delay allows LazyVStack to finish computing full content height.
-            // Without delay, "end_of_list" position is not yet calculated correctly.
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                withAnimation(.easeInOut(duration: 0.35)) {
-                    proxy.scrollTo("end_of_list", anchor: .bottom)
-                }
-            }
-        } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                withAnimation(.spring()) {
-                    proxy.scrollTo(ayah.number, anchor: .center)
-                }
+    private func scrollToAyah(_ ayah: QuranAyah, proxy: ScrollViewProxy, animated: Bool = true) {
+        let work = {
+            if ayah.number == surah.versesCount {
+                proxy.scrollTo("end_of_list", anchor: .bottom)
+            } else {
+                proxy.scrollTo(ayah.id, anchor: .center)
             }
         }
+        
+        if animated {
+            // Use slow easeInOut for "perlahan" feel as requested
+            withAnimation(.easeInOut(duration: 0.8)) { work() }
+        } else {
+            work()
+        }
     }
-
     
-    // MARK: - Helper Methods
+    private var currentLanguage: String {
+        let code = appEnv.language.selectedCode
+        if code == "system" {
+            return Locale.current.language.languageCode?.identifier ?? "en"
+        }
+        return code
+    }
     
     private func handleGestureEnd() {
         if isReadyToTriggerNext && dragStartedAtBottom {
@@ -241,17 +291,75 @@ struct QuranAyahListView: View {
         }
     }
     
+    // MARK: - Subviews
+    
+    private var ayahSkeleton: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            // Verse Header Placeholder
+            HStack {
+                RoundedRectangle(cornerRadius: 2)
+                    .fill(colors.foreground.opacity(0.04))
+                    .frame(width: 40, height: 10)
+                Spacer()
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(colors.primary.opacity(0.1))
+                    .frame(width: 60, height: 24)
+            }
+            .environment(\.layoutDirection, .leftToRight)
+            
+            // Arabic Text Placeholder
+            HStack {
+                Spacer()
+                VStack(alignment: .leading, spacing: 8) {
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(colors.foreground.opacity(0.06))
+                        .frame(width: CGFloat.random(in: 200...300), height: 32)
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(colors.foreground.opacity(0.04))
+                        .frame(width: CGFloat.random(in: 150...250), height: 32)
+                }
+            }
+            .environment(\.layoutDirection, .rightToLeft)
+            
+            // Translation/Transliteration Placeholder
+            VStack(alignment: .leading, spacing: 10) {
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(colors.primary.opacity(0.05))
+                    .frame(width: 140, height: 12)
+                
+                VStack(alignment: .leading, spacing: 6) {
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(colors.foreground.opacity(0.04))
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 12)
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(colors.foreground.opacity(0.03))
+                        .frame(width: 200, height: 12)
+                }
+            }
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 30)
+        .frame(maxWidth: .infinity)
+        .background(colors.background)
+        .redacted(reason: .placeholder)
+        .opacity(shimmerOpacity)
+        .onAppear {
+            withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                shimmerOpacity = 0.8
+            }
+        }
+    }
+    
     private var bismillahHeader: some View {
         HStack(spacing: 15) {
             lineDivider(isLeading: true).frame(maxWidth: 80)
-            
             Text("بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ")
                 .font(.custom("KFGQPC Uthman Taha Naskh", size: 24))
                 .foregroundColor(colors.foreground)
                 .multilineTextAlignment(.center)
                 .lineLimit(1)
                 .layoutPriority(1)
-            
             lineDivider(isLeading: false).frame(maxWidth: 80)
         }
         .padding(.horizontal, 20)
@@ -286,15 +394,11 @@ struct QuranAyahListView: View {
             }
         }
     }
-}
 
-// MARK: - Preference Keys
-
-/// Tracks the full content frame in a single update to avoid
-/// 'multiple times per frame' warnings from LazyVStack.
-private struct ContentFrameKey: PreferenceKey {
-    static var defaultValue: CGRect = .zero
-    static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
-        value = nextValue()
+    private struct ContentFrameKey: PreferenceKey {
+        static var defaultValue: CGRect = .zero
+        static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
+            value = nextValue()
+        }
     }
 }

@@ -30,5 +30,17 @@ public extension View {
             )
             .shadow(color: colors.foreground.opacity(0.05), radius: 10, x: 0, y: 5)
     }
+
+    /// Primary button style for Hira app.
+    func hiraPrimaryButton(colors: ThemeModel) -> some View {
+        self
+            .font(.headline.bold())
+            .foregroundColor(.white)
+            .padding(.horizontal, 32)
+            .padding(.vertical, 14)
+            .background(colors.primary)
+            .clipShape(Capsule())
+            .shadow(color: colors.primary.opacity(0.3), radius: 10, x: 0, y: 5)
+    }
 }
 

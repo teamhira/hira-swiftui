@@ -297,3 +297,10 @@ struct HijrahView: View {
              .cornerRadius(20)
     }
 }
+#Preview {
+    NavigationStack {
+        HijrahView(state: JourneyState(type: .hijrah))
+            .environment(AppRouter())
+            .environment(AppState())
+    }
+}

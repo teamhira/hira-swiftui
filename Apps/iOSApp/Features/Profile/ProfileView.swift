@@ -230,5 +230,6 @@ private struct BackgroundVisuals: View {
     NavigationStack {
         ProfileView(theme: ThemeManager())
             .environment(AppRouter())
+            .environment(AppState())
     }
 }

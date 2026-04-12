@@ -52,5 +52,13 @@
 	<false/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>QURAN_FOUNDATION_API_URL</key>
+	<string>$(QURAN_FOUNDATION_API_URL)</string>
+	<key>QURAN_FOUNDATION_OAUTH_URL</key>
+	<string>$(QURAN_FOUNDATION_OAUTH_URL)</string>
+	<key>QURAN_FOUNDATION_CLIENT_ID</key>
+	<string>$(QURAN_FOUNDATION_CLIENT_ID)</string>
+	<key>QURAN_FOUNDATION_CLIENT_SECRET</key>
+	<string>$(QURAN_FOUNDATION_CLIENT_SECRET)</string>
 </dict>
 </plist>

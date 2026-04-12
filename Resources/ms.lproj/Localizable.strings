@@ -35,6 +35,10 @@
 "quran_topic_stories_count" = "%d kisah";
 "quran_topics_section" = "Topik";
 "quran_verses_count" = "%d Ayat";
+"error_view_title" = "Alamak! Ada Masalah";
+"error_view_retry_button" = "Cuba Lagi";
+"empty_search_title" = "Surah Tidak Dijumpai";
+"empty_search_desc" = "Kami tidak menjumpai surah yang sepadan dengan carian anda. Cuba kata kunci lain.";
 
 // MARK: - Feature: Quran Search
 "quran_search_discover_title" = "Terokai Quran";
@@ -725,3 +729,37 @@
 "sadaqah_info_type_hidden_desc" = "Memberi tanpa diketahui orang lain untuk menjaga kesucian niat dan keikhlasan hati.";
 "common_do_label" = "BOLEH";
 "common_dont_label" = "TIDAK BOLEH";
+"surah_header_order" = "URUTAN %d";
+"surah_header_no" = "NO. %d";
+
+// MARK: - Juz Descriptions
+"quran_juz_desc_1" = "Mengandungi pembukaan Al-Quran, doa hidayah, serta awal kisah Bani Israil dan hukum dasar Islam.";
+"quran_juz_desc_2" = "Pertukaran kiblat, perintah puasa, jihad, dan kisah Nabi Ibrahim.";
+"quran_juz_desc_3" = "Penegasan tauhid, larangan riba, dan dialog dengan Ahli Kitab.";
+"quran_juz_desc_4" = "Kisah keluarga Imran dan hukum awal tentang wanita dan pernikahan.";
+"quran_juz_desc_5" = "Hukum keluarga, keadilan sosial, dan larangan kemunafikan.";
+"quran_juz_desc_6" = "Etika sosial, hukum makanan halal-haram, dan perjanjian.";
+"quran_juz_desc_7" = "Dialog dengan Ahli Kitab dan pengukuhan tauhid.";
+"quran_juz_desc_8" = "Bukti kekuasaan Allah dan kisah para nabi.";
+"quran_juz_desc_9" = "Kisah Nabi Musa dan hukum perang.";
+"quran_juz_desc_10" = "Pembahagian harta rampasan perang dan sikap terhadap orang munafik.";
+"quran_juz_desc_11" = "Taubat, kisah para nabi, dan kesan menolak kebenaran.";
+"quran_juz_desc_12" = "Kisah nabi-nabi dan permulaan kisah Nabi Yusuf.";
+"quran_juz_desc_13" = "Kesabaran Nabi Yusuf dan dakwah tauhid.";
+"quran_juz_desc_14" = "Amaran bagi kaum yang ingkar dan nikmat Allah.";
+"quran_juz_desc_15" = "Isra Mi’raj, adab sosial, dan kisah Ashabul Kahfi.";
+"quran_juz_desc_16" = "Kisah Musa dan Khidr serta dakwah Nabi Musa.";
+"quran_juz_desc_17" = "Kisah para nabi dan perintah ibadah haji.";
+"quran_juz_desc_18" = "Ciri orang beriman dan perjuangan rasul.";
+"quran_juz_desc_19" = "Perbezaan haq dan batil serta kisah Nabi Sulaiman.";
+"quran_juz_desc_20" = "Kisah kaum terdahulu dan ujian keimanan.";
+"quran_juz_desc_21" = "Hubungan dengan Ahli Kitab dan kehidupan Rasulullah.";
+"quran_juz_desc_22" = "Peranan keluarga Nabi dan bukti kebangkitan.";
+"quran_juz_desc_23" = "Hari kiamat dan keikhlasan ibadah.";
+"quran_juz_desc_24" = "Kesan iman dan dakwah tauhid.";
+"quran_juz_desc_25" = "Tanda kekuasaan Allah dan amaran bagi yang ingkar.";
+"quran_juz_desc_26" = "Kisah kaum ‘Ad dan tanda-tanda hari akhir.";
+"quran_juz_desc_27" = "Balasan amal dan galakan bersedekah.";
+"quran_juz_desc_28" = "Etika sosial, rumah tangga, dan kehidupan Muslim.";
+"quran_juz_desc_29" = "Surah pendek tentang iman, akhirat, dan amaran keras.";
+"quran_juz_desc_30" = "Juz ‘Amma: fokus pada akhirat, tauhid, dan pembinaan iman dasar.";

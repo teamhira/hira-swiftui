@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Observation
 
 public enum ViewState<T> {
     case idle
@@ -20,7 +21,7 @@ public class BaseViewModel {
     public var isLoading: Bool = false
     public var errorMessage: String? = nil
     
-    internal var cancellables = Set<AnyCancellable>()
+    public var cancellables = Set<AnyCancellable>() // Changed from internal to public
     
     public init() {}
 }

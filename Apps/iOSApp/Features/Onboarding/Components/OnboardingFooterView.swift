@@ -38,9 +38,9 @@ public struct OnboardingFooterView: View {
                         Capsule()
                             .fill(index == currentPage ? colors.primary : colors.primary.opacity(0.15))
                             .frame(width: index == currentPage ? 28 : 8, height: 8)
-                            .animation(.spring(response: 0.5, dampingFraction: 0.8), value: currentPage)
                     }
                 }
+                .animation(.spring(response: 0.5, dampingFraction: 0.8), value: currentPage)
                 .transition(.opacity)
             }
             
@@ -54,62 +54,48 @@ public struct OnboardingFooterView: View {
                     onNext()
                 }
             }) {
-                HStack(spacing: 12) {
+                HStack(spacing: AppSpacing.sm) {
                     Text(buttonLabel)
                         .font(TextStyle.headline.bold())
                     
                     if !isLanding && currentPage < totalPages - 1 {
                          Image(systemName: "arrow.right")
-                            .font(.headline)
+                            .font(.system(size: 16, weight: .bold))
                             .accessibilityHidden(true)
                     }
                 }
                 .foregroundColor(colors.primaryForeground)
                 .frame(maxWidth: .infinity)
                 .frame(height: 60)
-                .background(
-                    ZStack {
-                        Capsule()
-                            .fill(colors.primary)
-                        Capsule()
-                            .fill(
-                                LinearGradient(
-                                    colors: [.white.opacity(0.15), .clear],
-                                    startPoint: .top,
-                                    endPoint: .bottom
-                                )
-                            )
-                    }
-                )
-                .clipShape(Capsule())
-                .shadow(color: colors.primary.opacity(0.35), radius: 20, y: 15)
+                .background(Capsule().fill(colors.primary))
+                .shadow(color: colors.primary.opacity(0.3), radius: 15, x: 0, y: 8)
                 .padding(.horizontal, 40)
             }
             .accessibilityLabel(
                 isLanding ? appEnv.language.localizedString("onboarding_button_get_started") : 
                 (currentPage == totalPages - 1 ? appEnv.language.localizedString("onboarding_button_start") : appEnv.language.localizedString("onboarding_accessibility_button_next"))
             )
-            .animation(.interactiveSpring(), value: currentPage)
+            .animation(.interactiveSpring(response: 0.5, dampingFraction: 0.8), value: currentPage)
             
             // MARK: - Login Link (Localized)
             if !isLanding && currentPage == totalPages - 1 {
-                HStack(spacing: 6) {
+                HStack(spacing: AppSpacing.xs) {
                     Text(appEnv.language.localizedString("onboarding_login_prompt"))
                         .font(TextStyle.footnote)
                         .foregroundColor(colors.foreground.opacity(0.5))
                     
-                    Button(appEnv.language.localizedString("onboarding_login_button")) { 
-                        onLogin()
+                    Button(action: onLogin) {
+                        Text(appEnv.language.localizedString("onboarding_login_button"))
+                            .font(TextStyle.footnote.bold())
+                            .foregroundColor(colors.primary)
                     }
-                    .font(TextStyle.footnote.bold())
-                    .foregroundColor(colors.primary)
                     .accessibilityLabel(appEnv.language.localizedString("login_accessibility_signin_button"))
                 }
                 .padding(.bottom, AppSpacing.sm)
                 .transition(.opacity)
             }
         }
-        .padding(.bottom, 30)
+        .padding(.bottom, 20)
     }
 }
 

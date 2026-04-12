@@ -18,76 +18,60 @@ public struct OnboardingPageView: View {
     
     public var body: some View {
         VStack(spacing: 0) {
-            Spacer(minLength: 40)
+            Spacer(minLength: 20)
             
-            // MARK: - Refined Illustration (Balanced Scale)
+            // MARK: - Refined Illustration
             ZStack {
                 // Background Glow
                 Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: [colors.primary.opacity(0.12), colors.primary.opacity(0.01)],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
-                    .frame(width: 230, height: 230)
+                    .fill(colors.primary.opacity(0.1))
+                    .frame(width: 350)
+                    .blur(radius: 50)
                     .scaleEffect(animateItems ? 1.0 : 0.6)
-                    .blur(radius: animateItems ? 0 : 20)
                 
-                // Decorative Rings (Subtle)
-                Circle()
-                    .stroke(colors.primary.opacity(0.08), lineWidth: 1)
-                    .frame(width: 250, height: 250)
-                    .scaleEffect(animateItems ? 1.0 : 0.8)
-                
-                Image(systemName: page.systemImage)
+                Image(page.imageName)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 100, height: 100)
-                    .foregroundColor(colors.primary)
+                    .frame(width: 320, height: 320)
                     .offset(y: floatingOffset)
                     .scaleEffect(animateItems ? 1.0 : 0.8)
-                    .shadow(color: colors.primary.opacity(0.15), radius: 10, y: 8)
-                    .accessibilityLabel(page.accessibilityImage(language: appEnv.language))
+                    .shadow(color: colors.primary.opacity(0.15), radius: 30, x: 0, y: 20)
             }
-            .padding(.bottom, 60)
+            .accessibilityLabel(page.accessibilityImage(language: appEnv.language))
+            .padding(.bottom, 40)
             
-            // MARK: - Elegant & Balanced Typography
+            // MARK: - Elegant Typography
             VStack(spacing: AppSpacing.md) {
                 Text(page.title(language: appEnv.language))
                     .font(TextStyle.display) 
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, AppSpacing.lg)
+                    .padding(.horizontal, AppSpacing.xl)
                     .opacity(animateItems ? 1 : 0)
-                    .offset(y: animateItems ? 0 : 15)
+                    .offset(y: animateItems ? 0 : 20)
                     .tracking(0.5)
                 
                 Text(page.subtitle(language: appEnv.language))
                     .font(TextStyle.body)
-                    .foregroundColor(colors.foreground.opacity(0.7))
+                    .foregroundColor(colors.foreground.opacity(0.6))
                     .multilineTextAlignment(.center)
                     .lineLimit(nil)
                     .fixedSize(horizontal: false, vertical: true)
-                    .padding(.horizontal, 44)
-                    .opacity(animateItems ? 0.9 : 0)
+                    .padding(.horizontal, 40)
+                    .opacity(animateItems ? 1 : 0)
                     .offset(y: animateItems ? 0 : 20)
-                    .lineSpacing(3)
+                    .lineSpacing(4)
             }
             
-            Spacer(minLength: 120) 
+            Spacer(minLength: 80) 
         }
         .padding(.horizontal)
         .onAppear {
-            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+            withAnimation(.spring(response: 0.7, dampingFraction: 0.75)) {
                 animateItems = true
             }
             withAnimation(.easeInOut(duration: 3).repeatForever(autoreverses: true)) {
-                floatingOffset = -12
+                floatingOffset = -15
             }
-        }
-        .onDisappear {
-            animateItems = false
         }
     }
 }
@@ -97,7 +81,7 @@ public struct OnboardingPageView: View {
         page: OnboardingContent(
              titleKey: "onboarding_quran_title",
              subtitleKey: "onboarding_quran_subtitle",
-             systemImage: "book.pages.fill",
+             imageName: "OnboardingQuran",
              accessibilityTitleKey: "onboarding_quran_title",
              accessibilitySubtitleKey: "onboarding_quran_subtitle",
              accessibilityImageKey: "onboarding_accessibility_image_quran"

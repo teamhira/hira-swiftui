@@ -100,25 +100,24 @@ private struct RegisterHeader: View {
     private var colors: ThemeModel { appEnv.theme.current }
     
     var body: some View {
-        VStack(spacing: 6) {
-            Image(systemName: "leaf.fill")
+        VStack(spacing: 20) {
+            Image("Icon")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 45, height: 45)
-                .foregroundColor(colors.primary)
-                .padding(12)
-                .background(Circle().fill(colors.primary.opacity(0.08)))
-                .padding(.bottom, 2)
+                .frame(width: 64, height: 64)
+                .shadow(color: colors.primary.opacity(0.1), radius: 8, y: 4)
                 .accessibilityLabel(appEnv.language.localizedString("login_accessibility_logo"))
             
-            Text(appEnv.language.localizedString("register_title"))
-                .font(TextStyle.display)
-            
-            Text(appEnv.language.localizedString("register_subtitle"))
-                .font(TextStyle.footnote)
-                .foregroundColor(colors.foreground.opacity(0.5))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 60)
+            VStack(spacing: 6) {
+                Text(appEnv.language.localizedString("register_title"))
+                    .font(TextStyle.display)
+                
+                Text(appEnv.language.localizedString("register_subtitle"))
+                    .font(TextStyle.footnote)
+                    .foregroundColor(colors.foreground.opacity(0.5))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 60)
+            }
         }
     }
 }
@@ -288,16 +287,10 @@ private struct SocialRegisterSection: View {
 
 private struct GoogleLogoView: View {
     var body: some View {
-        Image(systemName: "g.circle.fill")
+        Image("GoogleLogo")
             .resizable()
             .scaledToFit()
-            .frame(width: 22, height: 22)
-            .foregroundStyle(
-                AngularGradient(
-                    colors: [.blue, .red, .yellow, .green, .blue],
-                    center: .center
-                )
-            )
+            .frame(width: 24, height: 24)
             .accessibilityHidden(true)
     }
 }

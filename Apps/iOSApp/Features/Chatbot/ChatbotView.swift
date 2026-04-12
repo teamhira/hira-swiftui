@@ -109,3 +109,10 @@ private struct TypingIndicator: View {
     }
 }
 
+#Preview {
+    NavigationStack {
+        ChatbotView()
+            .environment(AppRouter())
+            .environment(AppState())
+    }
+}

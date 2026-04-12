@@ -95,3 +95,9 @@ struct JournalView: View {
         }
     }
 }
+#Preview {
+    NavigationStack {
+        JournalView()
+            .environment(AppState())
+    }
+}

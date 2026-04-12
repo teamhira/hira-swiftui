@@ -102,31 +102,25 @@ private struct ForgotPasswordHeader: View {
     private var colors: ThemeModel { appEnv.theme.current }
     
     var body: some View {
-        VStack(spacing: 12) {
-            ZStack {
-                Circle()
-                    .fill(colors.primary.opacity(0.1))
-                    .frame(width: 80, height: 80)
+        VStack(spacing: 24) {
+            Image("Icon")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 72, height: 72)
+                .shadow(color: colors.primary.opacity(0.1), radius: 10, y: 5)
+                .accessibilityLabel(appEnv.language.localizedString("login_accessibility_logo"))
+            
+            VStack(spacing: 8) {
+                Text(appEnv.language.localizedString("forgot_password_title"))
+                    .font(TextStyle.display)
                 
-                Image(systemName: "lock.shield.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 38, height: 38)
-                    .foregroundColor(colors.primary)
-                    .shadow(color: colors.primary.opacity(0.2), radius: 10, y: 5)
-                    .accessibilityLabel(appEnv.language.localizedString("login_accessibility_logo"))
+                Text(appEnv.language.localizedString("forgot_password_subtitle"))
+                    .font(TextStyle.footnote)
+                    .foregroundColor(colors.foreground.opacity(0.5))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 60)
+                    .lineSpacing(3)
             }
-            .padding(.bottom, 4)
-            
-            Text(appEnv.language.localizedString("forgot_password_title"))
-                .font(TextStyle.display)
-            
-            Text(appEnv.language.localizedString("forgot_password_subtitle"))
-                .font(TextStyle.footnote)
-                .foregroundColor(colors.foreground.opacity(0.5))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 60)
-                .lineSpacing(3)
         }
     }
 }
