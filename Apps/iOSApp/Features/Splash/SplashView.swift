@@ -123,15 +123,45 @@ public struct SplashView: View {
     }
     
     private func performStartupChecks() {
-        // Multi-check (Auth, Internet, etc.)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            executeTwitterExitAnimation()
+        Task {
+            // 1. Minimum delay for animation
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
+            
+            // 2. Auth Validation Logic (Take Precedence)
+            let tokenManager = appEnv.di.tokenManager
+            let oauthService = appEnv.di.oauthService
+            
+            if tokenManager.hasUserToken {
+                // Access token is present and specifically not expired
+                print("✅ [Splash] Access token valid. Proceeding to Home.")
+                executeTwitterExitAnimation(target: .home)
+                return
+            } else if tokenManager.getUserRefreshToken() != nil {
+                // Access token is missing/expired, but refresh token exists
+                print("🔄 [Splash] Access token expired. Attempting refresh...")
+                let refreshed = await oauthService.refreshAccessToken()
+                if refreshed {
+                    executeTwitterExitAnimation(target: .home)
+                    return
+                }
+            }
+            
+            // 3. Check Onboarding (only if not logged in)
+            let hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
+            if !hasCompletedOnboarding {
+                print("ℹ️ [Splash] Onboarding not completed. Redirecting to Onboarding.")
+                executeTwitterExitAnimation(target: .onboarding)
+                return
+            }
+            
+            // 4. Default to Login (if not logged in and onboarding completed)
+            print("🚪 [Splash] No active session. Redirecting to Login.")
+            executeTwitterExitAnimation(target: .login)
         }
     }
     
-    private func executeTwitterExitAnimation() {
-        let hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
-        
+    @MainActor
+    private func executeTwitterExitAnimation(target: AppRoute) {
         // Twitter-style Zoom:
         // Step 1: Shrink slightly (Anticipation)
         withAnimation(.easeOut(duration: 0.2)) {
@@ -154,9 +184,11 @@ public struct SplashView: View {
                     appState.showSplash = false
                 }
                 
-                if !hasCompletedOnboarding {
-                    router.navigate(to: .onboarding)
+                // Navigate to the calculated target
+                if target != .home {
+                    router.navigate(to: target)
                 }
+                // If target is .home, we are already at root (MainTabView) so no navigation needed
             }
         }
     }

@@ -31,8 +31,6 @@ struct HiraApp: App {
                                     switch route {
                                     case .onboarding: OnboardingView()
                                     case .login: LoginView()
-                                    case .register: RegisterView()
-                                    case .forgotPassword: ForgotPasswordView()
                                     case .pin(let mode): PINView(mode: mode)
                                     case .editProfile: EditProfileView()
                                     case .themeSetting: ThemeSettingView()

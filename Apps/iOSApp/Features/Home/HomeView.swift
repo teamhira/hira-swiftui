@@ -91,6 +91,7 @@ public struct HomeView: View {
         .onAppear {
             withAnimation(.easeInOut(duration: 1.0)) { animateWidget = true }
         }
+        .navigationBarBackButtonHidden(true)
     }
     
     @State private var scrollOffset: CGFloat = 0

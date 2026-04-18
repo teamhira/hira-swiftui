@@ -10,13 +10,15 @@ import SwiftUI
 struct EditProfileView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.appEnvironment) private var appEnv
+    @Environment(AppState.self) private var appState
     
     // MARK: - State
-    @State private var name = "Kira"
-    @State private var username = "kira_hira"
-    @State private var email = "kira@hira.app"
-    @State private var phone = "+62 812 3456 789"
-    @State private var bio = "Mencari ridho Allah melalui teknologi dan Al-Quran."
+    @State private var name = ""
+    @State private var username = ""
+    @State private var email = ""
+    @State private var phone = ""
+    @State private var bio = ""
+    @State private var profileImageURL: String? = nil
     @State private var animateItems = false
     
     private var colors: ThemeModel { appEnv.theme.current }
@@ -34,15 +36,29 @@ struct EditProfileView: View {
                     // MARK: - 1. Profile Photo Header
                     VStack(spacing: 16) {
                         ZStack(alignment: .bottomTrailing) {
-                            Circle()
-                                .fill(LinearGradient(colors: [colors.primary, colors.accent], startPoint: .topLeading, endPoint: .bottomTrailing))
+                            if let imageURL = profileImageURL, let url = URL(string: imageURL) {
+                                AsyncImage(url: url) { image in
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                } placeholder: {
+                                    Circle().fill(colors.primary.opacity(0.1))
+                                }
                                 .frame(width: 110, height: 110)
-                                .overlay(
-                                    Image(systemName: "person.fill")
-                                        .font(.system(size: 44))
-                                        .foregroundColor(.white)
-                                )
+                                .clipShape(Circle())
+                                .overlay(Circle().stroke(colors.primary.opacity(0.1), lineWidth: 1))
                                 .shadow(color: colors.primary.opacity(0.3), radius: 15, x: 0, y: 10)
+                            } else {
+                                Circle()
+                                    .fill(LinearGradient(colors: [colors.primary, colors.accent], startPoint: .topLeading, endPoint: .bottomTrailing))
+                                    .frame(width: 110, height: 110)
+                                    .overlay(
+                                        Image(systemName: "person.fill")
+                                            .font(.system(size: 44))
+                                            .foregroundColor(.white)
+                                    )
+                                    .shadow(color: colors.primary.opacity(0.3), radius: 15, x: 0, y: 10)
+                            }
                             
                             Button(action: {}) {
                                 Circle()
@@ -124,6 +140,18 @@ struct EditProfileView: View {
             }
         }
         .onAppear {
+            // Load user data
+            if let user = appState.currentUser {
+                name = user.name ?? ""
+                email = user.email ?? ""
+                profileImageURL = user.profileImage
+                
+                // Use email as default username if not set (dummy logic for now)
+                if username.isEmpty {
+                    username = user.email?.split(separator: "@").first.map(String.init) ?? ""
+                }
+            }
+            
             withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
                 animateItems = true
             }

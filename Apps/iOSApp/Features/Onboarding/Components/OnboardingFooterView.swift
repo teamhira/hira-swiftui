@@ -13,7 +13,6 @@ public struct OnboardingFooterView: View {
     let isLanding: Bool
     let onNext: () -> Void
     let onGetStarted: () -> Void
-    let onLogin: () -> Void
     
     @Environment(\.appEnvironment) private var appEnv
     private var colors: ThemeModel { appEnv.theme.current }
@@ -76,24 +75,6 @@ public struct OnboardingFooterView: View {
                 (currentPage == totalPages - 1 ? appEnv.language.localizedString("onboarding_button_start") : appEnv.language.localizedString("onboarding_accessibility_button_next"))
             )
             .animation(.interactiveSpring(response: 0.5, dampingFraction: 0.8), value: currentPage)
-            
-            // MARK: - Login Link (Localized)
-            if !isLanding && currentPage == totalPages - 1 {
-                HStack(spacing: AppSpacing.xs) {
-                    Text(appEnv.language.localizedString("onboarding_login_prompt"))
-                        .font(TextStyle.footnote)
-                        .foregroundColor(colors.foreground.opacity(0.5))
-                    
-                    Button(action: onLogin) {
-                        Text(appEnv.language.localizedString("onboarding_login_button"))
-                            .font(TextStyle.footnote.bold())
-                            .foregroundColor(colors.primary)
-                    }
-                    .accessibilityLabel(appEnv.language.localizedString("login_accessibility_signin_button"))
-                }
-                .padding(.bottom, AppSpacing.sm)
-                .transition(.opacity)
-            }
         }
         .padding(.bottom, 20)
     }
@@ -106,6 +87,5 @@ public struct OnboardingFooterView: View {
         isLanding: false,
         onNext: {},
         onGetStarted: {},
-        onLogin: {}
     )
 }

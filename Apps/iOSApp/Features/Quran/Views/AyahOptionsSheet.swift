@@ -75,18 +75,30 @@ struct AyahOptionsSheet: View {
                         // MARK: - Secondary Options
                         VStack(spacing: 12) {
                             HStack(spacing: 12) {
-                                optionItem(title: "Add to Playlist", icon: "music.note.list", color: .blue)
-                                optionItem(title: "Bookmark", icon: "bookmark.fill", color: .orange)
+                                let isBookmarked = viewModel.isBookmarked(surah: ayah?.surahNumber ?? 0, ayah: ayah?.number ?? 0)
+                                optionItem(
+                                    title: isBookmarked ? "Bookmarked" : "Bookmark",
+                                    icon: isBookmarked ? "bookmark.fill" : "bookmark",
+                                    color: .orange,
+                                    action: {
+                                        if let ayah = ayah {
+                                            viewModel.toggleBookmark(ayah: ayah)
+                                        }
+                                        dismiss()
+                                    }
+                                )
+                                
+                                optionItem(title: "Add to Playlist", icon: "music.note.list", color: .blue, action: { dismiss() })
                             }
                             
                             HStack(spacing: 12) {
-                                optionItem(title: "Share Ayah", icon: "square.and.arrow.up", color: .purple)
-                                optionItem(title: "Ask AI", icon: "sparkles", color: .pink)
+                                optionItem(title: "Share Ayah", icon: "square.and.arrow.up", color: .purple, action: { dismiss() })
+                                optionItem(title: "Ask AI", icon: "sparkles", color: .pink, action: { dismiss() })
                             }
                             
                             HStack(spacing: 12) {
-                                optionItem(title: "Memorize", icon: "brain.head.profile", color: .green)
-                                optionItem(title: "Settings", icon: "gearshape.fill", color: .gray)
+                                optionItem(title: "Memorize", icon: "brain.head.profile", color: .green, action: { dismiss() })
+                                optionItem(title: "Settings", icon: "gearshape.fill", color: .gray, action: { dismiss() })
                             }
                         }
                         .padding(.horizontal, 20)
@@ -111,9 +123,9 @@ struct AyahOptionsSheet: View {
     }
     
     @ViewBuilder
-    private func optionItem(title: String, icon: String, color: Color) -> some View {
+    private func optionItem(title: String, icon: String, color: Color, action: @escaping () -> Void) -> some View {
         let colors = appEnv.theme.current
-        Button(action: { dismiss() }) {
+        Button(action: action) {
             VStack(spacing: 12) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 18, style: .continuous)

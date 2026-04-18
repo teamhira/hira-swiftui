@@ -8,8 +8,12 @@
 import Foundation
 
 public struct FoundationEndpoints {
+    // MARK: - Base Paths
+    public static let contentPath = "content/api/v4"
+    public static let authPath = "auth"
+
     // MARK: - OAuth
-    public static let oauthToken = "oauth2/token"
+    public static let oauthAuth = "oauth2/auth"
     
     // MARK: - Chapters (Surah)
     public static let chapters = "chapters"
@@ -103,4 +107,16 @@ public struct FoundationEndpoints {
     
     // MARK: - Search
     public static let search = "search"
+    
+    // MARK: - Bookmarks
+    public static let bookmarks = "v1/bookmarks"
+    public static let bookmarksAyahsRange = "v1/bookmarks/ayahs-range"
+    public static func bookmark(id: String) -> String { "v1/bookmarks/\(id)" }
+
+    // MARK: - Reading Sessions
+    public static let readingSessions = "v1/reading-sessions"
+
+    // MARK: - Activity Days
+    public static let activityDays = "v1/activity-days"
+    public static let activityDaysEstimateReadingTime = "v1/activity-days/estimate-reading-time"
 }

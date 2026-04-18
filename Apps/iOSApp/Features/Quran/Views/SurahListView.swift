@@ -18,14 +18,8 @@ public struct SurahListView: View {
     
     public var body: some View {
         VStack(spacing: 24) {
-            // MARK: - Last Reading Banner (Matching Juz/Bookmark Style)
-            // Using viewModel.khatamProgress for now, or you could pass specific last read data
-            JuzProgressCard(
-                progress: viewModel.khatamProgress,
-                stats: appEnv.language.localizedString("quran_last_reading"),
-                lastRead: "Al-Baqarah ayat 255" // Placeholder, should come from viewModel
-            )
-            .padding(.horizontal, 24)
+            // MARK: - Last Reading Banner
+            lastReadingBanner
             
             // MARK: - List Content
             if viewModel.isLoading && viewModel.surahs.isEmpty {
@@ -39,6 +33,7 @@ public struct SurahListView: View {
             }
         }
         .onAppear {
+            viewModel.fetchReadingSessions()
             if viewModel.surahs.isEmpty {
                 let currentLang = appEnv.language.selectedCode
                 let languageCode = currentLang == "system" 
@@ -50,6 +45,68 @@ public struct SurahListView: View {
     }
     
     // MARK: - Subviews
+    
+    @ViewBuilder
+    private var lastReadingBanner: some View {
+        if viewModel.isFetchingReadingSessions && viewModel.readingSessions.isEmpty {
+            // Skeleton loading state
+            HStack(spacing: 20) {
+                VStack(alignment: .leading, spacing: 10) {
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(colors.foreground.opacity(0.07))
+                        .frame(width: 90, height: 12)
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(colors.foreground.opacity(0.07))
+                        .frame(width: 140, height: 20)
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(colors.foreground.opacity(0.07))
+                        .frame(width: 100, height: 12)
+                }
+                Spacer()
+                Circle()
+                    .fill(colors.foreground.opacity(0.07))
+                    .frame(width: 80, height: 80)
+            }
+            .padding(24)
+            .hiraCleanCard(colors: colors, radius: 28)
+            .padding(.horizontal, 24)
+        } else if let session = viewModel.readingSessions.first,
+                  let surah = viewModel.surahs.first(where: { $0.number == session.chapterNumber }) {
+            // Progress: (verseNumber - 1) / versesCount so that ayah 1 = 0% and last ayah = 100%
+            let progress = surah.versesCount > 1
+                ? min(Double(session.verseNumber - 1) / Double(surah.versesCount - 1), 1.0)
+                : 0.0
+            LastReadingCard(surah: surah, progress: progress)
+                .padding(.horizontal, 24)
+        } else if !viewModel.isFetchingReadingSessions {
+            // No reading history yet
+            noLastReadingCard
+                .padding(.horizontal, 24)
+        }
+    }
+    
+    private var noLastReadingCard: some View {
+        HStack(spacing: 16) {
+            Image(systemName: "book.closed.fill")
+                .font(.system(size: 32))
+                .foregroundStyle(colors.primary.opacity(0.3))
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(appEnv.language.localizedString("quran_last_reading"))
+                    .font(.system(size: 13, weight: .bold))
+                    .foregroundStyle(colors.primary)
+                Text(appEnv.language.localizedString("quran_bookmark_no_last"))
+                    .font(.system(size: 15, weight: .semibold))
+                    .foregroundColor(colors.foreground)
+                Text(appEnv.language.localizedString("quran_reading_start_cta"))
+                    .font(.caption)
+                    .foregroundColor(colors.foreground.opacity(0.45))
+            }
+            Spacer()
+        }
+        .padding(20)
+        .hiraCleanCard(colors: colors, radius: 28)
+    }
     
     private func surahRow(_ surah: Surah) -> some View {
         HStack(spacing: 16) {
@@ -97,10 +154,11 @@ public struct SurahListView: View {
             ForEach(viewModel.filteredSurahs) { surah in
                 NavigationLink(value: AppRoute.surahDetail(surah)) {
                     surahRow(surah)
+                        .padding(.horizontal, 24)
                 }
             }
         }
-        .padding(.horizontal, 24)
+        .padding(.bottom, 40)
     }
     
     private var loadingState: some View {
@@ -129,10 +187,10 @@ public struct SurahListView: View {
                 }
                 .padding(16)
                 .hiraCleanCard(colors: colors, radius: 24)
+                .padding(.horizontal, 24)
                 .opacity(0.6)
             }
         }
-        .padding(.horizontal, 24)
         .overlay(
             ProgressView()
                 .padding(.top, 100)

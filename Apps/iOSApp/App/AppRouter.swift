@@ -12,8 +12,6 @@ public enum AppRoute: Hashable {
     case splash
     case onboarding
     case login
-    case register
-    case forgotPassword
     case pin(PINMode)
     case home
     case editProfile

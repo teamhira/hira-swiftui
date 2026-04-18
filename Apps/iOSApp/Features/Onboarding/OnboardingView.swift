@@ -44,8 +44,7 @@ public struct OnboardingView: View {
                         totalPages: viewModel.featurePages.count,
                         isLanding: false,
                         onNext: viewModel.nextFeaturePage,
-                        onGetStarted: completeWithSlideDown,
-                        onLogin: navigateToLogin
+                        onGetStarted: completeWithSlideDown
                     )
                 }
                 .blur(radius: isExiting ? 20 : 0)
@@ -69,8 +68,7 @@ public struct OnboardingView: View {
                         totalPages: 1,
                         isLanding: true,
                         onNext: {},
-                        onGetStarted: viewModel.startFeatures,
-                        onLogin: {}
+                        onGetStarted: viewModel.startFeatures
                     )
                 }
                 .transition(.asymmetric(
@@ -129,7 +127,7 @@ public struct OnboardingView: View {
         }
     }
     
-    // Complete flow & navigate to Home
+    // Complete flow & navigate to Login
     private func completeWithSlideDown() {
         withAnimation(.spring(response: 0.7, dampingFraction: 0.85)) {
             isExiting = true
@@ -137,13 +135,8 @@ public struct OnboardingView: View {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             viewModel.completeOnboarding()
-            router.popToRoot()
+            router.navigate(to: .login)
         }
-    }
-    
-    // Auth flow & navigate to Login
-    private func navigateToLogin() {
-        router.navigate(to: .login)
     }
 }
 

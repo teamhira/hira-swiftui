@@ -9,6 +9,20 @@
 "quran_bookmark_count" = "%d bookmark";
 "quran_bookmark_header_title" = "Bookmark Saya";
 "quran_bookmark_last" = "Terakhir: %@";
+"quran_bookmark_no_last" = "Belum ada bacaan terakhir";
+"quran_reading_start_cta" = "Mulai membaca Surah untuk melacak progres Anda";
+"quran_bookmark_has_count" = "Anda memiliki %d ayat tersimpan di koleksi";
+"bookmark_surah_ayah_count" = "%d Ayat";
+"bookmark_ayah_group_desc" = "Koleksi Ayat";
+"quran_bookmark_empty_collection" = "Mulai simpan ayat untuk membangun koleksimu";
+"quran_surah_name_fallback" = "Surah %d";
+"quran_surah_ayah_label" = "%@ Ayat %d";
+"quran_bookmark_delete_title" = "Hapus Bookmark";
+"quran_bookmark_delete_confirm" = "Apakah Anda yakin ingin menghapus bookmark untuk %@ ayat %d?";
+"quran_delete" = "Hapus";
+"quran_cancel" = "Batal";
+"quran_no_bookmarks_title" = "Belum Ada Bookmark";
+"quran_no_bookmarks_desc" = "Ayat yang kamu tandai akan muncul di sini agar mudah diakses.";
 "quran_daily_ayah_content" = "Wahai orang-orang yang beriman, mohonlah pertolongan kepada Allah dengan sabar dan sholat. Sesungguhnya Allah beserta orang-orang yang sabar.";
 "quran_daily_ayah_ref" = "Surah Al-Baqarah: 153";
 "quran_daily_button_read_more" = "Baca Selengkapnya";
@@ -318,13 +332,13 @@
 "zakat_result_label" = "Zakat yang Harus Dibayar:";
 
 // MARK: - Feature: Hadith
-"hadith_collection_title" = "Koleksi Hadith";
-"hadith_explore_btn" = "Jelajahi Hadith";
-"hadith_featured_title" = "Hadith Hari Ini";
+"hadith_collection_title" = "Koleksi Populer";
+"hadith_explore_btn" = "Jelajahi Koleksi";
+"hadith_featured_title" = "Hadits Hari Ini";
 
 // MARK: - Feature: Dua
 "dua_category_title" = "Kategori Doa";
-"dua_featured_desc" = "Doa untuk memohon perlindungan dari mara bahaya.";
+"dua_featured_desc" = "Sesungguhnya doa adalah inti dari ibadah.";
 "dua_featured_title" = "Doa Pilihan Hari Ini";
 "dua_detail_title" = "Detail Doa";
 "dua_item_translation_label" = "Terjemahan";
@@ -339,8 +353,8 @@
 "dua_category_quranic" = "Doa Al-Quran";
 "dua_category_prophetic" = "Doa Nabawi";
 "dua_featured_desc" = "Sesungguhnya doa adalah inti dari ibadah.";
-"dua_accessibility_category_item" = "Ketuk untuk melihat";
-"dua_accessibility_item" = "Ketuk untuk detail";
+"dua_accessibility_category_item" = "Kategori: %@";
+"dua_accessibility_item" = "Doa: %@. Ketuk dua kali untuk detail.";
 
 "hadith_featured_title" = "Hadits Hari Ini";
 "hadith_featured_body" = "Sesungguhnya setiap amalan itu tergantung pada niatnya, dan setiap orang akan mendapatkan apa yang ia niatkan.";
@@ -390,10 +404,6 @@
 "explore_search_accessibility_article" = "Artikel: %@. Kategori: %@. %@";
 "explore_search_accessibility_back" = "Kembali ke jelajah";
 "explore_search_accessibility_content" = "Konten ditemukan: %@, kategori %@";
-"forgot_password_accessibility_back_button" = "Tombol, kembali ke masuk";
-"forgot_password_accessibility_email_input" = "Input teks, masukkan email";
-"forgot_password_accessibility_help_button" = "Tombol, bantuan";
-"forgot_password_accessibility_send_button" = "Tombol, kirim tautan pemulihan";
 "home_accessibility_article_card" = "Kartu artikel: %@";
 "home_accessibility_bell" = "Tombol, notifikasi baru";
 "home_accessibility_feature_nav_hint" = "Ketuk dua kali untuk membuka fitur %@.";
@@ -403,16 +413,10 @@
 "home_accessibility_search" = "Input teks, cari konten";
 "journal_accessibility_entry" = "Catatan jurnal dari %@. Judul: %@. Pratinjau: %@.";
 "khatam_accessibility_progress" = "Progres khatam: %d halaman terbaca dari %d. Penyelesaian %d persen.";
-"login_accessibility_apple_button" = "Tombol, masuk dengan Apple";
-"login_accessibility_email_input" = "Input teks, masukkan email";
 "login_accessibility_forgot_password" = "Tombol, lupa kata sandi";
-"login_accessibility_google_button" = "Tombol, masuk with Google";
-"login_accessibility_guest_button" = "Tombol, masuk sebagai tamu";
+"login_accessibility_qf_button" = "Tombol, masuk dengan Quran Foundation";
 "login_accessibility_help_button" = "Tombol, bantuan";
 "login_accessibility_logo" = "Logo aplikasi Hira";
-"login_accessibility_password_input" = "Input teks, masukkan kata sandi";
-"login_accessibility_signin_button" = "Tombol, masuk ke akun";
-"login_accessibility_signup_button" = "Tombol, daftar akun baru";
 "login_logo_accessibility" = "Logo aplikasi Hira";
 "onboarding_accessibility_button_next" = "Langkah Selanjutnya";
 "onboarding_accessibility_button_skip" = "Tombol, lewati perkenalan";
@@ -436,14 +440,6 @@
 "quran_accessibility_progress_pie" = "Grafik progres, %d persen selesai";
 "quran_accessibility_surah_card" = "Kartu Surah %@, Nomor %d, %d Ayat";
 "quran_accessibility_surah_hint" = "Ketuk dua kali untuk membaca surat ini";
-"register_accessibility_apple_button" = "Tombol, daftar dengan Apple";
-"register_accessibility_confirm_password_input" = "Input teks, konfirmasi kata sandi baru";
-"register_accessibility_email_input" = "Input teks, masukkan email";
-"register_accessibility_google_button" = "Tombol, daftar melalui Google";
-"register_accessibility_login_button" = "Tombol, kembali ke masuk";
-"register_accessibility_name_input" = "Input teks, masukkan nama lengkap";
-"register_accessibility_password_input" = "Input teks, masukkan kata sandi baru";
-"register_accessibility_signup_button" = "Tombol, buat akun baru";
 "security_accessibility_biometric_toggle_hint" = "Aktifkan login biometrik menggunakan FaceID atau Fingerprint";
 "security_accessibility_danger_hint" = "PERINGATAN: Ini akan menghapus PIN keamanan dan proteksi biometrik anda secara permanen.";
 "tasbih_accessibility_beads" = "Biji tasbih interaktif";
@@ -466,8 +462,6 @@
 "onboarding_inspiration_title" = "Inspirasi Harian";
 "onboarding_landing_subtitle" = "Teman Gaya Hidup Islami Modern";
 "onboarding_landing_title" = "Hira";
-"onboarding_login_button" = "Masuk";
-"onboarding_login_prompt" = "Sudah punya akun? ";
 "onboarding_prayer_subtitle" = "Dapatkan waktu shalat yang akurat sesuai lokasi Anda.";
 "onboarding_prayer_title" = "Waktu Shalat Akurat";
 "onboarding_quran_subtitle" = "Baca Al-Quran di mana saja dan kapan saja dengan mudah.";
@@ -496,12 +490,6 @@
 "deenmode_settings_title" = "Pengaturan Fokus";
 "deenmode_title" = "Mode Fokus";
 "deenmode_toggle" = "Aktifkan Mode Fokus";
-"forgot_password_button_help" = "Butuh Bantuan?";
-"forgot_password_button_send" = "Kirim Tautan";
-"forgot_password_field_email" = "Email";
-"forgot_password_footer_back" = "Kembali ke Masuk";
-"forgot_password_subtitle" = "Masukkan email Anda untuk menerima tautan pemulihan.";
-"forgot_password_title" = "Lupa Kata Sandi";
 "hajj_checklist_title" = "Daftar Persiapan";
 "hajj_tracking_desc" = "Informasi persiapan dan perjalanan.";
 "hajj_tracking_title" = "Pantau Perjalanan Haji";
@@ -533,18 +521,10 @@
 "language_title_choose" = "Bahasa Aplikasi";
 "location_permission_desc" = "Kami membutuhkan lokasi Anda untuk memberikan arah Kiblat yang akurat dan fitur lokal lainnya.";
 "location_permission_title" = "Akses Lokasi Diperlukan";
-"login_button_apple" = "Masuk dengan Apple";
 "login_button_forgot_password" = "Lupa Kata Sandi?";
-"login_button_google" = "Masuk dengan Google";
-"login_button_guest" = "Lanjutkan sebagai Tamu";
+"login_button_qf" = "Quran Foundation";
 "login_button_help" = "Butuh Bantuan?";
-"login_button_signin" = "Masuk";
-"login_divider_social" = "Atau lanjutkan dengan";
-"login_email_placeholder" = "Masukkan email Anda";
-"login_footer_signup_button" = "Daftar";
-"login_footer_signup_prompt" = "Belum punya akun? ";
 "login_logo_subtitle" = "Pendamping Gaya Hidup Islami";
-"login_password_placeholder" = "Masukkan kata sandi Anda";
 "login_title_welcome" = "Selamat Datang";
 "mosque_about_title" = "Tentang Masjid Ini";
 "mosque_count_suffix" = "masjid";
@@ -584,6 +564,10 @@
 "profile_menu_edit_profile" = "Edit Profil";
 "profile_menu_language" = "Bahasa Aplikasi";
 "profile_menu_logout" = "Keluar";
+"logout_alert_title" = "Konfirmasi Keluar";
+"logout_alert_message" = "Apakah Anda yakin ingin keluar? Anda perlu masuk kembali untuk mengakses data Anda.";
+"logout_button_confirm" = "Keluar";
+"logout_button_cancel" = "Batal";
 "profile_menu_security" = "Keamanan Identitas";
 "profile_menu_theme" = "Tema Aplikasi";
 "profile_menu_version" = "Versi Aplikasi";
@@ -605,19 +589,6 @@
 "qibla_permission_settings_button" = "Buka Pengaturan";
 "qibla_theme_hint" = "Geser untuk mengganti tema kompas";
 "qibla_theme_label" = "Theme %d";
-"register_button_apple" = "Daftar dengan Apple";
-"register_button_google" = "Daftar dengan Google";
-"register_button_help" = "Butuh Bantuan?";
-"register_button_signup" = "Daftar Sekarang";
-"register_divider_social" = "Atau daftar dengan";
-"register_field_confirm_password" = "Konfirmasi Kata Sandi";
-"register_field_email" = "Alamat Email";
-"register_field_name" = "Nama Lengkap";
-"register_field_password" = "Kata Sandi";
-"register_footer_login_button" = "Masuk";
-"register_footer_login_prompt" = "Sudah punya akun? ";
-"register_subtitle" = "Mulai perjalanan ruhani Anda bersama Hira.";
-"register_title" = "Buat Akun";
 "search_daily_deen_title" = "Deen Harian";
 "search_feature_achievements" = "Pencapaian";
 "search_feature_deen_mode" = "Mode Deen";

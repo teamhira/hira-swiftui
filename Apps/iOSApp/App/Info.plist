@@ -60,5 +60,23 @@
 	<string>$(QURAN_FOUNDATION_CLIENT_ID)</string>
 	<key>QURAN_FOUNDATION_CLIENT_SECRET</key>
 	<string>$(QURAN_FOUNDATION_CLIENT_SECRET)</string>
+	<key>QURAN_FOUNDATION_REDIRECT_URI</key>
+	<string>$(QURAN_FOUNDATION_REDIRECT_URI)</string>
+	<key>HIRA_BACKEND_URL</key>
+	<string>$(HIRA_BACKEND_URL)</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>dev.achmdndy.hiraapp</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>hira</string>
+				<string>dev.achmdndy.hiraapp</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

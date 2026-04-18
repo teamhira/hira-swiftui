@@ -59,6 +59,7 @@ struct QuranAyahListView: View {
                                 ForEach(viewModel.ayahs(for: surah)) { ayah in
                                     if ayah.isPlaceholder {
                                         ayahSkeleton
+                                            .id(ayah.id)
                                     } else {
                                         QuranAyahCard(ayah: ayah, viewModel: viewModel)
                                             .id(ayah.id)
@@ -203,13 +204,19 @@ struct QuranAyahListView: View {
                         }
                     }
                 }
-                .onChange(of: viewModel.activeAyah) { _, newValue in
-                    guard viewModel.autoScroll else { return }
+                .onChange(of: viewModel.activeAyah) { oldValue, newValue in
                     guard let ayah = newValue,
                           currentSurah.number == surah.number,
                           ayah.surahNumber == surah.number else { return }
                     
-                    scrollToAyah(ayah, proxy: proxy, animated: true)
+                    // Always scroll if auto-scroll is on
+                    if viewModel.autoScroll {
+                        scrollToAyah(ayah, proxy: proxy, animated: true)
+                    } 
+                    // Also scroll if it's a distinct new selection (not a shell-to-real update)
+                    else if oldValue?.id != newValue?.id {
+                        scrollToAyah(ayah, proxy: proxy, animated: true)
+                    }
                 }
                 .onChange(of: viewModel.autoScroll) { _, newValue in
                     if newValue, let ayah = viewModel.activeAyah,
@@ -221,7 +228,7 @@ struct QuranAyahListView: View {
                 .onChange(of: viewModel.ayahs(for: surah)) { _, newAyahs in
                     // If we have a target active ayah that belongs to this surah,
                     // re-scroll once real data replaces shells.
-                    if viewModel.autoScroll, let active = viewModel.activeAyah, active.surahNumber == surah.number {
+                    if let active = viewModel.activeAyah, active.surahNumber == surah.number {
                         scrollToAyah(active, proxy: proxy, animated: true)
                     }
                     
