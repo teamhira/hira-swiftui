@@ -1,7 +1,7 @@
 # Hira (The Quran Companion)
 
 <p align="center">
-  <img src="Resources/SharedAssets.xcassets/Images/Icon.imageset/Icon.png" alt="Hira App Icon" width="128" height="128">
+  <img src="Resources/SharedAssets.xcassets/Images/AppIcon.appiconset/AppIcon.png" alt="Hira App Icon" width="128" height="128">
 </p>
 
 Hira is a premium, high-fidelity Al-Quran companion for iOS, crafted with modern SwiftUI to provide a distraction-free, spiritual experience. Designed with a focus on sophisticated glassmorphic aesthetics, modular architecture, and cinematic animations, Hira bridges the gap between traditional scripture and modern digital life.
