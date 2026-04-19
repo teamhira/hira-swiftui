@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SurahPickerSheet: View {
     @Binding var currentSurah: Surah
-    let viewModel: QuranViewModel
+    @Binding var currentPage: PageItem
+    @Environment(QuranViewModel.self) private var viewModel
     @Environment(\.appEnvironment) private var appEnv
     @Environment(\.dismiss) private var dismiss
     @State private var searchText = ""
@@ -73,9 +74,16 @@ struct SurahPickerSheet: View {
             }
             .toolbarBackground(.hidden, for: .navigationBar)
             .navigationDestination(item: $selectedSurahForAyah) { surah in
-                AyahPickerView(surah: surah, viewModel: viewModel) { selectedAyah in
-                    viewModel.activeAyah = selectedAyah
-                    currentSurah = surah
+                AyahPickerView(surah: surah) { selectedAyah in
+                    withAnimation(.spring()) {
+                        viewModel.activeAyah = selectedAyah
+                        currentSurah = surah
+                        
+                        // Handle Mushaf mode page jump
+                        if let page = selectedAyah.pageNumber {
+                            currentPage = PageItem(number: page)
+                        }
+                    }
                     dismiss()
                 }
             }
@@ -86,7 +94,7 @@ struct SurahPickerSheet: View {
 
 struct AyahPickerView: View {
     let surah: Surah
-    let viewModel: QuranViewModel
+    @Environment(QuranViewModel.self) private var viewModel
     let onSelect: (QuranAyah) -> Void
     @Environment(\.appEnvironment) private var appEnv
     @Environment(\.dismiss) private var dismiss
@@ -115,35 +123,53 @@ struct AyahPickerView: View {
                     }
                     .padding(.top, 24)
                     
-                    // Premium Grid
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 5), spacing: 12) {
-                        ForEach(viewModel.ayahs(for: surah)) { ayah in
-                            Button(action: {
-                                onSelect(ayah)
-                            }) {
-                                Text("\(ayah.number)")
-                                    .font(.system(size: 16, weight: .bold, design: .rounded))
-                                    .foregroundColor(viewModel.activeAyah?.id == ayah.id ? colors.background : colors.foreground)
-                                    .frame(maxWidth: .infinity)
-                                    .frame(height: 54)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 16)
-                                            .fill(viewModel.activeAyah?.id == ayah.id ? colors.primary : colors.primary.opacity(0.06))
-                                    )
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 16)
-                                            .stroke(colors.primary.opacity(0.1), lineWidth: 1)
-                                    )
+                    // Grid loading state
+                    if viewModel.isAyahsLoading(for: surah) && viewModel.ayahCache[surah.number] == nil {
+                        VStack(spacing: 12) {
+                            ProgressView()
+                            Text("Loading verses...")
+                                .font(.system(size: 13))
+                                .foregroundColor(colors.primary.opacity(0.6))
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.top, 40)
+                    } else {
+                        // Premium Grid
+                        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 5), spacing: 12) {
+                            ForEach(viewModel.ayahs(for: surah)) { ayah in
+                                Button(action: {
+                                    onSelect(ayah)
+                                }) {
+                                    Text("\(ayah.number)")
+                                        .font(.system(size: 16, weight: .bold, design: .rounded))
+                                        .foregroundColor(viewModel.activeAyah?.id == ayah.id ? colors.background : colors.foreground)
+                                        .frame(maxWidth: .infinity)
+                                        .frame(height: 54)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .fill(viewModel.activeAyah?.id == ayah.id ? colors.primary : colors.primary.opacity(0.06))
+                                        )
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .stroke(colors.primary.opacity(0.1), lineWidth: 1)
+                                        )
+                                }
+                                .disabled(ayah.isPlaceholder)
                             }
                         }
+                        .padding(.horizontal, 24)
+                        .padding(.bottom, 40)
                     }
-                    .padding(.horizontal, 24)
-                    .padding(.bottom, 40)
                 }
             }
         }
         .navigationTitle(surah.name)
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
+        .onAppear {
+            if viewModel.ayahCache[surah.number] == nil {
+                viewModel.fetchAyahs(for: surah)
+            }
+        }
     }
 }

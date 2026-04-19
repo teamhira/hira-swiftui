@@ -10,10 +10,12 @@ import SwiftUI
 struct ProfileView: View {
     @Environment(\.appEnvironment) private var appEnv
     @Environment(AppRouter.self) private var router
+    @Environment(AppState.self) private var appState
     
     // MARK: - State & Animation
     @State private var animateBackground = false
     @State private var scrollOffset: CGFloat = 0
+    @State private var showLogoutAlert = false
     @Bindable var theme: ThemeManager
     
     private let headerThreshold: CGFloat = 120
@@ -40,11 +42,11 @@ struct ProfileView: View {
                             .accessibilityLabel(appEnv.language.localizedString("profile_accessibility_avatar"))
                         
                         VStack(spacing: 6) {
-                            Text(appEnv.language.localizedString("profile_field_name"))
+                            Text(appState.currentUser?.name ?? appEnv.di.tokenManager.getUserName() ?? appEnv.language.localizedString("profile_field_name"))
                                 .font(.system(size: 28, weight: .bold, design: .rounded))
                                 .foregroundColor(colors.foreground)
                             
-                            Text(appEnv.language.localizedString("profile_field_email"))
+                            Text(appState.currentUser?.email ?? appEnv.di.tokenManager.getUserEmail() ?? appEnv.language.localizedString("profile_field_email"))
                                 .font(.subheadline.weight(.medium))
                                 .foregroundColor(colors.foreground.opacity(0.4))
                                 .padding(.horizontal, 16)
@@ -103,7 +105,7 @@ struct ProfileView: View {
                         }
                         
                         // Action: Logout
-                        Button(action: { }) {
+                        Button(action: { showLogoutAlert = true }) {
                             Text(appEnv.language.localizedString("profile_menu_logout"))
                                 .font(.headline)
                                 .foregroundColor(.red)
@@ -120,6 +122,14 @@ struct ProfileView: View {
                 }
             }
             .coordinateSpace(name: "SCROLL")
+            .alert(appEnv.language.localizedString("logout_alert_title"), isPresented: $showLogoutAlert) {
+                Button(appEnv.language.localizedString("logout_button_confirm"), role: .destructive) {
+                    handleLogout()
+                }
+                Button(appEnv.language.localizedString("logout_button_cancel"), role: .cancel) { }
+            } message: {
+                Text(appEnv.language.localizedString("logout_alert_message"))
+            }
             
             // MARK: - Custom Navigation Bar (RELIABLE)
             VStack(spacing: 0) {
@@ -129,7 +139,7 @@ struct ProfileView: View {
                     
                     Spacer()
                     
-                    Text(appEnv.language.localizedString("profile_field_name"))
+                    Text(appState.currentUser?.name ?? appEnv.di.tokenManager.getUserName() ?? appEnv.language.localizedString("profile_field_name"))
                         .font(.headline.bold())
                         .foregroundColor(colors.foreground)
                         .opacity(getToolbarTitleOpacity())
@@ -174,6 +184,18 @@ struct ProfileView: View {
             Image(systemName: "person.fill")
                 .font(.system(size: 40))
                 .foregroundColor(.white)
+        }
+    }
+    
+    private func handleLogout() {
+        Task {
+            await appEnv.di.oauthService.logout()
+            await MainActor.run {
+                appState.currentUser = nil
+                appState.isLoggedIn = false
+                router.popToRoot()
+                router.navigate(to: .login)
+            }
         }
     }
     
@@ -230,5 +252,6 @@ private struct BackgroundVisuals: View {
     NavigationStack {
         ProfileView(theme: ThemeManager())
             .environment(AppRouter())
+            .environment(AppState())
     }
 }

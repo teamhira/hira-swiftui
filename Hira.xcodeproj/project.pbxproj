@@ -37,6 +37,14 @@
 			);
 			target = 4FA88A452F7EA96900CC5392 /* Hira */;
 		};
+		4FEC34472F88D2B600DC23A6 /* Exceptions for "Config" folder in "Hira" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Config.example.xcconfig,
+				Config.xcconfig,
+			);
+			target = 4FA88A452F7EA96900CC5392 /* Hira */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -56,6 +64,14 @@
 		4FA885AB2F7E43FA00CC5392 /* Resources */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		4FEC34462F88D2AF00DC23A6 /* Config */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4FEC34472F88D2B600DC23A6 /* Exceptions for "Config" folder in "Hira" target */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -88,6 +104,7 @@
 		4FA884642F7E24AF00CC5392 = {
 			isa = PBXGroup;
 			children = (
+				4FEC34462F88D2AF00DC23A6 /* Config */,
 				4FA884992F7E251900CC5392 /* Shared */,
 				4FA8846E2F7E24AF00CC5392 /* Products */,
 				4FA884A52F7E26C900CC5392 /* Apps */,
@@ -124,6 +141,7 @@
 				4FA884992F7E251900CC5392 /* Shared */,
 				4FA884A52F7E26C900CC5392 /* Apps */,
 				4FA885AB2F7E43FA00CC5392 /* Resources */,
+				4FEC34462F88D2AF00DC23A6 /* Config */,
 			);
 			name = Hira;
 			packageProductDependencies = (
@@ -401,10 +419,12 @@
 		};
 		4FA88A662F7EA96E00CC5392 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 4FEC34462F88D2AF00DC23A6 /* Config */;
+			baseConfigurationReferenceRelativePath = Config.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = Apps/iOSApp/App/HiraApp.swift;
@@ -443,7 +463,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = Apps/iOSApp/App/HiraApp.swift;

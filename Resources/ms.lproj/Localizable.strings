@@ -9,6 +9,20 @@
 "quran_bookmark_count" = "%d bookmark";
 "quran_bookmark_header_title" = "Bookmark Saya";
 "quran_bookmark_last" = "Terakhir: %@";
+"quran_bookmark_no_last" = "Belum ada bacaan terakhir";
+"quran_reading_start_cta" = "Mula membaca Surah untuk menjejak kemajuan anda";
+"quran_bookmark_has_count" = "Anda mempunyai %d ayat tersimpan di koleksi";
+"bookmark_surah_ayah_count" = "%d Ayat";
+"bookmark_ayah_group_desc" = "Koleksi Ayat";
+"quran_bookmark_empty_collection" = "Mula simpan ayat untuk membina koleksi anda";
+"quran_surah_name_fallback" = "Surah %d";
+"quran_surah_ayah_label" = "%@ Ayat %d";
+"quran_bookmark_delete_title" = "Padam Bookmark";
+"quran_bookmark_delete_confirm" = "Adakah anda pasti mahu memadam bookmark untuk %@ ayat %d?";
+"quran_delete" = "Padam";
+"quran_cancel" = "Batal";
+"quran_no_bookmarks_title" = "Tiada Bookmark Lagi";
+"quran_no_bookmarks_desc" = "Ayat yang anda tanda akan muncul di sini untuk akses mudah.";
 "quran_daily_ayah_content" = "Wahai orang-orang yang beriman, mintalah pertolongan dengan sabar dan solat. Sesungguhnya Allah bersama orang-orang yang sabar.";
 "quran_daily_ayah_ref" = "Surah Al-Baqarah: 153";
 "quran_daily_button_read_more" = "Baca Lagi";
@@ -35,6 +49,10 @@
 "quran_topic_stories_count" = "%d kisah";
 "quran_topics_section" = "Topik";
 "quran_verses_count" = "%d Ayat";
+"error_view_title" = "Alamak! Ada Masalah";
+"error_view_retry_button" = "Cuba Lagi";
+"empty_search_title" = "Surah Tidak Dijumpai";
+"empty_search_desc" = "Kami tidak menjumpai surah yang sepadan dengan carian anda. Cuba kata kunci lain.";
 
 // MARK: - Feature: Quran Search
 "quran_search_discover_title" = "Terokai Quran";
@@ -314,13 +332,13 @@
 "zakat_result_label" = "Zakat yang Perlu Dibayar:";
 
 // MARK: - Feature: Hadith
-"hadith_collection_title" = "Koleksi Hadis";
-"hadith_explore_btn" = "Teroka Hadis";
+"hadith_collection_title" = "Koleksi Popular";
+"hadith_explore_btn" = "Terokai Koleksi";
 "hadith_featured_title" = "Hadis Hari Ini";
 
 // MARK: - Feature: Dua
 "dua_category_title" = "Kategori Doa";
-"dua_featured_desc" = "Doa untuk memohon perlindungan daripada mara bahaya.";
+"dua_featured_desc" = "Sesungguhnya doa adalah inti ibadah.";
 "dua_featured_title" = "Doa Pilihan Hari Ini";
 "dua_detail_title" = "Butiran Doa";
 "dua_item_translation_label" = "Terjemahan";
@@ -335,8 +353,8 @@
 "dua_category_quranic" = "Doa Al-Quran";
 "dua_category_prophetic" = "Doa Nabawi";
 "dua_featured_desc" = "Sesungguhnya doa adalah inti ibadah.";
-"dua_accessibility_category_item" = "Ketik untuk lihat";
-"dua_accessibility_item" = "Ketik untuk butiran";
+"dua_accessibility_category_item" = "Kategori: %@";
+"dua_accessibility_item" = "Doa: %@. Ketuk dua kali untuk butiran.";
 
 "hadith_featured_title" = "Hadis Hari Ini";
 "hadith_featured_body" = "Bahawasanya segala amalan itu adalah dengan niat, dan setiap orang hanya akan mendapat apa yang dia niatkan.";
@@ -386,10 +404,6 @@
 "explore_search_accessibility_article" = "Artikel: %@. Kategori: %@. %@";
 "explore_search_accessibility_back" = "Kembali ke teroka";
 "explore_search_accessibility_content" = "Kandungan dijumpai: %@, kategori %@";
-"forgot_password_accessibility_back_button" = "Butang, kembali ke log masuk";
-"forgot_password_accessibility_email_input" = "Input teks, masukkan emel";
-"forgot_password_accessibility_help_button" = "Butang, bantuan";
-"forgot_password_accessibility_send_button" = "Butang, hantar pautan pemulihan";
 "home_accessibility_article_card" = "Kad artikel: %@";
 "home_accessibility_bell" = "Butang, notifikasi baharu";
 "home_accessibility_feature_nav_hint" = "Ketuk dua kali untuk membuka ciri %@.";
@@ -399,16 +413,10 @@
 "home_accessibility_search" = "Input teks, cari kandungan";
 "journal_accessibility_entry" = "Rekod jurnal dari %@. Tajuk: %@. Pratonton: %@.";
 "khatam_accessibility_progress" = "Kemajuan khatam: %d halaman dibaca daripada %d. Penyelesaian %d peratus.";
-"login_accessibility_apple_button" = "Butang, log masuk dengan Apple";
-"login_accessibility_email_input" = "Input teks, masukkan emel";
 "login_accessibility_forgot_password" = "Butang, lupa kata laluan";
-"login_accessibility_google_button" = "Butang, log masuk dengan Google";
-"login_accessibility_guest_button" = "Butang, masuk sebagai tetamu";
+"login_accessibility_qf_button" = "Butang, log masuk dengan Quran Foundation";
 "login_accessibility_help_button" = "Butang, bantuan";
 "login_accessibility_logo" = "Logo aplikasi Hira";
-"login_accessibility_password_input" = "Input teks, masukkan kata laluan";
-"login_accessibility_signin_button" = "Butang, log masuk ke akaun";
-"login_accessibility_signup_button" = "Butang, daftar akaun baharu";
 "login_logo_accessibility" = "Logo aplikasi Hira";
 "onboarding_accessibility_button_next" = "Langkah Seterusnya";
 "onboarding_accessibility_button_skip" = "Butang, langkau pengenalan";
@@ -432,14 +440,6 @@
 "quran_accessibility_progress_pie" = "Carta kemajuan, %d peratus selesai";
 "quran_accessibility_surah_card" = "Kad Surah %@, Nombor %d, %d Ayat";
 "quran_accessibility_surah_hint" = "Ketik dua kali untuk membaca surah ini";
-"register_accessibility_apple_button" = "Butang, daftar dengan Apple";
-"register_accessibility_confirm_password_input" = "Input teks, sahkan kata laluan baharu";
-"register_accessibility_email_input" = "Input teks, masukkan emel";
-"register_accessibility_google_button" = "Butang, daftar melalui Google";
-"register_accessibility_login_button" = "Butang, kembali ke log masuk";
-"register_accessibility_name_input" = "Input teks, masukkan nama penuh";
-"register_accessibility_password_input" = "Input teks, masukkan kata laluan baharu";
-"register_accessibility_signup_button" = "Butang, buat akaun baharu";
 "security_accessibility_biometric_toggle_hint" = "Aktifkan log masuk biometrik menggunakan FaceID atau Fingerprint";
 "security_accessibility_danger_hint" = "AMARAN: Ini akan memadam PIN keselamatan dan proteksi biometrik anda secara kekal.";
 "tasbih_accessibility_beads" = "Biji tasbih interaktif";
@@ -462,8 +462,6 @@
 "onboarding_inspiration_title" = "Inspirasi Harian";
 "onboarding_landing_subtitle" = "Teman Gaya Hidup Islami Moden";
 "onboarding_landing_title" = "Hira";
-"onboarding_login_button" = "Log Masuk";
-"onboarding_login_prompt" = "Sudah mempunyai akaun? ";
 "onboarding_prayer_subtitle" = "Dapatkan waktu solat yang tepat mengikut lokasi anda.";
 "onboarding_prayer_title" = "Waktu Solat Tepat";
 "onboarding_quran_subtitle" = "Baca Al-Quran di mana sahaja dan bila-bila masa dengan mudah.";
@@ -492,12 +490,6 @@
 "deenmode_settings_title" = "Tetapan Fokus";
 "deenmode_title" = "Mod Fokus";
 "deenmode_toggle" = "Aktifkan Mod Fokus";
-"forgot_password_button_help" = "Perlu Bantuan?";
-"forgot_password_button_send" = "Hantar Pautan";
-"forgot_password_field_email" = "Emel";
-"forgot_password_footer_back" = "Kembali ke Log Masuk";
-"forgot_password_subtitle" = "Masukkan emel anda untuk menerima pautan pemulihan.";
-"forgot_password_title" = "Lupa Kata Laluan";
 "hajj_checklist_title" = "Senarai Persediaan";
 "hajj_tracking_desc" = "Maklumat persediaan dan perjalanan.";
 "hajj_tracking_title" = "Pantau Perjalanan Haji";
@@ -529,18 +521,10 @@
 "language_title_choose" = "Bahasa Aplikasi";
 "location_permission_desc" = "Kami memerlukan lokasi anda untuk memberikan arah Kiblat yang tepat dan ciri lokal lain.";
 "location_permission_title" = "Akses Lokasi Diperlukan";
-"login_button_apple" = "Log Masuk dengan Apple";
 "login_button_forgot_password" = "Lupa Kata Laluan?";
-"login_button_google" = "Log Masuk dengan Google";
-"login_button_guest" = "Lanjutkan sebagai Tetamu";
+"login_button_qf" = "Quran Foundation";
 "login_button_help" = "Perlu Bantuan?";
-"login_button_signin" = "Log Masuk";
-"login_divider_social" = "Atau lanjutkan dengan";
-"login_email_placeholder" = "Masukkan emel anda";
-"login_footer_signup_button" = "Daftar";
-"login_footer_signup_prompt" = "Belum mempunyai akaun? ";
 "login_logo_subtitle" = "Pendamping Gaya Hidup Islami";
-"login_password_placeholder" = "Masukkan kata laluan anda";
 "login_title_welcome" = "Selamat Datang";
 "mosque_about_title" = "Tentang Masjid Ini";
 "mosque_count_suffix" = "masjid";
@@ -580,6 +564,10 @@
 "profile_menu_edit_profile" = "Edit Profil";
 "profile_menu_language" = "Bahasa Aplikasi";
 "profile_menu_logout" = "Log Keluar";
+"logout_alert_title" = "Pengesahan Log Keluar";
+"logout_alert_message" = "Adakah anda pasti ingin log keluar? Anda perlu log masuk semula untuk mengakses data anda.";
+"logout_button_confirm" = "Log Keluar";
+"logout_button_cancel" = "Batal";
 "profile_menu_security" = "Keselamatan Identiti";
 "profile_menu_theme" = "Tema Aplikasi";
 "profile_menu_version" = "Versi Aplikasi";
@@ -601,19 +589,6 @@
 "qibla_permission_settings_button" = "Buka Tetapan";
 "qibla_theme_hint" = "Leret untuk mengganti tema kompas";
 "qibla_theme_label" = "Tema %d";
-"register_button_apple" = "Daftar dengan Apple";
-"register_button_google" = "Daftar dengan Google";
-"register_button_help" = "Perlu Bantuan?";
-"register_button_signup" = "Daftar Sekarang";
-"register_divider_social" = "Atau daftar dengan";
-"register_field_confirm_password" = "Sahkan Kata Laluan";
-"register_field_email" = "Alamat Emel";
-"register_field_name" = "Nama Penuh";
-"register_field_password" = "Kata Laluan";
-"register_footer_login_button" = "Log Masuk";
-"register_footer_login_prompt" = "Sudah mempunyai akaun? ";
-"register_subtitle" = "Mulakan perjalanan rohani anda bersama Hira.";
-"register_title" = "Buat Akaun";
 "search_daily_deen_title" = "Deen Harian";
 "search_feature_achievements" = "Pencapaian";
 "search_feature_deen_mode" = "Mod Deen";
@@ -725,3 +700,37 @@
 "sadaqah_info_type_hidden_desc" = "Memberi tanpa diketahui orang lain untuk menjaga kesucian niat dan keikhlasan hati.";
 "common_do_label" = "BOLEH";
 "common_dont_label" = "TIDAK BOLEH";
+"surah_header_order" = "URUTAN %d";
+"surah_header_no" = "NO. %d";
+
+// MARK: - Juz Descriptions
+"quran_juz_desc_1" = "Mengandungi pembukaan Al-Quran, doa hidayah, serta awal kisah Bani Israil dan hukum dasar Islam.";
+"quran_juz_desc_2" = "Pertukaran kiblat, perintah puasa, jihad, dan kisah Nabi Ibrahim.";
+"quran_juz_desc_3" = "Penegasan tauhid, larangan riba, dan dialog dengan Ahli Kitab.";
+"quran_juz_desc_4" = "Kisah keluarga Imran dan hukum awal tentang wanita dan pernikahan.";
+"quran_juz_desc_5" = "Hukum keluarga, keadilan sosial, dan larangan kemunafikan.";
+"quran_juz_desc_6" = "Etika sosial, hukum makanan halal-haram, dan perjanjian.";
+"quran_juz_desc_7" = "Dialog dengan Ahli Kitab dan pengukuhan tauhid.";
+"quran_juz_desc_8" = "Bukti kekuasaan Allah dan kisah para nabi.";
+"quran_juz_desc_9" = "Kisah Nabi Musa dan hukum perang.";
+"quran_juz_desc_10" = "Pembahagian harta rampasan perang dan sikap terhadap orang munafik.";
+"quran_juz_desc_11" = "Taubat, kisah para nabi, dan kesan menolak kebenaran.";
+"quran_juz_desc_12" = "Kisah nabi-nabi dan permulaan kisah Nabi Yusuf.";
+"quran_juz_desc_13" = "Kesabaran Nabi Yusuf dan dakwah tauhid.";
+"quran_juz_desc_14" = "Amaran bagi kaum yang ingkar dan nikmat Allah.";
+"quran_juz_desc_15" = "Isra Mi’raj, adab sosial, dan kisah Ashabul Kahfi.";
+"quran_juz_desc_16" = "Kisah Musa dan Khidr serta dakwah Nabi Musa.";
+"quran_juz_desc_17" = "Kisah para nabi dan perintah ibadah haji.";
+"quran_juz_desc_18" = "Ciri orang beriman dan perjuangan rasul.";
+"quran_juz_desc_19" = "Perbezaan haq dan batil serta kisah Nabi Sulaiman.";
+"quran_juz_desc_20" = "Kisah kaum terdahulu dan ujian keimanan.";
+"quran_juz_desc_21" = "Hubungan dengan Ahli Kitab dan kehidupan Rasulullah.";
+"quran_juz_desc_22" = "Peranan keluarga Nabi dan bukti kebangkitan.";
+"quran_juz_desc_23" = "Hari kiamat dan keikhlasan ibadah.";
+"quran_juz_desc_24" = "Kesan iman dan dakwah tauhid.";
+"quran_juz_desc_25" = "Tanda kekuasaan Allah dan amaran bagi yang ingkar.";
+"quran_juz_desc_26" = "Kisah kaum ‘Ad dan tanda-tanda hari akhir.";
+"quran_juz_desc_27" = "Balasan amal dan galakan bersedekah.";
+"quran_juz_desc_28" = "Etika sosial, rumah tangga, dan kehidupan Muslim.";
+"quran_juz_desc_29" = "Surah pendek tentang iman, akhirat, dan amaran keras.";
+"quran_juz_desc_30" = "Juz ‘Amma: fokus pada akhirat, tauhid, dan pembinaan iman dasar.";

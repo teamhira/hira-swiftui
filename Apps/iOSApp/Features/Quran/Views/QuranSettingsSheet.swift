@@ -8,217 +8,319 @@
 import SwiftUI
 
 public struct QuranSettingsSheet: View {
-    @Bindable var viewModel: QuranViewModel
+    @Environment(QuranViewModel.self) private var viewModel
     @Environment(\.appEnvironment) private var appEnv
     @Environment(\.dismiss) private var dismiss
     @State private var selectedTab = 0
     
+    @Namespace private var tabNamespace
+    
     private let tabs = [
-        ("Display", "macwindow"),
-        ("Typography", "textformat"),
-        ("Audio", "speaker.wave.2")
+        ("Appearance", "sun.max.fill"),
+        ("Content", "doc.text.fill"),
+        ("Audio", "speaker.wave.3.fill")
     ]
     
+    // MARK: - Resource Lists
+    private var translations: [(id: Int, title: String, subtitle: String?, tagline: String?)] { 
+        viewModel.availableTranslations.map { (id: $0.id, title: $0.name, subtitle: $0.authorName, tagline: $0.languageName) } 
+    }
+    private var tafsirs: [(id: Int, title: String, subtitle: String?, tagline: String?)] { 
+        viewModel.availableTafsirs.map { (id: $0.id, title: $0.name, subtitle: $0.authorName, tagline: $0.languageName) } 
+    }
+    private var reciters: [(id: Int, title: String, subtitle: String?, tagline: String?)] { 
+        viewModel.availableReciters.map { (id: $0.id, title: $0.reciterName, subtitle: $0.style, tagline: $0.translatedName.languageName.capitalized) } 
+    }
+    private var languages: [LanguageResponse] { viewModel.availableLanguages }
+
     public var body: some View {
+        @Bindable var viewModel = viewModel
         let colors = appEnv.theme.current
+        
         NavigationStack {
             ZStack {
                 colors.background.ignoresSafeArea()
                 
                 VStack(spacing: 0) {
-                    // MARK: - Premium Tab Picker
-                    HStack(spacing: 8) {
+                    // MARK: - Premium Tab Bar
+                    HStack(spacing: 0) {
                         ForEach(0..<tabs.count, id: \.self) { index in
-                            Button(action: { 
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) { 
-                                    selectedTab = index 
-                                } 
+                            Button(action: {
+                                withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
+                                    selectedTab = index
+                                }
                             }) {
-                                HStack(spacing: 8) {
+                                VStack(spacing: 8) {
                                     Image(systemName: tabs[index].1)
-                                        .font(.system(size: 14, weight: .semibold))
-                                    
+                                        .font(.system(size: 18))
+                                    Text(tabs[index].0)
+                                        .font(.system(size: 11, weight: .bold))
+                                }
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(selectedTab == index ? colors.primary : colors.foreground.opacity(0.3))
+                                .overlay(alignment: .bottom) {
                                     if selectedTab == index {
-                                        Text(tabs[index].0)
-                                            .font(.system(size: 13, weight: .bold))
+                                        Capsule()
+                                            .fill(colors.primary)
+                                            .frame(width: 20, height: 3)
+                                            .offset(y: 12)
+                                            .matchedGeometryEffect(id: "underline", in: tabNamespace)
                                     }
                                 }
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 10)
-                                .background(
-                                    ZStack {
-                                        if selectedTab == index {
-                                            Capsule()
-                                                .fill(colors.primary.opacity(0.1))
-                                                .matchedGeometryEffect(id: "tab", in: tabNamespace)
-                                        }
-                                    }
-                                )
-                                .foregroundColor(selectedTab == index ? colors.primary : colors.foreground.opacity(0.4))
                             }
                         }
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 16)
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 20)
                     .background(colors.background)
                     
-                    Divider().opacity(0.05)
+                    Divider().opacity(0.08)
                     
-                    ScrollView {
-                        VStack(spacing: 24) {
+                    ScrollView(showsIndicators: false) {
+                        VStack(spacing: 32) {
                             if selectedTab == 0 {
-                                displaySettings
+                                appearanceSection
                             } else if selectedTab == 1 {
-                                typographySettings
+                                contentSection
                             } else {
-                                audioSettings
+                                audioSection
                             }
                         }
-                        .padding(20)
+                        .padding(24)
+                        .padding(.bottom, 40)
                     }
                 }
             }
-            .navigationTitle("Quran Settings")
+            .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(colors.background, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: { dismiss() }) {
-                        Text("Save")
-                            .font(.system(size: 14, weight: .bold))
-                            .foregroundColor(colors.primary)
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
-                            .background(colors.primary.opacity(0.1))
-                            .clipShape(Capsule())
+                        Image(systemName: "xmark")
+                            .font(.system(size: 15, weight: .bold))
+                            .foregroundColor(colors.foreground.opacity(0.8))
                     }
                 }
+            }
+            .onAppear {
+                viewModel.fetchSettingsResources()
+            }
+            .fullScreenCover(isPresented: $showingTranslationSelector) {
+                QuranResourceSelector(title: "Translation", items: translations, selection: $viewModel.selectedTranslationId)
+            }
+            .fullScreenCover(isPresented: $showingTafsirSelector) {
+                QuranResourceSelector(title: "Tafsir Source", items: tafsirs, selection: $viewModel.selectedTafsirId)
+            }
+            .fullScreenCover(isPresented: $showingLanguageSelector) {
+                QuranLanguageSelector(title: "Select Language", items: viewModel.availableLanguages, selection: $viewModel.selectedLanguageCode)
+            }
+            .fullScreenCover(isPresented: $showingReciterSelector) {
+                QuranResourceSelector(title: "Select Reciter", items: reciters, selection: $viewModel.selectedReciterId)
+            }
+            .fullScreenCover(isPresented: $showingTajweedInfo) {
+                QuranTajweedInfoSheet()
             }
         }
     }
     
-    @Namespace private var tabNamespace
-    
-    // MARK: - Sections
-    
+    // MARK: - Appearance Section
     @ViewBuilder
-    private var displaySettings: some View {
+    private var appearanceSection: some View {
+        @Bindable var viewModel = viewModel
         let colors = appEnv.theme.current
-        VStack(spacing: 20) {
-            ProfileSectionView(title: "Visual Theme") {
-                VStack(spacing: 0) {
-                    themeOption(name: "System", icon: "iphone", tag: "System")
-                    themeOption(name: "Light", icon: "sun.max.fill", tag: "Light")
-                    themeOption(name: "Dark", icon: "moon.stars.fill", tag: "Dark")
-                    themeOption(name: "Sepia", icon: "book.fill", tag: "Sepia")
+        
+        VStack(spacing: 24) {
+            ProfileSectionView(title: "Interface Theme") {
+                HStack(spacing: 12) {
+                    themeBox(name: "Light", icon: "sun.max.fill", tag: "Light")
+                    themeBox(name: "Dark", icon: "moon.stars.fill", tag: "Dark")
+                    themeBox(name: "System", icon: "iphone", tag: "System")
                 }
             }
             
-            ProfileSectionView(title: "Layout Mode") {
-                Picker("Layout", selection: $viewModel.readingMode) {
-                    ForEach(QuranReadingMode.allCases, id: \.self) { mode in
-                        Text(mode.rawValue.capitalized).tag(mode)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .padding(.horizontal, 8)
-            }
-            
-            ProfileMenuRow(icon: "battery.100.bolt", title: "Prevent Sleep") {
-                Toggle("", isOn: $viewModel.keepScreenOn)
-                    .tint(colors.primary)
-                    .labelsHidden()
-            }
-        }
-    }
-    
-    @ViewBuilder
-    private var typographySettings: some View {
-        let colors = appEnv.theme.current
-        VStack(spacing: 20) {
-            ProfileSectionView(title: "Text Size") {
-                VStack(spacing: 16) {
-                    HStack {
-                        Image(systemName: "textformat.size.smaller")
-                        Slider(value: $viewModel.textSize, in: 12...40, step: 1)
+            ProfileSectionView(title: "Text & Typography") {
+                VStack(spacing: 20) {
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack {
+                            Text("Font Size")
+                                .font(.system(size: 14, weight: .bold))
+                            Spacer()
+                            Text("\(Int(viewModel.textSize))pt")
+                                .font(.system(size: 12, weight: .medium))
+                                .foregroundColor(colors.primary)
+                        }
+                        
+                        Slider(value: $viewModel.textSize, in: 20...48, step: 2)
                             .tint(colors.primary)
-                        Image(systemName: "textformat.size.larger")
                     }
-                    .foregroundColor(colors.foreground.opacity(0.4))
+                    .padding(16)
+                    .background(colors.foreground.opacity(0.03))
+                    .cornerRadius(16)
                     
-                    Text("Sample Arabic Text - \(Int(viewModel.textSize))pt")
-                        .font(.custom("KFGQPC Uthman Taha Naskh", size: viewModel.textSize))
-                        .foregroundColor(colors.primary)
+                    ProfileMenuRow(icon: "text.justify", title: "Reading Mode") {
+                        Picker("", selection: $viewModel.readingMode) {
+                            Text("List").tag(QuranReadingMode.list)
+                            Text("Mushaf").tag(QuranReadingMode.page)
+                        }
+                        .pickerStyle(.menu)
+                        .tint(colors.primary)
+                    }
                 }
-                .padding()
-                .hiraCleanCard(colors: colors, radius: 20)
             }
             
-            ProfileSectionView(title: "Content Visibility") {
+            ProfileSectionView(title: "Language") {
+                resourceRow(
+                    title: "App Language",
+                    icon: "character.bubble.fill",
+                    currentValue: viewModel.selectedLanguage
+                ) {
+                    showingLanguageSelector = true
+                }
+            }
+        }
+    }
+    
+    @State private var showingTranslationSelector = false
+    @State private var showingTafsirSelector = false
+    @State private var showingLanguageSelector = false
+    @State private var showingReciterSelector = false
+    @State private var showingTajweedInfo = false
+
+    // MARK: - Content Section
+    @ViewBuilder
+    private var contentSection: some View {
+        @Bindable var viewModel = viewModel
+        
+        VStack(spacing: 24) {
+            ProfileSectionView(title: "Translation & Tafsir") {
+                VStack(spacing: 0) {
+                    resourceRow(
+                        title: "Translation",
+                        icon: "bubble.left.and.exclamationmark.bubble.right.fill",
+                        currentValue: viewModel.selectedTranslation
+                    ) {
+                        showingTranslationSelector = true
+                    }
+                    
+                    Divider().padding(.leading, 50).opacity(0.05)
+                    
+                    resourceRow(
+                        title: "Tafsir Source",
+                        icon: "book.closed.fill",
+                        currentValue: viewModel.selectedTafsir
+                    ) {
+                        showingTafsirSelector = true
+                    }
+                }
+            }
+            
+            ProfileSectionView(title: "Visibility Options") {
                 VStack(spacing: 12) {
-                    ProfileMenuRow(icon: "character.bubble", title: "Translation") {
-                        Toggle("", isOn: $viewModel.showTranslation)
-                            .tint(colors.primary)
-                            .labelsHidden()
-                    }
-                    ProfileMenuRow(icon: "abc", title: "Transliteration") {
-                        Toggle("", isOn: $viewModel.showTransliteration)
-                            .tint(colors.primary)
-                            .labelsHidden()
-                    }
-                    ProfileMenuRow(icon: "paintpalette.fill", title: "Tajweed Colors") {
-                        Toggle("", isOn: $viewModel.showTajweed)
-                            .tint(colors.primary)
-                            .labelsHidden()
+                    toggleRow(icon: "text.bubble", title: "Show Translation", isOn: $viewModel.showTranslation)
+                    toggleRow(icon: "abc", title: "Show Transliteration", isOn: $viewModel.showTransliteration)
+                    toggleRow(icon: "rectangle.grid.1x2.fill", title: "Word by Word", isOn: $viewModel.showWordByWord)
+                    
+                    // Tajweed Color Toggle with Info Button
+                    let colors = appEnv.theme.current
+                    ProfileMenuRow(icon: "paintpalette", title: "Tajweed Colors") {
+                        HStack(spacing: 12) {
+                            Button(action: { showingTajweedInfo = true }) {
+                                Image(systemName: "info.circle")
+                                    .foregroundColor(colors.primary)
+                                    .font(.system(size: 20))
+                            }
+                            
+                            Toggle("", isOn: $viewModel.showTajweed)
+                                .tint(colors.primary)
+                                .labelsHidden()
+                        }
                     }
                 }
             }
         }
     }
     
+    private func resourceRow(title: String, icon: String, currentValue: String, action: @escaping () -> Void) -> some View {
+        ProfileMenuRow(icon: icon, title: title, value: currentValue, showArrow: true, action: action)
+    }
+    
+    // MARK: - Audio Section
     @ViewBuilder
-    private var audioSettings: some View {
-        let colors = appEnv.theme.current
-        VStack(spacing: 20) {
-            ProfileSectionView(title: "Playback Engine") {
-                VStack(spacing: 12) {
-                    ProfileMenuRow(icon: "waveform", title: "Enable Audio") {
-                        Toggle("", isOn: $viewModel.audioEnabled)
-                            .tint(colors.primary)
-                            .labelsHidden()
-                    }
-                    ProfileMenuRow(icon: "arrow.up.and.down.and.sparkles", title: "Auto-Scroll") {
-                        Toggle("", isOn: $viewModel.autoScroll)
-                            .tint(colors.primary)
-                            .labelsHidden()
-                    }
+    private var audioSection: some View {
+        @Bindable var viewModel = viewModel
+        
+        VStack(spacing: 24) {
+            ProfileSectionView(title: "Reciter Selection") {
+                resourceRow(
+                    title: "Active Reciter",
+                    icon: "person.wave.2.fill",
+                    currentValue: viewModel.selectedReciter
+                ) {
+                    showingReciterSelector = true
                 }
             }
             
-            ProfileSectionView(title: "Audio Preferences") {
-                ProfileMenuRow(icon: "person.wave.2.fill", title: "Reciter", value: viewModel.selectedReciter) {
-                    // Logic for selection
+            ProfileSectionView(title: "Playback Settings") {
+                VStack(spacing: 12) {
+                    toggleRow(icon: "waveform.and.mic", title: "Enable Audio", isOn: $viewModel.audioEnabled)
+                    toggleRow(icon: "waveform.circle.fill", title: "Word Audio", isOn: $viewModel.showWordAudio)
+                    toggleRow(icon: "arrow.up.and.down.text.horizontal", title: "Auto-Scroll", isOn: $viewModel.autoScroll)
                 }
             }
         }
     }
     
-    // MARK: - Components
+    // MARK: - Helpers
     
-    @ViewBuilder
-    private func themeOption(name: String, icon: String, tag: String) -> some View {
+    private func themeBox(name: String, icon: String, tag: String) -> some View {
         let colors = appEnv.theme.current
-        ProfileMenuRow(icon: icon, title: name) {
-            if viewModel.theme == tag {
-                Image(systemName: "checkmark.circle.fill")
-                    .foregroundColor(colors.primary)
+        let isSelected = viewModel.theme == tag
+        
+        return Button(action: { withAnimation { viewModel.theme = tag } }) {
+            VStack(spacing: 12) {
+                Image(systemName: icon)
+                    .font(.system(size: 20))
+                Text(name)
+                    .font(.system(size: 13, weight: .bold))
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 16)
+            .background(isSelected ? colors.primary.opacity(0.1) : colors.foreground.opacity(0.03))
+            .foregroundColor(isSelected ? colors.primary : colors.foreground.opacity(0.5))
+            .cornerRadius(16)
+            .overlay {
+                if isSelected {
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(colors.primary.opacity(0.2), lineWidth: 1)
+                }
             }
         }
-        .onTapGesture {
-            withAnimation {
-                viewModel.theme = tag
+    }
+    
+    private func toggleRow(icon: String, title: String, isOn: Binding<Bool>) -> some View {
+        let colors = appEnv.theme.current
+        return ProfileMenuRow(icon: icon, title: title) {
+            Toggle("", isOn: isOn)
+                .tint(colors.primary)
+                .labelsHidden()
+        }
+    }
+    
+    private func resourcePicker(title: String, icon: String, items: [(Int, String)], selection: Binding<Int>) -> some View {
+        let colors = appEnv.theme.current
+        return ProfileMenuRow(icon: icon, title: title) {
+            Picker("", selection: selection) {
+                if items.isEmpty && viewModel.isLoadingResources {
+                    Text("Loading...").tag(selection.wrappedValue)
+                } else {
+                    ForEach(items, id: \.0) { id, name in
+                        Text(name).tag(id)
+                    }
+                }
             }
+            .pickerStyle(.menu)
+            .tint(colors.primary)
         }
     }
 }
+

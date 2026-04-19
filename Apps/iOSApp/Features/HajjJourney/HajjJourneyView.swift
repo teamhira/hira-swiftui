@@ -87,3 +87,9 @@ struct HajjJourneyView: View {
         }
     }
 }
+#Preview {
+    NavigationStack {
+        HajjJourneyView()
+            .environment(AppState())
+    }
+}

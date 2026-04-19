@@ -91,3 +91,9 @@ struct CalendarView: View {
         }
     }
 }
+#Preview {
+    NavigationStack {
+        CalendarView()
+            .environment(AppState())
+    }
+}

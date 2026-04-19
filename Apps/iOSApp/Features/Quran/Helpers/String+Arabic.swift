@@ -2,7 +2,7 @@
 //  String+Arabic.swift
 //  Hira
 //
-//  Created by Antigravity on 08/04/26.
+//  Created by Ryuk on 08/04/26.
 //
 
 import Foundation

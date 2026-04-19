@@ -38,6 +38,7 @@ DerivedData/
 *.moved-aside
 *.xcuserstate
 *.xcresult
+Config/Config.xcconfig
 
 ## Swift Package Manager
 .build/
@@ -57,14 +58,8 @@ fastlane/screenshots
 fastlane/test_output
 
 ## Other
+.agent/
 *.bak
 *.swp
 *~
 .DS_Store
-
-## Python
-*.py
-__pycache__/
-
-## Data
-*.json

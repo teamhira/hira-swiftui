@@ -24,6 +24,7 @@ struct HomeHeaderView: View {
 struct GreetingRow: View {
     let colors: ThemeModel
     @Environment(\.appEnvironment) private var appEnv
+    @Environment(AppState.self) private var appState
     
     var body: some View {
         HStack {
@@ -31,7 +32,7 @@ struct GreetingRow: View {
                 Text(appEnv.language.localizedString("home_greeting_day"))
                     .font(.system(size: 14, weight: .medium, design: .rounded))
                     .foregroundColor(colors.foreground.opacity(0.5))
-                Text("Kira")
+                Text(formattedName)
                     .font(.system(size: 24, weight: .bold, design: .rounded))
                     .foregroundColor(colors.foreground)
             }
@@ -55,6 +56,16 @@ struct GreetingRow: View {
                 }
             }
         }
+    }
+
+    private var formattedName: String {
+        // Priority: 1. Current session state, 2. Persisted TokenManager, 3. Guest
+        let fullName = appState.currentUser?.name ?? appEnv.di.tokenManager.getUserName() ?? "Guest"
+        let firstName = fullName.components(separatedBy: " ").first ?? fullName
+        if firstName.count > 14 {
+            return String(firstName.prefix(14)) + "..."
+        }
+        return firstName
     }
 }
 

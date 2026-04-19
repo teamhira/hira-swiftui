@@ -137,3 +137,9 @@ struct MosquesView: View {
 
 
 
+#Preview {
+    NavigationStack {
+        MosquesView()
+            .environment(AppState())
+    }
+}

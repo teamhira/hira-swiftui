@@ -16,6 +16,7 @@ public class AppState {
     }
     
     public var isLoggedIn: Bool = false
+    public var currentUser: UserInfo? = nil
     public var isLoading: Bool = false
     public var showSplash: Bool = true
     

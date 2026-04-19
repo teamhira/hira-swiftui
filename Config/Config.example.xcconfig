@@ -1,0 +1,14 @@
+//
+//  Config.example.xcconfig
+//  Hira
+//
+//  Created by Ryuk on 10/04/26.
+//
+
+QURAN_FOUNDATION_API_URL = https:/$()/apis-prelive.quran.foundation
+QURAN_FOUNDATION_OAUTH_URL = https:/$()/prelive-oauth2.quran.foundation
+QURAN_FOUNDATION_CLIENT_ID = your_client_id_here
+QURAN_FOUNDATION_CLIENT_SECRET = your_client_secret_here
+QURAN_FOUNDATION_REDIRECT_URI= your_redirect_uri_here
+
+HIRA_BACKEND_URL = https:/$()/hira.achmdndy.dev

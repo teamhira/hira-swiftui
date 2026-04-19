@@ -14,6 +14,7 @@ struct HiraApp: App {
     @State private var theme = ThemeManager()
     @State private var security = SecurityManager()
     @State private var language = LanguageManager()
+    @State private var quranViewModel = QuranViewModel()
     
     public init() {}
     
@@ -30,8 +31,6 @@ struct HiraApp: App {
                                     switch route {
                                     case .onboarding: OnboardingView()
                                     case .login: LoginView()
-                                    case .register: RegisterView()
-                                    case .forgotPassword: ForgotPasswordView()
                                     case .pin(let mode): PINView(mode: mode)
                                     case .editProfile: EditProfileView()
                                     case .themeSetting: ThemeSettingView()
@@ -44,7 +43,7 @@ struct HiraApp: App {
                                     case .quranSearch: GlobalQuranSearchView()
                                     case .charitySearch: GlobalCharitySearchView()
                                     case .exploreSearch: GlobalExploreSearchView()
-                                    case .surahDetail(let surah): SurahDetailView(surah: surah)
+                                    case .surahDetail(let surah, let ayah): SurahDetailView(surah: surah, initialAyah: ayah)
                                     case .startJourney: StartJourneyView()
                                     case .hijrahDashboard(let state): HijrahView(state: state)
                                     case .missionDetail(let mission, let vm): MissionDetailView(mission: mission, viewModel: vm)
@@ -88,6 +87,7 @@ struct HiraApp: App {
                 }
             }
             .id(language.selectedCode)
+            .environment(quranViewModel)
             .environment(router)
             .environment(appState)
             .environment(\.appEnvironment, AppEnvironment(theme: theme, security: security, language: language, di: DIContainer.shared))

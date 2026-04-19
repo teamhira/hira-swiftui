@@ -42,13 +42,16 @@ public struct PageCurlView<T: Identifiable, Content: View>: UIViewControllerRepr
     public func updateUIViewController(_ pvc: UIPageViewController, context: Context) {
         context.coordinator.parent = self
         
-        guard let targetIndex = items.firstIndex(where: { $0.id == currentItem.id }) else { return }
-        let currentIndex = pvc.viewControllers?.first?.view.tag ?? -1
+        let targetIndex = items.firstIndex(where: { $0.id == currentItem.id }) ?? 0
         
+        // Always update the current VC's rootView to ensure environment/state changes propagate
+        if let currentVC = pvc.viewControllers?.first as? UIHostingController<Content> {
+            currentVC.rootView = content(currentItem)
+        }
+        
+        let currentIndex = pvc.viewControllers?.first?.view.tag ?? -1
         if currentIndex != targetIndex {
-            // For Arabic style: going NEXT (higher index) uses the REVERSE animation (L -> R flip)
             let direction: UIPageViewController.NavigationDirection = targetIndex > currentIndex ? .reverse : .forward
-            
             if let targetVC = context.coordinator.viewController(for: items[targetIndex]) {
                 pvc.setViewControllers([targetVC], direction: direction, animated: true)
             }

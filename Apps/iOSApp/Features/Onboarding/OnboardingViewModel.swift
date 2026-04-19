@@ -12,7 +12,7 @@ public struct OnboardingContent: Identifiable {
     public let id = UUID()
     public let titleKey: String
     public let subtitleKey: String
-    public let systemImage: String
+    public let imageName: String
     public let accessibilityTitleKey: String
     public let accessibilitySubtitleKey: String
     public let accessibilityImageKey: String
@@ -51,7 +51,7 @@ public class OnboardingViewModel: BaseViewModel {
         OnboardingContent(
             titleKey: "onboarding_landing_title",
             subtitleKey: "onboarding_landing_subtitle",
-            systemImage: "leaf.fill",
+            imageName: "OnboardingLanding",
             accessibilityTitleKey: "onboarding_landing_title",
             accessibilitySubtitleKey: "onboarding_landing_subtitle",
             accessibilityImageKey: "onboarding_accessibility_image_hira"
@@ -64,7 +64,7 @@ public class OnboardingViewModel: BaseViewModel {
             OnboardingContent(
                 titleKey: "onboarding_quran_title",
                 subtitleKey: "onboarding_quran_subtitle",
-                systemImage: "book.pages.fill",
+                imageName: "OnboardingQuran",
                 accessibilityTitleKey: "onboarding_quran_title",
                 accessibilitySubtitleKey: "onboarding_quran_subtitle",
                 accessibilityImageKey: "onboarding_accessibility_image_quran"
@@ -72,7 +72,7 @@ public class OnboardingViewModel: BaseViewModel {
             OnboardingContent(
                 titleKey: "onboarding_prayer_title",
                 subtitleKey: "onboarding_prayer_subtitle",
-                systemImage: "mosque.fill",
+                imageName: "OnboardingPrayer",
                 accessibilityTitleKey: "onboarding_prayer_title",
                 accessibilitySubtitleKey: "onboarding_prayer_subtitle",
                 accessibilityImageKey: "onboarding_accessibility_image_prayer"
@@ -80,7 +80,7 @@ public class OnboardingViewModel: BaseViewModel {
             OnboardingContent(
                 titleKey: "onboarding_inspiration_title",
                 subtitleKey: "onboarding_inspiration_subtitle",
-                systemImage: "sparkles",
+                imageName: "OnboardingInspiration",
                 accessibilityTitleKey: "onboarding_inspiration_title",
                 accessibilitySubtitleKey: "onboarding_inspiration_subtitle",
                 accessibilityImageKey: "onboarding_accessibility_image_inspiration"
@@ -88,7 +88,7 @@ public class OnboardingViewModel: BaseViewModel {
             OnboardingContent(
                 titleKey: "onboarding_final_title",
                 subtitleKey: "onboarding_final_subtitle",
-                systemImage: "sun.max.fill",
+                imageName: "OnboardingFinal",
                 accessibilityTitleKey: "onboarding_final_title",
                 accessibilitySubtitleKey: "onboarding_final_subtitle",
                 accessibilityImageKey: "onboarding_accessibility_image_final"

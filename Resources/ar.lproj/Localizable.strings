@@ -9,6 +9,20 @@
 "quran_bookmark_count" = "%d إشارات مرجعية";
 "quran_bookmark_header_title" = "إشاراتي المرجعية";
 "quran_bookmark_last" = "آخر: %@";
+"quran_bookmark_no_last" = "لا توجد قراءة أخيرة بعد";
+"quran_reading_start_cta" = "ابدأ قراءة سورة لتتبع تقدمك";
+"quran_bookmark_has_count" = "لديك %d آيات محفوظة في مجموعتك";
+"bookmark_surah_ayah_count" = "%d آيات";
+"bookmark_ayah_group_desc" = "مجموعة الآيات";
+"quran_bookmark_empty_collection" = "ابدأ في حفظ الآيات لبناء مجموعتك";
+"quran_surah_name_fallback" = "سورة %d";
+"quran_surah_ayah_label" = "%@ آية %d";
+"quran_bookmark_delete_title" = "حذف الإشارة المرجعية";
+"quran_bookmark_delete_confirm" = "هل أنت متأكد أنك تريد حذف الإشارة المرجعية لـ %@ آية %d؟";
+"quran_delete" = "حذف";
+"quran_cancel" = "إلغاء";
+"quran_no_bookmarks_title" = "لا توجد إشارات مرجعية بعد";
+"quran_no_bookmarks_desc" = "ستظهر الآيات التي أضفتها إلى الإشارات المرجعية هنا للوصول السهل.";
 "quran_daily_ayah_content" = "يَا أَيُّهَا الَّذِينَ آمَنُوا اسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ ۚ إِنَّ اللَّهَ مَعَ الصَّابِرِينَ.";
 "quran_daily_ayah_ref" = "سورة البقرة: 153";
 "quran_daily_button_read_more" = "اقرأ المزيد";
@@ -35,6 +49,10 @@
 "quran_topic_stories_count" = "%d قصص";
 "quran_topics_section" = "المواضيع";
 "quran_verses_count" = "%d آية";
+"error_view_title" = "عذراً! حدث خطأ ما";
+"error_view_retry_button" = "إعادة المحاولة";
+"empty_search_title" = "لم يتم العثور على سورة";
+"empty_search_desc" = "لم نتمكن من العثور على أي سورة تطابق بحثك. جرب كلمة رئيسية أخرى.";
 
 // MARK: - Feature: Quran Search
 "quran_search_discover_title" = "اكتشف القرآن";
@@ -314,13 +332,13 @@
 "zakat_result_label" = "الزكاة الواجب دفعها:";
 
 // MARK: - Feature: Hadith
-"hadith_collection_title" = "مجموعة الحديث";
-"hadith_explore_btn" = "استكشف الأحاديث";
+"hadith_collection_title" = "المجموعات الشعبية";
+"hadith_explore_btn" = "استكشاف المجموعات";
 "hadith_featured_title" = "حديث اليوم";
 
 // MARK: - Feature: Dua
 "dua_category_title" = "أقسام الدعاء";
-"dua_featured_desc" = "دعاء لطلب الحماية من كل سوء.";
+"dua_featured_desc" = "إن الدعاء هو مخ العبادة.";
 "dua_featured_title" = "دعاء اليوم المختار";
 "dua_detail_title" = "تفاصيل الدعاء";
 "dua_item_translation_label" = "الترجمة";
@@ -335,8 +353,8 @@
 "dua_category_quranic" = "أدعية قرآنية";
 "dua_category_prophetic" = "أدعية نبوية";
 "dua_featured_desc" = "إن الدعاء هو مخ العبادة.";
-"dua_accessibility_category_item" = "اضغط للعرض";
-"dua_accessibility_item" = "اضغط للتفاصيل";
+"dua_accessibility_category_item" = "القسم: %@";
+"dua_accessibility_item" = "دعاء: %@. اضغط مرتين للتفاصيل.";
 
 "hadith_featured_title" = "حديث اليوم";
 "hadith_featured_body" = "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى.";
@@ -386,10 +404,6 @@
 "explore_search_accessibility_article" = "مقالة: %@. القسم: %@. %@";
 "explore_search_accessibility_back" = "العودة للاستكشاف";
 "explore_search_accessibility_content" = "المحتوى الموجود: %@، القسم %@";
-"forgot_password_accessibility_back_button" = "زر، عودة لتسجيل الدخول";
-"forgot_password_accessibility_email_input" = "إدخال نص، أدخل البريد الإلكتروني";
-"forgot_password_accessibility_help_button" = "زر، مساعدة";
-"forgot_password_accessibility_send_button" = "زر، أرسل رابط الاستعادة";
 "home_accessibility_article_card" = "بطاقة مقال: %@";
 "home_accessibility_bell" = "زر، تنبيهات جديدة";
 "home_accessibility_feature_nav_hint" = "اضغط مرتين لفتح ميزة %@.";
@@ -399,16 +413,10 @@
 "home_accessibility_search" = "إدخال نص، ابحث عن محتوى";
 "journal_accessibility_entry" = "مذكرة من %@. العنوان: %@. المعاينة: %@.";
 "khatam_accessibility_progress" = "تقدم الختم: %d صفحات مقروءة من %d. الإكمال %d بالمائة.";
-"login_accessibility_apple_button" = "زر، تسجيل دخول بآبل";
-"login_accessibility_email_input" = "إدخال نص، أدخل بريدك";
 "login_accessibility_forgot_password" = "زر، نسيت كلمة المرور";
-"login_accessibility_google_button" = "زر، تسجيل دخول بجوجل";
-"login_accessibility_guest_button" = "زر، دخول كضيف";
+"login_accessibility_qf_button" = "زر، تسجيل دخول بمؤسسة القرآن";
 "login_accessibility_help_button" = "زر، مساعدة";
 "login_accessibility_logo" = "شعار تطبيق هيرة";
-"login_accessibility_password_input" = "إدخال نص، أدخل كلمة مرورك";
-"login_accessibility_signin_button" = "زر، تسجيل دخول";
-"login_accessibility_signup_button" = "زر، إنشاء حساب جديد";
 "login_logo_accessibility" = "شعار تطبيق هيرة";
 "onboarding_accessibility_button_next" = "الخطوة التالية";
 "onboarding_accessibility_button_skip" = "زر، تخطي المقدمة";
@@ -432,14 +440,6 @@
 "quran_accessibility_progress_pie" = "مخطط التقدم، تم إكمال %d بالمائة";
 "quran_accessibility_surah_card" = "بطاقة السورة %@، رقم %d، %d آية";
 "quran_accessibility_surah_hint" = "اضغط مرتين لقراءة هذه السورة";
-"register_accessibility_apple_button" = "زر، إنشاء حساب بآبل";
-"register_accessibility_confirm_password_input" = "إدخال نص، تأكيد كلمة المرور";
-"register_accessibility_email_input" = "إدخال نص، أدخل بريدك";
-"register_accessibility_google_button" = "زر، إنشاء حساب بجوجل";
-"register_accessibility_login_button" = "زر، عودة لتسجيل الدخول";
-"register_accessibility_name_input" = "إدخال نص، أدخل الاسم الكامل";
-"register_accessibility_password_input" = "إدخال نص، أدخل كلمة مرور جديدة";
-"register_accessibility_signup_button" = "زر، إنشاء حساب جديد";
 "security_accessibility_biometric_toggle_hint" = "تبديل تسجيل الدخول بالبيانات الحيوية";
 "security_accessibility_danger_hint" = "تحذير: سيؤدي هذا لإزالة رمز PIN والحماية الحيوية نهائياً.";
 "tasbih_accessibility_beads" = "حبات مسبحة تفاعلية";
@@ -462,8 +462,6 @@
 "onboarding_inspiration_title" = "إلهام يومي";
 "onboarding_landing_subtitle" = "رفيقك لأسلوب حياة إسلامي حديث";
 "onboarding_landing_title" = "هيرة";
-"onboarding_login_button" = "تسجيل دخول";
-"onboarding_login_prompt" = "لديك حساب بالفعل؟ ";
 "onboarding_prayer_subtitle" = "ابقَ على اطلاع بمواقيت صلاة دقيقة بناءً على موقعك.";
 "onboarding_prayer_title" = "مواقيت صلاة دقيقة";
 "onboarding_quran_subtitle" = "اقرأ القرآن في أي مكان وزمان بسهولة.";
@@ -492,12 +490,6 @@
 "deenmode_settings_title" = "إعداد التركيز";
 "deenmode_title" = "وضع تركيز الدين";
 "deenmode_toggle" = "تفعيل وضع الدين";
-"forgot_password_button_help" = "تحتاج مساعدة؟";
-"forgot_password_button_send" = "أرسل الرابط";
-"forgot_password_field_email" = "البريد الإلكتروني";
-"forgot_password_footer_back" = "عودة لتسجيل الدخول";
-"forgot_password_subtitle" = "أدخل بريدك لاستلام رابط استعادة كلمة المرور.";
-"forgot_password_title" = "نسيت كلمة المرور";
 "hajj_checklist_title" = "قائمة التحضير";
 "hajj_tracking_desc" = "معلومات التحضير والرحلة.";
 "hajj_tracking_title" = "مراقبة رحلة الحج";
@@ -529,18 +521,10 @@
 "language_title_choose" = "لغة التطبيق";
 "location_permission_desc" = "نحتاج موقعك لتوفير اتجاه قبلة دقيق وميزات محلية أخرى.";
 "location_permission_title" = "الوصول للموقع مطلوب";
-"login_button_apple" = "دخول بآبل";
 "login_button_forgot_password" = "نسيت كلمة المرور؟";
-"login_button_google" = "دخول بجوجل";
-"login_button_guest" = "متابعة كضيف";
+"login_button_qf" = "مؤسسة القرآن";
 "login_button_help" = "تحتاج مساعدة؟";
-"login_button_signin" = "تسجيل دخول";
-"login_divider_social" = "أو تابع عبر";
-"login_email_placeholder" = "أدخل بريدك";
-"login_footer_signup_button" = "تسجيل";
-"login_footer_signup_prompt" = "ليس لديك حساب؟ ";
 "login_logo_subtitle" = "رفيق نمط الحياة الإسلامي";
-"login_password_placeholder" = "أدخل كلمة مرورك";
 "login_title_welcome" = "مرحباً بك مجدداً";
 "mosque_about_title" = "عن هذا المسجد";
 "mosque_count_suffix" = "مساجد";
@@ -580,6 +564,10 @@
 "profile_menu_edit_profile" = "تعديل الملف";
 "profile_menu_language" = "اللغة";
 "profile_menu_logout" = "خروج";
+"logout_alert_title" = "تأكيد تسجيل الخروج";
+"logout_alert_message" = "هل أنت متأكد أنك تريد تسجيل الخروج؟ ستحتاج إلى تسجيل الدخول مرة أخرى للوصول إلى بياناتك.";
+"logout_button_confirm" = "تسجيل الخروج";
+"logout_button_cancel" = "إلغاء";
 "profile_menu_security" = "أمن الهوية";
 "profile_menu_theme" = "سمة التطبيق";
 "profile_menu_version" = "إصدار التطبيق";
@@ -601,19 +589,6 @@
 "qibla_permission_settings_button" = "افتح الإعدادات";
 "qibla_theme_hint" = "اسحب لتغيير سمة البوصلة";
 "qibla_theme_label" = "سمة %d";
-"register_button_apple" = "تسجيل عبر آبل";
-"register_button_google" = "تسجيل عبر جوجل";
-"register_button_help" = "تحتاج مساعدة؟";
-"register_button_signup" = "سجل الآن";
-"register_divider_social" = "أو سجل عبر";
-"register_field_confirm_password" = "تأكيد كلمة المرور";
-"register_field_email" = "البريد الإلكتروني";
-"register_field_name" = "الاسم الكامل";
-"register_field_password" = "كلمة المرور";
-"register_footer_login_button" = "دخول";
-"register_footer_login_prompt" = "لديك حساب بالفعل؟ ";
-"register_subtitle" = "ابدأ رحلتك الروحية مع هيرة.";
-"register_title" = "إنشاء حساب";
 "search_daily_deen_title" = "دين يومي";
 "search_feature_achievements" = "الإنجازات";
 "search_feature_deen_mode" = "وضع الدين";
@@ -725,3 +700,37 @@
 "sadaqah_info_type_hidden_desc" = "العطاء دون علم الآخرين حفاظاً على نقاء النية وإخلاص القلب.";
 "common_do_label" = "افعل";
 "common_dont_label" = "لا تفعل";
+"surah_header_order" = "الترتيب %d";
+"surah_header_no" = "رقم %d";
+
+// MARK: - Juz Descriptions
+"quran_juz_desc_1" = "يحتوي على فاتحة الكتاب، وأدعية الهداية، وبداية قصة بني إسرائيل والأحكام الأساسية للإسلام.";
+"quran_juz_desc_2" = "تغيير القبلة، وأوامر الصيام، والجهاد، وقصة إبراهيم عليه السلام.";
+"quran_juz_desc_3" = "تأكيد التوحيد، وتحريم الربا، والحوار مع أهل الكتاب.";
+"quran_juz_desc_4" = "قصة آل عمران والأحكام الأولى المتعلقة بالنساء والزواج.";
+"quran_juz_desc_5" = "قوانين الأسرة، والعدالة الاجتماعية، والنهي عن النفاق.";
+"quran_juz_desc_6" = "الأخلاق الاجتماعية، وأحكام الأطعمة الحلال والحرام، والعهود.";
+"quran_juz_desc_7" = "الحوار مع أهل الكتاب وتعزيز التوحيد.";
+"quran_juz_desc_8" = "أدلة قدرة الله وقصص الأنبياء.";
+"quran_juz_desc_9" = "قصة موسى عليه السلام وأحكام الحرب.";
+"quran_juz_desc_10" = "توزيع غنائم الحرب والموقف من المنافقين.";
+"quran_juz_desc_11" = "التوبة، وقصص الأنبياء، وعواقب رفض الحق.";
+"quran_juz_desc_12" = "قصص الأنبياء وبداية قصة يوسف عليه السلام.";
+"quran_juz_desc_13" = "صبر يوسف عليه السلام والدعوة إلى التوحيد.";
+"quran_juz_desc_14" = "تحذير للمشركين وتعداد نعم الله.";
+"quran_juz_desc_15" = "الإسراء والمعراج، والآداب الاجتماعية، وقصة أصحاب الكهف.";
+"quran_juz_desc_16" = "قصة موسى والخضر ودعوة موسى عليه السلام.";
+"quran_juz_desc_17" = "قصص الأنبياء والأمر بالحج.";
+"quran_juz_desc_18" = "صفات المؤمنين ونضال الرسول.";
+"quran_juz_desc_19" = "الفرق بين الحق والباطل وقصة سليمان عليه السلام.";
+"quran_juz_desc_20" = "قصص الأمم الغابرة وابتلاءات الإيمان.";
+"quran_juz_desc_21" = "العلاقة مع أهل الكتاب وحياة الرسول صلى الله عليه وسلم.";
+"quran_juz_desc_22" = "دور آل النبي وأدلة البعث.";
+"quran_juz_desc_23" = "يوم القيامة والإخلاص في العبادة.";
+"quran_juz_desc_24" = "عواقب الإيمان والدعوة إلى التوحيد.";
+"quran_juz_desc_25" = "آيات قدرة الله وتحذير للمشركين.";
+"quran_juz_desc_26" = "قصة قوم عاد وعلامات اليوم الآخر.";
+"quran_juz_desc_27" = "جزاء الأعمال والحث على الصدقة.";
+"quran_juz_desc_28" = "الأخلاق الاجتماعية، شؤون الأسرة، وحياة المسلم.";
+"quran_juz_desc_29" = "سور قصيرة عن الإيمان والآخرة والوعيد الشديد.";
+"quran_juz_desc_30" = "جزء عم: التركيز على الآخرة، والتوحيد، وبناء الإيمان الأساسي.";

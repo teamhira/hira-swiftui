@@ -153,6 +153,9 @@ struct ScrollPreferenceKey: PreferenceKey {
 }
 
 #Preview {
-    ExploreView()
-        .environment(\.appEnvironment, AppEnvironment(theme: ThemeManager(), security: SecurityManager(), language: LanguageManager(), di: DIContainer.shared))
+    NavigationStack {
+        ExploreView()
+            .environment(AppRouter())
+            .environment(AppState())
+    }
 }

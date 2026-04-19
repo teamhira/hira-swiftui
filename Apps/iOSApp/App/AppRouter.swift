@@ -12,8 +12,6 @@ public enum AppRoute: Hashable {
     case splash
     case onboarding
     case login
-    case register
-    case forgotPassword
     case pin(PINMode)
     case home
     case editProfile
@@ -27,7 +25,7 @@ public enum AppRoute: Hashable {
     case quranSearch
     case charitySearch
     case exploreSearch
-    case surahDetail(Surah)
+    case surahDetail(Surah, ayah: QuranAyah? = nil)
     case startJourney
     case hijrahDashboard(JourneyState)
     case missionDetail(Mission, HijrahViewModel)

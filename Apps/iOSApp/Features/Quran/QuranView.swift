@@ -8,12 +8,13 @@
 import SwiftUI
 
 public struct QuranView: View {
-    @State private var viewModel = QuranViewModel()
+    @Environment(QuranViewModel.self) private var viewModel
     @Environment(\.appEnvironment) private var appEnv
     
     public init() {}
     
     public var body: some View {
+        @Bindable var viewModel = viewModel
         let colors = appEnv.theme.current
         ZStack(alignment: .bottom) {
             Color(colors.background).ignoresSafeArea()

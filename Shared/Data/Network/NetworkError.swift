@@ -11,7 +11,9 @@ public enum NetworkError: Error {
     case invalidURL
     case invalidResponse
     case decodingError(Error)
-    case graphQLError([String])
     case unauthorized
+    case forbidden
     case serverError(String)
+    case authenticationRequired
+    case refreshTokenFailed
 }
