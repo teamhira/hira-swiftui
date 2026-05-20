@@ -23,8 +23,8 @@ struct DuaView: View {
                     
                     // Featured Section
                     FeaturedDuaView(
-                        title: "dua_featured_title",
-                        description: "dua_featured_desc"
+                        item: viewModel.featuredDua,
+                        isLoading: viewModel.isFeaturedLoading
                     )
                     .padding(.top, 16)
                     
@@ -35,19 +35,30 @@ struct DuaView: View {
                             .foregroundColor(colors.foreground)
                             .padding(.horizontal, 24)
                         
-                        LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)], spacing: 16) {
-                            ForEach(viewModel.categories, id: \.id) { category in
-                                NavigationLink(value: AppRoute.duaList(category.id)) {
-                                    DuaCategoryCard(
-                                        category: category.id,
-                                        icon: category.icon,
-                                        count: viewModel.countForCategory(category.id)
-                                    )
+                        if viewModel.isCategoriesLoading {
+                            LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)], spacing: 16) {
+                                ForEach(0..<6, id: \.self) { _ in
+                                    RoundedRectangle(cornerRadius: 24)
+                                        .fill(colors.foreground.opacity(0.05))
+                                        .frame(height: 120)
+                                        .hiraShimmer()
                                 }
-                                .buttonStyle(PlainButtonStyle())
                             }
+                            .padding(.horizontal, 24)
+                        } else {
+                            LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)], spacing: 16) {
+                                ForEach(viewModel.categories) { category in
+                                    NavigationLink(value: AppRoute.duaList(category.id)) {
+                                        DuaCategoryCard(
+                                            category: category,
+                                            icon: viewModel.getIconForCategory(category.id)
+                                        )
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
+                                }
+                            }
+                            .padding(.horizontal, 24)
                         }
-                        .padding(.horizontal, 24)
                     }
                 }
                 .padding(.bottom, 32)
@@ -65,48 +76,57 @@ struct DuaView: View {
     }
 }
 
-// MARK: - Search Results View
 struct DuaSearchResultsView: View {
     let viewModel: DuaViewModel
+    @Environment(AppRouter.self) private var router
+    @Environment(\.appEnvironment) private var appEnv
+    private var colors: ThemeModel { appEnv.theme.current }
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                Text(LocalizedStringKey("home_result_title"))
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
-                    .padding(.horizontal)
-                    .padding(.top, 16)
-                
-                let filtered = viewModel.filteredDuasAcrossAll()
-                
-                if filtered.isEmpty {
-                    ContentUnavailableView.search(text: viewModel.searchQuery)
-                } else {
-                    ForEach(filtered) { item in
-                        NavigationLink(value: AppRoute.duaDetail(item)) {
-                            DuaRow(
-                                title: item.title,
-                                description: item.description,
-                                category: item.category
-                            )
+        ZStack {
+            colors.background.ignoresSafeArea()
+            
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    Text(LocalizedStringKey("home_result_title"))
+                        .font(.system(size: 16, weight: .bold, design: .rounded))
+                        .foregroundColor(colors.foreground)
+                        .padding(.horizontal, 24)
+                        .padding(.top, 16)
+                    
+                    if viewModel.isSearching {
+                        VStack(spacing: 16) {
+                            ForEach(0..<3, id: \.self) { _ in
+                                RoundedRectangle(cornerRadius: 24)
+                                    .fill(colors.foreground.opacity(0.05))
+                                    .frame(height: 100)
+                                    .hiraShimmer()
+                            }
                         }
-                        .buttonStyle(PlainButtonStyle())
-                        .padding(.horizontal)
+                        .padding(.horizontal, 24)
+                    } else if viewModel.searchResults.isEmpty {
+                        ContentUnavailableView.search(text: viewModel.searchQuery)
+                            .padding(.top, 40)
+                    } else {
+                        VStack(spacing: 16) {
+                            ForEach(viewModel.searchResults) { item in
+                                Button(action: {
+                                    router.navigate(to: .duaDetail(item))
+                                }) {
+                                    DuaRow(item: item)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
+                        }
+                        .padding(.horizontal, 24)
                     }
                 }
+                .padding(.bottom, 24)
             }
-            .padding(.bottom, 24)
         }
-        .background(Color(.systemBackground))
     }
 }
 
-// MARK: - Extends ViewModel for Search Result Logic
-extension DuaViewModel {
-    func filteredDuasAcrossAll() -> [DuaItem] {
-        return self.filteredDuas
-    }
-}
 
 #Preview {
     DuaView()

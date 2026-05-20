@@ -13,7 +13,7 @@ public enum JourneyType: String, Codable, Hashable, Equatable {
     case better
 }
 
-public enum MissionType: String, Codable {
+public enum MissionType: String, Codable, Hashable, Equatable {
     case simple // Just tap to complete
     case knowledge // Requires reading content
     case tasbih // Requires tasbih count
@@ -71,7 +71,7 @@ public struct MissionQuiz: Codable, Hashable, Equatable {
     }
 }
 
-public enum ContentBlockType: String, Codable {
+public enum ContentBlockType: String, Codable, Hashable, Equatable {
     case heading
     case body
     case arabic
@@ -98,7 +98,7 @@ public struct MissionReference: Codable, Hashable, Equatable {
     public let targetId: String // e.g. surah_id or article_id
     public let type: ReferenceType
     
-    public enum ReferenceType: String, Codable {
+    public enum ReferenceType: String, Codable, Hashable, Equatable {
         case quran
         case guide
         case community

@@ -175,6 +175,7 @@ public class TasbihViewModel {
                         count = 0 
                     } else {
                         isSessionCompleted = true
+                        TrackerViewModel.shared.completeEntry(type: .dhikr)
                         notifyJourneyManager()
                     }
                 } else {

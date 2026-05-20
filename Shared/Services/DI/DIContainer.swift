@@ -13,6 +13,7 @@ public class DIContainer {
     // Services
     public let foundationClient: FoundationClient
     public let membersClient: FoundationClient
+    public let ummahClient: UmmahClient
     public let logger: Logger
     public let keychainService: KeychainService
     public let userDefaultsService: UserDefaultsService
@@ -32,6 +33,13 @@ public class DIContainer {
     public lazy var bookmarksAPI = BookmarksAPI(client: membersClient)
     public lazy var readingSessionsAPI = ReadingSessionsAPI(client: membersClient)
     public lazy var activityDaysAPI = ActivityDaysAPI(client: membersClient)
+    
+    // Ummah APIs
+    public lazy var ummahDateAPI = UmmahDateAPI(client: ummahClient)
+    public lazy var ummahHadithAPI = UmmahHadithAPI(client: ummahClient)
+    public lazy var ummahPrayerAPI = UmmahPrayerAPI(client: ummahClient)
+    public lazy var ummahDuaAPI = UmmahDuaAPI(client: ummahClient)
+    public lazy var ummahAsmaAPI = UmmahAsmaAPI(client: ummahClient)
     
     // Repositories
     public lazy var quranRepository: QuranRepository = QuranRepositoryImpl(
@@ -70,6 +78,13 @@ public class DIContainer {
         api: activityDaysAPI
     )
     
+    public lazy var ummahDateRepository: UmmahDateRepository = UmmahDateRepositoryImpl(api: ummahDateAPI)
+    public lazy var ummahHadithRepository: UmmahHadithRepository = UmmahHadithRepositoryImpl(api: ummahHadithAPI)
+    public lazy var ummahPrayerRepository: UmmahPrayerRepository = UmmahPrayerRepositoryImpl(api: ummahPrayerAPI)
+    public lazy var ummahDuaRepository: UmmahDuaRepository = UmmahDuaRepositoryImpl(api: ummahDuaAPI)
+    public lazy var ummahAsmaRepository: UmmahAsmaRepository = UmmahAsmaRepositoryImpl(api: ummahAsmaAPI)
+
+    
     // Use Cases
     public lazy var getSurahListUseCase: GetSurahListUseCase = GetSurahListUseCaseImpl(repository: quranRepository)
     public lazy var getAyahsByChapterUseCase: GetAyahsByChapterUseCase = GetAyahsByChapterUseCaseImpl(repository: quranRepository)
@@ -85,12 +100,23 @@ public class DIContainer {
     public lazy var getActivityDaysUseCase: GetActivityDaysUseCase = GetActivityDaysUseCaseImpl(repository: activityDayRepository)
     public lazy var addActivityDayUseCase: AddActivityDayUseCase = AddActivityDayUseCaseImpl(repository: activityDayRepository)
     
+    // Ummah Use Cases
+    public lazy var getTodayHijriUseCase: GetTodayHijriUseCase = GetTodayHijriUseCaseImpl(repository: ummahDateRepository)
+    public lazy var getPrayerTimesUseCase: GetPrayerTimesUseCase = GetPrayerTimesUseCaseImpl(repository: ummahPrayerRepository)
+    public lazy var getRandomHadithUseCase: GetRandomHadithUseCase = GetRandomHadithUseCaseImpl(repository: ummahHadithRepository)
+    public lazy var getRandomDuaUseCase: GetRandomDuaUseCase = GetRandomDuaUseCaseImpl(repository: ummahDuaRepository)
+    public lazy var getDuaCategoriesUseCase: GetDuaCategoriesUseCase = GetDuaCategoriesUseCaseImpl(repository: ummahDuaRepository)
+    public lazy var getDuasByCategoryUseCase: GetDuasByCategoryUseCase = GetDuasByCategoryUseCaseImpl(repository: ummahDuaRepository)
+    public lazy var searchDuasUseCase: SearchDuasUseCase = SearchDuasUseCaseImpl(repository: ummahDuaRepository)
+
+    
     private init() {
         self.logger = Logger()
         self.keychainService = KeychainService()
         self.userDefaultsService = UserDefaultsService()
         self.foundationClient = FoundationClient(baseURL: AppConfig.foundationBaseURL.appendingPathComponent(FoundationEndpoints.contentPath))
         self.membersClient = FoundationClient(baseURL: AppConfig.foundationBaseURL.appendingPathComponent(FoundationEndpoints.authPath))
+        self.ummahClient = UmmahClient(baseURL: AppConfig.ummahBaseURL)
         self.tokenManager = TokenManager.shared
         self.oauthService = OAuthService()
     }

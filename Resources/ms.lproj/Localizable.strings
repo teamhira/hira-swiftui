@@ -1,6 +1,6 @@
 /* 
-  Localizable.strings (MS)
-  Hira Perfectly Synced - Auto-synced with EN master
+  Localizable.strings (EN)
+  Hira Perfectly Synced - Source of Truth
 */
 
 // MARK: - Quran
@@ -84,7 +84,7 @@
 // MARK: - Feature: Home
 "home_article_default_desc" = "Terokai manfaat spiritual di sepertiga malam terakhir.";
 "home_article_default_title" = "Rahsia Kekuatan Solat Tahajjud";
-"home_article_quran_desc" = "Tips dan trik praktikal untuk menjaga hafalan anda.";
+"home_article_quran_desc" = "Tips dan trik praktikal untuk menjaga memorization anda.";
 "home_article_quran_title" = "Menghafal Quran Menjadi Mudah";
 "home_articles_all" = "Lihat Semua";
 "home_articles_section" = "Artikel";
@@ -94,8 +94,8 @@
 "home_feature_deenmode" = "Mod Fokus";
 "home_feature_dua" = "Doa";
 "home_feature_hadith" = "Hadis";
-"home_feature_hajjjourney" = "Perjalanan Haji";
-"home_feature_hajjumrah" = "Haji & Umrah";
+"home_feature_allahnames" = "Asmaul Husna";
+"home_feature_memorization" = "Hafalan";
 "home_feature_halal" = "Cari Halal";
 "home_feature_hidden" = "Disembunyikan dari Utama";
 "home_feature_journal" = "Jurnal";
@@ -112,8 +112,9 @@
 "home_features_edit" = "Ubah Ciri";
 "home_features_section" = "Ciri Harian";
 "home_greeting_day" = "Assalamu'alaikum,";
-"home_hadith_sample" = "\"Sebaik-baik kalian adalah yang paling baik akhlaknya.\"";
+"home_hadith_sample" = "\"The best of you are those who have the best character.\"";
 "home_hadith_source" = "Sahih Bukhari";
+"home_hadith_see_more" = "Lihat Selengkapnya";
 "home_hadith_title" = "Hadis Hari Ini";
 "home_location_jakarta" = "Kuala Lumpur, MY";
 "home_more_features_footer" = "Atur fitur yang muncul di skrin utama anda. Seret untuk merubah urutan. Butang 'Semua' akan sentiasa berada di akhir.";
@@ -121,11 +122,28 @@
 "home_prayer_asr" = "Asar";
 "home_prayer_dhuhr" = "Zuhur";
 "home_prayer_fajr" = "Subuh";
+"home_prayer_imsak" = "Imsak";
 "home_prayer_isha" = "Isyak";
 "home_prayer_maghrib" = "Maghrib";
+"home_prayer_sunrise" = "Syuruk";
 "home_prayer_title" = "Waktu Solat";
+"home_prayer_countdown_prefix" = "Waktu solat seterusnya";
+"home_prayer_islamic_info" = "Info Islam";
+"home_prayer_note_title" = "Nota Pengiraan";
+"home_prayer_description_title" = "Makna Solat";
+"prayer_status_entering" = "Sekarang masuk waktu solat %@";
+"prayer_status_minutes_away" = "%d minit lagi menuju %@";
+"prayer_status_hours_away" = "%d jam lagi menuju %@";
+"prayer_pre_notification_title" = "Waktu Solat Hampir Tiba";
+"prayer_notification_body" = "Sudah sampai masa untuk solat.";
+"background_refresh_alert_title" = "Segaran Latar Belakang Dinyahaktifkan";
+"background_refresh_alert_message" = "Untuk memastikan waktu solat yang tepat dan azan latar belakang, sila aktifkan Segaran Aplikasi Latar Belakang dalam Tetapan.";
+"background_refresh_alert_settings" = "Buka Tetapan";
+"background_refresh_alert_cancel" = "Nanti";
+"common_close" = "Tutup";
 "home_search_placeholder" = "Cari Quran, Hadis, atau lain-lain...";
 "home_result_title" = "Keputusan Carian";
+"home_hijri_widget_title" = "Kalendar Hijriah";
 
 // MARK: - Feature: Explore
 "explore_category_articles" = "Artikel";
@@ -352,14 +370,11 @@
 "dua_category_daily" = "Doa Harian";
 "dua_category_quranic" = "Doa Al-Quran";
 "dua_category_prophetic" = "Doa Nabawi";
-"dua_featured_desc" = "Sesungguhnya doa adalah inti ibadah.";
 "dua_accessibility_category_item" = "Kategori: %@";
 "dua_accessibility_item" = "Doa: %@. Ketuk dua kali untuk butiran.";
+"dua_see_detail" = "Lihat Butiran";
 
-"hadith_featured_title" = "Hadis Hari Ini";
 "hadith_featured_body" = "Bahawasanya segala amalan itu adalah dengan niat, dan setiap orang hanya akan mendapat apa yang dia niatkan.";
-"hadith_explore_btn" = "Terokai Koleksi";
-"hadith_collection_title" = "Koleksi Popular";
 "hadith_detail_title" = "Butiran Hadis";
 "hadith_narrated_by" = "Diriwayatkan oleh %@";
 "hadith_not_found" = "Hadis tidak dijumpai";
@@ -368,6 +383,11 @@
 "hadith_col_bukhari" = "Sahih Bukhari";
 "hadith_col_muslim" = "Sahih Muslim";
 "hadith_col_riyadh" = "Riyadhus Shalihin";
+"hadith_col_abudawud" = "Sunan Abu Dawud";
+"hadith_col_tirmidhi" = "Jami at-Tirmidhi";
+"hadith_col_ibnmajah" = "Sunan Ibn Majah";
+"hadith_col_nasai" = "Sunan an-Nasa'i";
+"hadith_col_malik" = "Muwatta Malik";
 "hadith_accessibility_col_item" = "Ketik untuk lihat senarai hadis";
 "hadith_accessibility_item" = "Ketik untuk butiran hadis";
 
@@ -397,10 +417,7 @@
 "achievement_button_share" = "Kongsi Pencapaian";
 "common_confirm_share" = "Teruskan Berkongsi";
 "common_level" = "Tahap";
-"calendar_accessibility_event_item" = "Tarikh penting: %@. Status: %@.";
 "charity_accessibility_donate_button" = "Butang, derma sekarang untuk %@";
-"dua_accessibility_category_item" = "Kategori: %@";
-"dua_accessibility_item" = "Doa: %@. Ketuk dua kali untuk butiran.";
 "explore_search_accessibility_article" = "Artikel: %@. Kategori: %@. %@";
 "explore_search_accessibility_back" = "Kembali ke teroka";
 "explore_search_accessibility_content" = "Kandungan dijumpai: %@, kategori %@";
@@ -411,7 +428,7 @@
 "home_accessibility_more_hint" = "Ketuk dua kali untuk melihat semua ciri yang ada.";
 "home_accessibility_prayer_card" = "Kad maklumat waktu solat hari ini";
 "home_accessibility_search" = "Input teks, cari kandungan";
-"journal_accessibility_entry" = "Rekod jurnal dari %@. Tajuk: %@. Pratonton: %@.";
+
 "khatam_accessibility_progress" = "Kemajuan khatam: %d halaman dibaca daripada %d. Penyelesaian %d peratus.";
 "login_accessibility_forgot_password" = "Butang, lupa kata laluan";
 "login_accessibility_qf_button" = "Butang, log masuk dengan Quran Foundation";
@@ -476,28 +493,52 @@
 "about_policy" = "Dasar Privasi";
 "about_terms" = "Syarat & Ketentuan";
 "about_version" = "Versi 1.0.0 (Gold)";
-"calendar_event_title" = "Tarikh Penting";
-"calendar_month_placeholder" = "Kalendar Hijriah & Masehi";
-"calendar_upcoming_label" = "Akan Datang";
 "camera_permission_message" = "Hira memerlukan akses kamera untuk ciri imbasan kod bar, foto produk, dan keperluan lain di dalam aplikasi.";
 "camera_permission_settings" = "Buka Tetapan";
 "camera_permission_title" = "Akses Kamera Diperlukan";
 "chatbot_input_placeholder" = "Taip soalan anda di sini...";
 "chatbot_title" = "Asisten Hira";
+"common_add" = "Tambah";
+"common_ok" = "OK";
 "common_cancel" = "Batal";
-"common_close" = "Tutup";
+"common_see_all" = "Lihat Semua";
+"common_loading" = "Memuat...";
 "deenmode_desc" = "Fokus pada ibadah anda dengan membisukan notifikasi telefon";
 "deenmode_settings_title" = "Tetapan Fokus";
 "deenmode_title" = "Mod Fokus";
 "deenmode_toggle" = "Aktifkan Mod Fokus";
-"hajj_checklist_title" = "Senarai Persediaan";
-"hajj_tracking_desc" = "Maklumat persediaan dan perjalanan.";
-"hajj_tracking_title" = "Pantau Perjalanan Haji";
-"hajjumrah_dua_placeholder" = "Kumpulan doa tawaf, sa'i, dan wukuf.";
-"hajjumrah_dua_title" = "Doa-doa Penting";
-"hajjumrah_guide_desc" = "Tutorial lengkap manasik, doa, dan tatacara.";
-"hajjumrah_guide_title" = "Panduan Haji & Umrah";
-"hajjumrah_start_btn" = "Mulakan Panduan";
+"deenmode_focus_quran" = "Baca Al-Quran";
+"deenmode_focus_dhikr" = "Zikir & Tasbih";
+"deenmode_focus_salah" = "Konsentrasi Solat";
+"deenmode_focus_study" = "Belajar Islam";
+"deenmode_setting_mute" = "Senyapkan Notifikasi";
+"deenmode_setting_mute_desc" = "Senyapkan semua panggilan dan makluman semasa fokus.";
+"deenmode_setting_aod" = "Skrin Sentiasa Hidup";
+"deenmode_setting_aod_desc" = "Menghalang skrin daripada padam semasa anda sedang membaca.";
+"deenmode_setting_airplane" = "Bebas Gangguan";
+"deenmode_setting_airplane_desc" = "Mengingatkan anda untuk meminimumkan penggunaan rangkaian.";
+"deenmode_setting_stats" = "Statistik Fokus";
+"deenmode_setting_stats_desc" = "Jejaki berapa banyak masa yang anda luangkan untuk ibadah mendalam.";
+"deenmode_active_title" = "Mod Ibadah Khusyuk";
+"deenmode_active_desc" = "Fokus sepenuhnya kepada Sang Pencipta. Gangguan telah disenyapkan.";
+"deenmode_stop_session" = "Akhiri Sesi";
+"deenmode_session_history" = "Rekod Fokus";
+"deenmode_total_focus" = "Jumlah Masa Fokus";
+"allahnames_title" = "99 Nama Allah";
+"allahnames_desc" = "Nama dan sifat Allah SWT.";
+"allahnames_daily_title" = "Refleksi Harian";
+"allahnames_meaning_label" = "Maksud";
+"allahnames_description_label" = "Penerangan";
+"allahnames_explanation_label" = "Penjelasan";
+"allahnames_benefits_label" = "Kelebihan";
+"allahnames_list_title" = "Kesemua 99 Nama";
+"allahnames_search_placeholder" = "Cari nama atau maksud...";
+"memorization_title" = "Hafalan Al-Quran";
+"memorization_desc" = "Pantau dan urus kemajuan memorization anda.";
+"memorization_add_target" = "Tambah Sasaran Hafalan";
+"memorization_empty_list" = "Belum ada sasaran memorization. Mulakan dengan menambah satu!";
+"memorization_progress" = "Kemajuan Hafalan";
+"memorization_last_read" = "Terakhir Dihafal";
 "halal_about_title" = "Tentang Tempat Ini";
 "halal_nearby_title" = "Sekitar Anda";
 "halal_scan_desc" = "Imbas kod bar atau tangkap imej produk untuk semak status halal secara instan.";
@@ -507,10 +548,7 @@
 "halal_search_title" = "Cari Makanan Halal";
 "halal_tab_food" = "Makanan";
 "halal_tab_places" = "Tempat";
-"journal_add_btn" = "Tambah Catatan";
-"journal_new_entry_desc" = "Refleksikan ibadah dan kebaikan anda hari ini.";
-"journal_new_entry_title" = "Tulis Jurnal Hari Ini";
-"journal_timeline_title" = "Garis Masa";
+
 "journey_profile_title" = "Profil Perjalanan";
 "khatam_history_title" = "Rekod Bacaan";
 "khatam_progress_desc" = "Pantau bacaan Quran anda.";
@@ -634,7 +672,22 @@
 "tracker_summary_desc" = "Lihat konsistensi ibadah anda.";
 "tracker_summary_title" = "Statistik Ibadah";
 "tracker_trend_title" = "Trend Bulanan";
-"home_result_title" = "Keputusan Carian";
+"tracker_item_fajr" = "Solat Subuh";
+"tracker_item_dhuhr" = "Solat Zohor";
+"tracker_item_asr" = "Solat Asar";
+"tracker_item_maghrib" = "Solat Maghrib";
+"tracker_item_isha" = "Solat Isyak";
+"tracker_item_fasting" = "Puasa";
+"tracker_item_dhikr" = "Zikir Harian";
+"tracker_item_quran" = "Baca Al-Quran";
+"tracker_item_charity" = "Sedekah Harian";
+"tracker_confirm_title" = "Catat Ibadah";
+"tracker_confirm_message" = "Adakah anda pasti telah menyelesaikan ibadah ini?";
+"tracker_uncheck_confirm_title" = "Batalkan Ibadah";
+"tracker_uncheck_confirm_message" = "Adakah anda mahu meriset status ibadah ini?";
+"tracker_history_title" = "Rekod Aktiviti";
+"tracker_history_empty" = "Belum ada rekod dicatatkan.";
+"tracker_today_progress" = "Kemajuan Hari Ini";
 
 // MARK: - Sadaqah V2
 "sadaqah_dashboard_title" = "Sedekah untuk Keberkatan";
@@ -655,7 +708,7 @@
 "sadaqah_subuh_notification" = "Kami akan memberikan notifikasi tepat di waktu Subuh.";
 "sadaqah_subuh_guidance" = "Komuniti & Bimbingan Aktif";
 "sadaqah_subuh_kajian" = "Rekomendasi Kajian Ilmu";
-"sadaqah_subuh_commitment" = "\"Amalan yang paling dicintai Allah adalah yang kontinu walau sedikit.\" (The best deeds are those that are small but consistent.)";
+"sadaqah_subuh_commitment" = "\"The best deeds are those that are small but consistent.\"";
 "sadaqah_donate_gateway_btn" = "Kirim Sedekah";
 "sadaqah_donate_gateway_hint" = "Didukung oleh gerbang pembayaran lokal yang selamat.";
 "sadaqah_donate_gateway_select_amount" = "Masukkan Nominal Sedekah";
@@ -734,3 +787,127 @@
 "quran_juz_desc_28" = "Etika sosial, rumah tangga, dan kehidupan Muslim.";
 "quran_juz_desc_29" = "Surah pendek tentang iman, akhirat, dan amaran keras.";
 "quran_juz_desc_30" = "Juz ‘Amma: fokus pada akhirat, tauhid, dan pembinaan iman dasar.";
+
+// MARK: - Feature: Prayer Times
+"prayer_tab_today" = "Hari Ini";
+"prayer_tab_monthly" = "Bulanan";
+"prayer_tab_ramadan" = "Ramadan";
+"prayer_next_title" = "Solat Seterusnya";
+"prayer_current_title" = "Solat Sekarang";
+"prayer_in_label" = "dalam";
+"prayer_monthly_select_date_hint" = "Pilih tarikh untuk melihat butiran";
+"prayer_monthly_schedule_format" = "Jadual Solat - %@";
+"prayer_ramadan_hijri_format" = "Ramadan %d H";
+"prayer_ramadan_subtitle" = "Jadual Imsakiyah & Buka Puasa";
+"prayer_reminder_adhan" = "Azan";
+"prayer_reminder_alarm" = "Alarm";
+"prayer_reminder_silent" = "Senyap";
+"prayer_error_past_date" = "Tidak boleh menetapkan peringatan untuk tarikh lampau";
+"prayer_settings_calculation_method" = "Kaedah Pengiraan";
+"prayer_settings_madhab" = "Madhab Asar";
+"prayer_settings_notifications" = "Notifikasi";
+
+// MARK: - Feature: Khatam
+"khatam_recommendation_title" = "Saranan Bacaan";
+"khatam_daily_target" = "Sasaran Harian";
+"khatam_weekly_target" = "Sasaran Mingguan";
+"khatam_target_finish" = "Sasaran Selesai";
+"khatam_page_status" = "Halaman %d daripada %d";
+"khatam_pages_count" = "%d halaman";
+"khatam_completed_on" = "Selesai pada %@";
+"khatam_manual_entry_title" = "Input Progres Manual";
+"khatam_manual_entry_desc" = "Masukkan jumlah halaman yang anda baca dari Mushaf fizikal.";
+"khatam_add_progress" = "Tambah Progres";
+"khatam_set_page_directly" = "Set Halaman Terus";
+"khatam_target_page_placeholder" = "Halaman Sasaran (cth: 450)";
+"khatam_pages_read_placeholder" = "Halaman Dibaca (cth: 5)";
+"khatam_new_goal_title" = "Sasaran Khatam Baru";
+"khatam_details_header" = "Butiran";
+"khatam_goal_title_placeholder" = "Tajuk Sasaran (cth: Khatam Ramadhan)";
+"khatam_completion_goal_header" = "Sasaran Selesai";
+"khatam_target_date_label" = "Tarikh Sasaran";
+"khatam_cancel_goal" = "Batalkan Sasaran Semasa";
+"khatam_no_active_goal" = "Tiada sasaran khatam aktif";
+"khatam_no_active_goal_desc" = "Tetapkan sasaran untuk menjejaki progres bacaan anda dan kekal konsisten.";
+"khatam_detail_no_logs" = "Belum ada rekod progres";
+"khatam_log_read_pages" = "Membaca %d halaman";
+"khatam_log_range_format" = "%d:%d → %d:%d";
+"khatam_log_pages_added" = "+%d hal.";
+"khatam_mode" = "Mod";
+"khatam_pages" = "Halaman";
+"khatam_surah_ayah" = "Surah/Ayat";
+"khatam_from" = "Dari:";
+"khatam_to_surah" = "Ke Surah";
+"khatam_to_ayah" = "Ke Ayat";
+"khatam_ayah_number_placeholder" = "Nombor Ayat";
+"khatam_max_ayah" = "Maks Ayat: %d";
+"khatam_progress_by_range" = "Progres mengikut Julat";
+"khatam_percentage_format" = "%d%%";
+"khatam_history_stats" = "Anda telah menyelesaikan khatam %d kali";
+"khatam_from_surah" = "Dari Surah";
+"khatam_from_ayah" = "Dari Ayat";
+"khatam_details_title" = "Butiran Khatam";
+"khatam_tab_progress" = "Progres";
+"khatam_tab_history" = "Sejarah";
+"khatam_status_surah" = "Surah %1$d daripada 114";
+"khatam_status_ayah" = "%1$d daripada %2$d Ayat";
+"khatam_target_ayahs" = "%1$d Ayat";
+"khatam_log_ayahs_added" = "+%d Ayat";
+"khatam_ayah_count" = "%d Ayat";
+"khatam_start_date_label" = "Tarikh Mula";
+"khatam_setup_starting_point_header" = "Titik Permulaan";
+
+// MARK: - Feature: Calendar
+"calendar_accessibility_event_item" = "Tarikh penting: %@. Status: %@.";
+"calendar_add_confirm_message" = "Adakah anda mahu menambah '%@' ke kalendar iPhone anda?";
+"calendar_add_confirm_title" = "Tambah ke Kalendar";
+"calendar_add_to_system" = "Tambah ke Kalendar iPhone";
+"calendar_added_error" = "Gagal menambah aktiviti ke kalendar";
+"calendar_added_success" = "Aktiviti berjaya ditambah ke kalendar";
+"calendar_event_title" = "Tarikh Penting";
+"calendar_hijri_abbr" = "H";
+"calendar_islamic_months" = "Bulan-bulan Islami";
+"calendar_jump_to_date" = "Pindah ke Tarikh";
+"calendar_month_placeholder" = "Kalendar Hijriah & Masehi";
+"calendar_month_significance" = "Signifikansi Bulan";
+"calendar_no_events" = "Tiada aktiviti pada bulan ini";
+"calendar_permission_denied_title" = "Akses Dinafikan";
+"calendar_permission_denied_message" = "Akses kalendar dinafikan. Sila aktifkan di Tetapan.";
+"calendar_upcoming_label" = "Akan Datang";
+"calendar_view_all_months" = "Lihat Semua Bulan Hijriah";
+
+// MARK: - Feature: Journal
+"journal_add_btn" = "Tambah Catatan";
+"journal_new_entry_desc" = "Refleksikan ibadah dan kebaikan anda hari ini.";
+"journal_new_entry_title" = "Tulis Jurnal Hari Ini";
+"journal_timeline_title" = "Garis Masa";
+"journal_title_placeholder" = "Tajuk (cth: Refleksi Surah Al-Kahf)";
+"journal_content_placeholder" = "Tulis refleksi anda di sini...";
+"journal_reference_placeholder" = "Rujukan (cth: Al-Baqarah: 153)";
+"journal_label_title" = "Tajuk Jurnal";
+"journal_label_content" = "Mencatat Refleksi";
+"journal_label_reference" = "Rujukan Suci";
+"journal_save_success" = "Jurnal berjaya disimpan";
+"journal_empty_title" = "Belum Ada Catatan Jurnal";
+"journal_empty_desc" = "Mula catat refleksi dan pertumbuhan rohani anda.";
+"journal_delete_confirm" = "Adakah anda pasti mahu memadam jurnal ini?";
+"journal_detail_title" = "Butiran Jurnal";
+"journal_mood_peaceful" = "Tenang";
+"journal_mood_grateful" = "Syukur";
+"journal_mood_spiritual" = "Rohani";
+"journal_mood_happy" = "Gembira";
+"journal_mood_sad" = "Sedih";
+"journal_label_mood" = "Suasana Hati";
+"journal_accessibility_entry" = "Rekod jurnal dari %@. Tajuk: %@. Pratonton: %@.";
+"chatbot_history_title" = "Rekod Chat";
+"chatbot_empty_history" = "Belum ada perbualan. Mulakan chat baru!";
+"chatbot_command_hint" = "Sokongan: /surah:1, /ayah:1:1, /hadith:1";
+"chatbot_ref_quran" = "Rujukan Al-Quran";
+"chatbot_ref_hadith" = "Rujukan Hadis";
+"chatbot_ref_tafsir" = "Butiran Tafsir";
+"chatbot_welcome_msg" = "Assalamu'alaikum! Saya pembantu Hira anda. Gunakan /surah:1 atau /hadis:1 untuk rujukan cepat.";
+"chatbot_typing" = "Pembantu sedang berfikir...";
+"chatbot_new_session" = "Perbualan Baru";
+"chatbot_delete_session" = "Padam Rekod";
+"chatbot_delete_confirm_title" = "Padam Chat";
+"chatbot_delete_confirm_msg" = "Adakah anda pasti mahu memadam perbualan ini? Tindakan ini tidak boleh dibatalkan.";

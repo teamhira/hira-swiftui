@@ -23,14 +23,14 @@ struct DuaListView: View {
                 VStack(alignment: .leading, spacing: 24) {
                     // Header Section
                     VStack(alignment: .leading, spacing: 12) {
-                        Text(LocalizedStringKey(category))
+                        Text(category.replacingOccurrences(of: "_", with: " ").capitalized)
                             .font(.system(size: 32, weight: .bold, design: .rounded))
                             .foregroundColor(colors.foreground)
                         
                         HStack(spacing: 6) {
                             Image(systemName: "number.square.fill")
                                 .foregroundColor(colors.primary)
-                            Text("\(viewModel.countForCategory(category)) \(Text("duas_found"))")
+                            Text("\(viewModel.duas.count) \(Text("duas_found"))")
                                 .font(.system(size: 14, weight: .semibold, design: .rounded))
                                 .foregroundColor(.secondary)
                         }
@@ -39,9 +39,17 @@ struct DuaListView: View {
                     .padding(.top, 16)
                     
                     // Dua List Section
-                    let filtered = viewModel.filteredDuasForCategory(category)
-                    
-                    if filtered.isEmpty {
+                    if viewModel.isLoading {
+                        VStack(spacing: 16) {
+                            ForEach(0..<5, id: \.self) { _ in
+                                RoundedRectangle(cornerRadius: 24)
+                                    .fill(colors.foreground.opacity(0.05))
+                                    .frame(height: 100)
+                                    .hiraShimmer()
+                            }
+                        }
+                        .padding(.horizontal, 24)
+                    } else if viewModel.duas.isEmpty {
                         VStack(spacing: 20) {
                             Image(systemName: "doc.text.magnifyingglass")
                                 .font(.system(size: 50))
@@ -57,13 +65,9 @@ struct DuaListView: View {
                         .padding(.top, 60)
                     } else {
                         VStack(spacing: 16) {
-                            ForEach(filtered) { item in
+                            ForEach(viewModel.duas) { item in
                                 NavigationLink(value: AppRoute.duaDetail(item)) {
-                                    DuaRow(
-                                        title: item.title,
-                                        description: item.description,
-                                        category: item.category
-                                    )
+                                    DuaRow(item: item)
                                 }
                                 .buttonStyle(PlainButtonStyle())
                             }
@@ -76,16 +80,12 @@ struct DuaListView: View {
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            viewModel.fetchDuasByCategory(category)
+        }
     }
 }
 
-// MARK: - Extends ViewModel for Category List Logic
-extension DuaViewModel {
-    func filteredDuasForCategory(_ categoryId: String) -> [DuaItem] {
-        self.selectedCategory = categoryId
-        return self.filteredDuas
-    }
-}
 
 #Preview {
     NavigationStack {

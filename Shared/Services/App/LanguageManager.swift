@@ -44,7 +44,7 @@ public class LanguageManager {
         }
     }
     
-    public func localizedString(_ key: String, arguments: [CVarArg] = []) -> String {
+    public func localizedString(_ key: String, fallback: String? = nil, arguments: [CVarArg] = []) -> String {
         let bundle: Bundle
         if selectedCode == "system" {
             bundle = .main
@@ -57,7 +57,7 @@ public class LanguageManager {
             }
         }
         
-        let localizedValue = NSLocalizedString(key, bundle: bundle, value: key, comment: "")
+        let localizedValue = NSLocalizedString(key, bundle: bundle, value: fallback ?? key, comment: "")
         
         if arguments.isEmpty {
             return localizedValue

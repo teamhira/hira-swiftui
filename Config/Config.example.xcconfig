@@ -11,4 +11,6 @@ QURAN_FOUNDATION_CLIENT_ID = your_client_id_here
 QURAN_FOUNDATION_CLIENT_SECRET = your_client_secret_here
 QURAN_FOUNDATION_REDIRECT_URI= your_redirect_uri_here
 
-HIRA_BACKEND_URL = https:/$()/hira.achmdndy.dev
+HIRA_BACKEND_URL = https:/$()/hira.example.com
+
+UMMAH_API_URL = https:/$()/ummahapi.com/api

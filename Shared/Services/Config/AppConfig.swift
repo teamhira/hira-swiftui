@@ -47,6 +47,14 @@ public struct AppConfig {
         }
         return url
     }
+
+    public static var ummahBaseURL: URL {
+        guard let urlString = Bundle.main.object(forInfoDictionaryKey: "UMMAH_API_URL") as? String,
+              let url = URL(string: urlString) else {
+            fatalError("UMMAH_API_URL is missing or invalid in Info.plist")
+        }
+        return url
+    }
     
     public struct API {
         public static let timeout: TimeInterval = 30.0

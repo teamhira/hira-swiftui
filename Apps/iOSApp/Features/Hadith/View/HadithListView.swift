@@ -31,7 +31,7 @@ struct HadithListView: View {
                         HStack(spacing: 6) {
                             Image(systemName: "books.vertical.fill")
                                 .foregroundColor(colors.primary)
-                            Text("\(viewModel.filteredHadiths(for: category).count) \(Text(appEnv.language.localizedString("hadith_explore_btn")).font(.system(size: 10)))")
+                            Text("\(viewModel.hadiths.count) \(Text(appEnv.language.localizedString("hadith_explore_btn")).font(.system(size: 10)))")
                                 .font(.system(size: 14, weight: .semibold, design: .rounded))
                                 .foregroundColor(.secondary)
                         }
@@ -40,9 +40,18 @@ struct HadithListView: View {
                     .padding(.top, 16)
                     
                     // Hadith List Section
-                    let filtered = viewModel.filteredHadiths(for: category)
-                    
-                    if filtered.isEmpty {
+                    if viewModel.isLoading && viewModel.hadiths.isEmpty {
+                        VStack(spacing: 16) {
+                            ForEach(0..<5, id: \.self) { _ in
+                                RoundedRectangle(cornerRadius: 24)
+                                    .fill(colors.background)
+                                    .frame(height: 120)
+                                    .hiraCleanCard(colors: colors)
+                                    .hiraShimmer()
+                            }
+                        }
+                        .padding(.horizontal, 24)
+                    } else if viewModel.hadiths.isEmpty {
                         VStack(spacing: 20) {
                             Image(systemName: "book.closed.fill")
                                 .font(.system(size: 50))
@@ -55,19 +64,23 @@ struct HadithListView: View {
                         .frame(maxWidth: .infinity)
                         .padding(.top, 60)
                     } else {
-                        VStack(spacing: 16) {
-                            ForEach(filtered) { item in
+                        LazyVStack(spacing: 16) {
+                            ForEach(viewModel.hadiths) { item in
                                 Button(action: {
                                     router.navigate(to: .hadithDetail(item))
                                 }) {
-                                    HadithRow(
-                                        title: item.title,
-                                        bodyText: item.body,
-                                        narrator: item.narrator,
-                                        source: item.source
-                                    )
+                                    HadithRow(item: item)
                                 }
                                 .buttonStyle(PlainButtonStyle())
+                                .onAppear {
+                                    viewModel.loadMoreIfNeeded(currentItem: item)
+                                }
+                            }
+                            
+                            if viewModel.isLoading && !viewModel.hadiths.isEmpty {
+                                ProgressView()
+                                    .padding(.vertical, 16)
+                                    .frame(maxWidth: .infinity)
                             }
                         }
                         .padding(.horizontal, 24)
@@ -76,8 +89,17 @@ struct HadithListView: View {
                 .padding(.bottom, 32)
             }
         }
+        .task {
+            viewModel.fetchHadiths(for: category)
+        }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        .searchable(text: $viewModel.searchQuery, prompt: appEnv.language.localizedString("dua_search_placeholder"))
+        .overlay {
+            if !viewModel.searchQuery.isEmpty {
+                HadithSearchResultsView(viewModel: viewModel)
+            }
+        }
     }
 }
 

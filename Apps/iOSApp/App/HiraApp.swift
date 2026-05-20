@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS, deprecated: 26.0, message: "Using fallback until MKReverseGeocodingRequest is stable")
 @main
 struct HiraApp: App {
     @State private var router = AppRouter()
@@ -16,7 +17,12 @@ struct HiraApp: App {
     @State private var language = LanguageManager()
     @State private var quranViewModel = QuranViewModel()
     
-    public init() {}
+    public init() {
+        // Initialize notification manager and delegate
+        _ = NotificationManager.shared
+        NotificationManager.shared.requestAuthorization()
+    }
+
     
     var body: some Scene {
         WindowGroup {
@@ -53,13 +59,7 @@ struct HiraApp: App {
                                     case .sadaqah: SadaqahView()
                                     case .dua: DuaView()
                                     case .duaList(let category): DuaListView(category: category)
-                                    case .duaDetail(let item): DuaDetailView(
-                                        title: item.title,
-                                        arabicText: item.arabic,
-                                        transliteration: "",
-                                        translation: item.translation,
-                                        reference: item.reference
-                                    )
+                                    case .duaDetail(let item): DuaDetailView(item: item)
                                     case .hadith: HadithView()
                                     case .hadithList(let category): HadithListView(category: category)
                                     case .hadithDetail(let item): HadithDetailView(item: item)
@@ -71,8 +71,8 @@ struct HiraApp: App {
                                     case .tracker: TrackerView()
                                     case .calendar: CalendarView()
                                     case .halal: HalalView()
-                                    case .hajjJourney: HajjJourneyView()
-                                    case .hajjUmrah: HajjUmrahView()
+                                    case .allahNames: AllahNamesView()
+                                    case .memorization: MemorizationView()
                                     case .articleList: ArticleListView()
                                     case .articleDetail(let article): ArticleDetailView(article: article)
                                     case .home, .splash: EmptyView()
@@ -87,6 +87,11 @@ struct HiraApp: App {
                 }
             }
             .id(language.selectedCode)
+            .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("HIRA_DEEP_LINK"))) { note in
+                if let feature = note.object as? String, feature == "deenmode" {
+                    router.navigate(to: .deenMode)
+                }
+            }
             .environment(quranViewModel)
             .environment(router)
             .environment(appState)

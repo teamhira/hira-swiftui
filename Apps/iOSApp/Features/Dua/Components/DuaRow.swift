@@ -12,16 +12,14 @@ struct DuaRow: View {
     @Environment(\.appEnvironment) private var appEnv
     private var colors: ThemeModel { appEnv.theme.current }
     
-    let title: String
-    let description: String
-    let category: String
+    let item: DuaEntity
     
     // MARK: - Body
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             // Header with category tag
             HStack {
-                Text(LocalizedStringKey(category))
+                Text(item.category.replacingOccurrences(of: "_", with: " ").capitalized)
                     .font(.system(size: 10, weight: .bold, design: .rounded))
                     .foregroundColor(colors.primary)
                     .padding(.horizontal, 10)
@@ -38,11 +36,12 @@ struct DuaRow: View {
             
             // Title and description
             VStack(alignment: .leading, spacing: 6) {
-                Text(LocalizedStringKey(title))
+                Text(item.title)
                     .font(.system(size: 16, weight: .bold, design: .rounded))
                     .foregroundColor(colors.foreground)
+                    .lineLimit(1)
                 
-                Text(LocalizedStringKey(description))
+                Text(item.translation)
                     .font(.system(size: 14))
                     .foregroundColor(.secondary)
                     .lineLimit(2)
@@ -50,27 +49,26 @@ struct DuaRow: View {
             }
         }
         .padding(18)
-        .background(colors.background)
-        .clipShape(RoundedRectangle(cornerRadius: 24))
         .hiraCleanCard(colors: colors)
+        .padding(.horizontal, 4) // Subtle breathing room
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(LocalizedStringKey(title))
-        .accessibilityHint(LocalizedStringKey("dua_accessibility_item"))
+        .accessibilityLabel(item.title)
     }
 }
 
 #Preview {
     VStack(spacing: 16) {
-        DuaRow(
-            title: "Protection from harm",
-            description: "Dua recited every morning and evening for safety.",
-            category: "Morning & Evening"
-        )
-        DuaRow(
-            title: "Entering home",
-            description: "To seek blessings when returning home.",
-            category: "Daily Life"
-        )
+        DuaRow(item: DuaEntity(
+            id: 1,
+            category: "morning",
+            title: "Morning Remembrance",
+            arabic: "...",
+            transliteration: "...",
+            translation: "We have reached the morning...",
+            source: "Abu Dawud",
+            repeatOnce: 1
+        ))
     }
     .padding()
 }
+

@@ -2,7 +2,7 @@
 //  GetBookmarksAyahsRangeUseCase.swift
 //  Hira
 //
-//  Created by Antigravity on 17/04/26.
+//  Created by Ryuk on 17/04/26.
 //
 
 import Foundation

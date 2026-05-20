@@ -30,7 +30,7 @@ struct GlobalSearchView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 12) {
                                 SuggestionChip(title: appEnv.language.localizedString("quran_daily_reminder"))
-                                SuggestionChip(title: appEnv.language.localizedString("home_feature_qibla"))
+                                SuggestionChip(title: appEnv.language.localizedString("home_feature_allahnames"))
                                 SuggestionChip(title: appEnv.language.localizedString("explore_category_halal"))
                                 SuggestionChip(title: appEnv.language.localizedString("quran_tab_topic"))
                             }

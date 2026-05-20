@@ -64,6 +64,8 @@
 	<string>$(QURAN_FOUNDATION_REDIRECT_URI)</string>
 	<key>HIRA_BACKEND_URL</key>
 	<string>$(HIRA_BACKEND_URL)</string>
+	<key>UMMAH_API_URL</key>
+	<string>$(UMMAH_API_URL)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -78,5 +80,15 @@
 			</array>
 		</dict>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Hira needs access to your calendar to save Islamic events and reminders.</string>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>Hira needs full access to your calendar to sync and manage Islamic events.</string>
+	<key>NSCalendarsWriteOnlyAccessUsageDescription</key>
+	<string>Hira needs permission to add Islamic events to your calendar.</string>
 </dict>
 </plist>

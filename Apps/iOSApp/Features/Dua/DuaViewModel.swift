@@ -7,103 +7,215 @@
 
 import SwiftUI
 import Observation
-
-// MARK: - Models
-public struct DuaItem: Identifiable, Hashable {
-    public let id = UUID()
-    public let title: String
-    public let description: String
-    public let category: String
-    public let arabic: String
-    public let translation: String
-    public let reference: String?
-}
+import Combine
 
 // MARK: - ViewModel
 @Observable
 class DuaViewModel {
     
+    // MARK: - Dependencies
+    private let getDuaCategoriesUseCase: GetDuaCategoriesUseCase
+    private let getDuasByCategoryUseCase: GetDuasByCategoryUseCase
+    private let getRandomDuaUseCase: GetRandomDuaUseCase
+    private let searchDuasUseCase: SearchDuasUseCase
+    private var cancellables = Set<AnyCancellable>()
+    
     // MARK: - State
-    var searchQuery: String = ""
+    // MARK: - State
+    var searchQuery: String = "" {
+        didSet {
+            searchSubject.send(searchQuery)
+        }
+    }
+    private let searchSubject = PassthroughSubject<String, Never>()
+    
     var selectedCategory: String = "dua_category_all"
     
-    // MARK: - Data Source
-    // Sample Duas
-    private let sampleDuas: [DuaItem] = [
-        DuaItem(
-            title: "Protection from Harm",
-            description: "Dua recited every morning and evening for safety.",
-            category: "dua_category_daily",
-            arabic: "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
-            translation: "In the Name of Allah, who with His Name nothing can cause harm in the earth nor in the heavens, and He is the All-Hearing, the All-Knowing.",
-            reference: "Sunan Abu Dawud"
-        ),
-        DuaItem(
-            title: "Entering the Home",
-            description: "To seek blessings when returning home.",
-            category: "dua_category_daily",
-            arabic: "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ الْمَوْلَجِ وَخَيْرَ الْمَخْرَجِ",
-            translation: "O Allah, I ask You for the best entrance and the best exit.",
-            reference: "Sunan Abu Dawud"
-        ),
-        DuaItem(
-            title: "Faith and Guidance",
-            description: "A Quranic prayer for firm faith.",
-            category: "dua_category_quranic",
-            arabic: "رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِنْ لَدُنْكَ رَحْمَةً",
-            translation: "Our Lord, let not our hearts deviate after You have guided us and grant us from Yourself mercy.",
-            reference: "Surah Ali 'Imran: 8"
-        ),
-        DuaItem(
-            title: "Knowledge",
-            description: "To seek increase in beneficial knowledge.",
-            category: "dua_category_quranic",
-            arabic: "رَّبِّ زِدْنِي عِلْمًا",
-            translation: "My Lord, increase me in knowledge.",
-            reference: "Surah Ta-Ha: 114"
-        ),
-        DuaItem(
-            title: "Patience and Strength",
-            description: "Prophetic prayer for steadfastness.",
-            category: "dua_category_prophetic",
-            arabic: "يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِي عَلَى دِينِكَ",
-            translation: "O Changer of hearts, make my heart firm upon Your religion.",
-            reference: "Jami' at-Tirmidhi"
-        )
-    ]
+    var categories: [DuaCategoryEntity] = []
+    var searchResults: [DuaEntity] = []
+    var duas: [DuaEntity] = []
+    var featuredDua: DuaEntity?
     
-    // MARK: - Computed Properties
-    var categories: [(id: String, icon: String)] = [
-        ("dua_category_all", "square.grid.2x2.fill"),
-        ("dua_category_daily", "sun.max.fill"),
-        ("dua_category_quranic", "book.fill"),
-        ("dua_category_prophetic", "person.fill")
-    ]
+    var isLoading: Bool = false
+    var isCategoriesLoading: Bool = false
+    var isFeaturedLoading: Bool = false
+    var isSearching: Bool = false
     
-    var filteredDuas: [DuaItem] {
-        var results = sampleDuas
+    // MARK: - Init
+    init(
+        getDuaCategoriesUseCase: GetDuaCategoriesUseCase = DIContainer.shared.getDuaCategoriesUseCase,
+        getDuasByCategoryUseCase: GetDuasByCategoryUseCase = DIContainer.shared.getDuasByCategoryUseCase,
+        getRandomDuaUseCase: GetRandomDuaUseCase = DIContainer.shared.getRandomDuaUseCase,
+        searchDuasUseCase: SearchDuasUseCase = DIContainer.shared.searchDuasUseCase
+    ) {
+        self.getDuaCategoriesUseCase = getDuaCategoriesUseCase
+        self.getDuasByCategoryUseCase = getDuasByCategoryUseCase
+        self.getRandomDuaUseCase = getRandomDuaUseCase
+        self.searchDuasUseCase = searchDuasUseCase
         
-        // Filter by category
-        if selectedCategory != "dua_category_all" {
-            results = results.filter { $0.category == selectedCategory }
-        }
-        
-        // Filter by search query
-        if !searchQuery.isEmpty {
-            results = results.filter { 
-                $0.title.localizedCaseInsensitiveContains(searchQuery) || 
-                $0.description.localizedCaseInsensitiveContains(searchQuery) ||
-                $0.translation.localizedCaseInsensitiveContains(searchQuery)
-            }
-        }
-        
-        return results
+        loadCachedData()
+        setupSearch()
+        fetchInitialData()
     }
     
-    func countForCategory(_ categoryId: String) -> Int {
-        if categoryId == "dua_category_all" {
-            return sampleDuas.count
+    // MARK: - Actions
+    func fetchInitialData() {
+        // Only fetch if not fetched today or if caches are empty
+        let lastDate = UserDefaults.standard.object(forKey: "HIRA_DUA_LAST_FETCH") as? Date ?? Date.distantPast
+        let isToday = Calendar.current.isDateInToday(lastDate)
+        
+        if !isToday || categories.isEmpty {
+            fetchCategories()
         }
-        return sampleDuas.filter { $0.category == categoryId }.count
+        
+        if !isToday || featuredDua == nil {
+            fetchFeaturedDua()
+        }
+        
+        if !isToday {
+            UserDefaults.standard.set(Date(), forKey: "HIRA_DUA_LAST_FETCH")
+        }
+    }
+    
+    func fetchCategories() {
+        isCategoriesLoading = true
+        getDuaCategoriesUseCase.execute()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                self?.isCategoriesLoading = false
+                if case .failure(let error) = completion {
+                    print("Error fetching categories: \(error)")
+                }
+            } receiveValue: { [weak self] response in
+                let categories = response.data.categories.map { $0.toDomain() }
+                self?.categories = categories
+                self?.saveCategoriesToCache(categories)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func fetchFeaturedDua() {
+        isFeaturedLoading = true
+        getRandomDuaUseCase.execute()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                self?.isFeaturedLoading = false
+                if case .failure(let error) = completion {
+                    print("Error fetching random dua: \(error)")
+                }
+            } receiveValue: { [weak self] response in
+                let dua = response.data.toDomain()
+                self?.featuredDua = dua
+                self?.saveFeaturedToCache(dua)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func fetchDuasByCategory(_ categoryId: String) {
+        if categoryId == "dua_category_all" {
+            self.duas = []
+            return
+        }
+        
+        isLoading = true
+        getDuasByCategoryUseCase.execute(id: categoryId)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                self?.isLoading = false
+                if case .failure(let error) = completion {
+                    print("Error fetching duas by category: \(error)")
+                }
+            } receiveValue: { [weak self] response in
+                self?.duas = response.data.duas.map { $0.toDomain() }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func setupSearch() {
+        searchSubject
+            .debounce(for: .milliseconds(500), scheduler: DispatchQueue.main)
+            .removeDuplicates()
+            .sink { [weak self] query in
+                if query.count >= 3 {
+                    self?.performSearch(query: query)
+                } else if query.isEmpty {
+                    self?.searchResults = []
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func performSearch(query: String) {
+        isSearching = true
+        searchDuasUseCase.execute(query: query, category: nil)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                self?.isSearching = false
+                if case .failure(let error) = completion {
+                    print("Error searching duas: \(error)")
+                }
+            } receiveValue: { [weak self] response in
+                self?.searchResults = response.data.results.map { $0.toDomain() }
+            }
+            .store(in: &cancellables)
+    }
+    
+    // MARK: - Caching
+    private func saveCategoriesToCache(_ data: [DuaCategoryEntity]) {
+        if let encoded = try? JSONEncoder().encode(data) {
+            UserDefaults.standard.set(encoded, forKey: "HIRA_DUA_CATEGORIES_CACHE")
+        }
+    }
+    
+    private func saveFeaturedToCache(_ data: DuaEntity) {
+        if let encoded = try? JSONEncoder().encode(data) {
+            UserDefaults.standard.set(encoded, forKey: "HIRA_DUA_FEATURED_CACHE")
+        }
+    }
+    
+    private func loadCachedData() {
+        if let data = UserDefaults.standard.data(forKey: "HIRA_DUA_CATEGORIES_CACHE"),
+           let cached = try? JSONDecoder().decode([DuaCategoryEntity].self, from: data) {
+            self.categories = cached
+        }
+        
+        if let data = UserDefaults.standard.data(forKey: "HIRA_DUA_FEATURED_CACHE"),
+           let cached = try? JSONDecoder().decode(DuaEntity.self, from: data) {
+            self.featuredDua = cached
+        }
+    }
+    
+    // MARK: - Helpers
+    func getIconForCategory(_ id: String) -> String {
+        switch id {
+        case "morning": return "sun.and.horizon.fill"
+        case "evening": return "moon.stars.fill"
+        case "wudu": return "drop.fill"
+        case "prayer": return "person.fill"
+        case "after_prayer": return "hand.raised.fill"
+        case "sleep": return "bed.double.fill"
+        case "food": return "fork.knife"
+        case "travel": return "airplane"
+        case "home": return "house.fill"
+        case "masjid": return "building.columns.fill"
+        case "distress": return "heart.text.square.fill"
+        case "forgiveness": return "leaf.fill"
+        case "illness": return "cross.case.fill"
+        case "weather": return "cloud.rain.fill"
+        case "knowledge": return "book.fill"
+        case "parents": return "figure.2.and.child.holdinghands"
+        case "guidance": return "compass.drawing"
+        case "gratitude": return "hands.clap.fill"
+        case "protection": return "shield.fill"
+        case "dhikr": return "circle.dotted"
+        case "marriage": return "figure.2.arms.open"
+        case "hajj": return "square.fill"
+        case "grief": return "cloud.fog.fill"
+        case "children": return "figure.child"
+        case "business": return "briefcase.fill"
+        case "night_prayer": return "moon.fill"
+        case "quran_recitation": return "book.closed.fill"
+        default: return "square.grid.2x2.fill"
+        }
     }
 }

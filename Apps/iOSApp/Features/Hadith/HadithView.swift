@@ -23,12 +23,18 @@ struct HadithView: View {
                 VStack(alignment: .leading, spacing: 32) {
                     
                     // Featured Hadith Section
-                    FeaturedHadithView(
-                        title: viewModel.featuredHadith.title,
-                        bodyText: viewModel.featuredHadith.body,
-                        source: viewModel.featuredHadith.source
-                    )
-                    .padding(.top, 16)
+                    if let featured = viewModel.featuredHadith {
+                        FeaturedHadithView(item: featured)
+                            .padding(.top, 16)
+                    } else if viewModel.isLoading {
+                        // Loading Placeholder
+                        RoundedRectangle(cornerRadius: 32)
+                            .fill(colors.primary.opacity(0.05))
+                            .frame(height: 200)
+                            .padding(.horizontal, 24)
+                            .padding(.top, 16)
+                            .hiraShimmer()
+                    }
                     
                     // Popular Collections Grid
                     VStack(alignment: .leading, spacing: 20) {
@@ -37,25 +43,40 @@ struct HadithView: View {
                             .foregroundColor(colors.foreground)
                             .padding(.horizontal, 24)
                         
-                        LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)], spacing: 16) {
-                            ForEach(viewModel.collections) { collection in
-                                Button(action: {
-                                    router.navigate(to: .hadithList(collection.id))
-                                }) {
-                                    HadithCollectionCard(
-                                        title: collection.id,
-                                        icon: collection.icon,
-                                        count: collection.count
-                                    )
+                        if viewModel.isLoading && viewModel.collections.isEmpty {
+                            LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)], spacing: 16) {
+                                ForEach(0..<4, id: \.self) { _ in
+                                    RoundedRectangle(cornerRadius: 24)
+                                        .fill(colors.background)
+                                        .frame(height: 140)
+                                        .hiraCleanCard(colors: colors)
+                                        .hiraShimmer()
                                 }
-                                .buttonStyle(PlainButtonStyle())
                             }
+                            .padding(.horizontal, 24)
+                        } else {
+                            LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)], spacing: 16) {
+                                ForEach(viewModel.collections) { collection in
+                                    Button(action: {
+                                        router.navigate(to: .hadithList(collection.key))
+                                    }) {
+                                        HadithCollectionCard(
+                                            collection: collection,
+                                            icon: viewModel.getIcon(for: collection.key)
+                                        )
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
+                                }
+                            }
+                            .padding(.horizontal, 24)
                         }
-                        .padding(.horizontal, 24)
                     }
                 }
                 .padding(.bottom, 32)
             }
+        }
+        .task {
+            viewModel.fetchInitialData()
         }
         .navigationTitle(appEnv.language.localizedString("home_feature_hadith"))
         .navigationBarTitleDisplayMode(.large)
@@ -86,22 +107,23 @@ struct HadithSearchResultsView: View {
                         .padding(.horizontal, 24)
                         .padding(.top, 16)
                     
-                    let filtered = viewModel.searchHadiths()
-                    
-                    if filtered.isEmpty {
+                    if viewModel.isLoading {
+                        ForEach(0..<3, id: \.self) { _ in
+                            RoundedRectangle(cornerRadius: 24)
+                                .fill(colors.background)
+                                .frame(height: 100)
+                                .padding(.horizontal, 24)
+                                .hiraShimmer()
+                        }
+                    } else if viewModel.searchResults.isEmpty {
                         ContentUnavailableView.search(text: viewModel.searchQuery)
                             .padding(.top, 40)
                     } else {
-                        ForEach(filtered) { item in
+                        ForEach(viewModel.searchResults) { item in
                             Button(action: {
                                 router.navigate(to: .hadithDetail(item))
                             }) {
-                                HadithRow(
-                                    title: item.title,
-                                    bodyText: item.body,
-                                    narrator: item.narrator,
-                                    source: item.source
-                                )
+                                HadithRow(item: item)
                             }
                             .buttonStyle(PlainButtonStyle())
                             .padding(.horizontal, 24)

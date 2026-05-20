@@ -44,17 +44,19 @@ public struct FeatureView<Content: View>: View {
                     .foregroundColor(colors.primary)
                     .font(.system(size: 16, weight: .semibold))
             }
-            .padding(.horizontal, 24)
-            .padding(.vertical, 16)
+            .padding(.horizontal, AppSpacing.md)
+            .padding(.vertical, AppSpacing.sm)
             .background(colors.background)
             
             // Content
             ScrollView {
                 content
-                    .padding(24)
+                    .padding(.horizontal, AppSpacing.md)
+                    .padding(.vertical, AppSpacing.md)
             }
             .background(colors.background)
         }
         .navigationBarBackButtonHidden(true)
     }
 }
+

@@ -23,8 +23,8 @@ public enum HomeFeatureType: String, CaseIterable, Codable, Identifiable {
     case tracker
     case calendar
     case halal
-    case hajjJourney
-    case hajjUmrah
+    case allahNames
+    case memorization
     case prayerTimes
     case tarteel
     
@@ -60,8 +60,8 @@ public enum HomeFeatureType: String, CaseIterable, Codable, Identifiable {
         case .tracker: return "chart.bar.fill"
         case .calendar: return "calendar"
         case .halal: return "fork.knife"
-        case .hajjJourney: return "airplane"
-        case .hajjUmrah: return "person.2.fill"
+        case .allahNames: return "hand.raised.fill"
+        case .memorization: return "brain.head.profile"
         case .prayerTimes: return "clock.fill"
         case .tarteel: return "waveform.and.mic"
         }

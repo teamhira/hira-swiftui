@@ -12,9 +12,8 @@ struct DuaCategoryCard: View {
     @Environment(\.appEnvironment) private var appEnv
     private var colors: ThemeModel { appEnv.theme.current }
     
-    let category: String
-    let icon: String?
-    let count: Int
+    let category: DuaCategoryEntity
+    let icon: String
     
     // MARK: - Body
     var body: some View {
@@ -25,19 +24,18 @@ struct DuaCategoryCard: View {
                     .fill(colors.primary.opacity(0.1))
                     .frame(width: 44, height: 44)
                 
-                if let icon = icon {
-                    Image(systemName: icon)
-                        .font(.system(size: 20, weight: .semibold))
-                        .foregroundColor(colors.primary)
-                }
+                Image(systemName: icon)
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundColor(colors.primary)
             }
             
             VStack(alignment: .leading, spacing: 4) {
-                Text(LocalizedStringKey(category))
+                Text(category.name)
                     .font(.system(size: 16, weight: .bold, design: .rounded))
                     .foregroundColor(colors.foreground)
+                    .lineLimit(1)
                 
-                Text("\(count) \(Text("duas"))")
+                Text("\(category.count ?? 0) \(Text("duas"))")
                     .font(.system(size: 12, weight: .medium, design: .rounded))
                     .foregroundColor(.secondary)
             }
@@ -47,26 +45,20 @@ struct DuaCategoryCard: View {
         .background(
             RoundedRectangle(cornerRadius: 24)
                 .fill(colors.background)
-                .overlay(
-                    LinearGradient(
-                        colors: [colors.primary.opacity(0.05), .clear],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
         )
-        .clipShape(RoundedRectangle(cornerRadius: 24))
         .hiraCleanCard(colors: colors)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(LocalizedStringKey("dua_accessibility_category_item"))
-        .accessibilityHint(LocalizedStringKey(category))
+        .accessibilityLabel(category.name)
     }
 }
 
 #Preview {
     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
-        DuaCategoryCard(category: "dua_category_all", icon: "square.grid.2x2", count: 12)
-        DuaCategoryCard(category: "dua_category_daily", icon: "sun.max", count: 8)
+        DuaCategoryCard(
+            category: DuaCategoryEntity(id: "morning", name: "Morning Adhkar", description: "Desc", count: 12),
+            icon: "sun.max"
+        )
     }
     .padding()
 }
+

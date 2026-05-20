@@ -11,133 +11,123 @@ struct HadithDetailView: View {
     // MARK: - Properties
     @Environment(\.appEnvironment) private var appEnv
     private var colors: ThemeModel { appEnv.theme.current }
-    let item: HadithItem
+    let item: HadithEntity
     
     // MARK: - Body
     var body: some View {
-        ZStack {
-            colors.background.ignoresSafeArea()
-            
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 24) {
-                    // Main Content Card
-                    VStack(spacing: 32) {
-                        // Header Section
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text(LocalizedStringKey(item.title))
-                                .font(.system(size: 24, weight: .bold, design: .rounded))
-                                .foregroundColor(colors.foreground)
-                                .lineLimit(2)
-                                .multilineTextAlignment(.leading)
-                            
-                            Divider()
-                            
-                            HStack {
-                                Text(appEnv.language.localizedString("hadith_narrated_by", arguments: [item.narrator]))
-                                    .font(.system(size: 13, weight: .bold, design: .rounded))
-                                    .foregroundColor(colors.primary)
-                                
-                                Spacer()
-                                
-                                Text(item.source)
-                                    .font(.system(size: 11, weight: .semibold, design: .rounded))
-                                    .foregroundColor(.secondary)
-                            }
+        ScrollView(showsIndicators: false) {
+            VStack(alignment: .leading, spacing: 32) {
+                // Header Section
+                VStack(alignment: .leading, spacing: 16) {
+                    Text(item.collectionName)
+                        .font(.system(size: 32, weight: .bold, design: .rounded))
+                        .foregroundColor(colors.foreground)
+                    
+                    HStack {
+                        HStack(spacing: 8) {
+                            Image(systemName: "number.circle.fill")
+                            Text("#\(item.hadithnumber)")
                         }
+                        .font(.system(size: 14, weight: .bold, design: .rounded))
+                        .foregroundColor(colors.primary)
                         
-                        // Arabic Section (Optional)
-                        if let arabic = item.arabic {
-                            VStack(alignment: .trailing, spacing: 16) {
-                                HStack {
-                                    Image(systemName: "character.book.closed.fill")
-                                        .foregroundColor(colors.primary)
-                                    Text(appEnv.language.localizedString("dua_item_arabic_label")) // Recycled key
-                                        .font(.system(size: 10, weight: .bold, design: .rounded))
-                                        .foregroundColor(.secondary)
-                                }
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                                
-                                Text(arabic)
-                                    .font(.custom("KFGQPCUthmanTahaNaskh-Regular", size: 30))
-                                    .lineSpacing(12)
-                                    .multilineTextAlignment(.trailing)
-                                    .environment(\.layoutDirection, .rightToLeft)
-                                    .frame(maxWidth: .infinity, alignment: .trailing)
-                                    .foregroundColor(colors.foreground)
-                            }
-                            .padding(20)
-                            .background(colors.primary.opacity(0.05))
-                            .clipShape(RoundedRectangle(cornerRadius: 24))
-                        }
+                        Spacer()
                         
-                        // Body Section
-                        VStack(alignment: .leading, spacing: 10) {
-                            Text(appEnv.language.localizedString("dua_item_translation_label")) // Recycled key
-                                .font(.system(size: 10, weight: .bold, design: .rounded))
-                                .foregroundColor(.secondary)
-                                .textCase(.uppercase)
-                            
-                            Text(LocalizedStringKey(item.body))
-                                .font(.system(size: 16, weight: .regular, design: .rounded))
-                                .foregroundColor(colors.foreground.opacity(0.9))
-                                .lineSpacing(6)
-                                .multilineTextAlignment(.leading)
-                                .fixedSize(horizontal: false, vertical: true)
+                        if let grade = item.grade {
+                            Text(grade)
+                                .font(.system(size: 12, weight: .bold, design: .rounded))
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 6)
+                                .background(colors.primary.opacity(0.1))
+                                .foregroundColor(colors.primary)
+                                .clipShape(Capsule())
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        // Share Actions
-                        HStack(spacing: 16) {
-                            Button(action: shareHadith) {
-                                Label("Share", systemImage: "square.and.arrow.up")
-                                    .font(.system(size: 14, weight: .bold, design: .rounded))
-                                    .foregroundColor(.white)
-                                    .frame(maxWidth: .infinity)
-                                    .padding(.vertical, 14)
-                                    .background(colors.primary)
-                                    .clipShape(Capsule())
-                            }
-                            
-                            Button(action: copyHadith) {
-                                Label("Copy", systemImage: "doc.on.doc")
-                                    .font(.system(size: 14, weight: .bold, design: .rounded))
-                                    .foregroundColor(colors.primary)
-                                    .frame(maxWidth: .infinity)
-                                    .padding(.vertical, 14)
-                                    .background(colors.primary.opacity(0.1))
-                                    .clipShape(Capsule())
-                            }
-                        }
-                        .padding(.top, 16)
                     }
-                    .padding(24)
-                    .background(colors.background)
-                    .clipShape(RoundedRectangle(cornerRadius: 32))
-                    .hiraCleanCard(colors: colors)
-                    .padding(20)
                 }
+                .padding(.horizontal, 24)
+                .padding(.top, 24)
+                
+                // Arabic Content
+                if !item.arabic.isEmpty {
+                    VStack(alignment: .trailing, spacing: 20) {
+                        Image(systemName: "book.fill")
+                            .foregroundColor(colors.primary)
+                            .font(.system(size: 24))
+                        
+                        Text(item.arabic)
+                            .font(.custom("KFGQPCUthmanTahaNaskh-Regular", size: 30))
+                            .lineSpacing(14)
+                            .multilineTextAlignment(.trailing)
+                            .foregroundColor(colors.foreground)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding(32)
+                    .background(colors.primary.opacity(0.03))
+                }
+                
+                // Translation Content
+                VStack(alignment: .leading, spacing: 12) {
+                    Text(appEnv.language.localizedString("dua_item_translation_label"))
+                        .font(.system(size: 12, weight: .bold, design: .rounded))
+                        .foregroundColor(.secondary)
+                        .textCase(.uppercase)
+                    
+                    Text(item.english)
+                        .font(.system(size: 18, weight: .medium, design: .rounded))
+                        .foregroundColor(colors.foreground.opacity(0.9))
+                        .lineSpacing(6)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                .padding(.horizontal, 24)
+                
+                // Actions
+                HStack(spacing: 16) {
+                    Button(action: shareHadith) {
+                        Label("Share", systemImage: "square.and.arrow.up")
+                            .hiraPrimaryButton(colors: colors)
+                    }
+                    
+                    Button(action: copyHadith) {
+                        Label("Copy", systemImage: "doc.on.doc")
+                            .hiraSecondaryButton(colors: colors)
+                    }
+                }
+                .padding(.horizontal, 24)
+                .padding(.top, 8)
             }
+            .padding(.bottom, 40)
         }
+        .background(colors.background.ignoresSafeArea())
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
     }
     
     // MARK: - Actions
-    private func shareHadith() { }
+    private func shareHadith() { 
+        let text = "\(item.collectionName) #\(item.hadithnumber)\n\n\(item.arabic)\n\n\(item.english)"
+        let av = UIActivityViewController(activityItems: [text], applicationActivities: nil)
+        
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let rootVC = windowScene.windows.first?.rootViewController {
+            rootVC.present(av, animated: true)
+        }
+    }
+    
     private func copyHadith() { 
-        UIPasteboard.general.string = "\(item.arabic ?? "")\n\n\(appEnv.language.localizedString(item.body))"
+        UIPasteboard.general.string = "\(item.collectionName) #\(item.hadithnumber)\n\n\(item.arabic)\n\n\(item.english)"
     }
 }
 
 #Preview {
     NavigationStack {
-        HadithDetailView(item: HadithItem(
-            title: "Hadith Arba'in 1",
-            body: "hadith_featured_body",
-            source: "Sahih Bukhari",
-            narrator: "Umar bin Al-Khattab",
-            category: "hadith_col_arbain",
-            arabic: "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ"
+        HadithDetailView(item: HadithEntity(
+            id: "bukhari-1",
+            collection: "bukhari",
+            collectionName: "Sahih al-Bukhari",
+            hadithnumber: "1",
+            arabic: "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ",
+            english: "Actions are but by intentions...",
+            grade: "Sahih"
         ))
     }
 }

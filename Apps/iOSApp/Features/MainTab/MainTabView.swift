@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS, deprecated: 26.0, message: "Using fallback until MKReverseGeocodingRequest is stable")
 public struct MainTabView: View {
     @State private var selectedTab: Tab = .home
     @Environment(\.appEnvironment) private var appEnv
@@ -47,6 +48,7 @@ public struct MainTabView: View {
     }
 }
 
+@available(iOS, deprecated: 26.0, message: "Using fallback until MKReverseGeocodingRequest is stable")
 #Preview {
     MainTabView()
 }

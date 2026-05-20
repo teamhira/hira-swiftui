@@ -7,10 +7,13 @@
 
 import SwiftUI
 
+@available(iOS, deprecated: 26.0, message: "Using fallback until MKReverseGeocodingRequest is stable")
 public struct PrayerTimesView: View {
     @State private var viewModel = PrayerTimesViewModel()
     @Environment(\.appEnvironment) private var appEnv
     private var colors: ThemeModel { appEnv.theme.current }
+    @State private var selectedTab: Int = 0 // 0: Today, 1: Month
+    @State private var showSettings: Bool = false
     
     public init() {}
     
@@ -18,56 +21,66 @@ public struct PrayerTimesView: View {
         ZStack {
             colors.background.ignoresSafeArea()
             
-            ScrollView {
-                VStack(spacing: 24) {
-                    // Modern Header Card
-                    VStack(spacing: 16) {
-                        Text("Next Prayer")
-                            .font(.subheadline.bold())
-                            .foregroundColor(colors.primary)
-                        
-                        Text("Asr • 15:15")
-                            .font(.system(size: 32, weight: .bold, design: .rounded))
-                            .foregroundColor(colors.foreground)
-                        
-                        Text("1 hour 15 minutes remaining")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
+            VStack(spacing: 0) {
+                // MARK: - Header
+                PrayerHeaderView(status: viewModel.prayerResponse?.currentStatus, countdownOverride: viewModel.countdownString, nextPrayerNameOverride: viewModel.nextPrayerName, colors: colors)
+                    .padding(.bottom, 24)
+                
+                // MARK: - Navigation Tabs (Native)
+                Picker("", selection: $selectedTab) {
+                    Text(NSLocalizedString("prayer_tab_today", comment: "")).tag(0)
+                    Text(NSLocalizedString("prayer_tab_monthly", comment: "")).tag(1)
+                    if viewModel.isRamadan {
+                        Text(NSLocalizedString("prayer_tab_ramadan", comment: "")).tag(2)
                     }
-                    .padding(32)
-                    .frame(maxWidth: .infinity)
-                    .background(colors.foreground.opacity(0.03))
-                    .cornerRadius(32)
-                    .padding(.horizontal, 24)
-                    
-                    // Times List
-                    VStack(spacing: 16) {
-                        ForEach(viewModel.prayerTimes.sorted(by: { $0.value < $1.value }), id: \.key) { name, time in
-                            HStack {
-                                Text(name)
-                                    .font(.headline)
-                                    .foregroundColor(colors.foreground)
-                                
-                                Spacer()
-                                
-                                Text(time)
-                                    .font(.title3.bold().monospacedDigit())
-                                    .foregroundColor(colors.primary)
+                }
+                .pickerStyle(.segmented)
+                .padding(.horizontal, 24)
+                .padding(.bottom, 16)
+                
+                // MARK: - Content
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 32) {
+                        switch selectedTab {
+                        case 0: PrayerTodayView(viewModel: viewModel, colors: colors)
+                        case 1: PrayerMonthlyView(viewModel: viewModel, colors: colors)
+                        case 2:
+                            if let ramadan = viewModel.ramadanTimetable {
+                                PrayerRamadanView(ramadan: ramadan, colors: colors)
                             }
-                            .padding()
-                            .background(RoundedRectangle(cornerRadius: 16).fill(colors.foreground.opacity(0.04)))
+                        default: EmptyView()
                         }
                     }
-                    .padding(.horizontal, 24)
+                    .padding(.bottom, 40)
+                    .animation(.spring(response: 0.4, dampingFraction: 0.8), value: selectedTab)
                 }
-                .padding(.top, 24)
             }
         }
-        .navigationTitle("Prayer Times")
+        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: { showSettings = true }) {
+                    Image(systemName: "slider.horizontal.3")
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundColor(colors.primary)
+                }
+            }
+        }
+        .task {
+            viewModel.fetchAllData()
+        }
+        .sheet(isPresented: $showSettings) {
+            PrayerSettingsView(viewModel: viewModel) {
+                showSettings = false
+            }
+            .presentationDetents([.medium, .large])
+            .presentationDragIndicator(.visible)
+        }
     }
 }
 
+@available(iOS, deprecated: 26.0, message: "Using fallback until MKReverseGeocodingRequest is stable")
 #Preview {
     NavigationStack {
         PrayerTimesView()

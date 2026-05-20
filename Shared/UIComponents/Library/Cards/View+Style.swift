@@ -42,5 +42,16 @@ public extension View {
             .clipShape(Capsule())
             .shadow(color: colors.primary.opacity(0.3), radius: 10, x: 0, y: 5)
     }
+    
+    /// Secondary button style for Hira app.
+    func hiraSecondaryButton(colors: ThemeModel) -> some View {
+        self
+            .font(.headline.bold())
+            .foregroundColor(colors.primary)
+            .padding(.horizontal, 32)
+            .padding(.vertical, 14)
+            .background(colors.primary.opacity(0.1))
+            .clipShape(Capsule())
+    }
 }
 

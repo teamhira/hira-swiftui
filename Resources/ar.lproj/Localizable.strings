@@ -1,6 +1,6 @@
 /* 
-  Localizable.strings (AR)
-  Hira Perfectly Synced - Auto-synced with EN master
+  Localizable.strings (EN)
+  Hira Perfectly Synced - Source of Truth
 */
 
 // MARK: - Quran
@@ -94,8 +94,8 @@
 "home_feature_deenmode" = "وضع الدين";
 "home_feature_dua" = "دعاء";
 "home_feature_hadith" = "حديث";
-"home_feature_hajjjourney" = "رحلة الحج";
-"home_feature_hajjumrah" = "الحج والعمرة";
+"home_feature_allahnames" = "أسماء الله الحسنى";
+"home_feature_memorization" = "حفظ القرآن";
 "home_feature_halal" = "البحث عن حلال";
 "home_feature_hidden" = "مخفي من الرئيسية";
 "home_feature_journal" = "يوميات";
@@ -112,8 +112,9 @@
 "home_features_edit" = "تعديل الميزات";
 "home_features_section" = "الميزات اليومية";
 "home_greeting_day" = "السلام عليكم،";
-"home_hadith_sample" = "\"خياركم أحاسنكم أخلاقاً.\"";
+"home_hadith_sample" = "\"The best of you are those who have the best character.\"";
 "home_hadith_source" = "صحيح البخاري";
+"home_hadith_see_more" = "مشاهدة المزيد";
 "home_hadith_title" = "حديث اليوم";
 "home_location_jakarta" = "مكة المكرمة، المملكة العربية السعودية";
 "home_more_features_footer" = "قم بتعديل الميزات التي تظهر على شاشتك الرئيسية. اسحب لإعادة الترتيب. زر 'المزيد' سيكون دائماً في النهاية.";
@@ -121,11 +122,28 @@
 "home_prayer_asr" = "العصر";
 "home_prayer_dhuhr" = "الظهر";
 "home_prayer_fajr" = "الفجر";
+"home_prayer_imsak" = "إمساك";
 "home_prayer_isha" = "العشاء";
 "home_prayer_maghrib" = "المغرب";
+"home_prayer_sunrise" = "شروق";
 "home_prayer_title" = "مواقيت الصلاة";
+"home_prayer_countdown_prefix" = "الصلاة القادمة خلال";
+"home_prayer_islamic_info" = "معلومات إسلامية";
+"home_prayer_note_title" = "ملاحظة الحساب";
+"home_prayer_description_title" = "معاني الصلاة";
+"prayer_status_entering" = "حان الآن موعد صلاة %@";
+"prayer_status_minutes_away" = "%d دقيقة حتى %@";
+"prayer_status_hours_away" = "%d ساعة حتى %@";
+"prayer_pre_notification_title" = "اقتراب موعد الصلاة";
+"prayer_notification_body" = "حان الآن موعد الصلاة.";
+"background_refresh_alert_title" = "تحديث التطبيقات في الخلفية معطل";
+"background_refresh_alert_message" = "لضمان دقة مواقيت الصلاة وعمل الأذان في الخلفية، يرجى تفعيل تحديث التطبيقات في الخلفية من الإعدادات.";
+"background_refresh_alert_settings" = "فتح الإعدادات";
+"background_refresh_alert_cancel" = "لاحقاً";
+"common_close" = "إغلاق";
 "home_search_placeholder" = "ابحث عن قرآن، حديث، أو المزيد...";
 "home_result_title" = "نتائج البحث";
+"home_hijri_widget_title" = "التقويم الهجري";
 
 // MARK: - Feature: Explore
 "explore_category_articles" = "المقالات";
@@ -352,14 +370,11 @@
 "dua_category_daily" = "الأدعية اليومية";
 "dua_category_quranic" = "أدعية قرآنية";
 "dua_category_prophetic" = "أدعية نبوية";
-"dua_featured_desc" = "إن الدعاء هو مخ العبادة.";
 "dua_accessibility_category_item" = "القسم: %@";
 "dua_accessibility_item" = "دعاء: %@. اضغط مرتين للتفاصيل.";
+"dua_see_detail" = "عرض التفاصيل";
 
-"hadith_featured_title" = "حديث اليوم";
 "hadith_featured_body" = "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى.";
-"hadith_explore_btn" = "استكشاف المجموعات";
-"hadith_collection_title" = "المجموعات الشعبية";
 "hadith_detail_title" = "تفاصيل الحديث";
 "hadith_narrated_by" = "رواه %@";
 "hadith_not_found" = "لم يتم العثور على حديث";
@@ -368,6 +383,11 @@
 "hadith_col_bukhari" = "صحيح البخاري";
 "hadith_col_muslim" = "صحيح مسلم";
 "hadith_col_riyadh" = "رياض الصالحين";
+"hadith_col_abudawud" = "سنن أبي داود";
+"hadith_col_tirmidhi" = "جامع الترمذي";
+"hadith_col_ibnmajah" = "سنن ابن ماجه";
+"hadith_col_nasai" = "سنن النسائي";
+"hadith_col_malik" = "موطأ مالك";
 "hadith_accessibility_col_item" = "اضغط لعرض قائمة الأحاديث";
 "hadith_accessibility_item" = "اضغط لتفاصيل الحديث";
 
@@ -397,10 +417,7 @@
 "achievement_button_share" = "مشاركة الإنجاز";
 "common_confirm_share" = "استمرار المشاركة";
 "common_level" = "المستوى";
-"calendar_accessibility_event_item" = "تاريخ مهم: %@. الحالة: %@.";
 "charity_accessibility_donate_button" = "زر، تبرع الآن لـ %@";
-"dua_accessibility_category_item" = "القسم: %@";
-"dua_accessibility_item" = "دعاء: %@. اضغط مرتين للتفاصيل.";
 "explore_search_accessibility_article" = "مقالة: %@. القسم: %@. %@";
 "explore_search_accessibility_back" = "العودة للاستكشاف";
 "explore_search_accessibility_content" = "المحتوى الموجود: %@، القسم %@";
@@ -411,7 +428,7 @@
 "home_accessibility_more_hint" = "اضغط مرتين لعرض كل ميزات هيرة المتاحة.";
 "home_accessibility_prayer_card" = "بطاقة معلومات مواقيت الصلاة لليوم";
 "home_accessibility_search" = "إدخال نص، ابحث عن محتوى";
-"journal_accessibility_entry" = "مذكرة من %@. العنوان: %@. المعاينة: %@.";
+
 "khatam_accessibility_progress" = "تقدم الختم: %d صفحات مقروءة من %d. الإكمال %d بالمائة.";
 "login_accessibility_forgot_password" = "زر، نسيت كلمة المرور";
 "login_accessibility_qf_button" = "زر، تسجيل دخول بمؤسسة القرآن";
@@ -476,28 +493,52 @@
 "about_policy" = "سياسة الخصوصية";
 "about_terms" = "شروط الخدمة";
 "about_version" = "الإصدار 1.0.0 (الذهبي)";
-"calendar_event_title" = "تواريخ مهمة";
-"calendar_month_placeholder" = "التقويم الهجري والميلادي";
-"calendar_upcoming_label" = "قادم";
 "camera_permission_message" = "يحتاج هيرة الوصول للكاميرا لمسح الباركود، وتصوير الطعام، ومتطلبات أخرى داخل التطبيق.";
 "camera_permission_settings" = "افتح الإعدادات";
 "camera_permission_title" = "الوصول للكاميرا مطلوب";
 "chatbot_input_placeholder" = "اكتب سؤالك...";
 "chatbot_title" = "مساعد هيرة";
+"common_add" = "إضافة";
+"common_ok" = "موافق";
 "common_cancel" = "إلغاء";
-"common_close" = "إغلاق";
+"common_see_all" = "عرض الكل";
+"common_loading" = "جارٍ التحميل...";
 "deenmode_desc" = "ابقَ مركزاً في عبادتك عبر كتم إشعارات الهاتف.";
 "deenmode_settings_title" = "إعداد التركيز";
 "deenmode_title" = "وضع تركيز الدين";
 "deenmode_toggle" = "تفعيل وضع الدين";
-"hajj_checklist_title" = "قائمة التحضير";
-"hajj_tracking_desc" = "معلومات التحضير والرحلة.";
-"hajj_tracking_title" = "مراقبة رحلة الحج";
-"hajjumrah_dua_placeholder" = "مجموعة أدعية الطواف والسعي والوقوف.";
-"hajjumrah_dua_title" = "أدعية هامة";
-"hajjumrah_guide_desc" = "دروس كاملة للمناسك والأدعية والإجراءات.";
-"hajjumrah_guide_title" = "دليل الحج والعمرة";
-"hajjumrah_start_btn" = "ابدأ الدليل";
+"deenmode_focus_quran" = "قراءة القرآن";
+"deenmode_focus_dhikr" = "الذكر والتسبيح";
+"deenmode_focus_salah" = "الخشوع في الصلاة";
+"deenmode_focus_study" = "الدراسة الإسلامية";
+"deenmode_setting_mute" = "كتم التنبيهات";
+"deenmode_setting_mute_desc" = "كتم جميع المكالمات والتنبيهات أثناء التركيز.";
+"deenmode_setting_aod" = "الشاشة تعمل دائماً";
+"deenmode_setting_aod_desc" = "يمنع انطفاء الشاشة أثناء القراءة.";
+"deenmode_setting_airplane" = "بدون تشتيت";
+"deenmode_setting_airplane_desc" = "يذكرك بتقليل استخدام الشبكة لتقليل الإزعاج.";
+"deenmode_setting_stats" = "إحصائيات التركيز";
+"deenmode_setting_stats_desc" = "تتبع مقدار الوقت الذي تقضيه في العبادة العميقة.";
+"deenmode_active_title" = "وضع العبادة العميقة";
+"deenmode_active_desc" = "ركز تماماً مع الخالق. تم كتم جميع المشتتات.";
+"deenmode_stop_session" = "إنهاء الجلسة";
+"deenmode_session_history" = "سجل التركيز";
+"deenmode_total_focus" = "إجمالي وقت التركيز";
+"allahnames_title" = "99 أسماء الله الحسنى";
+"allahnames_desc" = "أسماء وصفات الله سبحانه وتعالى.";
+"allahnames_daily_title" = "تأملات يومية";
+"allahnames_meaning_label" = "المعنى";
+"allahnames_description_label" = "الوصف";
+"allahnames_explanation_label" = "الشرح";
+"allahnames_benefits_label" = "الفوائد";
+"allahnames_list_title" = "جميع الأسماء الـ 99";
+"allahnames_search_placeholder" = "ابحث في الأسماء أو المعاني...";
+"memorization_title" = "حفظ القرآن الكريم";
+"memorization_desc" = "تتبع وإدارة تقدمك في حفظ القرآن الكريم.";
+"memorization_add_target" = "إضافة هدف حفظ";
+"memorization_empty_list" = "لا توجد أهداف حفظ بعد. ابدأ بإضافة واحد!";
+"memorization_progress" = "تقدم الحفظ";
+"memorization_last_read" = "آخر ما تم حفظه";
 "halal_about_title" = "عن هذا المكان";
 "halal_nearby_title" = "حولك";
 "halal_scan_desc" = "امسح الباركود أو صور المنتج للتحقق من حالته فورا.";
@@ -507,10 +548,7 @@
 "halal_search_title" = "البحث عن طعام حلال";
 "halal_tab_food" = "طعام";
 "halal_tab_places" = "أماكن";
-"journal_add_btn" = "إضافة مدونة";
-"journal_new_entry_desc" = "تفكر في عبادتك وإحسانك اليوم.";
-"journal_new_entry_title" = "اكتب يوميات اليوم";
-"journal_timeline_title" = "الخط الزمني";
+
 "journey_profile_title" = "ملف الرحلة";
 "khatam_history_title" = "سجل القراءة";
 "khatam_progress_desc" = "راقب قراءتك للقرآن.";
@@ -634,7 +672,22 @@
 "tracker_summary_desc" = "اعرض ثباتك في العبادة.";
 "tracker_summary_title" = "إحصائيات العبادة";
 "tracker_trend_title" = "الاتجاه الشهري";
-"home_result_title" = "نتائج البحث";
+"tracker_item_fajr" = "صلاة الفجر";
+"tracker_item_dhuhr" = "صلاة الظهر";
+"tracker_item_asr" = "صلاة العصر";
+"tracker_item_maghrib" = "صلاة المغرب";
+"tracker_item_isha" = "صلاة العشاء";
+"tracker_item_fasting" = "الصيام";
+"tracker_item_dhikr" = "الأذكار اليومية";
+"tracker_item_quran" = "قراءة القرآن";
+"tracker_item_charity" = "الصدقة اليومية";
+"tracker_confirm_title" = "تسجيل العبادة";
+"tracker_confirm_message" = "هل أنت متأكد أنك أكملت هذه العبادة؟";
+"tracker_uncheck_confirm_title" = "إلغاء التسجيل";
+"tracker_uncheck_confirm_message" = "هل تريد إعادة ضبط حالة هذه العبادة؟";
+"tracker_history_title" = "سجل الأنشطة";
+"tracker_history_empty" = "لا يوجد سجل مسجل بعد.";
+"tracker_today_progress" = "تقدم اليوم";
 
 // MARK: - Sadaqah V2
 "sadaqah_dashboard_title" = "تبرع لتغيير الحياة";
@@ -655,7 +708,7 @@
 "sadaqah_subuh_notification" = "سنقوم بتنبيهك وقت صلاة الفجر.";
 "sadaqah_subuh_guidance" = "نشاط مجتمعي ودعم مباشر";
 "sadaqah_subuh_kajian" = "توصيات دروس العلم الشرعي";
-"sadaqah_subuh_commitment" = "\"أحب الأعمال إلى الله أدومها وإن قل.\"";
+"sadaqah_subuh_commitment" = "\"The best deeds are those that are small but consistent.\"";
 "sadaqah_donate_gateway_btn" = "إرسال تبرع";
 "sadaqah_donate_gateway_hint" = "مدعوم ببوابات دفع محلية آمنة.";
 "sadaqah_donate_gateway_select_amount" = "أدخل مبلغ التبرع";
@@ -734,3 +787,127 @@
 "quran_juz_desc_28" = "الأخلاق الاجتماعية، شؤون الأسرة، وحياة المسلم.";
 "quran_juz_desc_29" = "سور قصيرة عن الإيمان والآخرة والوعيد الشديد.";
 "quran_juz_desc_30" = "جزء عم: التركيز على الآخرة، والتوحيد، وبناء الإيمان الأساسي.";
+
+// MARK: - Feature: Prayer Times
+"prayer_tab_today" = "اليوم";
+"prayer_tab_monthly" = "شهري";
+"prayer_tab_ramadan" = "رمضان";
+"prayer_next_title" = "الصلاة القادمة";
+"prayer_current_title" = "الصلاة الحالية";
+"prayer_in_label" = "خلال";
+"prayer_monthly_select_date_hint" = "اختر التاريخ لعرض التفاصيل";
+"prayer_monthly_schedule_format" = "جدول الصلاة - %@";
+"prayer_ramadan_hijri_format" = "رمضان %d هـ";
+"prayer_ramadan_subtitle" = "جدول الإمساكية والإفطار";
+"prayer_reminder_adhan" = "أذان";
+"prayer_reminder_alarm" = "منبه";
+"prayer_reminder_silent" = "صامت";
+"prayer_error_past_date" = "لا يمكن ضبط التذكير لتواريخ سابقة";
+"prayer_settings_calculation_method" = "طريقة الحساب";
+"prayer_settings_madhab" = "مذهب العصر";
+"prayer_settings_notifications" = "التنبيهات";
+
+// MARK: - Feature: Khatam
+"khatam_recommendation_title" = "توصية القراءة";
+"khatam_daily_target" = "الهدف اليومي";
+"khatam_weekly_target" = "الهدف الأسبوعي";
+"khatam_target_finish" = "موعد الختم المستهدف";
+"khatam_page_status" = "صفحة %d من %d";
+"khatam_pages_count" = "%d صفحات";
+"khatam_completed_on" = "تم الختم في %@";
+"khatam_manual_entry_title" = "إدخال التقدم يدوياً";
+"khatam_manual_entry_desc" = "أدخل عدد الصفحات التي قرأتها من المصحف الورقي.";
+"khatam_add_progress" = "إضافة تقدم";
+"khatam_set_page_directly" = "تحديد الصفحة مباشرة";
+"khatam_target_page_placeholder" = "الصفحة المستهدفة (مثلاً 450)";
+"khatam_pages_read_placeholder" = "الصفحات المقروءة (مثلاً 5)";
+"khatam_new_goal_title" = "هدف ختم جديد";
+"khatam_details_header" = "التفاصيل";
+"khatam_goal_title_placeholder" = "عنوان الهدف (مثلاً ختم رمضان)";
+"khatam_completion_goal_header" = "هدف الإكمال";
+"khatam_target_date_label" = "التاريخ المستهدف";
+"khatam_cancel_goal" = "إلغاء الهدف الحالي";
+"khatam_no_active_goal" = "لا يوجد هدف ختم نشط";
+"khatam_no_active_goal_desc" = "حدد هدفاً لتتبع تقدمك في القراءة والبقاء مستمراً.";
+"khatam_detail_no_logs" = "لا يوجد سجل للتقدم بعد";
+"khatam_log_read_pages" = "قرأت %d صفحات";
+"khatam_log_range_format" = "%d:%d ← %d:%d";
+"khatam_log_pages_added" = "+%d ص.";
+"khatam_mode" = "الوضع";
+"khatam_pages" = "الصفحات";
+"khatam_surah_ayah" = "السورة/الآية";
+"khatam_from" = "من:";
+"khatam_to_surah" = "إلى سورة";
+"khatam_to_ayah" = "إلى آية";
+"khatam_ayah_number_placeholder" = "رقم الآية";
+"khatam_max_ayah" = "أقصى آية: %d";
+"khatam_progress_by_range" = "التقدم حسب النطاق";
+"khatam_percentage_format" = "%d%%";
+"khatam_history_stats" = "لقد ختمت القرآن %d مرات";
+"khatam_from_surah" = "من سورة";
+"khatam_from_ayah" = "من آية";
+"khatam_details_title" = "تفاصيل الختم";
+"khatam_tab_progress" = "التقدم";
+"khatam_tab_history" = "السجل";
+"khatam_status_surah" = "سورة %1$d من 114";
+"khatam_status_ayah" = "%1$d من %2$d آية";
+"khatam_target_ayahs" = "%1$d آية";
+"khatam_log_ayahs_added" = "+%d آية";
+"khatam_ayah_count" = "%d آية";
+"khatam_start_date_label" = "تاريخ البدء";
+"khatam_setup_starting_point_header" = "نقطة البداية";
+
+// MARK: - Feature: Calendar
+"calendar_accessibility_event_item" = "تاريخ مهم: %@. الحالة: %@.";
+"calendar_add_confirm_message" = "هل تريد إضافة '%@' إلى تقويم الآيفون الخاص بك؟";
+"calendar_add_confirm_title" = "إضافة إلى التقويم";
+"calendar_add_to_system" = "إضافة إلى تقويم الآيفون";
+"calendar_added_error" = "فشل إضافة الفعالية إلى التقويم";
+"calendar_added_success" = "تم إضافة الفعالية إلى التقويم بنجاح";
+"calendar_event_title" = "تواريخ مهمة";
+"calendar_hijri_abbr" = "هـ";
+"calendar_islamic_months" = "الأشهر الهجرية";
+"calendar_jump_to_date" = "الذهاب إلى التاريخ";
+"calendar_month_placeholder" = "التقويم الهجري والميلادي";
+"calendar_month_significance" = "أهمية الشهر";
+"calendar_no_events" = "لا توجد فعاليات في هذا الشهر";
+"calendar_permission_denied_title" = "تم رفض الوصول";
+"calendar_permission_denied_message" = "تم رفض الوصول إلى التقويم. يرجى التفعيل من الإعدادات.";
+"calendar_upcoming_label" = "قادم";
+"calendar_view_all_months" = "عرض جميع الأشهر الهجرية";
+
+// MARK: - Feature: Journal
+"journal_add_btn" = "إضافة مدونة";
+"journal_new_entry_desc" = "تفكر في عبادتك وإحسانك اليوم.";
+"journal_new_entry_title" = "اكتب يوميات اليوم";
+"journal_timeline_title" = "الخط الزمني";
+"journal_title_placeholder" = "العنوان (مثلاً: تأمل في سورة الكهف)";
+"journal_content_placeholder" = "اكتب تأملك هنا...";
+"journal_reference_placeholder" = "المرجع (مثلاً: البقرة: 153)";
+"journal_label_title" = "عنوان اليومية";
+"journal_label_content" = "تسجيل التأمل";
+"journal_label_reference" = "المرجع المقدس";
+"journal_save_success" = "تم حفظ اليومية بنجاح";
+"journal_empty_title" = "لا توجد مدونات يومية بعد";
+"journal_empty_desc" = "ابدأ في تسجيل تأملاتك ونموك الروحي.";
+"journal_delete_confirm" = "هل أنت متأكد أنك تريد حذف هذه اليومية؟";
+"journal_detail_title" = "تفاصيل اليومية";
+"journal_mood_peaceful" = "هادئ";
+"journal_mood_grateful" = "ممتن";
+"journal_mood_spiritual" = "روحاني";
+"journal_mood_happy" = "سعيد";
+"journal_mood_sad" = "حزين";
+"journal_label_mood" = "الحالة الروحية";
+"journal_accessibility_entry" = "مذكرة من %@. العنوان: %@. المعاينة: %@.";
+"chatbot_history_title" = "سجل المحادثات";
+"chatbot_empty_history" = "لا توجد محادثات بعد. ابدأ محادثة جديدة!";
+"chatbot_command_hint" = "يدعم: /سور:1، /آية:1:1، /حديث:1";
+"chatbot_ref_quran" = "مرجع القرآن";
+"chatbot_ref_hadith" = "مرجع الحديث";
+"chatbot_ref_tafsir" = "تفاصيل التفسير";
+"chatbot_welcome_msg" = "السلام عليكم! أنا مساعد هيرة. استخدم /سور:1 أو /حديث:1 كمرجع سريع.";
+"chatbot_typing" = "المساعد يفكر...";
+"chatbot_new_session" = "محادثة جديدة";
+"chatbot_delete_session" = "حذف السجل";
+"chatbot_delete_confirm_title" = "حذف المحادثة";
+"chatbot_delete_confirm_msg" = "هل أنت متأكد أنك تريد حذف هذه المحادثة؟ لا يمكن التراجع عن هذا الإجراء.";

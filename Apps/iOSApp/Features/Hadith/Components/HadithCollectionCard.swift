@@ -12,9 +12,8 @@ struct HadithCollectionCard: View {
     @Environment(\.appEnvironment) private var appEnv
     private var colors: ThemeModel { appEnv.theme.current }
     
-    let title: String
+    let collection: HadithCollectionEntity
     let icon: String
-    let count: Int
     
     // MARK: - Body
     var body: some View {
@@ -31,12 +30,12 @@ struct HadithCollectionCard: View {
             }
             
             VStack(alignment: .leading, spacing: 4) {
-                Text(appEnv.language.localizedString(title))
+                Text(appEnv.language.localizedString("hadith_col_\(collection.key)", fallback: collection.name))
                     .font(.system(size: 16, weight: .bold, design: .rounded))
                     .foregroundColor(colors.foreground)
                     .lineLimit(1)
                 
-                Text("\(count) \(Text(appEnv.language.localizedString("hadith_explore_btn")).font(.system(size: 10)))")
+                Text("\(collection.totalHadiths) \(Text(appEnv.language.localizedString("hadith_explore_btn")).font(.system(size: 10)))")
                     .font(.system(size: 12, weight: .medium, design: .rounded))
                     .foregroundColor(.secondary)
             }
@@ -57,7 +56,7 @@ struct HadithCollectionCard: View {
         .clipShape(RoundedRectangle(cornerRadius: 24))
         .hiraCleanCard(colors: colors)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(appEnv.language.localizedString(title))
+        .accessibilityLabel(collection.name)
         .accessibilityHint(appEnv.language.localizedString("hadith_accessibility_col_item"))
     }
 }

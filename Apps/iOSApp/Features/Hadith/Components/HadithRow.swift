@@ -12,17 +12,14 @@ struct HadithRow: View {
     @Environment(\.appEnvironment) private var appEnv
     private var colors: ThemeModel { appEnv.theme.current }
     
-    let title: String
-    let bodyText: String
-    let narrator: String
-    let source: String
+    let item: HadithEntity
     
     // MARK: - Body
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            // Header with narrator
+            // Header with source
             HStack {
-                Text(appEnv.language.localizedString("hadith_narrated_by", arguments: [narrator]))
+                Text(LocalizedStringKey(item.collectionName))
                     .font(.system(size: 10, weight: .bold, design: .rounded))
                     .foregroundColor(colors.primary)
                     .padding(.horizontal, 10)
@@ -32,23 +29,27 @@ struct HadithRow: View {
                 
                 Spacer()
                 
-                Text(source)
+                Text("#\(item.hadithnumber)")
                     .font(.system(size: 10, weight: .bold, design: .rounded))
                     .foregroundColor(.secondary)
                     .opacity(0.6)
             }
             
-            // Title and body preview
+            // Body preview
             VStack(alignment: .leading, spacing: 6) {
-                Text(LocalizedStringKey(title))
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                Text(item.english)
+                    .font(.system(size: 14, weight: .medium, design: .rounded))
                     .foregroundColor(colors.foreground)
-                
-                Text(LocalizedStringKey(bodyText))
-                    .font(.system(size: 14))
-                    .foregroundColor(.secondary)
-                    .lineLimit(2)
+                    .lineLimit(3)
                     .fixedSize(horizontal: false, vertical: true)
+                
+                if !item.arabic.isEmpty {
+                    Text(item.arabic)
+                        .font(.custom("KFGQPCUthmanTahaNaskh-Regular", size: 16))
+                        .foregroundColor(.secondary)
+                        .lineLimit(1)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
             }
         }
         .padding(18)
@@ -56,7 +57,7 @@ struct HadithRow: View {
         .clipShape(RoundedRectangle(cornerRadius: 24))
         .hiraCleanCard(colors: colors)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(title)
-        .accessibilityHint(appEnv.language.localizedString("hadith_accessibility_item"))
+        .accessibilityLabel("\(item.collectionName) \(item.hadithnumber)")
+        .accessibilityHint(item.english)
     }
 }

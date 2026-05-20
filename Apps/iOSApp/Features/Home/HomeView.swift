@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS, deprecated: 26.0, message: "Using fallback until MKReverseGeocodingRequest is stable")
 public struct HomeView: View {
     @Environment(\.appEnvironment) private var appEnv
     @State private var animateWidget = false
@@ -38,7 +39,10 @@ public struct HomeView: View {
                     Group {
                         HadithWidgetView(colors: colors)
                         
-                        PrayerWidgetView(colors: colors, animate: $animateWidget)
+                        VStack(spacing: 8) {
+                            HijriDateWidgetView(colors: colors)
+                            PrayerWidgetView(colors: colors, animate: $animateWidget)
+                        }
                         
                         HomeFeatureGrid(colors: colors)
                         
@@ -119,6 +123,7 @@ private struct ArticleHeader: View {
     }
 }
 
+@available(iOS, deprecated: 26.0, message: "Using fallback until MKReverseGeocodingRequest is stable")
 #Preview {
     NavigationStack {
         HomeView()

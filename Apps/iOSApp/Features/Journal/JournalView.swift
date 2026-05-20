@@ -12,89 +12,121 @@ struct JournalView: View {
     @State private var viewModel = JournalViewModel()
     private var colors: ThemeModel { appEnv.theme.current }
     
+    @State private var showAddSheet = false
+    
     var body: some View {
-        FeatureView(titleKey: "home_feature_journal", icon: "note.text") {
-            VStack(spacing: 32) {
-                // New Entry Card
-                HStack {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text(appEnv.language.localizedString("journal_new_entry_title"))
-                            .font(.headline.bold())
-                            .foregroundColor(colors.foreground)
-                        Text(appEnv.language.localizedString("journal_new_entry_desc"))
-                            .font(.caption)
-                            .foregroundColor(colors.foreground.opacity(0.6))
-                        
-                        Button(action: {}) {
-                            Text(appEnv.language.localizedString("journal_add_btn"))
-                                .font(.caption.bold())
-                                .foregroundColor(.white)
-                                .padding(.horizontal, 24)
-                                .padding(.vertical, 8)
-                                .background(colors.primary)
-                                .cornerRadius(20)
-                        }
-                    }
-                    Spacer()
-                    Image(systemName: "square.and.pencil")
-                        .font(.largeTitle)
-                        .foregroundColor(colors.primary)
-                }
-                .padding(24)
-                .background(colors.background)
-                .hiraCleanCard(colors: colors, radius: 24)
-                
-                // Timeline List
-                VStack(alignment: .leading, spacing: 20) {
-                    Text(appEnv.language.localizedString("journal_timeline_title"))
-                        .font(.headline.bold())
-                        .foregroundColor(colors.foreground)
-                    
-                    VStack(spacing: 16) {
-                        ForEach(viewModel.entries) { entry in
-                            HStack(spacing: 16) {
-                                VStack(spacing: 4) {
-                                    Text("\(entry.day)")
-                                        .font(.title3.bold())
-                                        .foregroundColor(colors.primary)
-                                    Text(entry.monthAbb)
-                                        .font(.caption2.bold())
-                                        .foregroundColor(colors.foreground.opacity(0.4))
-                                }
-                                .frame(width: 50, height: 50)
-                                .background(colors.primary.opacity(0.1))
-                                .cornerRadius(12)
-                                
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(entry.title)
-                                        .font(.subheadline.bold())
-                                        .foregroundColor(colors.foreground)
-                                    Text(entry.preview)
-                                        .font(.caption)
-                                        .foregroundColor(colors.foreground.opacity(0.6))
-                                        .lineLimit(1)
-                                }
-                                
-                                Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                                    .font(.caption)
-                                    .foregroundColor(colors.foreground.opacity(0.3))
+        ZStack {
+            colors.background.ignoresSafeArea()
+            
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: AppSpacing.lg) {
+                    // MARK: - New Entry CTA Card
+                    HStack {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text(appEnv.language.localizedString("journal_new_entry_title"))
+                                .font(.headline.bold())
+                                .foregroundColor(colors.foreground)
+                            Text(appEnv.language.localizedString("journal_new_entry_desc"))
+                                .font(.caption)
+                                .foregroundColor(colors.foreground.opacity(0.6))
+                            
+                            Button(action: { showAddSheet = true }) {
+                                Text(appEnv.language.localizedString("journal_add_btn"))
+                                    .font(.caption.bold())
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 24)
+                                    .padding(.vertical, 10)
+                                    .background(colors.primary)
+                                    .cornerRadius(20)
+                                    .shadow(color: colors.primary.opacity(0.3), radius: 8, x: 0, y: 4)
                             }
-                            .padding(16)
-                            .background(colors.background)
-                            .hiraCleanCard(colors: colors, radius: 16)
-                            .accessibilityElement(children: .combine)
-                            .accessibilityLabel(appEnv.language.localizedString("journal_accessibility_entry", arguments: ["\(entry.day) \(entry.monthAbb)", entry.title, entry.preview]))
-                            .accessibilityAddTraits(.isButton)
+                        }
+                        Spacer()
+                        ZStack {
+                            Circle()
+                                .fill(colors.primary.opacity(0.05))
+                                .frame(width: 80, height: 80)
+                            Image(systemName: "pencil.and.outline")
+                                .font(.system(size: 32))
+                                .foregroundColor(colors.primary)
+                        }
+                    }
+                    .padding(24)
+                    .background(colors.card)
+                    .cornerRadius(24)
+                    .shadow(color: AppShadow.xs.color, radius: AppShadow.xs.radius, x: AppShadow.xs.x, y: AppShadow.xs.y)
+                    
+                    // MARK: - Timeline History
+                    VStack(alignment: .leading, spacing: AppSpacing.md) {
+                        HStack {
+                            Text(appEnv.language.localizedString("journal_timeline_title"))
+                                .font(TextStyle.headline)
+                                .foregroundColor(colors.foreground)
+                            
+                            Spacer()
+                            
+                            Text("\(viewModel.entries.count)")
+                                .font(.system(size: 10, weight: .black))
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(colors.primary)
+                                .clipShape(Capsule())
+                        }
+                        .padding(.horizontal, 4)
+                        
+                        if viewModel.entries.isEmpty {
+                            emptyJournalView()
+                        } else {
+                            LazyVStack(spacing: AppSpacing.md) {
+                                ForEach(viewModel.entries) { entry in
+                                    NavigationLink {
+                                        JournalDetailView(entry: entry, viewModel: $viewModel)
+                                    } label: {
+                                        JournalEntryRow(entry: entry, colors: colors)
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
                         }
                     }
                 }
+                .padding(AppSpacing.md)
             }
-            .eraseToAnyView()
+        }
+        .navigationTitle(appEnv.language.localizedString("home_feature_journal"))
+        .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $showAddSheet) {
+            AddJournalView(viewModel: $viewModel)
         }
     }
+    
+    @ViewBuilder
+    private func emptyJournalView() -> some View {
+        VStack(spacing: AppSpacing.md) {
+            Image(systemName: "doc.text.magnifyingglass")
+                .font(.system(size: 40))
+                .foregroundColor(colors.primary.opacity(0.2))
+            
+            VStack(spacing: 4) {
+                Text(appEnv.language.localizedString("journal_empty_title"))
+                    .font(TextStyle.subheadline)
+                    .fontWeight(.bold)
+                    .foregroundColor(colors.foreground)
+                
+                Text(appEnv.language.localizedString("journal_empty_desc"))
+                    .font(TextStyle.caption)
+                    .foregroundColor(colors.foreground.opacity(0.5))
+                    .multilineTextAlignment(.center)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(40)
+        .background(colors.card)
+        .cornerRadius(20)
+    }
 }
+
 #Preview {
     NavigationStack {
         JournalView()
